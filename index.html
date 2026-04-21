@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rachel McBride Holistic Wellness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–cream: #FAF7F2;
+–warm-white: #FDFCF9;
+–beige: #EDE8DF;
+–beige-mid: #D9D1C4;
+–sage: #A8B5A0;
+–sage-light: #C8D5C2;
+–sage-dark: #7A9070;
+–rose: #C9A5A0;
+–rose-light: #E8D5D2;
+–rose-deep: #B08880;
+–gray-blue: #8A9BAE;
+–gray-blue-light: #C2CDD8;
+–charcoal: #3A3530;
+–warm-gray: #7A736A;
+–light-text: #9A9088;
+–font-serif: ‘Cormorant Garamond’, Georgia, serif;
+–font-sans: ‘Jost’, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: var(–font-sans);
+background-color: var(–warm-white);
+color: var(–charcoal);
+font-weight: 300;
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 1.2rem 4rem;
+background: rgba(253, 252, 249, 0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(214, 207, 195, 0.4);
+transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(100, 85, 70, 0.08); }
+.nav-logo {
+font-family: var(–font-serif);
+font-size: 1.15rem;
+font-weight: 500;
+letter-spacing: 0.04em;
+color: var(–charcoal);
+text-decoration: none;
+}
+.nav-logo span { color: var(–rose-deep); font-style: italic; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+color: var(–warm-gray); text-decoration: none; font-weight: 400;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(–charcoal); }
+.nav-cta {
+background: var(–rose-deep); color: #fff !important;
+padding: 0.55rem 1.4rem; border-radius: 40px;
+font-size: 0.78rem !important; letter-spacing: 0.1em;
+transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(–rose) !important; color: var(–charcoal) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 22px; height: 1.5px; background: var(–charcoal); display: block; transition: 0.3s; }
+
+/* ── BUTTONS ── */
+.btn {
+display: inline-block;
+font-family: var(–font-sans);
+font-size: 0.78rem;
+font-weight: 400;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 0.85rem 2rem;
+border-radius: 40px;
+transition: all 0.25s;
+cursor: pointer;
+border: none;
+}
+.btn-primary {
+background: var(–rose-deep);
+color: #fff;
+}
+.btn-primary:hover { background: var(–rose); color: var(–charcoal); }
+.btn-outline {
+background: transparent;
+color: var(–charcoal);
+border: 1.5px solid var(–beige-mid);
+}
+.btn-outline:hover { border-color: var(–rose-deep); color: var(–rose-deep); background: var(–rose-light); }
+.btn-sage {
+background: var(–sage-dark);
+color: #fff;
+}
+.btn-sage:hover { background: var(–sage); color: var(–charcoal); }
+.btn-ghost {
+background: transparent;
+color: var(–sage-dark);
+border: 1.5px solid var(–sage);
+}
+.btn-ghost:hover { background: var(–sage-light); }
+
+/* ── SECTION BASE ── */
+section { padding: 6rem 4rem; }
+.section-label {
+font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: var(–rose-deep); font-weight: 400; display: block; margin-bottom: 1rem;
+}
+h2.section-title {
+font-family: var(–font-serif);
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 400;
+line-height: 1.2;
+color: var(–charcoal);
+margin-bottom: 1.5rem;
+}
+h2.section-title em { font-style: italic; color: var(–rose-deep); }
+.section-sub {
+font-size: 1rem; color: var(–warm-gray); max-width: 520px; line-height: 1.8;
+}
+.centered { text-align: center; }
+.centered .section-sub { margin: 0 auto; }
+
+/* ── HERO ── */
+#hero {
+min-height: 100vh;
+padding-top: 100px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+background: var(–cream);
+position: relative;
+overflow: hidden;
+}
+#hero::before {
+content: ‘’;
+position: absolute;
+top: -10%; right: -5%;
+width: 55vw; height: 55vw;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(200, 165, 160, 0.12) 0%, transparent 70%);
+pointer-events: none;
+}
+#hero::after {
+content: ‘’;
+position: absolute;
+bottom: 5%; left: 5%;
+width: 30vw; height: 30vw;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(168, 181, 160, 0.1) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero-content { padding-left: max(4rem, 8vw); animation: fadeUp 0.9s ease both; }
+.hero-eyebrow {
+font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+color: var(–rose-deep); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before { content: ‘’; width: 32px; height: 1px; background: var(–rose-deep); }
+h1 {
+font-family: var(–font-serif);
+font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+font-weight: 400;
+line-height: 1.12;
+color: var(–charcoal);
+margin-bottom: 1.5rem;
+}
+h1 em { font-style: italic; color: var(–rose-deep); }
+.hero-sub {
+font-size: 1.05rem; color: var(–warm-gray); max-width: 480px;
+line-height: 1.8; margin-bottom: 0.75rem; font-weight: 300;
+}
+.hero-note {
+font-size: 0.88rem; color: var(–light-text); margin-bottom: 2.5rem; font-style: italic;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-image-wrap {
+position: relative;
+height: 100vh;
+animation: fadeIn 1.1s ease both;
+}
+.hero-photo {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.hero-photo-placeholder {
+width: 100%; height: 100%;
+background: linear-gradient(145deg, var(–beige) 0%, var(–rose-light) 40%, var(–sage-light) 80%, var(–gray-blue-light) 100%);
+display: flex; align-items: center; justify-content: center;
+flex-direction: column; gap: 1rem;
+position: relative; overflow: hidden;
+}
+.hero-photo-placeholder::before {
+content: ‘’;
+position: absolute; inset: 0;
+background:
+radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,255,255,0.3) 0%, transparent 70%);
+}
+.hero-photo-placeholder p {
+font-family: var(–font-serif); font-size: 1rem; color: rgba(58,53,48,0.5);
+font-style: italic; position: relative; z-index: 1;
+}
+.hero-photo-placeholder svg {
+width: 64px; height: 64px; opacity: 0.3; position: relative; z-index: 1;
+}
+.hero-floater {
+position: absolute; bottom: 2.5rem; left: -2rem;
+background: white; border-radius: 16px;
+padding: 1.2rem 1.5rem;
+box-shadow: 0 8px 40px rgba(100, 80, 70, 0.12);
+max-width: 240px;
+animation: floatUp 3s ease-in-out infinite;
+}
+.hero-floater p { font-size: 0.8rem; color: var(–warm-gray); line-height: 1.5; }
+.hero-floater strong { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(–sage-dark); margin-bottom: 0.3rem; font-weight: 500; }
+
+/* ── MARQUEE ── */
+.marquee-section {
+padding: 1.5rem 0;
+background: var(–charcoal);
+overflow: hidden;
+}
+.marquee-track {
+display: flex; gap: 3rem; white-space: nowrap;
+animation: marquee 28s linear infinite;
+}
+.marquee-track span {
+font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: rgba(255,255,255,0.5); flex-shrink: 0;
+}
+.marquee-track span.dot { color: var(–rose); }
+
+/* ── FOR YOU ── */
+#for-you { background: var(–warm-white); }
+.for-you-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 3rem; align-items: start; margin-top: 4rem;
+}
+.for-you-left h2 { max-width: 420px; }
+.for-you-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+.for-you-list li {
+display: flex; align-items: flex-start; gap: 1rem;
+font-size: 0.95rem; color: var(–warm-gray); line-height: 1.6;
+}
+.for-you-list li::before {
+content: ‘’;
+width: 6px; height: 6px; border-radius: 50%;
+background: var(–rose-deep); flex-shrink: 0; margin-top: 0.55rem;
+}
+.for-you-right {
+display: flex; flex-direction: column; gap: 1.5rem;
+padding-top: 1rem;
+}
+.feeling-card {
+background: var(–cream);
+border-radius: 16px;
+padding: 1.5rem 2rem;
+border-left: 3px solid var(–rose-light);
+transition: border-color 0.2s, transform 0.2s;
+}
+.feeling-card:hover { border-color: var(–rose-deep); transform: translateX(4px); }
+.feeling-card p { font-size: 0.95rem; color: var(–warm-gray); font-style: italic; }
+.feeling-card strong { display: block; font-family: var(–font-serif); font-size: 1.1rem; color: var(–charcoal); font-style: normal; margin-bottom: 0.4rem; font-weight: 500; }
+
+/* ── HOW I HELP ── */
+#how-i-help {
+background: var(–cream);
+position: relative; overflow: hidden;
+}
+#how-i-help::after {
+content: ‘’;
+position: absolute; top: 0; right: 0;
+width: 40%; height: 100%;
+background: linear-gradient(135deg, transparent 0%, rgba(200,213,194,0.15) 100%);
+pointer-events: none;
+}
+.help-header { max-width: 560px; margin-bottom: 4rem; }
+.help-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.help-card {
+background: white;
+border-radius: 20px;
+padding: 2.5rem 2rem;
+box-shadow: 0 4px 24px rgba(100,80,70,0.06);
+transition: transform 0.25s, box-shadow 0.25s;
+position: relative; overflow: hidden;
+}
+.help-card::before {
+content: ‘’;
+position: absolute; top: 0; left: 0; right: 0; height: 3px;
+background: linear-gradient(90deg, var(–rose-light), var(–sage-light));
+}
+.help-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(100,80,70,0.1); }
+.help-icon {
+width: 44px; height: 44px; border-radius: 12px;
+background: var(–rose-light); display: flex; align-items: center; justify-content: center;
+margin-bottom: 1.5rem; font-size: 1.2rem;
+}
+.help-icon.sage { background: var(–sage-light); }
+.help-icon.blue { background: var(–gray-blue-light); }
+.help-card h3 {
+font-family: var(–font-serif); font-size: 1.3rem; font-weight: 500;
+color: var(–charcoal); margin-bottom: 0.75rem;
+}
+.help-card p { font-size: 0.9rem; color: var(–warm-gray); line-height: 1.7; }
+
+/* ── WORK WITH ME ── */
+#work-with-me { background: var(–warm-white); }
+.offers-header { max-width: 540px; margin: 0 auto 4rem; text-align: center; }
+.offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.offer-card {
+border-radius: 24px;
+padding: 3rem 2.5rem;
+display: flex; flex-direction: column;
+transition: transform 0.25s;
+position: relative; overflow: hidden;
+}
+.offer-card:hover { transform: translateY(-6px); }
+.offer-card.rose-bg { background: linear-gradient(145deg, #F5EAE8 0%, #EDD6D3 100%); }
+.offer-card.sage-bg { background: linear-gradient(145deg, #E8EFE6 0%, #D2E0CE 100%); }
+.offer-card.blue-bg { background: linear-gradient(145deg, #E8EDF3 0%, #D2DCE8 100%); }
+.offer-badge {
+display: inline-block;
+font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+background: rgba(255,255,255,0.7); border-radius: 20px;
+padding: 0.35rem 0.9rem; color: var(–warm-gray);
+margin-bottom: 1.5rem; font-weight: 400;
+}
+.offer-card h3 {
+font-family: var(–font-serif); font-size: 1.6rem; font-weight: 500;
+color: var(–charcoal); margin-bottom: 1rem; line-height: 1.2;
+}
+.offer-card p { font-size: 0.9rem; color: var(–warm-gray); line-height: 1.7; flex-grow: 1; margin-bottom: 2rem; }
+.offer-divider { width: 40px; height: 1px; background: rgba(100,80,70,0.2); margin: 1.5rem 0; }
+
+/* ── TRANSFORMATION ── */
+#transformation {
+background: var(–charcoal);
+color: white;
+text-align: center;
+padding: 7rem 4rem;
+position: relative; overflow: hidden;
+}
+#transformation::before {
+content: ‘’;
+position: absolute; inset: 0;
+background:
+radial-gradient(ellipse 60% 80% at 20% 50%, rgba(200,165,160,0.08) 0%, transparent 70%),
+radial-gradient(ellipse 60% 80% at 80% 50%, rgba(168,181,160,0.08) 0%, transparent 70%);
+}
+#transformation .section-label { color: var(–rose-light); }
+#transformation h2.section-title { color: white; position: relative; }
+.transformation-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 2rem; margin-top: 4rem; position: relative;
+}
+.transform-item {
+padding: 2.5rem 2rem;
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 20px;
+background: rgba(255,255,255,0.03);
+backdrop-filter: blur(4px);
+transition: border-color 0.25s, background 0.25s;
+}
+.transform-item:hover {
+border-color: rgba(200,165,160,0.3);
+background: rgba(255,255,255,0.06);
+}
+.transform-number {
+font-family: var(–font-serif); font-size: 3rem; font-weight: 300;
+color: rgba(200,165,160,0.25); line-height: 1; margin-bottom: 1rem;
+}
+.transform-item h3 {
+font-family: var(–font-serif); font-size: 1.3rem; font-weight: 400;
+color: white; margin-bottom: 0.75rem;
+}
+.transform-item p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* ── ABOUT ── */
+#about { background: var(–cream); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-image-wrap { position: relative; }
+.about-photo-placeholder {
+width: 100%; aspect-ratio: 3/4;
+background: linear-gradient(160deg, var(–beige) 0%, var(–rose-light) 50%, var(–sage-light) 100%);
+border-radius: 24px;
+display: flex; align-items: center; justify-content: center; flex-direction: column;
+gap: 0.75rem; overflow: hidden; position: relative;
+}
+.about-photo-placeholder p {
+font-family: var(–font-serif); font-size: 0.9rem; color: rgba(58,53,48,0.4); font-style: italic;
+}
+.about-accent {
+position: absolute; bottom: -1.5rem; right: -1.5rem;
+width: 120px; height: 120px; border-radius: 50%;
+border: 2px solid var(–rose-light); opacity: 0.6;
+}
+.about-accent-2 {
+position: absolute; top: -1rem; left: -1rem;
+width: 80px; height: 80px; border-radius: 50%;
+border: 1.5px solid var(–sage-light); opacity: 0.5;
+}
+.about-content .section-label { margin-bottom: 0.75rem; }
+.about-content h2 { margin-bottom: 1.5rem; }
+.about-content p { font-size: 0.95rem; color: var(–warm-gray); line-height: 1.85; margin-bottom: 1.2rem; }
+.about-credentials {
+display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem;
+}
+.credential-tag {
+font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+background: white; border: 1px solid var(–beige-mid);
+border-radius: 30px; padding: 0.4rem 1rem; color: var(–warm-gray); font-weight: 400;
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(–warm-white); }
+.testimonials-header { text-align: center; max-width: 520px; margin: 0 auto 4rem; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.testimonial-card {
+background: var(–cream);
+border-radius: 20px;
+padding: 2.5rem 2rem;
+position: relative;
+transition: transform 0.2s;
+}
+.testimonial-card:hover { transform: translateY(-3px); }
+.testimonial-card::before {
+content: ‘\201C’;
+position: absolute; top: 1.5rem; left: 2rem;
+font-family: var(–font-serif); font-size: 4rem; line-height: 1;
+color: var(–rose-light); pointer-events: none;
+}
+.testimonial-card p {
+font-size: 0.95rem; color: var(–warm-gray); line-height: 1.75;
+font-style: italic; padding-top: 1.5rem; margin-bottom: 2rem;
+}
+.testimonial-author {
+display: flex; align-items: center; gap: 1rem;
+border-top: 1px solid var(–beige);
+padding-top: 1.5rem;
+}
+.author-avatar {
+width: 42px; height: 42px; border-radius: 50%;
+background: linear-gradient(135deg, var(–rose-light), var(–sage-light));
+flex-shrink: 0;
+}
+.author-name { font-size: 0.85rem; font-weight: 500; color: var(–charcoal); }
+.author-title { font-size: 0.75rem; color: var(–light-text); margin-top: 0.15rem; }
+.stars { color: var(–rose-deep); font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+
+/* ── FAQ ── */
+#faq { background: var(–cream); }
+.faq-header { max-width: 520px; margin: 0 auto 4rem; text-align: center; }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item {
+border-bottom: 1px solid var(–beige);
+padding: 1.75rem 0;
+cursor: pointer;
+}
+.faq-q {
+display: flex; justify-content: space-between; align-items: center;
+font-family: var(–font-serif); font-size: 1.15rem; font-weight: 500;
+color: var(–charcoal);
+}
+.faq-toggle {
+width: 28px; height: 28px; border-radius: 50%;
+background: var(–beige); display: flex; align-items: center; justify-content: center;
+font-size: 1.1rem; color: var(–rose-deep); flex-shrink: 0;
+transition: background 0.2s, transform 0.25s;
+}
+.faq-item.open .faq-toggle { background: var(–rose-light); transform: rotate(45deg); }
+.faq-a {
+font-size: 0.92rem; color: var(–warm-gray); line-height: 1.8;
+margin-top: 0; max-height: 0; overflow: hidden;
+transition: max-height 0.35s ease, margin-top 0.25s;
+}
+.faq-item.open .faq-a { max-height: 300px; margin-top: 1rem; }
+
+/* ── CONTACT ── */
+#contact { background: var(–warm-white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-content h2 { margin-bottom: 1.5rem; }
+.contact-content p { font-size: 0.95rem; color: var(–warm-gray); line-height: 1.8; margin-bottom: 2rem; }
+.contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.contact-detail-icon {
+width: 36px; height: 36px; border-radius: 10px;
+background: var(–rose-light); display: flex; align-items: center; justify-content: center;
+font-size: 1rem; flex-shrink: 0;
+}
+.contact-detail span { font-size: 0.9rem; color: var(–warm-gray); }
+.contact-form {
+background: var(–cream);
+border-radius: 24px;
+padding: 3rem;
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label {
+display: block; font-size: 0.72rem; letter-spacing: 0.12em;
+text-transform: uppercase; color: var(–warm-gray); margin-bottom: 0.6rem; font-weight: 400;
+}
+.form-group input, .form-group textarea, .form-group select {
+width: 100%;
+background: white;
+border: 1.5px solid var(–beige-mid);
+border-radius: 12px;
+padding: 0.9rem 1.2rem;
+font-family: var(–font-sans);
+font-size: 0.92rem;
+color: var(–charcoal);
+font-weight: 300;
+transition: border-color 0.2s;
+outline: none;
+appearance: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+border-color: var(–rose-deep);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.opt-in { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.5rem; }
+.opt-in input[type=“checkbox”] { margin-top: 0.2rem; accent-color: var(–rose-deep); }
+.opt-in label { font-size: 0.82rem; color: var(–warm-gray); line-height: 1.6; font-weight: 300; }
+
+/* ── FINAL CTA ── */
+#final-cta {
+background: linear-gradient(145deg, var(–rose-light) 0%, var(–beige) 50%, var(–sage-light) 100%);
+text-align: center;
+padding: 7rem 4rem;
+position: relative; overflow: hidden;
+}
+#final-cta::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 70%);
+}
+#final-cta > * { position: relative; }
+#final-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 700px; margin: 0 auto 1.5rem; }
+#final-cta p { font-size: 1.05rem; color: var(–warm-gray); max-width: 500px; margin: 0 auto 2.5rem; }
+.final-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+background: var(–charcoal); color: rgba(255,255,255,0.4);
+padding: 3rem 4rem;
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 1.5rem;
+}
+footer .footer-logo {
+font-family: var(–font-serif); font-size: 1rem; color: rgba(255,255,255,0.7);
+}
+footer .footer-logo em { font-style: italic; color: var(–rose); }
+footer p { font-size: 0.78rem; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.social-links { display: flex; gap: 1rem; }
+.social-links a {
+width: 34px; height: 34px; border-radius: 50%;
+border: 1px solid rgba(255,255,255,0.15);
+display: flex; align-items: center; justify-content: center;
+color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none;
+transition: border-color 0.2s, color 0.2s;
+}
+.social-links a:hover { border-color: var(–rose); color: var(–rose); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes floatUp {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-6px); }
+}
+@keyframes marquee {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+.reveal {
+opacity: 0; transform: translateY(20px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links { display: none; }
+.nav-links.open {
+display: flex; flex-direction: column;
+position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+background: var(–warm-white); padding: 5rem 2rem 2rem;
+z-index: 99; gap: 1.5rem;
+}
+.nav-links.open a { font-size: 1rem; }
+.hamburger { display: flex; z-index: 200; }
+section { padding: 4rem 1.5rem; }
+#hero { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: auto; }
+.hero-content { padding-left: 0; order: 2; padding-bottom: 3rem; }
+.hero-image-wrap { height: 70vw; max-height: 400px; order: 1; }
+.hero-floater { display: none; }
+.for-you-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+.help-grid, .offers-grid, .testimonials-grid, .transformation-grid { grid-template-columns: 1fr; }
+footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+#transformation { padding: 5rem 1.5rem; }
+#final-cta { padding: 5rem 1.5rem; }
+}
+
+@media (max-width: 600px) {
+.hero-btns { flex-direction: column; }
+.final-btns { flex-direction: column; align-items: center; }
+.about-accent, .about-accent-2 { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Rachel McBride <em>Holistic Wellness</em></a>
+  <div class="nav-links" id="nav-links">
+    <a href="#for-you">Is This You?</a>
+    <a href="#how-i-help">How I Help</a>
+    <a href="#work-with-me">Work With Me</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Book a Session</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Holistic Wellness Coaching</div>
+    <h1>Get Out of<br><em>Survival Mode.</em></h1>
+    <p class="hero-sub">Heart-centered nervous system support for women who are exhausted, overwhelmed, and ready to feel like themselves again.</p>
+    <p class="hero-note">You don't have to keep pushing through this alone.</p>
+    <div class="hero-btns">
+      <a href="#work-with-me" class="btn btn-primary">Work With Me</a>
+      <a href="#contact" class="btn btn-outline">Book a Session</a>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-photo-placeholder">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="20" r="12" fill="rgba(200,165,160,0.4)"/>
+        <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(200,165,160,0.3)"/>
+      </svg>
+      <p>Your photo here</p>
+    </div>
+    <div class="hero-floater">
+      <strong>💛 Women's Circle</strong>
+      <p>Monthly virtual gatherings for deep rest and real connection.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>Nervous System Reset</span><span class="dot">◆</span>
+    <span>Burnout Recovery</span><span class="dot">◆</span>
+    <span>Emotional Regulation</span><span class="dot">◆</span>
+    <span>Stress Release</span><span class="dot">◆</span>
+    <span>Whole-Person Wellness</span><span class="dot">◆</span>
+    <span>Rest &amp; Reconnection</span><span class="dot">◆</span>
+    <span>Heart-Centered Coaching</span><span class="dot">◆</span>
+    <span>Nervous System Reset</span><span class="dot">◆</span>
+    <span>Burnout Recovery</span><span class="dot">◆</span>
+    <span>Emotional Regulation</span><span class="dot">◆</span>
+    <span>Stress Release</span><span class="dot">◆</span>
+    <span>Whole-Person Wellness</span><span class="dot">◆</span>
+    <span>Rest &amp; Reconnection</span><span class="dot">◆</span>
+    <span>Heart-Centered Coaching</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- FOR YOU -->
+
+<section id="for-you">
+  <div class="for-you-grid">
+    <div class="for-you-left reveal">
+      <span class="section-label">This Space Is For You If…</span>
+      <h2 class="section-title">You're tired of holding<br><em>everything together.</em></h2>
+      <p class="section-sub">If any of this sounds familiar, you've landed somewhere that understands.</p>
+      <ul class="for-you-list">
+        <li>You feel constantly wired, worried, or on edge — even when nothing is "wrong"</li>
+        <li>Your body is exhausted but your mind won't slow down</li>
+        <li>You've hit a wall and running on empty no longer feels like an option</li>
+        <li>You've lost touch with what you actually feel, want, or need</li>
+        <li>You're stuck in fight, flight, freeze, or shutdown — and can't find your way back</li>
+        <li>You're showing up for everyone else while quietly falling apart</li>
+        <li>You know something needs to change but don't know where to start</li>
+      </ul>
+    </div>
+    <div class="for-you-right reveal">
+      <div class="feeling-card">
+        <strong>"I feel like I'm always behind."</strong>
+        <p>No matter how much you do, there's always more — and the guilt of not keeping up is crushing.</p>
+      </div>
+      <div class="feeling-card">
+        <strong>"I don't even feel like myself anymore."</strong>
+        <p>Somewhere between all the roles you play, you lost track of who you are apart from what you do.</p>
+      </div>
+      <div class="feeling-card">
+        <strong>"I'm so tired of being so tired."</strong>
+        <p>This isn't just physical exhaustion. It's the kind that lives in your bones, your nervous system, your soul.</p>
+      </div>
+      <div class="feeling-card">
+        <strong>"I need someone to actually hear me."</strong>
+        <p>A space without judgment where you can breathe, be honest, and begin to feel safe again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I HELP -->
+
+<section id="how-i-help">
+  <div class="help-header reveal">
+    <span class="section-label">My Approach</span>
+    <h2 class="section-title">Gentle, grounded support<br><em>that actually works.</em></h2>
+    <p class="section-sub">This isn't about pushing harder or doing more. It's about learning to work <em>with</em> your body — not against it.</p>
+  </div>
+  <div class="help-grid">
+    <div class="help-card reveal">
+      <div class="help-icon">🌿</div>
+      <h3>Stress Release</h3>
+      <p>Practical tools to release stored stress from your body and mind — not just manage it, but actually let it go so you can breathe again.</p>
+    </div>
+    <div class="help-card reveal">
+      <div class="help-icon sage">💧</div>
+      <h3>Nervous System Resets</h3>
+      <p>Gentle, evidence-informed practices that shift your body out of chronic stress responses and back into safety, calm, and presence.</p>
+    </div>
+    <div class="help-card reveal">
+      <div class="help-icon blue">🌸</div>
+      <h3>Burnout Support</h3>
+      <p>Compassionate guidance for women who've given everything and have nothing left. We rebuild your capacity from the inside out.</p>
+    </div>
+    <div class="help-card reveal">
+      <div class="help-icon">🤍</div>
+      <h3>Emotional Regulation</h3>
+      <p>Learn to understand and work with your emotions rather than being overwhelmed by them — with kindness, not judgment.</p>
+    </div>
+    <div class="help-card reveal">
+      <div class="help-icon sage">🌙</div>
+      <h3>Rest &amp; Reconnection</h3>
+      <p>Discover what real rest feels like — not just sleep, but the deep restoration that comes from being in a safe, supported relationship with yourself.</p>
+    </div>
+    <div class="help-card reveal">
+      <div class="help-icon blue">✨</div>
+      <h3>Whole-Person Wellness</h3>
+      <p>We look at the full picture — body, mind, emotions, and spirit — because real healing honors all of who you are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK WITH ME -->
+
+<section id="work-with-me">
+  <div class="offers-header reveal">
+    <span class="section-label">Ways to Work Together</span>
+    <h2 class="section-title">Support shaped around <em>you.</em></h2>
+    <p class="section-sub">Whether you want personalized 1:1 guidance or the warmth of community, there's a way in that fits where you are right now.</p>
+  </div>
+  <div class="offers-grid">
+    <div class="offer-card rose-bg reveal">
+      <span class="offer-badge">Most Personal</span>
+      <h3>1:1 Coaching</h3>
+      <div class="offer-divider"></div>
+      <p>Deep, personalized support tailored to your nervous system, your story, and your goals. Together we build a path forward that feels sustainable, grounded, and true to who you are. Sessions are held virtually, at a pace that works for you.</p>
+      <a href="#contact" class="btn btn-primary">Apply Now</a>
+    </div>
+    <div class="offer-card sage-bg reveal">
+      <span class="offer-badge">Community & Connection</span>
+      <h3>Virtual Women's Circle</h3>
+      <div class="offer-divider"></div>
+      <p>A monthly gathering of women who understand. A heart-centered space to breathe, be witnessed, and remember you're not alone. We share, we practice, we rest — and we leave feeling less like we have to hold everything on our own.</p>
+      <a href="#contact" class="btn btn-sage">Join the Circle</a>
+    </div>
+    <div class="offer-card blue-bg reveal">
+      <span class="offer-badge">Ongoing Support</span>
+      <h3>Online Membership</h3>
+      <div class="offer-divider"></div>
+      <p>Access a growing library of guided practices, nervous system tools, and wellness resources — on your schedule, at your own pace. Gentle, consistent support for women who need something sustainable they can return to again and again.</p>
+      <a href="#contact" class="btn btn-ghost">Explore Membership</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+
+<section id="transformation">
+  <span class="section-label">The Other Side</span>
+  <h2 class="section-title">Imagine how you <em>want</em> to feel.</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,0.55); margin: 0 auto;">This is what becomes possible when your nervous system learns it's safe to rest.</p>
+  <div class="transformation-grid">
+    <div class="transform-item">
+      <div class="transform-number">01</div>
+      <h3>Calm in Your Body</h3>
+      <p>A sense of steadiness that doesn't depend on everything going right. Your baseline shifts — and calm becomes something you actually feel, not something you chase.</p>
+    </div>
+    <div class="transform-item">
+      <div class="transform-number">02</div>
+      <h3>Clarity in Your Mind</h3>
+      <p>When the nervous system settles, the mental fog lifts. You can think clearly, make decisions with confidence, and stop second-guessing everything.</p>
+    </div>
+    <div class="transform-item">
+      <div class="transform-number">03</div>
+      <h3>Safety in Yourself</h3>
+      <p>The deep, quiet knowing that you are okay — that you can handle what comes. Not because life gets easier, but because you've built trust with yourself again.</p>
+    </div>
+    <div class="transform-item">
+      <div class="transform-number">04</div>
+      <h3>Emotional Steadiness</h3>
+      <p>Emotions still come and go — but you're no longer swept away by them. You have space between feeling and reacting. That space changes everything.</p>
+    </div>
+    <div class="transform-item">
+      <div class="transform-number">05</div>
+      <h3>Feeling Supported</h3>
+      <p>You don't have to figure it out alone anymore. There is a space that holds you while you remember who you are beneath the exhaustion.</p>
+    </div>
+    <div class="transform-item">
+      <div class="transform-number">06</div>
+      <h3>Peace Over Survival</h3>
+      <p>Moving through life with spaciousness instead of urgency. No longer bracing for the next thing — just present, rested, and genuinely okay.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <div class="about-photo-placeholder">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <circle cx="32" cy="20" r="12" fill="rgba(200,165,160,0.4)"/>
+          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(200,165,160,0.3)"/>
+        </svg>
+        <p>Rachel's photo here</p>
+      </div>
+      <div class="about-accent"></div>
+      <div class="about-accent-2"></div>
+    </div>
+    <div class="about-content reveal">
+      <span class="section-label">About Rachel</span>
+      <h2 class="section-title">A real person.<br><em>A compassionate guide.</em></h2>
+      <p>Hi, I'm Rachel. I know what it feels like to be the woman who holds everything together while quietly coming apart on the inside. I've lived in survival mode, pushed through burnout, and smiled when I was anything but okay.</p>
+      <p>That's why this work matters so much to me. I create heart-centered, pressure-free spaces for women who are exhausted and burned out — women who are ready to stop surviving and start living differently.</p>
+      <p>My approach blends nervous system education with compassionate coaching and whole-person wellness practices. I'm not here to give you a 10-step plan or tell you to push harder. I'm here to sit with you, listen, and help you find your way back to yourself — gently, at your own pace.</p>
+      <p>You deserve support that actually holds you. That's what I'm here for.</p>
+      <div class="about-credentials">
+        <span class="credential-tag">Holistic Wellness Coach</span>
+        <span class="credential-tag">Nervous System Specialist</span>
+        <span class="credential-tag">Women's Circle Facilitator</span>
+        <span class="credential-tag">Burnout Recovery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <span class="section-label">Kind Words</span>
+    <h2 class="section-title">Women who found their<br><em>way back.</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>Working with Rachel changed how I relate to my own body. I didn't realize how much I'd been fighting myself until she helped me see it. I actually feel calm now — not just "less stressed," but genuinely at ease in a way I haven't been in years.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar"></div>
+        <div>
+          <div class="author-name">Sarah M.</div>
+          <div class="author-title">Marketing Director & Mom of 3</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>I came to Rachel completely burnt out, skeptical that anything could help. Three months later, I sleep through the night, I don't dread mornings, and I've stopped white-knuckling my way through every day. She is the real deal.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: linear-gradient(135deg, #D2E0CE, #C2CDD8);"></div>
+        <div>
+          <div class="author-name">Jamie L.</div>
+          <div class="author-title">Healthcare Professional</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>The Women's Circle gave me something I didn't even know I was missing — a room (even a virtual one) where I didn't have to perform or pretend. Rachel holds space like no one I've met. It's become the thing I look forward to most each month.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: linear-gradient(135deg, #E8D5D2, #C8D5C2);"></div>
+        <div>
+          <div class="author-name">Danielle R.</div>
+          <div class="author-title">Entrepreneur & Circle Member</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+  <div class="faq-header reveal">
+    <span class="section-label">Questions</span>
+    <h2 class="section-title">Things women often <em>wonder.</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What's the difference between coaching and therapy?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Coaching is forward-focused and action-oriented — we work on where you want to go and what's in the way. Therapy, by contrast, is often focused on processing and healing the past. Both are valuable. My work is not a replacement for therapy, but many clients find that coaching, particularly nervous system coaching, complements their therapeutic work beautifully.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What is the Women's Circle and who is it for?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">The Women's Circle is a monthly virtual gathering open to any woman who is craving community, rest, and genuine connection. We come together to share, breathe, and practice simple nervous system tools. No experience is necessary — just a willingness to show up as you are.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        How does the Online Membership work?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Membership gives you ongoing access to a growing library of guided practices, workshops, and wellness resources — available anytime, at your own pace. It's designed for women who want sustainable, consistent support without a long-term commitment.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        What does 1:1 coaching actually look like?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Sessions are held virtually and typically run 60 minutes. We begin with where you are, explore what's in the way, and build practical tools and insights together. Most clients meet with me every 2–4 weeks, depending on their needs and goals. I limit my 1:1 client spots intentionally to ensure each woman receives the depth of attention she deserves.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        I've tried other things and nothing has helped. Will this be different?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">That's one of the most honest questions a woman can ask. What I can tell you is that nervous system-informed coaching approaches the root of burnout and overwhelm differently — it works with the body, not just the mind. Many women who've felt "stuck" find this work opens doors that other approaches didn't. I always recommend starting with a connection call so we can honestly assess whether my approach is right for you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-content reveal">
+      <span class="section-label">Let's Connect</span>
+      <h2 class="section-title">Ready to take the<br><em>first step?</em></h2>
+      <p>Whether you want to book a session, ask a question, or simply see if this feels like the right fit — you're welcome here. No pressure. No commitment required. Just a conversation.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <span>hello@rachelmcbridewellness.com</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📱</div>
+        <span>Book online — sessions available virtually</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🌿</div>
+        <span>Free discovery calls available for new clients</span>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 2rem; font-weight: 500;">Send a message</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="First and last name">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>I'm interested in…</label>
+        <select>
+          <option value="">Select an option</option>
+          <option>1:1 Coaching</option>
+          <option>Virtual Women's Circle</option>
+          <option>Online Membership</option>
+          <option>Free Discovery Call</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell me a little about where you're at</label>
+        <textarea placeholder="What's bringing you here? No need to have it all figured out — just share what feels true right now."></textarea>
+      </div>
+      <div class="opt-in">
+        <input type="checkbox" id="optin">
+        <label for="optin">I'd love to receive Rachel's gentle weekly wellness notes — simple tools, honest reflections, and support for the exhaused, high-achieving woman.</label>
+      </div>
+      <button class="btn btn-primary" style="width:100%; text-align:center; justify-content:center;">Send My Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+
+<section id="final-cta">
+  <span class="section-label" style="color: var(--rose-deep);">You Don't Have to Do This Alone</span>
+  <h2 class="section-title">There is <em>another way</em> forward.</h2>
+  <p>You've been strong for so long. What if strength could feel like rest instead of endurance? It starts with one small, gentle step.</p>
+  <div class="final-btns">
+    <a href="#work-with-me" class="btn btn-primary">Explore How We Can Work Together</a>
+    <a href="#contact" class="btn btn-outline">Book a Free Discovery Call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">Rachel McBride <em>Holistic Wellness</em></div>
+  <div class="footer-links">
+    <a href="#for-you">Is This You?</a>
+    <a href="#work-with-me">Work With Me</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="social-links">
+    <a href="#" title="Instagram">ig</a>
+    <a href="#" title="Facebook">fb</a>
+    <a href="#" title="LinkedIn">in</a>
+  </div>
+  <p style="width:100%; text-align:center; margin-top:1rem;">© 2025 Rachel McBride Holistic Wellness. All rights reserved. | Privacy Policy</p>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  function toggleNav() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  document.querySelectorAll('#nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav-links').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
