@@ -6,11 +6,9 @@
     <title>Rachel McBride | Holistic Wellness & Nervous System Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CLEANED CSS VARIABLES 
-        Note: Removed smart-dashes to prevent rendering errors
-        */
+        /* ─── BASE RESET & VARIABLES ─── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
         :root {
@@ -40,217 +38,226 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* TYPOGRAPHY */
-        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; }
+        /* ─── TYPOGRAPHY ─── */
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.1; }
         em { font-style: italic; color: var(--rose-deep); font-weight: inherit; }
-        p { margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; font-size: 1.05rem; }
 
-        /* NAVIGATION */
+        /* ─── NAVIGATION ─── */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
             padding: 1.2rem 5%; background: rgba(253, 252, 249, 0.95);
             backdrop-filter: blur(10px); border-bottom: 1px solid rgba(214, 207, 195, 0.3);
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
         }
-        nav.scrolled { padding: 0.8rem 5%; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .nav-logo { font-family: var(--font-serif); font-size: 1.3rem; text-decoration: none; color: var(--charcoal); font-weight: 500; }
-        .nav-logo span { color: var(--rose-deep); font-style: italic; font-weight: 300; }
-        
+        nav.scrolled { padding: 0.8rem 5%; box-shadow: 0 4px 30px rgba(0,0,0,0.03); }
+        .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; text-decoration: none; color: var(--charcoal); font-weight: 500; }
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
         .nav-links a { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; color: var(--warm-gray); transition: 0.3s; }
         .nav-links a:hover { color: var(--rose-deep); }
-        .nav-cta { background: var(--rose-deep); color: #fff !important; padding: 0.7rem 1.8rem; border-radius: 40px; }
-        
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
-        .menu-toggle span { width: 28px; height: 1.5px; background: var(--charcoal); }
+        .nav-cta { background: var(--rose-deep); color: #fff !important; padding: 0.7rem 1.8rem; border-radius: 40px; font-weight: 500; }
 
-        /* BUTTONS */
-        .btn {
-            display: inline-block; padding: 1.1rem 2.5rem; border-radius: 50px;
-            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em;
-            text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
-            border: none; cursor: pointer; text-align: center;
-        }
-        .btn-primary { background: var(--rose-deep); color: #fff; box-shadow: 0 4px 15px rgba(176, 136, 128, 0.2); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(176, 136, 128, 0.3); background: var(--rose-light); color: var(--charcoal); }
-        .btn-outline { border: 1.2px solid var(--beige-mid); color: var(--charcoal); }
-        .btn-outline:hover { border-color: var(--rose-deep); color: var(--rose-deep); background: var(--cream); }
-
-        /* HERO SECTION */
+        /* ─── HERO SECTION ─── */
         #hero {
-            padding: 160px 5% 100px; display: grid; grid-template-columns: 1fr 1fr;
-            align-items: center; gap: 5rem; min-height: 95vh; background: var(--cream);
+            padding: 160px 5% 100px; display: grid; grid-template-columns: 1.1fr 0.9fr;
+            align-items: flex-start; gap: 6rem; min-height: 90vh; background: var(--cream);
             position: relative;
         }
-        .hero-text { animation: fadeUp 1s ease forwards; }
-        .hero-text h1 { font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.8rem; }
-        .hero-sub { font-size: 1.15rem; color: var(--warm-gray); margin-bottom: 2.8rem; max-width: 550px; line-height: 1.9; }
+        .hero-text { padding-top: 3rem; animation: fadeUp 1s ease; }
+        .hero-text h1 { font-size: clamp(3.2rem, 6vw, 5rem); margin-bottom: 2rem; }
+        .hero-sub { font-size: 1.2rem; color: var(--warm-gray); margin-bottom: 3rem; max-width: 580px; }
         
-        .hero-img { width: 100%; height: 650px; border-radius: 350px 350px 30px 30px; overflow: hidden; position: relative; box-shadow: 25px 25px 0 var(--beige); animation: fadeIn 1.5s ease forwards; }
-        .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-img { 
+            width: 100%; height: auto; aspect-ratio: 4/5; max-height: 750px;
+            border-radius: 400px 400px 40px 40px; overflow: hidden; 
+            box-shadow: 30px 30px 0 var(--beige); animation: fadeIn 1.5s ease;
+        }
+        .hero-img img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            object-position: top center; /* CRITICAL: Prevents cropping her head */
+        }
 
-        /* MARQUEE */
+        /* ─── MARQUEE ─── */
         .marquee { background: var(--charcoal); padding: 1.5rem 0; overflow: hidden; white-space: nowrap; }
-        .marquee-inner { display: inline-block; animation: marquee 50s linear infinite; }
-        .marquee span { color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.75rem; margin: 0 3rem; }
+        .marquee-inner { display: inline-block; animation: marquee 60s linear infinite; }
+        .marquee span { color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; margin: 0 4rem; }
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* SECTION UTILS */
-        section { padding: 120px 10%; }
-        .centered { text-align: center; max-width: 800px; margin: 0 auto; }
-        .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--rose-deep); margin-bottom: 1.2rem; display: block; font-weight: 400; }
-        .section-title { font-size: clamp(2.2rem, 4.5vw, 3.5rem); margin-bottom: 1.5rem; }
-        .section-intro { font-size: 1.1rem; color: var(--warm-gray); margin-bottom: 4rem; }
+        /* ─── THE CHECKLIST SECTION ─── */
+        .checklist-section { padding: 120px 10%; background: var(--warm-white); }
+        .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; }
+        .check-item { display: flex; gap: 1.5rem; margin-bottom: 2rem; padding: 1.5rem; background: var(--cream); border-radius: 15px; }
+        .check-icon { color: var(--rose-deep); font-size: 1.2rem; }
+        .check-text h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
-        /* THE PROCESS (New Section) */
-        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 2rem; }
-        .process-item { position: relative; padding: 2rem; text-align: center; }
-        .process-step { font-family: var(--font-serif); font-size: 3rem; color: var(--rose-light); margin-bottom: 1rem; opacity: 0.6; }
-        .process-item h4 { font-size: 1.4rem; margin-bottom: 1rem; }
-        .process-item p { font-size: 0.9rem; color: var(--warm-gray); }
+        /* ─── STORY SECTION ─── */
+        #about { padding: 120px 10%; background: var(--cream); }
+        .about-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 7rem; align-items: center; }
+        .about-img { border-radius: 40px; overflow: hidden; height: 650px; box-shadow: -30px 30px 0 var(--sage-light); }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+        .about-content h2 { margin-bottom: 2rem; }
+        .about-content p { margin-bottom: 1.5rem; font-size: 1.1rem; }
 
-        /* SERVICES GRID */
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .card { background: white; padding: 4rem 2.5rem; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.02); transition: 0.4s; border: 1px solid transparent; }
-        .card:hover { transform: translateY(-12px); border-color: var(--rose-light); box-shadow: 0 20px 50px rgba(176, 136, 128, 0.1); }
-        .card-icon { font-size: 2rem; margin-bottom: 2rem; display: block; }
-        .card h3 { margin-bottom: 1.2rem; font-size: 1.8rem; }
+        /* ─── SERVICES & CARDS ─── */
+        .services-section { padding: 120px 10%; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+        .service-card { 
+            background: white; padding: 4rem 3rem; border-radius: 35px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.03); border: 1px solid transparent;
+            transition: 0.4s ease; text-align: center;
+        }
+        .service-card:hover { transform: translateY(-15px); border-color: var(--rose-light); }
+        .card-price { display: block; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; color: var(--rose-deep); }
 
-        /* ABOUT / STORY */
-        .about-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
-        .about-img { border-radius: 30px; overflow: hidden; height: 600px; box-shadow: -25px 25px 0 var(--sage-light); }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; }
-        .about-content p { font-size: 1.05rem; color: var(--warm-gray); margin-bottom: 1.8rem; }
+        /* ─── THE PROCESS ─── */
+        .process-section { padding: 120px 10%; background: var(--charcoal); color: white; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 5rem; }
+        .step-num { font-family: var(--font-serif); font-size: 4rem; color: var(--rose-light); opacity: 0.3; line-height: 1; }
+        .process-section h2 { color: white; }
 
-        /* TESTIMONIALS */
-        .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .testimonial-item { background: var(--cream); padding: 3.5rem; border-radius: 30px; position: relative; }
-        .testimonial-item::before { content: "“"; font-family: var(--font-serif); font-size: 5rem; color: var(--rose-light); position: absolute; top: 1rem; left: 2rem; opacity: 0.5; }
-        .testimonial-text { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; margin-bottom: 2rem; position: relative; z-index: 1; line-height: 1.5; }
-        .testimonial-author { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--charcoal); font-weight: 500; }
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-block; padding: 1.2rem 2.8rem; border-radius: 60px;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em;
+            text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); border: none; cursor: pointer;
+        }
+        .btn-primary { background: var(--rose-deep); color: #fff; }
+        .btn-primary:hover { transform: scale(1.03); background: var(--sage-dark); }
+        .btn-outline { border: 1.5px solid var(--beige-mid); color: var(--charcoal); }
 
-        /* FAQ */
-        .faq-wrap { max-width: 850px; margin: 0 auto; }
+        /* ─── FAQ ─── */
+        .faq-section { padding: 120px 10%; background: var(--cream); }
+        .faq-container { max-width: 900px; margin: 4rem auto 0; }
         .faq-item { border-bottom: 1px solid var(--beige-mid); padding: 2rem 0; cursor: pointer; }
-        .faq-q { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-serif); font-size: 1.4rem; transition: 0.3s; }
-        .faq-q span { font-size: 1.2rem; color: var(--rose-deep); transition: 0.3s; }
-        .faq-a { max-height: 0; overflow: hidden; transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); color: var(--warm-gray); font-size: 1rem; }
-        .faq-item.active .faq-a { max-height: 300px; padding-top: 1.5rem; }
-        .faq-item.active .faq-q { color: var(--rose-deep); }
-        .faq-item.active .faq-q span { transform: rotate(45deg); }
+        .faq-q { font-family: var(--font-serif); font-size: 1.5rem; display: flex; justify-content: space-between; }
+        .faq-a { max-height: 0; overflow: hidden; transition: 0.5s ease; color: var(--warm-gray); padding-top: 0; }
+        .faq-item.active .faq-a { max-height: 400px; padding-top: 1.5rem; }
 
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 1024px) {
-            #hero { grid-template-columns: 1fr; text-align: center; padding-top: 130px; }
-            .hero-text { order: 2; }
-            .hero-img { height: 500px; order: 1; margin: 0 auto; width: 85%; }
-            .hero-sub { margin-left: auto; margin-right: auto; }
-            .grid-3, .process-grid, .testimonial-grid { grid-template-columns: 1fr; }
-            .about-wrap { grid-template-columns: 1fr; text-align: center; gap: 4rem; }
-            .about-img { height: 450px; box-shadow: none; }
-            .nav-links { display: none; } 
-            .menu-toggle { display: flex; }
+        /* ─── FOOTER ─── */
+        footer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 100px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5rem; margin-bottom: 60px; }
+        .footer-logo { font-family: var(--font-serif); font-size: 2rem; color: white; margin-bottom: 1.5rem; }
+        .footer-links h5 { color: white; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+        .footer-links a { display: block; color: inherit; text-decoration: none; margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 0.8rem; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            #hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-img { max-width: 550px; margin: 0 auto; order: -1; }
+            .hero-text { padding-top: 0; }
+            .about-wrap, .check-grid, .footer-grid { grid-template-columns: 1fr; }
+            .grid-3, .process-grid { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 768px) {
-            section { padding: 80px 6%; }
-            .nav-logo { font-size: 1.1rem; }
-            .hero-img { height: 400px; width: 100%; }
+            .grid-3, .process-grid { grid-template-columns: 1fr; }
+            nav { padding: 1rem 5%; }
+            .nav-links { display: none; }
+            section { padding: 80px 8%; }
         }
 
-        /* ANIMATIONS */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <nav id="navbar">
-        <a href="#" class="nav-logo">Rachel McBride <span>Holistic</span></a>
-        <div class="nav-links" id="navLinks">
-            <a href="#how">How I Help</a>
+        <a href="#" class="nav-logo">Rachel McBride <em>Holistic</em></a>
+        <div class="nav-links">
+            <a href="#how">Approach</a>
             <a href="#about">The Story</a>
-            <a href="#work">Work With Me</a>
-            <a href="#contact" class="nav-cta">Book a Session</a>
-        </div>
-        <div class="menu-toggle" onclick="toggleMobileMenu()">
-            <span></span><span></span><span></span>
+            <a href="#work">Services</a>
+            <a href="#contact" class="nav-cta">Book Discovery Call</a>
         </div>
     </nav>
 
     <section id="hero">
         <div class="hero-text">
-            <span class="section-label">Nervous System Support</span>
+            <span class="section-label">A Sanctuary for Your System</span>
             <h1>Get Out of<br><em>Survival Mode.</em></h1>
-            <p class="hero-sub">Heart-centered wellness coaching for high-achieving women who are exhausted, overwhelmed, and ready to feel steady again.</p>
+            <p class="hero-sub">Heart-centered nervous system coaching for high-achieving women ready to stop white-knuckling through life and start feeling steady again.</p>
             <div style="display: flex; gap: 1.5rem; justify-content: inherit; flex-wrap: wrap;">
-                <a href="#work" class="btn btn-primary">Explore Services</a>
-                <a href="#contact" class="btn btn-outline">Free Discovery Call</a>
+                <a href="#work" class="btn btn-primary">Work With Me</a>
+                <a href="#contact" class="btn btn-outline">Free Connection Call</a>
             </div>
         </div>
         <div class="hero-img">
-            <img src="IMG_4099.jpeg" alt="Rachel McBride - Holistic Wellness Coach">
+            <img src="IMG_4099.jpeg" alt="Rachel McBride">
         </div>
     </section>
 
     <div class="marquee">
         <div class="marquee-inner">
-            <span>Nervous System Reset</span> ◆ <span>Burnout Recovery</span> ◆ <span>Emotional Regulation</span> ◆ <span>Somatic Stress Release</span> ◆ <span>Whole-Person Wellness</span> ◆ <span>Rest & Reconnection</span> ◆ <span>Nervous System Reset</span> ◆ <span>Burnout Recovery</span>
+            <span>Nervous System Reset</span> ◆ <span>Burnout Recovery</span> ◆ <span>Emotional Regulation</span> ◆ <span>Stress Release</span> ◆ <span>Whole-Person Wellness</span> ◆ <span>Rest & Reconnection</span> ◆ <span>Nervous System Reset</span>
         </div>
     </div>
 
-    <section id="process">
-        <div class="centered">
-            <span class="section-label">The Journey Forward</span>
-            <h2 class="section-title">A gentle path to <em>feeling supported.</em></h2>
-            <p class="section-intro">Healing your nervous system isn't about pushing harder. It's about a series of gentle shifts that lead to lasting peace.</p>
+    <section class="checklist-section" id="how">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <span class="section-label">The Reality Check</span>
+            <h2 class="section-title">Is your body stuck in <em>overdrive?</em></h2>
+            <p>You’re high-achieving on the outside, but your internal landscape feels like constant static. If you recognize these patterns, you’re in the right place.</p>
         </div>
-        <div class="process-grid">
-            <div class="process-item">
-                <div class="process-step">01</div>
-                <h4>Observe</h4>
-                <p>We identify your current stress patterns without judgment or pressure.</p>
+        <div class="check-grid">
+            <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h4>Constant Vigilance</h4>
+                    <p>You feel "on" 24/7, even when nothing is wrong, waiting for the next ball to drop.</p>
+                </div>
             </div>
-            <div class="process-item">
-                <div class="process-step">02</div>
-                <h4>Regulate</h4>
-                <p>We use somatic tools to shift your body out of the "fight-or-flight" response.</p>
+            <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h4>Emotional Overflow</h4>
+                    <p>Small irritations feel monumental, and you’re frequently on the verge of tears or irritation.</p>
+                </div>
             </div>
-            <div class="process-item">
-                <div class="process-step">03</div>
-                <h4>Reconnect</h4>
-                <p>We rediscover the parts of you that were lost in the noise of burnout.</p>
+            <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h4>Tired but Wired</h4>
+                    <p>You’re physically exhausted, but your mind races the second your head hits the pillow.</p>
+                </div>
             </div>
-            <div class="process-item">
-                <div class="process-step">04</div>
-                <h4>Sustain</h4>
-                <p>We build a personalized toolkit so you can maintain your calm for life.</p>
+            <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h4>Disconnected</h4>
+                    <p>You’ve become a stranger to your own joy, moving through life like it’s a performance.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="how" style="background-color: var(--cream);">
-        <div class="centered">
-            <span class="section-label">Why This Work Matters</span>
-            <h2 class="section-title">Nervous system care is the <em>missing piece.</em></h2>
-            <p class="section-intro">Most wellness advice tells you to "do more." I'm here to help you do less, better.</p>
+    <section class="process-section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="section-label" style="color: var(--rose-light);">The Method</span>
+            <h2 class="section-title">A gentle path back <em>to you.</em></h2>
         </div>
-        <div class="grid-3">
-            <div class="card">
-                <span class="card-icon">🌿</span>
-                <h3>Somatic Release</h3>
-                <p>Release the physical weight of stress that has been living in your muscles and bones for years.</p>
+        <div class="process-grid">
+            <div class="process-item">
+                <span class="step-num">01</span>
+                <h4 style="color: white; margin: 1rem 0;">Observe</h4>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">We map your unique nervous system patterns and identify exactly where you’re getting stuck.</p>
             </div>
-            <div class="card">
-                <span class="card-icon">💧</span>
-                <h3>System Reset</h3>
-                <p>Learn how to signal "safety" to your brain so your internal alarm system can finally shut off.</p>
+            <div class="process-item">
+                <span class="step-num">02</span>
+                <h4 style="color: white; margin: 1rem 0;">Regulate</h4>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">We apply somatic (body-based) tools to signal safety to your brain and quiet the alarm system.</p>
             </div>
-            <div class="card">
-                <span class="card-icon">🌸</span>
-                <h3>Burnout Recovery</h3>
-                <p>Move beyond surface-level self-care into deep restoration that actually sticks.</p>
+            <div class="process-item">
+                <span class="step-num">03</span>
+                <h4 style="color: white; margin: 1rem 0;">Reconnect</h4>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">We move beyond survival, rediscovering your capacity for rest, play, and genuine presence.</p>
+            </div>
+            <div class="process-item">
+                <span class="step-num">04</span>
+                <h4 style="color: white; margin: 1rem 0;">Sustain</h4>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">You leave with a personalized "peace toolkit" to handle life's stressors without burning out again.</p>
             </div>
         </div>
     </section>
@@ -258,129 +265,98 @@
     <section id="about">
         <div class="about-wrap">
             <div class="about-img">
-                <img src="IMG_4100.jpeg" alt="Rachel with her family">
+                <img src="IMG_4100.jpeg" alt="Rachel McBride and Family">
             </div>
             <div class="about-content">
-                <span class="section-label">The Heart Behind the Brand</span>
-                <h2 class="section-title">I've been exactly<br><em>where you are.</em></h2>
-                <p>I know what it’s like to have a calendar full of success and a nervous system full of static. I spent years holding everything together for everyone else while quietly feeling like a stranger to myself.</p>
-                <p>That experience is exactly why I created this space. My work blends science-backed nervous system regulation with deep, heart-centered compassion. I’m not just a coach; I’m a guide who knows the terrain of burnout and the way back home.</p>
-                <p>You deserve a life where you feel safe, supported, and genuinely okay. I’d be honored to help you get there.</p>
-                <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                <span class="section-label">A Compassionate Guide</span>
+                <h2>I've lived in that <em>static, too.</em></h2>
+                <p>Hi, I'm Rachel. I know exactly what it’s like to be the woman who has it all figured out on paper, while feeling completely frayed on the inside. I spent years in survival mode before realizing that "powering through" is actually a trauma response, not a lifestyle.</p>
+                <p>My work is born from that realization. I blend science-backed Polyvagal Theory with deep heart-centered support. I'm not here to give you more "to-dos"—I'm here to help your body remember how to feel safe enough to rest.</p>
+                <a href="#work" class="btn btn-primary" style="margin-top: 1.5rem;">Let's Find Your Calm</a>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" style="background-color: var(--cream);">
-        <div class="centered">
-            <span class="section-label">Kind Words</span>
-            <h2 class="section-title">From survival to <em>serenity.</em></h2>
+    <section id="work" class="services-section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="section-label">Ways to Work Together</span>
+            <h2 class="section-title">Support for <em>every stage.</em></h2>
         </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-item">
-                <p class="testimonial-text">"Working with Rachel felt like I finally got permission to exhale. I didn't realize how much I was white-knuckling my life until she helped me let go."</p>
-                <p class="testimonial-author">— Sarah J., Healthcare Executive</p>
-            </div>
-            <div class="testimonial-item">
-                <p class="testimonial-text">"The tools Rachel taught me are now my daily lifeline. My house is still busy, my job is still demanding, but I am different on the inside."</p>
-                <p class="testimonial-author">— Michelle R., Entrepreneur</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="work">
-        <div class="centered">
-            <span class="section-label">Work With Me</span>
-            <h2 class="section-title">Support shaped for <em>your life.</em></h2>
-        </div>
-        <div class="grid-3" style="margin-top: 2rem;">
-            <div class="card">
+        <div class="grid-3">
+            <div class="service-card">
+                <span class="card-price">The Deep Dive</span>
                 <h3>1:1 Coaching</h3>
-                <p>Highly personalized deep-dive support. A sacred space dedicated entirely to your healing journey.</p>
-                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Apply Now</a>
+                <p>3 or 6-month containers for personalized nervous system regulation and intensive burnout recovery.</p>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 2rem;">Inquire Now</a>
             </div>
-            <div class="card">
+            <div class="service-card">
+                <span class="card-price">Community</span>
                 <h3>Women's Circle</h3>
-                <p>Intimate monthly gatherings to share, rest, and regulate alongside women who truly understand.</p>
-                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Join Us</a>
+                <p>Intimate, monthly virtual gatherings designed for deep rest, sharing, and collective system resets.</p>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 2rem;">Join the Waitlist</a>
             </div>
-            <div class="card">
+            <div class="service-card">
+                <span class="card-price">Self-Paced</span>
                 <h3>Membership</h3>
-                <p>A library of nervous system tools, guided meditations, and resets available at your own pace.</p>
-                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Learn More</a>
+                <p>A curated library of guided meditations, somatic exercises, and nervous system tools available 24/7.</p>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 2rem;">Learn More</a>
             </div>
         </div>
     </section>
 
-    <section id="faq" style="background-color: var(--cream);">
-        <div class="centered">
-            <span class="section-label">Common Questions</span>
-            <h2 class="section-title">Curious about <em>how this works?</em></h2>
+    <section class="faq-section">
+        <div style="text-align: center;">
+            <span class="section-label">The Details</span>
+            <h2 class="section-title">Common <em>Inquiries.</em></h2>
         </div>
-        <div class="faq-wrap">
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">What does a 'Nervous System Reset' actually feel like? <span>+</span></div>
-                <div class="faq-a">It feels like a release of tension you didn't even know you were holding. It might feel like a sigh of relief, a slowing down of your heart rate, or a sudden sense of mental clarity.</div>
+        <div class="faq-container">
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-q">What is nervous system coaching? <span>+</span></div>
+                <div class="faq-a">It is a body-based approach to wellness. Instead of just talking about your stress (which can sometimes keep you stuck in it), we use somatic tools to physically change the state of your body from "stressed" to "safe."</div>
             </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">How is this different from regular life coaching? <span>+</span></div>
-                <div class="faq-a">Most life coaching focuses on the 'mind' and logic. This work focuses on the 'body' and the biological stress response. We change the signal your body is sending to your brain.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">Is this approach science-based? <span>+</span></div>
-                <div class="faq-a">Absolutely. Our work is grounded in Polyvagal Theory and somatic psychology. It’s about biology, not just "good vibes."</div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-q">Is this like therapy? <span>+</span></div>
+                <div class="faq-a">It is complementary but different. Therapy often focuses on the "why" and the "past." Coaching is forward-focused and focuses on the "how"—specifically, how to regulate your physiology in real-time.</div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="centered">
-        <span class="section-label">A New Chapter</span>
-        <h2 class="section-title">You don't have to keep doing this <em>alone.</em></h2>
-        <p class="section-intro">There is a version of your life where you feel steady, safe, and supported. Let's find it together.</p>
-        <a href="mailto:hello@rachelmcbridewellness.com" class="btn btn-primary">Book Your Free Discovery Call</a>
+    <section id="contact" style="text-align: center; padding: 120px 5%; background: var(--cream);">
+        <h2 class="section-title">You don't have to carry this <em>alone anymore.</em></h2>
+        <p style="margin-bottom: 3rem;">Let's see if we're a good fit for each other during a free 20-minute connection call.</p>
+        <a href="mailto:hello@rachelmcbridewellness.com" class="btn btn-primary">Schedule Your Connection Call</a>
     </section>
 
-    <footer style="background: var(--charcoal); color: rgba(255,255,255,0.5); padding: 5rem 5% 3rem; text-align: center;">
-        <h2 style="color: white; margin-bottom: 1.5rem; font-size: 2rem;">Rachel McBride</h2>
-        <div style="margin-bottom: 2.5rem;">
-            <a href="#" style="color: inherit; text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Instagram</a>
-            <a href="#" style="color: inherit; text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Privacy Policy</a>
-            <a href="#" style="color: inherit; text-decoration: none; margin: 0 1rem; font-size: 0.8rem;">Contact</a>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Rachel McBride</div>
+                <p>Heart-centered nervous system support for high-achieving women. Moving you from survival mode into soul-centered living.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Navigation</h5>
+                <a href="#hero">Home</a>
+                <a href="#how">Approach</a>
+                <a href="#about">The Story</a>
+                <a href="#work">Services</a>
+            </div>
+            <div class="footer-links">
+                <h5>Connect</h5>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="mailto:hello@rachelmcbridewellness.com">Email Me</a>
+            </div>
         </div>
-        <p style="font-size: 0.75rem; letter-spacing: 0.05em;">© 2026 Rachel McBride Holistic Wellness. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>© 2026 Rachel McBride Holistic Wellness. All Rights Reserved. | Site designed for the modern woman.</p>
+        </div>
     </footer>
 
     <script>
-        // Navbar Background Change
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            nav.classList.toggle('scrolled', window.scrollY > 50);
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
-
-        // FAQ Toggle
-        function toggleFaq(item) {
-            item.classList.toggle('active');
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const links = document.getElementById('navLinks');
-            links.classList.toggle('active');
-            if(links.classList.contains('active')) {
-                links.style.display = 'flex';
-                links.style.position = 'fixed';
-                links.style.top = '0';
-                links.style.right = '0';
-                links.style.height = '100vh';
-                links.style.width = '80%';
-                links.style.background = '#FDFCF9';
-                links.style.flexDirection = 'column';
-                links.style.justifyContent = 'center';
-                links.style.zIndex = '999';
-            } else {
-                links.style.display = '';
-            }
-        }
     </script>
 </body>
 </html>
