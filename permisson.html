@@ -1,0 +1,878 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permission Slip Generator | Rachel McBride Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- html2canvas library for screenshot generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --warm-white: #FAF7F1;
+            --soft-cream: #F1E9DD;
+            --natural-beige: #D9CBB8;
+            --sage: #8E9B82;
+            --warm-brown: #6B4F3F;
+            --espresso: #352822;
+            --terracotta: #C7744F;
+            --terracotta-light: #D8896A;
+            --terracotta-bg: #F5E6DC;
+            
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', sans-serif;
+            
+            --radius: 20px;
+            --shadow: 0 12px 40px rgba(53, 40, 34, 0.06);
+            --shadow-hover: 0 16px 50px rgba(53, 40, 34, 0.1);
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--warm-white);
+            color: var(--espresso);
+            line-height: 1.7;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--espresso); line-height: 1.2; }
+        .title-main { font-size: clamp(2.8rem, 7vw, 4rem); margin-bottom: 1rem; }
+        .title-step { font-size: clamp(2.2rem, 6vw, 3rem); margin-bottom: 1rem; }
+        .subtitle { font-size: 1.15rem; color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
+        .prompt-text { font-size: 1.2rem; font-family: var(--font-serif); font-style: italic; color: var(--terracotta); margin-bottom: 2.5rem; text-align: center; }
+        .microcopy { font-size: 0.85rem; color: var(--sage); margin-top: 1.5rem; font-style: italic; }
+
+        /* ── LAYOUT ── */
+        .progress-indicator {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--sage);
+            font-weight: 500;
+            background: rgba(250, 247, 241, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(217, 203, 184, 0.3);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        .progress-indicator.visible { opacity: 1; pointer-events: auto; }
+
+        .app-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 1.5rem 5rem;
+            position: relative;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 760px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .screen.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── UI COMPONENTS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.8rem;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(199, 116, 79, 0.15);
+        }
+        .btn:hover:not(:disabled) {
+            background: var(--warm-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(199, 116, 79, 0.3);
+        }
+        .btn:disabled {
+            background: var(--natural-beige);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            color: rgba(250, 247, 241, 0.7);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--warm-brown);
+            border: 1.5px solid var(--natural-beige);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            border-color: var(--warm-brown);
+            background: var(--soft-cream);
+            color: var(--espresso);
+            box-shadow: none;
+        }
+
+        /* ── GRID & CARDS ── */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        /* Single column for tone to feel more intentional */
+        .options-grid.single-col {
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .option-card {
+            background: white;
+            border: 1.5px solid white;
+            padding: 1.4rem 1.8rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--warm-brown);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+        }
+        .option-card:hover {
+            border-color: var(--natural-beige);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .option-card.selected {
+            background: var(--terracotta-bg);
+            border-color: var(--terracotta-light);
+            color: var(--espresso);
+            font-weight: 500;
+        }
+
+        .validating-message {
+            display: none;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--sage);
+            margin: 2rem 0 1rem;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* ── INPUTS ── */
+        .input-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 1.2rem 1.5rem;
+            border-radius: 50px;
+            border: 1.5px solid var(--natural-beige);
+            background: white;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--espresso);
+            text-align: center;
+            outline: none;
+            transition: border-color var(--transition);
+            margin: 1rem auto;
+            display: block;
+        }
+        .input-box:focus { border-color: var(--terracotta); }
+        .input-box::placeholder { color: rgba(107, 79, 63, 0.4); }
+
+        .textarea-box {
+            width: 100%;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1.5px solid var(--natural-beige);
+            background: white;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--espresso);
+            resize: none;
+            outline: none;
+            transition: var(--transition);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .textarea-box:focus { border-color: var(--sage); }
+
+        /* ── LOADING ANIMATION ── */
+        .loading-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 4rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pulse-circle {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(142, 155, 130, 0.1);
+            border: 1px solid rgba(142, 155, 130, 0.3);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(2.2); opacity: 0.2; background: rgba(142, 155, 130, 0.2); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .loading-text {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--espresso);
+            transition: opacity 0.8s ease;
+            text-align: center;
+        }
+
+        /* ── GENERATED SLIP CARD ── */
+        .slip-wrapper {
+            padding: 2rem; /* Buffer for download capture */
+            background: var(--warm-white);
+            margin: 0 auto;
+        }
+        .slip-card {
+            background: var(--soft-cream);
+            border-radius: 24px;
+            padding: 4rem 3.5rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(53, 40, 34, 0.08);
+            text-align: center;
+            border: 1px solid white;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .slip-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--terracotta);
+            opacity: 0.8;
+        }
+        .slip-card-bg-shape {
+            position: absolute;
+            bottom: -50px; right: -50px;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .slip-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 2.5rem;
+        }
+        .slip-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        .slip-main {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            color: var(--espresso);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+        .slip-support {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            color: var(--warm-brown);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        .slip-footer {
+            border-top: 1px solid rgba(217, 203, 184, 0.5);
+            padding-top: 2rem;
+        }
+        .slip-brand {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--espresso);
+            margin-bottom: 0.2rem;
+        }
+        .slip-tagline {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--terracotta);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* ── SUMMARY CARD ── */
+        .summary-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: left;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--soft-cream);
+        }
+        .summary-item { margin-bottom: 1.5rem; }
+        .summary-item:last-child { margin-bottom: 0; }
+        .s-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.4rem; }
+        .s-value { font-family: var(--font-serif); font-size: 1.3rem; color: var(--espresso); font-style: italic; }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--soft-cream);
+            color: var(--warm-brown);
+            margin-top: auto;
+        }
+        .footer-brand { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.3rem; color: var(--espresso); }
+        .footer-tagline { font-size: 0.9rem; font-style: italic; color: var(--terracotta); margin-bottom: 1.5rem; }
+        .disclaimer { font-size: 0.75rem; color: rgba(107, 79, 63, 0.6); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+        @media (max-width: 600px) {
+            .app-container { padding: 6rem 1.25rem 3rem; }
+            .slip-card { padding: 3rem 2rem; }
+            .action-row { flex-direction: column; width: 100%; }
+            .action-row .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progressIndicator" class="progress-indicator">Step 1 of 6</div>
+
+    <main class="app-container">
+
+        <!-- 1. WELCOME -->
+        <div id="screen-1" class="screen active">
+            <h1 class="title-main">Permission Slip Generator</h1>
+            <p class="subtitle">A gentle moment to give yourself permission for what you need most right now.</p>
+            
+            <p style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--sage); font-style: italic; margin: 3rem 0; line-height: 1.6;">
+                Sometimes the most healing words are the ones<br>you were waiting for someone else to say.
+            </p>
+            
+            <div style="text-align: left; max-width: 320px; margin: 0 auto 3rem; color: var(--warm-brown);">
+                <p style="margin-bottom: 0.5rem;">✨ You are allowed to rest.</p>
+                <p style="margin-bottom: 0.5rem;">✨ You are allowed to need support.</p>
+                <p>✨ You are allowed to stop carrying everything alone.</p>
+            </div>
+
+            <p style="font-size: 0.95rem; color: var(--espresso);">This tool will help you create a personalized permission slip to remind you of what your heart, body, and mind may need today.</p>
+            
+            <button class="btn" onclick="nextScreen('screen-2', 1)">Create My Permission Slip</button>
+            <div class="microcopy">Takes less than 2 minutes.</div>
+        </div>
+
+        <!-- 2. NAME -->
+        <div id="screen-2" class="screen">
+            <h2 class="title-step">Let’s make this feel personal.</h2>
+            <div class="prompt-text">What name would you like on your permission slip?</div>
+            
+            <input type="text" id="userName" class="input-box" placeholder="Your name or nickname">
+            <div class="microcopy" style="margin-top: 0.5rem;">You can leave this blank if you prefer.</div>
+            
+            <button class="btn" onclick="saveNameAndNext()">Continue</button>
+        </div>
+
+        <!-- 3. EMOTIONAL CHECK-IN -->
+        <div id="screen-3" class="screen">
+            <h2 class="title-step">What are you carrying today?</h2>
+            <div class="prompt-text">Choose the one that feels closest.</div>
+            <div class="microcopy" style="margin-top: -1.5rem; margin-bottom: 2rem;">There is no wrong answer.</div>
+            
+            <div class="options-grid" id="grid-checkin">
+                <div class="option-card" onclick="selectOption('checkin', 'racing', this)">I feel like my mind will not stop racing.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'tense', this)">I feel tense in my body.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'drained', this)">I feel emotionally drained.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'behind', this)">I feel behind on everything.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'guilty', this)">I feel guilty when I rest.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'needed', this)">I feel like everyone needs something from me.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'snap', this)">I feel like I am about to snap.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'disconnected', this)">I feel disconnected from myself.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'notenough', this)">I feel like I am doing everything but still not enough.</div>
+                <div class="option-card" onclick="selectOption('checkin', 'moment', this)">I just need a moment to breathe.</div>
+            </div>
+
+            <div id="msg-checkin" class="validating-message">
+                That makes sense. You do not have to explain why you feel tired here.
+            </div>
+
+            <button id="btn-screen-3" class="btn" disabled onclick="nextScreen('screen-4', 3)">Continue</button>
+        </div>
+
+        <!-- 4. PERMISSION CATEGORY -->
+        <div id="screen-4" class="screen">
+            <h2 class="title-step">What do you need permission for today?</h2>
+            <div class="prompt-text">Choose what your heart needs most.</div>
+            
+            <div class="options-grid" id="grid-category">
+                <div class="option-card" onclick="selectOption('category', 'rest', this)">Rest</div>
+                <div class="option-card" onclick="selectOption('category', 'no', this)">Saying no</div>
+                <div class="option-card" onclick="selectOption('category', 'help', this)">Asking for help</div>
+                <div class="option-card" onclick="selectOption('category', 'slow', this)">Slowing down</div>
+                <div class="option-card" onclick="selectOption('category', 'notfixing', this)">Not fixing everything</div>
+                <div class="option-card" onclick="selectOption('category', 'break', this)">Taking a break</div>
+                <div class="option-card" onclick="selectOption('category', 'honest', this)">Being honest</div>
+                <div class="option-card" onclick="selectOption('category', 'guilt', this)">Letting go of guilt</div>
+                <div class="option-card" onclick="selectOption('category', 'support', this)">Needing support</div>
+                <div class="option-card" onclick="selectOption('category', 'peace', this)">Protecting my peace</div>
+                <div class="option-card" onclick="selectOption('category', 'less', this)">Doing less</div>
+                <div class="option-card" onclick="selectOption('category', 'tomorrow', this)">Starting again tomorrow</div>
+                <div class="option-card" onclick="selectOption('category', 'feelings', this)">Feeling my feelings</div>
+                <div class="option-card" onclick="selectOption('category', 'unavailable', this)">Not being available to everyone</div>
+                <div class="option-card" onclick="selectOption('category', 'myself', this)">Choosing myself without apology</div>
+            </div>
+
+            <div id="msg-category" class="validating-message">
+                You are allowed to need that.
+            </div>
+
+            <button id="btn-screen-4" class="btn" disabled onclick="nextScreen('screen-5', 4)">Continue</button>
+        </div>
+
+        <!-- 5. SEASON OF LIFE -->
+        <div id="screen-5" class="screen">
+            <h2 class="title-step">What season are you in right now?</h2>
+            <div class="prompt-text">This helps shape the words around your real life.</div>
+            
+            <div class="options-grid single-col" id="grid-season">
+                <div class="option-card" onclick="selectOption('season', 'exhaustion', this)">A season of exhaustion</div>
+                <div class="option-card" onclick="selectOption('season', 'transition', this)">A season of transition</div>
+                <div class="option-card" onclick="selectOption('season', 'rebuilding', this)">A season of rebuilding</div>
+                <div class="option-card" onclick="selectOption('season', 'uncertainty', this)">A season of uncertainty</div>
+                <div class="option-card" onclick="selectOption('season', 'carrying', this)">A season of carrying too much</div>
+                <div class="option-card" onclick="selectOption('season', 'clarity', this)">A season of needing clarity</div>
+                <div class="option-card" onclick="selectOption('season', 'slowing', this)">A season of learning to slow down</div>
+                <div class="option-card" onclick="selectOption('season', 'finding', this)">A season of finding myself again</div>
+            </div>
+
+            <button id="btn-screen-5" class="btn" disabled onclick="nextScreen('screen-6', 5)">Continue</button>
+        </div>
+
+        <!-- 6. TONE -->
+        <div id="screen-6" class="screen">
+            <h2 class="title-step">How do you need the words to feel?</h2>
+            <div class="prompt-text">Choose the tone of support that feels best.</div>
+            
+            <div class="options-grid single-col" id="grid-tone">
+                <div class="option-card" onclick="selectOption('tone', 'gentle', this)">Gentle</div>
+                <div class="option-card" onclick="selectOption('tone', 'strong', this)">Strong</div>
+                <div class="option-card" onclick="selectOption('tone', 'comforting', this)">Soft and comforting</div>
+                <div class="option-card" onclick="selectOption('tone', 'grounding', this)">Calm and grounding</div>
+                <div class="option-card" onclick="selectOption('tone', 'reassuring', this)">Warm and reassuring</div>
+                <div class="option-card" onclick="selectOption('tone', 'honest', this)">Honest and direct</div>
+                <div class="option-card" onclick="selectOption('tone', 'faith', this)">Faith-friendly but not preachy</div>
+                <div class="option-card" onclick="selectOption('tone', 'simple', this)">Simple and steady</div>
+            </div>
+
+            <button id="btn-screen-6" class="btn" disabled onclick="startGeneration()">Generate My Permission Slip</button>
+        </div>
+
+        <!-- 7. LOADING -->
+        <div id="screen-7" class="screen">
+            <h2 class="title-step" style="color: var(--sage);">Creating your permission slip…</h2>
+            
+            <div class="loading-container">
+                <div class="pulse-circle"></div>
+                <div id="loadingText" class="loading-text">Breathe in.</div>
+            </div>
+            
+            <div class="microcopy">One small permission can open a little space.</div>
+        </div>
+
+        <!-- 8. GENERATED SLIP -->
+        <div id="screen-8" class="screen">
+            <h2 class="title-step">Your Permission Slip</h2>
+            <div class="prompt-text">Save this to remind you.</div>
+
+            <!-- The Downloadable Card Area -->
+            <div class="slip-wrapper" id="captureArea">
+                <div class="slip-card">
+                    <div class="slip-card-bg-shape"></div>
+                    <div class="slip-label">Permission Slip</div>
+                    <div id="slipName" class="slip-name"></div>
+                    
+                    <div id="slipMain" class="slip-main">Today, I give myself permission to rest.</div>
+                    <div id="slipSupport" class="slip-support">You are allowed to need care too.</div>
+                    
+                    <div class="slip-footer">
+                        <div class="slip-brand">Rachel McBride Coaching</div>
+                        <div class="slip-tagline">Release the pressure. Restore your calm.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <button class="btn" onclick="downloadImage()">Download My Slip</button>
+                <button class="btn btn-outline" onclick="nextScreen('screen-9', null)">Continue Reflection</button>
+            </div>
+            <div class="action-row" style="margin-top: 1rem;">
+                <button class="btn btn-outline" style="border:none; text-decoration: underline;" onclick="location.reload()">Create Another</button>
+            </div>
+        </div>
+
+        <!-- 9. REFLECTION -->
+        <div id="screen-9" class="screen">
+            <h2 class="title-step">Let this be your reminder.</h2>
+            <div class="prompt-text">Take a moment to let the words settle.</div>
+
+            <div style="text-align: left; max-width: 500px; margin: 0 auto;">
+                <label style="font-size: 1rem; color: var(--warm-brown); margin-bottom: 0.5rem; display: block; font-weight: 500;">What would change today if you actually believed this?</label>
+                <textarea id="reflect1" class="textarea-box" rows="3" placeholder="I would..."></textarea>
+
+                <label style="font-size: 1rem; color: var(--warm-brown); margin-bottom: 0.5rem; display: block; font-weight: 500;">What is one small thing you can do in the next 10 minutes to honor this permission?</label>
+                <textarea id="reflect2" class="textarea-box" rows="2" placeholder="One small thing I can do is..."></textarea>
+            </div>
+
+            <button class="btn" onclick="saveReflection()">Save My Reminder</button>
+        </div>
+
+        <!-- 10. REFLECTION SUMMARY & EMAIL -->
+        <div id="screen-10" class="screen">
+            <h2 class="title-step">Want to keep this reminder close?</h2>
+            
+            <div class="summary-box">
+                <div class="summary-item">
+                    <div class="s-label">Your Permission</div>
+                    <div id="sumPermission" class="s-value"></div>
+                </div>
+                <div class="summary-item">
+                    <div class="s-label">Your Small Next Step</div>
+                    <div id="sumStep" class="s-value"></div>
+                </div>
+            </div>
+
+            <div style="background: var(--terracotta-bg); padding: 2.5rem; border-radius: var(--radius);">
+                <p style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--warm-brown); font-style: italic; margin-bottom: 1.5rem;">
+                    Enter your email and Rachel will send you your permission slip, plus gentle reset tools for overwhelmed moms.
+                </p>
+                <form onsubmit="handleEmail(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 0 auto;">
+                    <input type="text" class="input-box" style="margin:0;" placeholder="First Name" required>
+                    <input type="email" class="input-box" style="margin:0;" placeholder="Email Address" required>
+                    <button type="submit" class="btn" style="margin-top: 0.5rem; width: 100%;">Send It to Me</button>
+                    <p class="microcopy" style="margin-top: 0.5rem;">No pressure. No spam. Just gentle support for your real life.</p>
+                </form>
+            </div>
+
+            <button class="btn btn-outline" style="border: none; text-decoration: underline; margin-top: 1.5rem;" onclick="nextScreen('screen-11', null)">Skip for Now</button>
+        </div>
+
+        <!-- 11. FINAL CTA -->
+        <div id="screen-11" class="screen">
+            <h2 class="title-step">You are allowed to need care, too.</h2>
+            <p class="subtitle" style="color: var(--espresso); margin-bottom: 3rem;">
+                If you are tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you release pressure, regulate your nervous system, and feel like yourself again.
+            </p>
+
+            <div class="action-row">
+                <a href="mailto:rachel@rachelmcbridecoaching.com" class="btn">Book a Call</a>
+                <a href="https://rachelmcbridecoaching.com" target="_blank" class="btn btn-outline">Explore Coaching</a>
+            </div>
+
+            <p style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--terracotta); font-style: italic; margin-top: 4rem;">
+                You do not have to keep carrying everything alone.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">Rachel McBride Coaching</div>
+        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+        <p class="disclaimer">This tool is for general wellness encouragement and is not a substitute for medical or mental health care.</p>
+    </footer>
+
+    <script>
+        // ── STATE ──
+        const state = {
+            name: '',
+            checkin: '',
+            category: '',
+            season: '',
+            tone: '',
+            reflection: ''
+        };
+
+        // ── NAVIGATION ──
+        function nextScreen(nextId, progressStep) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            
+            const prog = document.getElementById('progressIndicator');
+            if (progressStep) {
+                prog.classList.add('visible');
+                prog.textContent = `Step ${progressStep} of 6`;
+            } else {
+                prog.classList.remove('visible');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => { document.getElementById(nextId).classList.add('active'); }, 100);
+        }
+
+        // ── SELECTIONS ──
+        function selectOption(type, value, element) {
+            // Remove selected class from siblings
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            
+            // Add selected
+            element.classList.add('selected');
+            state[type] = value;
+
+            // Enable next button and show validating message based on screen
+            if (type === 'checkin') {
+                document.getElementById('msg-checkin').style.display = 'block';
+                document.getElementById('btn-screen-3').disabled = false;
+            } else if (type === 'category') {
+                document.getElementById('msg-category').style.display = 'block';
+                document.getElementById('btn-screen-4').disabled = false;
+            } else if (type === 'season') {
+                document.getElementById('btn-screen-5').disabled = false;
+            } else if (type === 'tone') {
+                document.getElementById('btn-screen-6').disabled = false;
+            }
+        }
+
+        function saveNameAndNext() {
+            state.name = document.getElementById('userName').value.trim();
+            nextScreen('screen-3', 2);
+        }
+
+        // ── GENERATION ENGINE ──
+        const logicEngine = {
+            mains: {
+                rest: "Today, I give myself permission to rest without earning it.",
+                no: "Today, I give myself permission to say no without guilt.",
+                help: "Today, I give myself permission to ask for help and not carry everything alone.",
+                slow: "Today, I give myself permission to slow down without falling behind.",
+                notfixing: "Today, I give myself permission to stop fixing everything for everyone.",
+                break: "Today, I give myself permission to pause and take a real break.",
+                honest: "Today, I give myself permission to be honest about my capacity.",
+                guilt: "Today, I give myself permission to let go of guilt and choose peace.",
+                support: "Today, I give myself permission to lean on others.",
+                peace: "Today, I give myself permission to fiercely protect my peace.",
+                less: "Today, I give myself permission to do less and still be enough.",
+                tomorrow: "Today, I give myself permission to stop for now and begin again tomorrow.",
+                feelings: "Today, I give myself permission to actually feel what I am feeling.",
+                unavailable: "Today, I give myself permission to be unavailable for a little while.",
+                myself: "Today, I give myself permission to choose myself without apology."
+            },
+            validations: {
+                // By Checkin
+                racing: "You don't have to figure it all out right this second. Your mind is allowed to pause.",
+                tense: "Your calm matters. Your body is allowed to stop living on alert.",
+                drained: "Your body is allowed to ask for care before it breaks down.",
+                behind: "You are not falling behind. You are just carrying a heavy load.",
+                guilty: "You are not lazy. You are tired from carrying more than anyone can see.",
+                needed: "You can love people without being responsible for holding every piece of them together.",
+                snap: "It makes sense that you are overwhelmed. You were not meant to carry this much.",
+                disconnected: "I am allowed to have needs, limits, and a life that includes me too.",
+                notenough: "My worth is not measured by how much I get done for others.",
+                moment: "One small pause is enough for right now.",
+                // Tone modifiers (fallback or enhancers)
+                gentle: "You are allowed to be tender with yourself today.",
+                strong: "My limits are not a failure. They are a way of honoring what I have left to give.",
+                comforting: "Support does not make me weak. It reminds me I was never meant to do life unsupported.",
+                grounding: "I can move at a pace that lets me breathe.",
+                reassuring: "One unfinished day does not mean I am failing.",
+                honest: "I am allowed to stop pouring from an empty cup.",
+                faith: "I am allowed to lay my burdens down. I am held.",
+                simple: "This is enough for today."
+            }
+        };
+
+        function generateSlipContent() {
+            let mainStr = logicEngine.mains[state.category] || logicEngine.mains.rest;
+            
+            // Try to match check-in, fallback to tone, fallback to default
+            let supportStr = logicEngine.validations[state.checkin] || logicEngine.validations[state.tone] || logicEngine.validations.simple;
+
+            // Optional tweak based on tone to make it smarter
+            if (state.tone === 'strong' && state.category === 'peace') {
+                supportStr = logicEngine.validations.strong;
+            } else if (state.tone === 'gentle' && state.season === 'exhaustion') {
+                supportStr = logicEngine.validations.gentle;
+            } else if (state.tone === 'faith') {
+                supportStr = logicEngine.validations.faith;
+            }
+
+            return { main: mainStr, support: supportStr };
+        }
+
+        function startGeneration() {
+            nextScreen('screen-7', null);
+            
+            const loadTexts = [
+                "Breathe in.", 
+                "Soften your shoulders.", 
+                "Unclench your jaw.", 
+                "You are allowed to pause.", 
+                "You are not behind in this moment."
+            ];
+            
+            const textEl = document.getElementById('loadingText');
+            let idx = 0;
+
+            const interval = setInterval(() => {
+                textEl.style.opacity = 0;
+                setTimeout(() => {
+                    idx++;
+                    if (idx < loadTexts.length) {
+                        textEl.textContent = loadTexts[idx];
+                        textEl.style.opacity = 1;
+                    }
+                }, 400); // fade out duration
+            }, 2000); // time per phrase
+
+            // Finish loading
+            setTimeout(() => {
+                clearInterval(interval);
+                populateSlip();
+                nextScreen('screen-8', null);
+            }, loadTexts.length * 2000);
+        }
+
+        function populateSlip() {
+            const content = generateSlipContent();
+            
+            const nameEl = document.getElementById('slipName');
+            if (state.name) {
+                nameEl.textContent = `For: ${state.name}`;
+                nameEl.style.display = 'block';
+            } else {
+                nameEl.style.display = 'none';
+            }
+
+            document.getElementById('slipMain').textContent = content.main;
+            document.getElementById('slipSupport').textContent = content.support;
+            
+            // Save for summary
+            state.generatedMain = content.main;
+        }
+
+        // ── IMAGE DOWNLOAD (html2canvas) ──
+        function downloadImage() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = "Generating...";
+            btn.disabled = true;
+
+            const captureArea = document.getElementById('captureArea');
+            
+            // Ensure fonts are loaded, then capture
+            document.fonts.ready.then(() => {
+                html2canvas(captureArea, {
+                    scale: 2, // High resolution
+                    backgroundColor: "#FAF7F1", // match body
+                    logging: false,
+                    useCORS: true
+                }).then(canvas => {
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = 'My-Permission-Slip.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Reset button
+                    btn.textContent = "Downloaded!";
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }, 3000);
+                }).catch(err => {
+                    console.error("Canvas error:", err);
+                    alert("There was an issue generating the image. You can take a screenshot of this page instead!");
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
+            });
+        }
+
+        // ── REFLECTION & SUMMARY ──
+        function saveReflection() {
+            const r2 = document.getElementById('reflect2').value.trim();
+            state.reflection = r2 || "Take a deep breath and begin.";
+            
+            document.getElementById('sumPermission').textContent = state.generatedMain;
+            document.getElementById('sumStep').textContent = `"${state.reflection}"`;
+            
+            nextScreen('screen-10', null);
+        }
+
+        // ── EMAIL HANDLING ──
+        function handleEmail(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = "Sending...";
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                nextScreen('screen-11', null);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+
