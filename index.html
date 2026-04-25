@@ -57,12 +57,11 @@ transition: var(–transition);
 font-family: var(–font-serif);
 font-size: 1.25rem;
 font-weight: 500;
-color: var(–espresso);
+color: var(–espresso) !important;
 letter-spacing: 0.02em;
 text-decoration: none;
--webkit-text-fill-color: var(–espresso);
 }
-.nav-logo span { color: var(–terracotta); font-style: italic; -webkit-text-fill-color: var(–terracotta); }
+.nav-logo span { color: var(–terracotta) !important; font-style: italic; }
 .nav-links {
 display: flex;
 gap: 2rem;
@@ -266,7 +265,7 @@ background: var(–sage);
 }
 .hero-headline {
 font-family: var(–font-serif);
-font-size: clamp(2.6rem, 4vw, 3.8rem);
+font-size: clamp(2rem, 5vw, 3.8rem);
 font-weight: 400;
 line-height: 1.18;
 color: var(–espresso);
@@ -302,9 +301,11 @@ line-height: 1.6;
 }
 .hero-visual {
 position: relative;
-height: 100vh;
+height: 100%;
+min-height: 100vh;
 background: var(–soft-cream);
 overflow: hidden;
+clip-path: inset(0);
 }
 .hero-visual-inner {
 position: absolute;
@@ -322,8 +323,8 @@ height: 100%;
 .hero-bg-blob {
 position: absolute;
 top: -10%;
-right: -15%;
-width: 90%;
+right: -5%;
+width: 85%;
 height: 110%;
 background: radial-gradient(ellipse at 60% 40%, #E8D5C3 0%, #D9CBB8 40%, #C9B89F 80%, transparent 100%);
 border-radius: 40% 60% 55% 45% / 45% 50% 60% 40%;
@@ -1131,12 +1132,14 @@ min-height: auto;
 .hero-visual {
 order: -1;
 height: 300px;
+min-height: 0;
 margin-top: 64px; /* nav height */
 }
 .hero-content {
 padding: 2.5rem 2rem 3.5rem;
 order: 0;
 }
+.hero-headline { font-size: clamp(1.9rem, 7vw, 2.8rem); }
 .transform-grid { grid-template-columns: repeat(2, 1fr); }
 .services-grid { grid-template-columns: 1fr; }
 .ideal-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -1152,6 +1155,8 @@ order: 0;
 .hero-buttons { flex-direction: column; align-items: flex-start; }
 .cta-buttons { flex-direction: column; align-items: center; }
 .hero-content { padding: 2rem 1.5rem 3rem; }
+.hero-headline { font-size: clamp(1.75rem, 6.5vw, 2.4rem); }
+.hero-eyebrow { font-size: 0.65rem; }
 .container { padding: 0 1.25rem; }
 section { overflow: hidden; }
 .hero-visual { height: 260px; }
@@ -1175,7 +1180,7 @@ justify-content: center;
 <!-- NAV -->
 
 <nav>
-  <a href="#" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
+  <span class="nav-logo">Rachel <span>McBride</span> Coaching</span>
   <ul class="nav-links">
     <li><a href="#problem">About</a></li>
     <li><a href="#services">Services</a></li>
