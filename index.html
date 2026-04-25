@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rachel McBride Coaching — Release the Pressure. Restore Your Calm.</title>
-<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap)" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -780,7 +780,7 @@ section { position: relative; overflow: hidden; }
 }
 
 /* ═══════════════════════════════════
-7. LEAD MAGNET
+7. LEAD MAGNET (Now links to Interactive Reset)
 ═══════════════════════════════════ */
 #lead-magnet {
   background: var(--warm-white);
@@ -791,7 +791,7 @@ section { position: relative; overflow: hidden; }
   margin: 0 auto;
   background: var(--soft-cream);
   border-radius: 28px;
-  padding: 4rem;
+  padding: 4rem 3rem;
   border: 1px solid var(--natural-beige);
   box-shadow: var(--shadow);
   text-align: center;
@@ -844,33 +844,14 @@ section { position: relative; overflow: hidden; }
 }
 .lead-desc {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: var(--warm-brown);
   line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.lead-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 1;
 }
-.lead-input {
-  width: 100%;
-  padding: 0.9rem 1.3rem;
-  border-radius: 12px;
-  border: 1.5px solid var(--natural-beige);
-  background: rgba(250,247,241,0.8);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--espresso);
-  outline: none;
-  transition: border-color var(--transition);
-}
-.lead-input::placeholder { color: rgba(107,79,63,0.4); }
-.lead-input:focus { border-color: var(--terracotta); }
 
 /* ═══════════════════════════════════
 8. TESTIMONIALS
@@ -1183,7 +1164,7 @@ RESPONSIVE
 <!-- NAV -->
 
 <nav>
-  <span class="nav-logo">Rachel <span>McBride</span> Coaching</span>
+  <a href="#" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
   <ul class="nav-links">
     <li><a href="#problem">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -1233,7 +1214,7 @@ RESPONSIVE
 
     <!-- Organic botanical SVG illustration -->
     <div class="hero-organic-wrap">
-      <svg width="380" height="460" viewBox="0 0 380 460" fill="none" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" style="opacity:0.55">
+      <svg width="380" height="460" viewBox="0 0 380 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.55">
         <!-- Stems -->
         <path d="M190 430 Q188 340 185 280 Q182 220 175 160" stroke="#8E9B82" stroke-width="1.5" fill="none" opacity="0.7"/>
         <path d="M190 430 Q194 360 198 300 Q204 240 210 180" stroke="#8E9B82" stroke-width="1.2" fill="none" opacity="0.5"/>
@@ -1469,21 +1450,18 @@ RESPONSIVE
   </div>
 </section>
 
-<!-- ═══ 7. LEAD MAGNET ═══ -->
+<!-- ═══ 7. LEAD MAGNET (Interactive link) ═══ -->
 
 <section id="lead-magnet">
   <div class="container">
     <div class="lead-inner fade-up">
-      <div class="lead-tag">Free Resource</div>
+      <div class="lead-tag">Free Interactive Resource</div>
       <h2 class="lead-headline">Start With a Simple Reset</h2>
-      <p class="lead-title">The 5-Minute Reset for Overwhelmed Moms</p>
-      <p class="lead-desc">A simple, calming guide to help you pause, breathe, and release pressure when your mind and body feel overloaded. No perfection required — just a place to start.</p>
-      <form class="lead-form" onsubmit="handleFormSubmit(event)">
-        <input class="lead-input" type="text" placeholder="Your first name" required>
-        <input class="lead-input" type="email" placeholder="Your email address" required>
-        <button type="submit" class="btn-primary" style="padding:1rem 2rem;border-radius:12px;font-size:1rem;">Download the Free Guide</button>
-        <p style="font-family:var(--font-sans);font-size:0.73rem;color:var(--sage);text-align:center;margin-top:0.3rem;">No spam. Just calm. Unsubscribe anytime.</p>
-      </form>
+      <p class="lead-title">The 5-Minute Calm Reset</p>
+      <p class="lead-desc">A simple, calming digital guide to help you pause, breathe, and release pressure when your mind and body feel overloaded. No perfection required — just a place to start.</p>
+      
+      <!-- This button now links directly to your reset.html experience -->
+      <a href="reset.html" class="btn-primary" style="padding:1.1rem 2.5rem; border-radius:50px; font-size:1.05rem; display:inline-block; position:relative; z-index:1;">Begin the Reset Now</a>
     </div>
   </div>
 </section>
@@ -1551,7 +1529,7 @@ RESPONSIVE
         <div class="footer-tagline">Release the pressure. Restore your calm.</div>
         <div class="footer-contact">
           <p><a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a></p>
-          <p><a href="[https://rachelmcbridecoaching.com](https://rachelmcbridecoaching.com)">rachelmcbridecoaching.com</a></p>
+          <p><a href="https://rachelmcbridecoaching.com">rachelmcbridecoaching.com</a></p>
         </div>
         <div class="social-row">
           <a href="#" class="social-btn" aria-label="Instagram">ig</a>
@@ -1608,20 +1586,6 @@ RESPONSIVE
   // ── MOBILE MENU ──
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
-  }
-
-  // ── FORM SUBMIT PLACEHOLDER ──
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    const original = btn.textContent;
-    btn.textContent = '✓ Check your inbox!';
-    btn.style.background = 'var(--sage)';
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.style.background = '';
-      e.target.reset();
-    }, 3500);
   }
 
   // ── SAFETY FALLBACK: force visible after 2s if observer didn't fire ──
