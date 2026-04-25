@@ -6,17 +6,17 @@
     <title>Permission Slip Studio | Rachel McBride Coaching</title>
     <meta name="description" content="Release the pressure. Restore your calm. Generate a personalized emotional permission slip.">
     
-    <!-- Typography -->
+    <!-- Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
     
-    <!-- html2canvas for high-res downloading -->
+    <!-- High-Resolution Canvas Export Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         /* ==========================================================================
-           1. CSS VARIABLES & BASE SETUP
+           1. CORE VARIABLES & RESETS
            ========================================================================== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,575 +36,329 @@
             --font-serif: 'Cormorant Garamond', Georgia, serif;
             --font-sans: 'DM Sans', sans-serif;
             
-            /* UI Elements */
+            /* Layout & Effects */
             --radius-sm: 12px;
-            --radius-md: 24px;
+            --radius-md: 20px;
             --radius-lg: 32px;
-            --shadow-soft: 0 12px 40px rgba(53, 40, 34, 0.05);
-            --shadow-float: 0 20px 60px rgba(53, 40, 34, 0.1);
+            --shadow-soft: 0 12px 30px rgba(53, 40, 34, 0.05);
+            --shadow-float: 0 24px 50px rgba(53, 40, 34, 0.1);
             --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-slow: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        html { font-size: 16px; scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--warm-white);
-            color: var(--espresso);
-            line-height: 1.7;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: var(--font-sans); background-color: var(--warm-white);
+            color: var(--espresso); line-height: 1.6; overflow-x: hidden;
+            display: flex; flex-direction: column; min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Typography Utilities */
         h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--espresso); line-height: 1.15; margin-bottom: 1rem; }
+        
         .t-display { font-size: clamp(2.8rem, 7vw, 4.5rem); letter-spacing: -0.01em; }
-        .t-heading { font-size: clamp(2rem, 5vw, 3rem); }
-        .t-subtitle { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
-        .t-prompt { font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.5rem); font-style: italic; color: var(--terracotta); margin-bottom: 2.5rem; }
-        .t-micro { font-size: 0.85rem; color: var(--sage); font-style: italic; margin-top: 1.5rem; }
+        .t-heading { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+        .t-subtitle { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
+        .t-prompt { font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.5rem); font-style: italic; color: var(--terracotta); margin-bottom: 2rem; }
+        .t-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--sage); font-weight: 500; }
+        .t-micro { font-size: 0.85rem; color: var(--sage); font-style: italic; opacity: 0.8; margin-top: 1.5rem; }
         em { font-style: italic; color: var(--terracotta); }
 
-        /* Focus States for Accessibility */
-        :focus-visible { outline: 2px solid var(--terracotta); outline-offset: 4px; border-radius: 4px; }
-
         /* ==========================================================================
-           2. LAYOUT & NAVIGATION
+           2. LAYOUT & SCREENS
            ========================================================================== */
-        .progress-indicator {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--sage);
-            font-weight: 500;
-            background: rgba(250, 247, 241, 0.96);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(217, 203, 184, 0.3);
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition-slow);
-        }
-        .progress-indicator.visible { opacity: 1; pointer-events: auto; }
-
         .top-nav {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 90;
+            position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100;
+            background: linear-gradient(to bottom, rgba(250,247,241,0.95) 0%, rgba(250,247,241,0) 100%);
         }
         .brand-logo { font-family: var(--font-serif); font-size: 1.3rem; color: var(--espresso); text-decoration: none; }
-        .brand-logo span { color: var(--terracotta); font-style: italic; margin: 0 2px; }
+        .brand-logo span { color: var(--terracotta); font-style: italic; margin-left: 4px; }
+
+        .progress-indicator {
+            position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em;
+            color: var(--sage); font-weight: 500; background: rgba(250, 247, 241, 0.98); backdrop-filter: blur(10px); z-index: 90;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s ease; border-bottom: 1px solid rgba(217, 203, 184, 0.3);
+        }
+        .progress-indicator.visible { opacity: 1; }
 
         .app-container {
-            flex-grow: 1;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 7rem 1.5rem 5rem;
-            position: relative;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
+            flex-grow: 1; display: flex; align-items: center; justify-content: center;
+            padding: 8rem 1.5rem 5rem; width: 100%; max-width: 1200px; margin: 0 auto;
         }
 
         .screen {
-            display: none;
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-            margin: auto;
+            display: none; width: 100%; max-width: 800px; text-align: center;
+            opacity: 0; transform: translateY(20px); transition: var(--transition-slow); margin: auto;
         }
-        .screen.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            animation: fadeIn 0.7s ease forwards;
-        }
+        .screen.active { display: block; opacity: 1; transform: translateY(0); animation: fadeIn 0.6s ease forwards; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Animation Delays */
+        .reveal-1 { opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+        .reveal-2 { opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+        .reveal-3 { opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+        .reveal-4 { opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ==========================================================================
            3. UI COMPONENTS
            ========================================================================== */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--terracotta);
-            color: white;
-            border: none;
-            padding: 1.2rem 2.8rem;
-            border-radius: 50px;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(199, 116, 79, 0.15);
+            display: inline-flex; align-items: center; justify-content: center; background: var(--terracotta); color: white; border: none;
+            padding: 1.2rem 2.5rem; border-radius: 50px; font-family: var(--font-sans); font-size: 1rem; font-weight: 500; letter-spacing: 0.05em;
+            cursor: pointer; transition: var(--transition-fast); text-decoration: none; box-shadow: 0 6px 20px rgba(199, 116, 79, 0.2);
         }
-        .btn:hover:not(:disabled) {
-            background: var(--warm-brown);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(199, 116, 79, 0.25);
-        }
-        .btn:disabled {
-            background: var(--natural-beige);
-            color: rgba(255,255,255,0.7);
-            box-shadow: none;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--warm-brown);
-            border: 1.5px solid var(--natural-beige);
-            box-shadow: none;
-        }
-        .btn-outline:hover:not(:disabled) {
-            border-color: var(--warm-brown);
-            background: var(--soft-cream);
-            color: var(--espresso);
-        }
-        .btn-text {
-            background: transparent;
-            color: var(--sage);
-            box-shadow: none;
-            padding: 0.5rem 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8rem;
-        }
-        .btn-text:hover { background: rgba(142, 155, 130, 0.1); color: var(--espresso); }
+        .btn:hover:not(:disabled) { background: var(--warm-brown); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(199, 116, 79, 0.3); }
+        .btn:disabled { background: var(--natural-beige); color: rgba(255,255,255,0.8); cursor: not-allowed; box-shadow: none; transform: none; }
+        
+        .btn-outline { background: transparent; color: var(--warm-brown); border: 1.5px solid var(--natural-beige); box-shadow: none; }
+        .btn-outline:hover:not(:disabled) { border-color: var(--warm-brown); background: var(--soft-cream); color: var(--espresso); }
+        
+        .btn-text { background: transparent; border: none; color: var(--sage); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: var(--transition-fast); }
+        .btn-text:hover { color: var(--espresso); }
 
         .action-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 
-        /* Inputs */
         .input-clean {
-            width: 100%;
-            max-width: 450px;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--natural-beige);
-            padding: 1rem 0;
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--espresso);
-            text-align: center;
-            outline: none;
-            transition: var(--transition-fast);
-            margin: 1rem auto 2rem;
-            display: block;
+            width: 100%; max-width: 400px; background: transparent; border: none; border-bottom: 2px solid var(--natural-beige);
+            padding: 1rem 0; font-family: var(--font-serif); font-size: 1.8rem; color: var(--espresso); text-align: center; outline: none; margin: 1rem auto 2rem; display: block; transition: var(--transition-fast);
         }
         .input-clean:focus { border-color: var(--terracotta); }
-        .input-clean::placeholder { color: rgba(217, 203, 184, 0.8); font-style: italic; }
+        .input-clean::placeholder { color: var(--natural-beige); font-style: italic; }
 
-        /* Grids & Cards */
-        .selection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            text-align: left;
-            margin-bottom: 2rem;
-        }
-        .selection-grid.single-col { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+        /* Grids */
+        .selection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; text-align: left; margin: 0 auto 2.5rem; max-width: 800px; }
+        .selection-grid.single-col { grid-template-columns: 1fr; max-width: 450px; }
 
         .option-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1.5px solid white;
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            font-size: 1.05rem;
-            color: var(--warm-brown);
-            transition: var(--transition-fast);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8); border: 1.5px solid white; padding: 1.5rem 1.8rem; border-radius: var(--radius-md);
+            cursor: pointer; font-size: 1.05rem; color: var(--warm-brown); transition: var(--transition-fast); box-shadow: var(--shadow-soft);
+            display: flex; align-items: center; position: relative; overflow: hidden;
         }
-        .option-card:hover { border-color: var(--natural-beige); transform: translateY(-3px); box-shadow: var(--shadow-float); background: white; }
-        .option-card.selected {
-            background: var(--terracotta-bg);
-            border-color: var(--terracotta-light);
-            color: var(--espresso);
-            font-weight: 500;
-        }
-        .option-card.selected::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--terracotta);
-        }
+        .option-card:hover { border-color: var(--natural-beige); transform: translateY(-3px); box-shadow: var(--shadow-float); }
+        .option-card.selected { background: var(--terracotta-bg); border-color: var(--terracotta-light); color: var(--espresso); font-weight: 500; }
+        .option-card.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--terracotta); }
 
-        .validating-message {
-            display: none;
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-style: italic;
-            color: var(--sage);
-            margin: 2rem 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
+        .msg-validation { display: none; font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--sage); margin: 0 auto 2rem; animation: fadeIn 0.5s ease; }
 
         /* ==========================================================================
-           4. PREMIUM LOADING ANIMATION
+           4. EXERCISES & ANIMATIONS
            ========================================================================== */
-        .premium-loader {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 4rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Release Textarea */
+        .heavy-textarea {
+            width: 100%; max-width: 500px; background: white; border: 1px solid var(--natural-beige); border-radius: var(--radius-md);
+            padding: 2rem; font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); resize: none; min-height: 160px;
+            outline: none; box-shadow: inset 0 2px 10px rgba(0,0,0,0.03); transition: all 1.5s ease; margin: 0 auto 2rem; display: block;
         }
-        .loader-ring {
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 2px solid var(--terracotta-light);
-            opacity: 0;
-            animation: gentleRipple 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .loader-ring:nth-child(2) { animation-delay: 1.3s; border-color: var(--sage); }
-        .loader-ring:nth-child(3) { animation-delay: 2.6s; border-color: var(--natural-beige); }
-        
-        .loader-center {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--terracotta-bg) 0%, transparent 70%);
-            animation: breathPulse 4s infinite ease-in-out;
-        }
+        .heavy-textarea.dissolving { color: transparent !important; text-shadow: 0 0 15px rgba(142, 155, 130, 0.5); transform: translateY(-10px); opacity: 0; }
 
-        @keyframes gentleRipple {
-            0% { transform: scale(0.3); opacity: 0.8; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-        @keyframes breathPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.5); opacity: 1; }
-        }
+        /* Somatic Breathing */
+        .somatic-container { position: relative; width: 280px; height: 280px; margin: 3rem auto; display: flex; align-items: center; justify-content: center; }
+        .breathe-ring { position: absolute; border-radius: 50%; border: 1px solid var(--sage); opacity: 0.2; transition: all ease-in-out; }
+        .breathe-ring-1 { width: 80px; height: 80px; } .breathe-ring-2 { width: 120px; height: 120px; } .breathe-ring-3 { width: 160px; height: 160px; }
+        .breathe-instruction { position: relative; z-index: 10; font-family: var(--font-serif); font-size: 1.8rem; color: var(--espresso); transition: opacity 0.5s; }
+
+        .somatic-container.inhale .breathe-ring-1 { transform: scale(2.8); opacity: 0; transition-duration: 4s; }
+        .somatic-container.inhale .breathe-ring-2 { transform: scale(2.2); opacity: 0.1; transition-duration: 4s; }
+        .somatic-container.inhale .breathe-ring-3 { transform: scale(1.6); opacity: 0.4; transition-duration: 4s; background: rgba(142, 155, 130, 0.05); }
+        .somatic-container.hold .breathe-ring { transition-duration: 2s; }
+        .somatic-container.exhale .breathe-ring { transform: scale(1); opacity: 0.2; transition-duration: 6s; background: transparent; }
+
+        /* Cinematic Loading */
+        .premium-loader { position: relative; width: 150px; height: 150px; margin: 4rem auto; display: flex; align-items: center; justify-content: center; }
+        .loader-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--terracotta-light); opacity: 0; animation: ripple 3s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+        .loader-ring:nth-child(2) { animation-delay: 1s; border-color: var(--sage); }
+        .loader-center { width: 40px; height: 40px; border-radius: 50%; background: var(--terracotta-bg); animation: pulse 3s infinite ease-in-out; }
         
-        .loading-text {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--espresso);
-            transition: opacity 0.8s ease;
-        }
+        @keyframes ripple { 0% { transform: scale(0.5); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.3); opacity: 1; } }
 
         /* ==========================================================================
-           5. PERMISSION SLIP STUDIO (THE ART CARDS)
+           5. THE PERMISSION SLIP STUDIO (RESPONSIVE FLUID CARD)
            ========================================================================== */
-        .studio-layout {
-            display: flex;
-            flex-direction: row;
-            gap: 4rem;
-            width: 100%;
-            max-width: 1200px;
-            align-items: flex-start;
-            text-align: left;
-        }
+        .studio-layout { display: flex; flex-direction: row; gap: 3rem; width: 100%; max-width: 1100px; text-align: left; align-items: flex-start; }
 
-        /* The scaling wrapper keeps visual size manageable while exporting high-res */
-        .canvas-container {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: sticky;
-            top: 100px;
+        /* Canvas Wrapper */
+        .canvas-area {
+            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: sticky; top: 100px; width: 100%;
         }
         
         .canvas-backdrop {
-            background-image: radial-gradient(rgba(217, 203, 184, 0.4) 1px, transparent 0);
-            background-size: 24px 24px;
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 650px;
+            background-image: radial-gradient(rgba(217, 203, 184, 0.4) 1px, transparent 0); background-size: 20px 20px;
+            padding: 2.5rem; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 650px; width: 100%;
         }
 
-        .art-card-scaler {
-            transform-origin: center center;
-            transition: transform var(--transition-slow);
-        }
-
+        /* Fluid CSS Art Card - Scales perfectly without transform hacks */
         .art-card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background-color: var(--soft-cream);
-            overflow: hidden;
-            box-shadow: var(--shadow-float);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            /* Base resolution for high-quality export (Story size) */
-            width: 1080px;
-            height: 1920px;
-            padding: 12rem 8rem;
-            /* Scale it down visually so it fits on the screen */
-            transform: scale(0.3);
-            transform-origin: top center;
-            margin-bottom: -1344px; /* Corrects height after scale: 1920 - (1920*0.3) */
+            position: relative; width: 100%; max-width: 360px; aspect-ratio: 9 / 16; /* Story Ratio */
+            background-color: var(--soft-cream); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow-float); display: flex; flex-direction: column; justify-content: space-between;
+            padding: 2.5rem 1.8rem; text-align: center; transition: all 0.6s ease;
         }
 
-        /* Decorative Background Elements (AI-Inspired Depth) */
-        .art-texture {
-            position: absolute; inset: 0; z-index: 10;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-            pointer-events: none; mix-blend-mode: multiply;
-        }
-        
-        .art-glow { position: absolute; inset: 0; z-index: 1; transition: background 1s ease; }
-        
-        .art-orb {
-            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; z-index: 2; transition: all 1.5s ease;
-        }
-        .orb-one { top: -10%; left: -20%; width: 800px; height: 800px; background: rgba(255,255,255,0.4); }
-        .orb-two { bottom: -10%; right: -20%; width: 900px; height: 900px; background: rgba(217, 203, 184, 0.3); }
+        /* Ambient Art Layers */
+        .art-texture { position: absolute; inset: 0; z-index: 10; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E"); pointer-events: none; mix-blend-mode: multiply; }
+        .art-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none; transition: background 1s ease; }
+        .art-orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.6; z-index: 2; transition: all 1.5s ease; }
+        .orb-one { top: -10%; left: -20%; width: 250px; height: 250px; background: rgba(255,255,255,0.5); }
+        .orb-two { bottom: -10%; right: -20%; width: 300px; height: 300px; background: rgba(217, 203, 184, 0.4); }
+        .art-leaf { position: absolute; z-index: 3; opacity: 0.15; transition: all 1s ease; background-size: contain; background-repeat: no-repeat; }
+        .leaf-one { top: 5%; right: -10%; width: 200px; height: 300px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='none' stroke='%23352822' stroke-width='0.5'%3E%3Cpath d='M50 200 Q40 100 20 20 Q50 40 80 10 Q60 80 50 200'/%3E%3Cpath d='M40 120 Q10 100 5 60 Q30 70 45 100'/%3E%3Cpath d='M60 140 Q90 120 95 80 Q70 90 55 120'/%3E%3C/svg%3E"); }
 
-        .art-leaf {
-            position: absolute; z-index: 3; opacity: 0.15; transition: all 1s ease;
-            background-size: contain; background-repeat: no-repeat;
-        }
-        .leaf-one {
-            top: 5%; right: -10%; width: 600px; height: 800px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='none' stroke='%23352822' stroke-width='0.5'%3E%3Cpath d='M50 200 Q40 100 20 20 Q50 40 80 10 Q60 80 50 200'/%3E%3Cpath d='M40 120 Q10 100 5 60 Q30 70 45 100'/%3E%3Cpath d='M60 140 Q90 120 95 80 Q70 90 55 120'/%3E%3C/svg%3E");
-        }
-
-        /* Art Card Typography */
+        /* Typography sizing uses fluid relative units inside the card */
         .art-content { position: relative; z-index: 20; display: flex; flex-direction: column; height: 100%; width: 100%; }
+        .art-header { display: flex; flex-direction: column; align-items: center; }
+        .art-label { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.6; border-bottom: 1px solid currentColor; padding-bottom: 0.5rem; }
+        .art-name { font-family: var(--font-serif); font-size: 1rem; font-style: italic; opacity: 0.8; margin-top: 0.5rem; }
         
-        .art-header { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-        .art-label { font-family: var(--font-sans); font-size: 2.2rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.6; border-bottom: 2px solid currentColor; padding-bottom: 1rem; }
-        .art-name { font-family: var(--font-serif); font-size: 3.5rem; font-style: italic; opacity: 0.8; margin-top: 1rem; }
-
-        .art-body { flex: 4; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5rem; }
-        .art-main-text { font-family: var(--font-serif); font-size: 7.5rem; line-height: 1.15; letter-spacing: -0.01em; }
-        .art-sub-text { font-family: var(--font-sans); font-size: 3.2rem; line-height: 1.5; font-weight: 300; opacity: 0.85; max-width: 85%; }
-
-        .art-footer { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1.5rem; }
-        .art-divider { width: 120px; height: 3px; opacity: 0.4; margin-bottom: 2rem; }
-        .art-brand { font-family: var(--font-serif); font-size: 3.5rem; }
-        .art-tagline { font-family: var(--font-sans); font-size: 2rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+        .art-body { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
+        .art-main-text { font-family: var(--font-serif); font-size: 2.1rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--espresso); }
+        .art-sub-text { font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.5; font-weight: 300; opacity: 0.85; color: var(--warm-brown); }
+        
+        .art-footer { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .art-divider { width: 40px; height: 2px; opacity: 0.4; margin-bottom: 0.5rem; background: var(--terracotta); }
+        .art-brand { font-family: var(--font-serif); font-size: 1rem; color: var(--espresso); line-height: 1; }
+        .art-tagline { font-family: var(--font-sans); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
 
         /* ── THEMES ── */
-        .theme-morning { background-color: #FDFBF7; color: #4A3F35; }
+        .theme-morning { background-color: #FDFBF7; color: #4A3F35; border: 1px solid white; }
         .theme-morning .orb-one { background: radial-gradient(circle, rgba(255,230,200,0.8) 0%, transparent 70%); }
-        .theme-morning .orb-two { background: radial-gradient(circle, rgba(241, 233, 221, 0.6) 0%, transparent 70%); }
         .theme-morning .art-divider { background-color: #C7744F; }
         .theme-morning .art-leaf { opacity: 0; }
 
-        .theme-sage { background-color: #EBECE7; color: #2C3528; }
-        .theme-sage .orb-one { background: rgba(255,255,255,0.6); }
-        .theme-sage .orb-two { background: rgba(142, 155, 130, 0.4); left: -10%; right: auto; }
+        .theme-sage { background-color: #EAECE6; color: #2C3528; border: none; }
+        .theme-sage .orb-one { background: rgba(255,255,255,0.7); }
+        .theme-sage .orb-two { background: rgba(142, 155, 130, 0.5); left: -10%; right: auto; }
         .theme-sage .art-divider { background-color: #8E9B82; }
-        .theme-sage .art-leaf { opacity: 0.12; }
 
-        .theme-terra { background: linear-gradient(150deg, #F5E6DC 0%, #E8CDBF 100%); color: #5A3A2F; }
-        .theme-terra .orb-one { background: rgba(216, 137, 106, 0.3); top: auto; bottom: 0; }
-        .theme-terra .orb-two { background: rgba(255,255,255,0.4); top: 0; right: 0; }
+        .theme-terra { background: linear-gradient(150deg, #F5E6DC 0%, #E8CDBF 100%); color: #5A3A2F; border: none; }
+        .theme-terra .orb-one { background: rgba(216, 137, 106, 0.2); top: auto; bottom: 0; }
         .theme-terra .art-divider { background-color: #C7744F; }
         .theme-terra .art-leaf { opacity: 0; }
 
-        .theme-quiet { background-color: #F5F2EB; color: #4A3F35; border: 40px solid #FFFFFF; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .theme-quiet { background-color: #F5F2EB; color: #4A3F35; border: 12px solid #FFFFFF; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .theme-quiet .orb-one, .theme-quiet .orb-two, .theme-quiet .art-leaf { display: none; }
-        .theme-quiet .art-main-text { font-size: 6.5rem; }
+        .theme-quiet .art-main-text { font-size: 2.3rem; }
         .theme-quiet .art-divider { background-color: #D9CBB8; }
 
-        .theme-paper { background-color: #E8E2D5; color: #352822; }
-        .theme-paper .art-texture { opacity: 0.15; } /* heavier grain */
+        .theme-paper { background-color: #E8E2D5; color: #352822; border: none; }
+        .theme-paper .art-texture { opacity: 0.15; }
         .theme-paper .orb-one { background: rgba(255,255,255,0.3); width: 100%; height: 100%; top: 0; left: 0; border-radius: 0; filter: none; }
         .theme-paper .orb-two, .theme-paper .art-leaf { display: none; }
-        .theme-paper .art-main-text { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.02em; }
+        .theme-paper .art-main-text { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.02em; font-size: 2rem; }
         .theme-paper .art-divider { background-color: #352822; }
 
-        .theme-ethereal { background-color: #EAEAE4; color: #424953; }
-        .theme-ethereal .orb-one { background: rgba(217, 203, 184, 0.6); animation: float1 10s infinite alternate; }
-        .theme-ethereal .orb-two { background: rgba(142, 155, 130, 0.4); animation: float2 12s infinite alternate; }
+        .theme-ethereal { background-color: #EAEAE4; color: #424953; border: none; }
+        .theme-ethereal .orb-one { background: rgba(217, 203, 184, 0.7); }
+        .theme-ethereal .orb-two { background: rgba(142, 155, 130, 0.5); }
         .theme-ethereal .art-divider { background-color: #424953; }
         .theme-ethereal .art-leaf { opacity: 0; }
 
-        .theme-faith { background-color: #F8F5F0; color: #4A3F35; }
-        .theme-faith .orb-one { background: radial-gradient(circle, rgba(255, 240, 210, 0.9) 0%, transparent 80%); top: -20%; left: 10%; width: 1200px; height: 1200px; }
+        .theme-faith { background-color: #F8F5F0; color: #4A3F35; border: none; }
+        .theme-faith .orb-one { background: radial-gradient(circle, rgba(255, 240, 210, 0.9) 0%, transparent 80%); top: -20%; left: 0; width: 400px; height: 400px; }
         .theme-faith .orb-two, .theme-faith .art-leaf { display: none; }
-        .theme-faith .art-divider { background-color: #D9CBB8; height: 4px; width: 150px; }
+        .theme-faith .art-divider { background-color: #D9CBB8; height: 3px; width: 60px; }
 
-        .theme-strong { background-color: #352822; color: #FAF7F1; }
-        .theme-strong .orb-one { background: rgba(107, 79, 63, 0.6); bottom: -10%; top: auto; right: -10%; left: auto; }
+        .theme-strong { background-color: #352822; color: #FAF7F1; border: none; }
+        .theme-strong .orb-one { background: rgba(107, 79, 63, 0.8); bottom: -10%; top: auto; right: -10%; left: auto; }
         .theme-strong .orb-two { background: rgba(216, 137, 106, 0.15); top: 0; left: 0; }
         .theme-strong .art-leaf { opacity: 0; }
+        .theme-strong .art-main-text, .theme-strong .art-brand { color: #FAF7F1; }
+        .theme-strong .art-sub-text { color: #D9CBB8; }
         .theme-strong .art-name { color: #D8896A; }
         .theme-strong .art-label, .theme-strong .art-tagline { color: #8E9B82; }
         .theme-strong .art-divider { background-color: #FAF7F1; }
 
-        @keyframes float1 { 0% { transform: translate(0, 0); } 100% { transform: translate(100px, 50px); } }
-        @keyframes float2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-100px, -50px); } }
+        /* FORMAT SIZING CLASSES */
+        .format-post { aspect-ratio: 1 / 1; max-width: 400px; padding: 2rem; }
+        .format-post .art-main-text { font-size: 1.8rem; }
+        .format-print { aspect-ratio: 4 / 6; max-width: 380px; padding: 2.5rem 2rem; }
+        .format-text { aspect-ratio: 16 / 9; max-width: 450px; padding: 1.5rem 2rem; }
+        .format-text .art-main-text { font-size: 1.6rem; }
+        .format-text .art-body { gap: 0.5rem; }
 
-        /* Controls Area */
-        .controls-area {
-            flex: 1;
-            background: white;
-            padding: 3.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-soft);
-        }
+        /* Controls Panel */
+        .controls-area { flex: 1.2; background: white; padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
+        .control-group { margin-bottom: 2rem; }
+        .control-title { border-bottom: 1px solid var(--soft-cream); padding-bottom: 0.5rem; margin-bottom: 1rem; font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); font-weight: 500; }
+        
+        .chip-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .chip { padding: 0.5rem 1rem; border-radius: 30px; border: 1px solid var(--natural-beige); background: white; color: var(--warm-brown); font-size: 0.85rem; cursor: pointer; transition: var(--transition-fast); }
+        .chip:hover { background: var(--soft-cream); }
+        .chip.active { background: var(--espresso); color: white; border-color: var(--espresso); box-shadow: 0 4px 10px rgba(53,40,34,0.1); }
 
-        .control-group { margin-bottom: 2.5rem; }
-        .control-title { display: flex; align-items: center; border-bottom: 1px solid var(--soft-cream); padding-bottom: 0.8rem; margin-bottom: 1.2rem; }
-        .control-title h4 { margin: 0; font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); font-weight: 500; }
-
-        .chip-grid { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-        .chip {
-            padding: 0.8rem 1.4rem;
-            border-radius: 30px;
-            border: 1px solid var(--natural-beige);
-            background: white;
-            color: var(--warm-brown);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-        .chip:hover { background: var(--soft-cream); transform: translateY(-2px); }
-        .chip.active { background: var(--espresso); color: white; border-color: var(--espresso); box-shadow: 0 4px 15px rgba(53,40,34,0.15); }
-
-        /* Mini Deck Area */
-        #miniDeckContainer {
-            display: none;
-            flex-direction: row;
-            gap: 2rem;
-            margin-top: 3rem;
-            width: 100%;
-            justify-content: center;
-            animation: fadeIn 0.8s ease;
-        }
+        #miniDeckContainer { display: none; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; width: 100%; align-items: center; animation: fadeIn 0.8s ease; }
 
         /* ==========================================================================
            6. PRIVATE REFLECTION & ARCHIVE
            ========================================================================== */
-        .reflection-panel {
-            background: var(--soft-cream);
-            padding: 3rem;
-            border-radius: var(--radius-lg);
-            text-align: left;
-            margin-top: 4rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .ref-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.5rem; font-weight: 500; }
-        .ref-text { font-family: var(--font-serif); font-size: 1.6rem; color: var(--espresso); line-height: 1.4; margin-bottom: 2rem; font-style: italic; border-left: 3px solid var(--terracotta); padding-left: 1.5rem; }
+        .reflection-panel { background: var(--soft-cream); padding: 2rem; border-radius: var(--radius-lg); text-align: left; margin-top: 2.5rem; }
+        .ref-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.5rem; font-weight: 500; }
+        .ref-text { font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); line-height: 1.4; margin-bottom: 1.5rem; font-style: italic; border-left: 2px solid var(--terracotta); padding-left: 1rem; }
 
-        .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            margin-top: 3rem;
-            text-align: left;
-        }
-        .archive-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--soft-cream);
-            position: relative;
-        }
-        .archive-date { font-size: 0.75rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-        .archive-main { font-family: var(--font-serif); font-size: 1.6rem; color: var(--espresso); line-height: 1.3; margin-bottom: 1.5rem; }
-        .archive-act { font-size: 0.95rem; color: var(--warm-brown); padding-top: 1.5rem; border-top: 1px dashed var(--natural-beige); }
-        .archive-delete { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--terracotta-light); cursor: pointer; font-size: 1.2rem; opacity: 0.5; transition: opacity 0.3s; }
+        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; width: 100%; margin-top: 3rem; text-align: left; }
+        .archive-card { background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); border: 1px solid var(--soft-cream); position: relative; }
+        .archive-date { font-size: 0.7rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+        .archive-main { font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); line-height: 1.3; margin-bottom: 1rem; }
+        .archive-act { font-size: 0.85rem; color: var(--warm-brown); padding-top: 1rem; border-top: 1px dashed var(--natural-beige); }
+        .archive-delete { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--terracotta-light); cursor: pointer; font-size: 1.2rem; opacity: 0.5; transition: opacity 0.3s; line-height: 1; }
         .archive-delete:hover { opacity: 1; color: var(--terracotta); }
 
         /* ==========================================================================
-           7. FOOTER & MODALS
+           7. MODALS & FOOTER
            ========================================================================== */
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: transparent;
-            margin-top: auto;
-        }
-        .f-brand { font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); margin-bottom: 0.3rem; }
-        .f-tag { font-size: 0.9rem; color: var(--terracotta); font-style: italic; margin-bottom: 1.5rem; }
-        .f-disc { font-size: 0.75rem; color: rgba(107, 79, 63, 0.7); max-width: 600px; margin: 0 auto; line-height: 1.6; }
-
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(53, 40, 34, 0.6); backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: center; z-index: 1000;
-            opacity: 0; pointer-events: none; transition: opacity 0.4s;
-        }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(53, 40, 34, 0.6); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .modal-overlay.visible { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: white; padding: 3rem; border-radius: var(--radius-md); max-width: 500px; width: 90%;
-            text-align: center; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
+        .modal-content { background: white; padding: 2.5rem; border-radius: var(--radius-md); max-width: 450px; width: 90%; text-align: center; transform: translateY(20px); transition: transform 0.3s; position: relative; }
         .modal-overlay.visible .modal-content { transform: translateY(0); }
-        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--warm-brown); border: none; background: none; line-height: 1; }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.8rem; cursor: pointer; color: var(--warm-brown); border: none; background: none; }
+
+        footer { text-align: center; padding: 4rem 2rem 2rem; background: transparent; margin-top: auto; }
+        .f-brand { font-family: var(--font-serif); font-size: 1.2rem; color: var(--espresso); margin-bottom: 0.2rem; }
+        .f-tag { font-size: 0.85rem; color: var(--terracotta); font-style: italic; margin-bottom: 1rem; }
+        .f-disc { font-size: 0.7rem; color: rgba(107, 79, 63, 0.7); max-width: 500px; margin: 0 auto; line-height: 1.5; }
 
         /* ==========================================================================
            8. RESPONSIVE DESIGN
            ========================================================================== */
-        @media (max-width: 1024px) {
-            .studio-layout { flex-direction: column; align-items: center; }
-            .canvas-container { position: relative; top: 0; width: 100%; margin-bottom: 2rem; }
-            .controls-area { width: 100%; padding: 2.5rem; }
-            #miniDeckContainer { flex-direction: column; align-items: center; }
+        @media (max-width: 900px) {
+            .studio-layout { flex-direction: column; align-items: center; gap: 2rem; }
+            .canvas-area { width: 100%; position: relative; top: 0; padding: 1.5rem 1rem; min-height: auto; }
+            .controls-area { width: 100%; padding: 2rem; }
         }
 
-        @media (max-width: 768px) {
-            .t-display { font-size: 2.5rem; }
+        @media (max-width: 600px) {
+            .top-nav { padding: 1rem; background: rgba(250,247,241,0.98); border-bottom: 1px solid rgba(217, 203, 184, 0.3); }
+            .app-container { padding: 6rem 1rem 3rem; }
+            .t-display { font-size: 2.3rem; }
             .t-heading { font-size: 1.8rem; }
-            .app-container { padding: 6rem 1.2rem 3rem; }
-            
-            /* Responsive Canvas Scaling */
-            .art-card { transform: scale(0.22); margin-bottom: -1497px; /* 1920 - (1920*0.22) */ }
-            .canvas-backdrop { min-height: 480px; padding: 1rem; }
-            
             .selection-grid { grid-template-columns: 1fr; }
             .btn { width: 100%; }
-            .action-row { flex-direction: column; width: 100%; }
+            .action-row { flex-direction: column; width: 100%; gap: 0.5rem; }
             
-            .reflection-panel { padding: 2rem; }
+            /* Responsive formatting for card to fit screen */
+            .art-card { max-width: 320px; padding: 2rem 1.5rem; }
+            .art-main-text { font-size: 1.8rem; }
+            .art-sub-text { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Navigation -->
     <nav class="top-nav">
         <a href="#" class="brand-logo" onclick="location.reload()">Rachel <span>McBride</span></a>
-        <div style="display: flex; gap: 1rem;">
-            <button class="btn-text" onclick="startDailyFlow()">Today's Permission</button>
+        <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-text" onclick="startDailyFlow()">Today's Note</button>
             <button class="btn-text" onclick="navToArchive()">My Archive</button>
         </div>
     </nav>
 
-    <div id="progressIndicator" class="progress-indicator">Step 1 of 5</div>
+    <!-- Fixed Progress Indicator -->
+    <div id="progressIndicator" class="progress-indicator">Step 1 of 7</div>
 
     <main class="app-container">
 
@@ -612,158 +366,187 @@
              SCREEN 1: WELCOME
              ========================================== -->
         <div id="screen-welcome" class="screen active">
-            <h1 class="t-display">Permission Slip Studio</h1>
-            <p class="t-subtitle">A gentle moment to give yourself permission for what you need most right now.</p>
+            <div class="reveal-1">
+                <span class="t-label" style="margin-bottom: 1rem; display: block;">A Guided Experience</span>
+                <h1 class="t-display">The Permission Slip Studio</h1>
+            </div>
             
-            <p style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--sage); font-style: italic; margin: 3rem 0; line-height: 1.6;">
-                Sometimes the most healing words are the ones<br>you were waiting for someone else to say.
+            <p class="t-subtitle reveal-2" style="margin-top: 1rem;">
+                Take a breath, lay down the heavy things, and generate a beautiful piece of digital art to remind you of what your heart actually needs today.
             </p>
             
-            <div style="text-align: left; max-width: 320px; margin: 0 auto 3rem; color: var(--warm-brown); font-size: 1.1rem;">
-                <p style="margin-bottom: 0.8rem;">✨ You are allowed to rest.</p>
-                <p style="margin-bottom: 0.8rem;">✨ You are allowed to need support.</p>
-                <p>✨ You are allowed to stop carrying everything alone.</p>
+            <div style="text-align: left; max-width: 280px; margin: 0 auto 2.5rem; color: var(--warm-brown); font-size: 1.05rem;" class="reveal-2">
+                <p style="margin-bottom: 0.5rem;">✨ You are allowed to rest.</p>
+                <p style="margin-bottom: 0.5rem;">✨ You are allowed to need support.</p>
+                <p>✨ You are allowed to stop carrying it all.</p>
             </div>
 
-            <p style="font-size: 1rem; color: var(--espresso); max-width: 500px; margin: 0 auto;">This tool will help you create a personalized permission slip to remind you of what your heart, body, and mind may need today.</p>
-            
-            <div class="action-row" style="margin-top: 3rem;">
+            <div class="reveal-3 action-row">
                 <button class="btn" onclick="startPersonalFlow()">Create My Permission Slip</button>
                 <button class="btn btn-outline" onclick="startFriendFlow()">Make One For a Friend</button>
             </div>
-            <div class="t-micro">Takes less than 2 minutes.</div>
+            <div class="t-micro reveal-3">Takes less than 2 minutes.</div>
         </div>
 
         <!-- ==========================================
-             SCREEN 1A: FRIEND WHO (Friend Flow)
+             SCREEN 2: SOMATIC BREATH
              ========================================== -->
-        <div id="screen-friend-who" class="screen">
-            <h2 class="t-heading">Who are you creating this for?</h2>
-            <div class="t-prompt">Choose who needs this reminder today.</div>
-            
-            <div class="selection-grid" id="grid-friend-who">
-                <!-- Populated via JS -->
+        <div id="screen-breath" class="screen">
+            <h2 class="t-heading reveal-1">Before we begin.</h2>
+            <p class="t-subtitle reveal-2">Place a hand on your chest. Let's take three breaths together to arrive in this moment.</p>
+
+            <div class="somatic-container reveal-3" id="breathController">
+                <div class="breathe-ring breathe-ring-1"></div>
+                <div class="breathe-ring breathe-ring-2"></div>
+                <div class="breathe-ring breathe-ring-3"></div>
+                <div class="breathe-instruction" id="breathText">Ready.</div>
             </div>
 
-            <button id="btn-friend-who" class="btn" disabled onclick="journey.next('screen-friend-need', 2)">Continue</button>
+            <div class="reveal-4 action-row" style="flex-direction: column; align-items: center;">
+                <button class="btn" id="btnStartBreath" onclick="startBreathing()">Start Breathing</button>
+                <button class="btn-text" id="btnSkipBreath" onclick="nextScreen('screen-release', 'Step 2 of 7')">Skip this step</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 1B: FRIEND NEED (Friend Flow)
+             SCREEN 3: THE DROP (RELEASE)
              ========================================== -->
-        <div id="screen-friend-need" class="screen">
-            <h2 class="t-heading">What does she need to hear?</h2>
-            <div class="t-prompt">Choose the permission you want to send her.</div>
-            
-            <div class="selection-grid" id="grid-friend-need">
-                <!-- Populated via JS -->
+        <div id="screen-release" class="screen">
+            <h2 class="t-heading reveal-1">What is heavy right now?</h2>
+            <p class="t-subtitle reveal-2">Name the expectation, the worry, or the pressure you are carrying today. Don't overthink it.</p>
+
+            <div class="reveal-3">
+                <textarea id="heavyInput" class="heavy-textarea" placeholder="I am carrying..."></textarea>
             </div>
 
-            <button id="btn-friend-need" class="btn" disabled onclick="journey.generateFriendCard()">Create Her Card</button>
+            <div class="reveal-4 action-row">
+                <button class="btn" id="btnRelease" onclick="performRelease()">Let It Go</button>
+            </div>
+            
+            <div id="releaseMessage" style="display: none; margin-top: 2rem;">
+                <p class="t-heading" style="color: var(--sage); font-style: italic;">It is safe to set that down.</p>
+                <button class="btn btn-outline" style="margin-top: 1.5rem;" onclick="nextScreen('screen-name', 'Step 3 of 7')">Take the next step</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 2: NAME (Personal Flow)
+             SCREEN 4: NAME
              ========================================== -->
         <div id="screen-name" class="screen">
-            <h2 class="t-heading">Let’s make this feel personal.</h2>
-            <div class="t-prompt">What name would you like on your permission slip?</div>
+            <h2 class="t-heading reveal-1">Let’s make this feel personal.</h2>
+            <p class="t-prompt reveal-2">What name would you like on your permission slip?</p>
             
-            <input type="text" id="userName" class="input-clean" placeholder="Your name">
-            <div class="t-micro" style="margin-top: 0.5rem;">You can leave this blank if you prefer.</div>
-            
-            <button class="btn" onclick="saveNameAndNext()">Continue</button>
+            <div class="reveal-3">
+                <input type="text" id="userName" class="input-clean" placeholder="Your name">
+                <div class="t-micro" style="margin-top: 0.5rem;">You can leave this blank if you prefer.</div>
+                <button class="btn" onclick="saveNameAndNext()">Continue</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 3: CARRYING
+             SCREEN 5: CARRYING
              ========================================== -->
         <div id="screen-carrying" class="screen">
-            <h2 class="t-heading">What are you carrying today?</h2>
-            <div class="t-prompt">Choose the weight that feels closest. You do not have to explain it perfectly.</div>
+            <h2 class="t-heading reveal-1">What are you carrying today?</h2>
+            <p class="t-prompt reveal-2">Choose the weight that feels closest.</p>
             
-            <div class="selection-grid" id="grid-carrying">
-                <!-- Populated via JS -->
-            </div>
+            <div class="selection-grid reveal-3" id="grid-carrying"></div>
 
-            <button id="btn-carrying" class="btn" disabled onclick="journey.next('screen-feeling', 3)">Continue</button>
+            <div class="reveal-4">
+                <button class="btn" id="btn-carrying" disabled onclick="nextScreen('screen-feeling', 'Step 5 of 7')">Continue</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 4: FEELING
+             SCREEN 6: FEELING
              ========================================== -->
         <div id="screen-feeling" class="screen">
-            <h2 class="t-heading">Underneath that weight, how are you feeling?</h2>
-            <div class="t-prompt">Choose the emotional state that resonates most.</div>
+            <h2 class="t-heading reveal-1">Underneath that weight, how are you feeling?</h2>
+            <p class="t-prompt reveal-2">There is no wrong answer.</p>
             
-            <div class="selection-grid" id="grid-feeling">
-                <!-- Populated via JS -->
-            </div>
+            <div class="selection-grid reveal-3" id="grid-feeling"></div>
             
-            <div id="msg-feeling" class="validating-message">
+            <div id="msg-feeling" class="msg-validation">
                 That makes sense. You do not have to explain your exhaustion here.
             </div>
 
-            <button id="btn-feeling" class="btn" disabled onclick="journey.next('screen-permission', 4)">Continue</button>
+            <div class="reveal-4">
+                <button class="btn" id="btn-feeling" disabled onclick="nextScreen('screen-permission', 'Step 6 of 7')">Continue</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 5: PERMISSION
+             SCREEN 7: PERMISSION
              ========================================== -->
         <div id="screen-permission" class="screen">
-            <h2 class="t-heading">What do you need permission for today?</h2>
-            <div class="t-prompt">Choose what your heart needs most.</div>
+            <h2 class="t-heading reveal-1">What do you need permission for today?</h2>
+            <p class="t-prompt reveal-2">Choose what your heart needs most.</p>
             
-            <div class="selection-grid" id="grid-permission">
-                <!-- Populated via JS -->
-            </div>
+            <div class="selection-grid reveal-3" id="grid-permission"></div>
 
-            <div id="msg-permission" class="validating-message">
+            <div id="msg-permission" class="msg-validation">
                 You are allowed to need that.
             </div>
 
-            <button id="btn-permission" class="btn" disabled onclick="journey.next('screen-tone', 5)">Continue</button>
+            <div class="reveal-4">
+                <button class="btn" id="btn-permission" disabled onclick="nextScreen('screen-tone', 'Step 7 of 7')">Continue</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 6: TONE
+             SCREEN 8: TONE
              ========================================== -->
         <div id="screen-tone" class="screen">
-            <h2 class="t-heading">How do you need the words to feel?</h2>
-            <div class="t-prompt">Choose the tone of support that feels best.</div>
+            <h2 class="t-heading reveal-1">How do you need the words to feel?</h2>
+            <p class="t-prompt reveal-2">Choose the tone of support that feels best.</p>
             
-            <div class="selection-grid single-col" id="grid-tone">
-                <!-- Populated via JS -->
-            </div>
+            <div class="selection-grid single-col reveal-3" id="grid-tone"></div>
 
-            <button id="btn-tone" class="btn" disabled onclick="journey.generatePersonalCard()">Enter the Studio</button>
+            <div class="reveal-4">
+                <button class="btn" id="btn-tone" disabled onclick="generatePersonalCard()">Enter the Studio</button>
+            </div>
         </div>
 
         <!-- ==========================================
-             SCREEN 7: LOADING
+             FRIEND FLOW (Alternate Path)
+             ========================================== -->
+        <div id="screen-friend-who" class="screen">
+            <h2 class="t-heading reveal-1">Who is this for?</h2>
+            <p class="t-prompt reveal-2">Choose who needs this reminder today.</p>
+            <div class="selection-grid single-col reveal-3" id="grid-friend-who"></div>
+            <button id="btn-friend-who" class="btn reveal-4" disabled onclick="nextScreen('screen-friend-need', 'Step 2 of 2')">Continue</button>
+        </div>
+
+        <div id="screen-friend-need" class="screen">
+            <h2 class="t-heading reveal-1">What does she need to hear?</h2>
+            <div class="selection-grid reveal-2" id="grid-friend-need"></div>
+            <button id="btn-friend-need" class="btn reveal-3" disabled onclick="generateFriendCard()">Create Her Card</button>
+        </div>
+
+        <!-- ==========================================
+             SCREEN 9: LOADING
              ========================================== -->
         <div id="screen-loading" class="screen">
             <div class="premium-loader">
                 <div class="loader-ring"></div>
                 <div class="loader-ring"></div>
-                <div class="loader-ring"></div>
                 <div class="loader-center"></div>
             </div>
-            <h2 class="loading-text" id="loadingText">Gathering your words...</h2>
+            <h2 class="loading-text" id="loadingPhrases">Gathering your words...</h2>
             <div class="t-micro">One small permission can open a little space.</div>
         </div>
 
         <!-- ==========================================
-             SCREEN 8: THE STUDIO
+             SCREEN 10: THE STUDIO (GENERATOR UI)
              ========================================== -->
-        <div id="screen-studio" class="screen" style="max-width: 1400px; padding-top: 5rem;">
+        <div id="screen-studio" class="screen" style="max-width: 1400px; padding-top: 6rem; justify-content: flex-start;">
             
-            <h2 class="t-display" style="margin-bottom: 3rem;">Your Artwork</h2>
+            <h2 class="t-display" style="margin-bottom: 2rem;">Your Artwork</h2>
 
             <div class="studio-layout">
                 
-                <!-- Left: Canvas Area -->
-                <div class="canvas-container">
+                <!-- LEFT: Canvas Area -->
+                <div class="canvas-area">
                     <div class="canvas-backdrop" id="captureTarget">
                         
                         <!-- MAIN CARD -->
@@ -801,7 +584,7 @@
                                 <div class="art-content">
                                     <div class="art-header"><span class="art-label">Tiny Act</span></div>
                                     <div class="art-body">
-                                        <h3 id="outActMain" class="art-main-text" style="font-size: 5rem;">Act text</h3>
+                                        <h3 id="outActMain" class="art-main-text" style="font-size: 2.5rem;">Act text</h3>
                                     </div>
                                     <div class="art-footer"><div class="art-divider"></div><span class="art-brand">Rachel McBride</span></div>
                                 </div>
@@ -812,7 +595,7 @@
                                 <div class="art-content">
                                     <div class="art-header"><span class="art-label">Reminder</span></div>
                                     <div class="art-body">
-                                        <h3 id="outRemMain" class="art-main-text" style="font-size: 4.5rem;">Rem text</h3>
+                                        <h3 id="outRemMain" class="art-main-text" style="font-size: 2.2rem;">Rem text</h3>
                                     </div>
                                     <div class="art-footer"><div class="art-divider"></div><span class="art-brand">Rachel McBride</span></div>
                                 </div>
@@ -822,60 +605,60 @@
                     </div>
                 </div>
 
-                <!-- Right: Controls & Reflection -->
-                <div class="controls-area">
+                <!-- RIGHT: Controls -->
+                <div class="controls-area reveal-2">
                     
                     <div class="control-group">
                         <div class="control-title"><h4>Visual Theme</h4></div>
-                        <div class="chip-grid" id="theme-controls">
-                            <button class="chip active" onclick="studio.setTheme('theme-morning', this)">Morning Light</button>
-                            <button class="chip" onclick="studio.setTheme('theme-sage', this)">Sage Garden</button>
-                            <button class="chip" onclick="studio.setTheme('theme-terra', this)">Terracotta Sunset</button>
-                            <button class="chip" onclick="studio.setTheme('theme-quiet', this)">Quiet Room</button>
-                            <button class="chip" onclick="studio.setTheme('theme-paper', this)">Paper & Ink</button>
-                            <button class="chip" onclick="studio.setTheme('theme-ethereal', this)">Deep Exhale</button>
-                            <button class="chip" onclick="studio.setTheme('theme-faith', this)">Faith & Grace</button>
-                            <button class="chip" onclick="studio.setTheme('theme-strong', this)">Strong Boundary</button>
+                        <div class="chip-grid">
+                            <button class="chip active" onclick="setTheme('theme-morning', this)">Morning Light</button>
+                            <button class="chip" onclick="setTheme('theme-sage', this)">Sage Garden</button>
+                            <button class="chip" onclick="setTheme('theme-terra', this)">Terracotta Sunset</button>
+                            <button class="chip" onclick="setTheme('theme-quiet', this)">Quiet Room</button>
+                            <button class="chip" onclick="setTheme('theme-paper', this)">Paper & Ink</button>
+                            <button class="chip" onclick="setTheme('theme-ethereal', this)">Deep Exhale</button>
+                            <button class="chip" onclick="setTheme('theme-faith', this)">Faith & Grace</button>
+                            <button class="chip" onclick="setTheme('theme-strong', this)">Strong Boundary</button>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <div class="control-title"><h4>Format & Layout</h4></div>
-                        <div class="chip-grid" id="format-controls">
-                            <button class="chip active" onclick="studio.setFormat('story', this)">Story / Wallpaper</button>
-                            <button class="chip" onclick="studio.setFormat('post', this)">Instagram Post</button>
-                            <button class="chip" onclick="studio.setFormat('print', this)">Printable (4x6)</button>
-                            <button class="chip" onclick="studio.setFormat('text', this)">Horizontal (Text)</button>
+                        <div class="control-title"><h4>Canvas Format</h4></div>
+                        <div class="chip-grid">
+                            <button class="chip active" onclick="setFormat('story', this)">Story / Wallpaper</button>
+                            <button class="chip" onclick="setFormat('post', this)">Instagram Post</button>
+                            <button class="chip" onclick="setFormat('print', this)">Printable (4x6)</button>
+                            <button class="chip" onclick="setFormat('text', this)">Horizontal (Text)</button>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <div class="control-title"><h4>Word Alchemy</h4></div>
                         <div class="chip-grid">
-                            <button class="chip" onclick="studio.remixWords('softer')">Make it Softer</button>
-                            <button class="chip" onclick="studio.remixWords('stronger')">Make it Stronger</button>
-                            <button class="chip" onclick="studio.remixWords('poetic')">Make it Poetic</button>
-                            <button class="chip" onclick="studio.remixWords('reset')">Original Words</button>
+                            <button class="chip" onclick="remixWords('softer')">Make it Softer</button>
+                            <button class="chip" onclick="remixWords('stronger')">Make it Fiercer</button>
+                            <button class="chip" onclick="remixWords('poetic')">Make it Poetic</button>
+                            <button class="chip" onclick="remixWords('reset')">Original Words</button>
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control-group" id="deckControlGroup">
                         <div class="control-title"><h4>Advanced Sets</h4></div>
                         <div class="chip-grid">
-                            <button class="chip" id="btnToggleDeck" onclick="studio.toggleMiniDeck()">Create Matching Mini Deck</button>
+                            <button class="chip" id="btnToggleDeck" onclick="toggleMiniDeck()">Create Matching Mini Deck</button>
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem;">
-                        <button class="btn" id="btnDownload" onclick="studio.downloadArtwork()" style="width: 100%; margin:0;">Download High-Res Artwork</button>
-                        <div style="display: flex; gap: 1rem;">
-                            <button class="btn btn-outline" style="flex: 1; margin:0;" onclick="openShareModal()">Copy Share Text</button>
-                            <button class="btn btn-outline" style="flex: 1; margin:0;" onclick="journey.saveToArchive()">Save to My Archive</button>
+                    <!-- Actions -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem;">
+                        <button class="btn" id="btnDownload" onclick="downloadArtwork()" style="width: 100%; margin:0;">Download High-Res Artwork</button>
+                        <div class="action-row" style="margin-top: 0; gap: 1rem;">
+                            <button class="btn btn-outline" style="flex: 1; margin:0;" onclick="openShareModal()">Share Text</button>
+                            <button class="btn btn-outline" style="flex: 1; margin:0;" id="btnSaveArchive" onclick="saveToArchive()">Save to Archive</button>
                         </div>
                     </div>
 
-                    <!-- Private Reflection (Only shown in personal flow) -->
+                    <!-- Private Reflection (Personal Flow Only) -->
                     <div id="privateReflectionPanel" class="reflection-panel">
                         <div class="ref-label">Your Private Reflection</div>
                         <div id="refText" class="ref-text"></div>
@@ -890,7 +673,7 @@
         </div>
 
         <!-- ==========================================
-             SCREEN 9: CTA & FINAL
+             SCREEN 11: CTA / EMAIL CAPTURE
              ========================================== -->
         <div id="screen-cta" class="screen">
             <h2 class="t-display">You are allowed to need care, too.</h2>
@@ -899,7 +682,7 @@
             </p>
 
             <div style="background: white; padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-float); max-width: 500px; margin: 0 auto 3rem;">
-                <h3 class="t-heading" style="color: var(--terracotta);">Want more gentle support?</h3>
+                <h3 class="t-heading" style="color: var(--terracotta); font-size: 1.8rem;">Stay Connected</h3>
                 <p style="color: var(--warm-brown); margin-bottom: 2rem; font-size: 0.95rem;">Join my email list for gentle resets, nervous system tools, and coaching insights sent straight to your inbox.</p>
                 
                 <form onsubmit="event.preventDefault(); alert('Connected to ESP!');" style="display: flex; flex-direction: column; gap: 1rem;">
@@ -918,7 +701,7 @@
         </div>
 
         <!-- ==========================================
-             SCREEN 10: MY ARCHIVE
+             SCREEN 12: MY ARCHIVE
              ========================================== -->
         <div id="screen-archive" class="screen" style="max-width: 1200px;">
             <h2 class="t-display">My Archive</h2>
@@ -948,7 +731,7 @@
                 <div id="copySocial" style="font-size: 0.95rem; color: var(--espresso); margin-top: 0.5rem; padding: 1rem; background: var(--warm-white); border-radius: var(--radius-sm); font-style: italic;">
                     I needed this reminder today: [Slip]. Maybe someone else does too. Permission to rest before resentment. 🤎 Created with The Permission Slip Studio by @RachelMcBrideCoaching.
                 </div>
-                <button class="btn-text" style="padding-left:0;" onclick="studio.execCopy('social', this)">Copy Caption</button>
+                <button class="btn-text" style="padding-left:0;" onclick="execCopy('social', this)">Copy Caption</button>
             </div>
 
             <div style="text-align: left;">
@@ -956,7 +739,7 @@
                 <div id="copyTextMsg" style="font-size: 0.95rem; color: var(--espresso); margin-top: 0.5rem; padding: 1rem; background: var(--warm-white); border-radius: var(--radius-sm); font-style: italic;">
                     Hey, I saw this and thought of you. Just a reminder: [Slip]. You don’t have to carry everything alone. 🤎
                 </div>
-                <button class="btn-text" style="padding-left:0;" onclick="studio.execCopy('text', this)">Copy Text Message</button>
+                <button class="btn-text" style="padding-left:0;" onclick="execCopy('text', this)">Copy Text Message</button>
             </div>
         </div>
     </div>
@@ -1020,14 +803,12 @@
                 { id: 'myself', label: "Choosing myself", main: "Today, I give myself permission to come back to the woman underneath all the roles.", act: "Do one small thing that reminds you that you exist too." }
             ],
             tones: [
-                { id: 'gentle', label: "Gentle" },
-                { id: 'strong', label: "Strong" },
-                { id: 'comforting', label: "Soft and comforting" },
-                { id: 'grounding', label: "Calm and grounding" },
-                { id: 'reassuring', label: "Warm and reassuring" },
-                { id: 'honest', label: "Honest and direct" },
-                { id: 'faith', label: "Faith-friendly but not preachy" },
-                { id: 'simple', label: "Simple and steady" }
+                { id: 'gentle', label: "Soft & Gentle (Tender validation)" },
+                { id: 'strong', label: "Fierce & Strong (Boundary setting)" },
+                { id: 'grounding', label: "Calm & Grounding (Somatic focus)" },
+                { id: 'poetic', label: "Poetic & Deep (Metaphorical)" },
+                { id: 'faith', label: "Faith-friendly (Grace & Peace)" },
+                { id: 'simple', label: "Simple & Direct" }
             ],
             validations: {
                 overstimulation: "You do not have to solve your whole life in one breath. Your mind is allowed to quiet.",
@@ -1047,7 +828,6 @@
                 stronger: { pre: "I fiercely claim my right to ", valMod: "My limits are not a failure. They protect what I have left to give." },
                 poetic: { pre: "Let it be known: I grant my soul permission to ", valMod: "Like the changing seasons, I too am allowed to pause and undo." }
             },
-            // Friend Flow Dictionaries
             friendWho: [
                 { id: 'friend', label: "My friend" }, { id: 'sister', label: "My sister" }, { id: 'daughter', label: "My daughter" },
                 { id: 'tired', label: "A tired mom" }, { id: 'carrying', label: "A woman carrying too much" }, { id: 'starting', label: "Someone starting over" },
@@ -1077,12 +857,12 @@
         };
 
         /* --------------------------------------------------------------------------
-           2. STATE & JOURNEY MANAGER
+           2. APP STATE & JOURNEY MANAGER
            -------------------------------------------------------------------------- */
         class JourneyManager {
             constructor() {
                 this.selections = {};
-                this.flowType = 'personal'; // personal, friend, daily
+                this.flowType = 'personal'; 
                 this.generatedData = { main: '', support: '', reflection: '', act: '' };
                 this.initGrids();
             }
@@ -1092,7 +872,6 @@
                 this.buildGrid('grid-feeling', contentDB.feelings, 'feeling', 'btn-feeling');
                 this.buildGrid('grid-permission', contentDB.permissions, 'permission', 'btn-permission');
                 this.buildGrid('grid-tone', contentDB.tones, 'tone', 'btn-tone');
-                
                 this.buildGrid('grid-friend-who', contentDB.friendWho, 'friendWho', 'btn-friend-who');
                 this.buildGrid('grid-friend-need', contentDB.friendNeed, 'friendNeed', 'btn-friend-need');
             }
@@ -1109,19 +888,22 @@
                         container.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
                         div.classList.add('selected');
                         this.selections[type] = item.id;
-                        document.getElementById(btnId).disabled = false;
+                        if(btnId) document.getElementById(btnId).disabled = false;
+                        
+                        if(type === 'feeling') document.getElementById('msg-feeling').style.display = 'block';
+                        if(type === 'permission') document.getElementById('msg-permission').style.display = 'block';
                     };
                     container.appendChild(div);
                 });
             }
 
-            next(screenId, stepNum) {
+            next(screenId, stepText) {
                 document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
                 
                 const prog = document.getElementById('progressIndicator');
-                if (stepNum) {
+                if (stepText) {
                     prog.classList.add('visible');
-                    prog.textContent = `Step ${stepNum}`;
+                    prog.textContent = stepText;
                 } else {
                     prog.classList.remove('visible');
                 }
@@ -1130,25 +912,67 @@
                 setTimeout(() => { 
                     const nxt = document.getElementById(screenId);
                     if(nxt) nxt.classList.add('active'); 
-                }, 100);
+                }, 50);
             }
 
-            // Flow Triggers
-            startPersonalFlow() { this.flowType = 'personal'; this.next('screen-name', 1); }
-            startFriendFlow() { this.flowType = 'friend'; this.next('screen-friend-who', 1); }
+            startPersonalFlow() { this.flowType = 'personal'; this.next('screen-breath', 'Step 1 of 7'); }
+            startFriendFlow() { this.flowType = 'friend'; this.next('screen-friend-who', 'Step 1 of 2'); }
             
-            // Personal Gen
-            generatePersonalCard() {
-                this.next('screen-loading', null);
+            startBreathing() {
+                const btn = document.getElementById('btnStartBreath');
+                const skipBtn = document.getElementById('btnSkipBreath');
+                const text = document.getElementById('breathText');
+                const container = document.getElementById('breathController');
+                
+                btn.style.display = 'none'; skipBtn.style.display = 'none';
 
-                const carryObj = contentDB.carrying.find(c => c.id === this.selections.carrying);
-                const feelObj = contentDB.feelings.find(f => f.id === this.selections.feeling);
-                const permObj = contentDB.permissions.find(p => p.id === this.selections.permission);
+                let cycle = 0; const maxCycles = 3;
+                const breathLoop = () => {
+                    if (cycle >= maxCycles) {
+                        text.textContent = "Thank you for pausing.";
+                        container.className = 'somatic-container';
+                        setTimeout(() => this.next('screen-release', 'Step 2 of 7'), 2000);
+                        return;
+                    }
+                    cycle++;
+                    text.textContent = "Inhale deeply...";
+                    container.className = 'somatic-container inhale';
+                    setTimeout(() => {
+                        text.textContent = "Hold gently...";
+                        container.className = 'somatic-container hold';
+                        setTimeout(() => {
+                            text.textContent = "Exhale slowly...";
+                            container.className = 'somatic-container exhale';
+                            setTimeout(() => { breathLoop(); }, 6000);
+                        }, 2000);
+                    }, 4000);
+                };
+                breathLoop();
+            }
+
+            performRelease() {
+                const input = document.getElementById('heavyInput');
+                if (!input.value.trim()) { input.placeholder = "Please type something, even just a single word..."; return; }
+                
+                const btn = document.getElementById('btnRelease');
+                btn.disabled = true; btn.textContent = "Releasing...";
+                input.classList.add('dissolving');
+                
+                setTimeout(() => {
+                    input.style.display = 'none'; btn.style.display = 'none';
+                    document.getElementById('releaseMessage').style.display = 'block';
+                }, 1500);
+            }
+
+            generatePersonalCard() {
+                const carryObj = contentDB.carrying.find(c => c.id === this.selections.carrying) || contentDB.carrying[0];
+                const feelObj = contentDB.feelings.find(f => f.id === this.selections.feeling) || contentDB.feelings[0];
+                const permObj = contentDB.permissions.find(p => p.id === this.selections.permission) || contentDB.permissions[0];
                 
                 let mainText = permObj.main;
                 let supportText = contentDB.validations[feelObj.root] || contentDB.validations.default;
 
-                if (this.selections.tone === 'faith') { supportText = "I am allowed to lay my burdens down. Grace meets me here."; }
+                if (this.selections.tone === 'faith') supportText = "I am allowed to lay my burdens down. Grace meets me here.";
 
                 this.generatedData = {
                     main: mainText,
@@ -1157,47 +981,47 @@
                     act: permObj.act
                 };
 
-                studio.render(this.generatedData, this.selections.name);
+                window.studio.render(this.generatedData, this.selections.name);
+
+                // Restore Personal Controls
+                document.getElementById('privateReflectionPanel').style.display = 'block';
+                document.getElementById('deckControlGroup').style.display = 'block';
+                document.getElementById('btnSaveArchive').style.display = 'inline-flex';
+
                 this.runLoadingSequence();
             }
 
-            // Friend Gen
             generateFriendCard() {
-                this.next('screen-loading', null);
+                const whoObj = contentDB.friendWho.find(w => w.id === this.selections.friendWho) || contentDB.friendWho[0];
+                const needObj = contentDB.friendNeed.find(n => n.id === this.selections.friendNeed) || contentDB.friendNeed[0];
                 
-                const whoObj = contentDB.friendWho.find(w => w.id === this.selections.friendWho);
-                const needObj = contentDB.friendNeed.find(n => n.id === this.selections.friendNeed);
-                
-                this.generatedData = {
-                    main: needObj.text,
-                    support: `For ${whoObj.label.toLowerCase()}`,
-                    reflection: "",
-                    act: "Send this card to her."
-                };
+                this.generatedData = { main: needObj.text, support: `For ${whoObj.label.toLowerCase()}`, reflection: "", act: "Send this card to her." };
 
-                studio.render(this.generatedData, "");
+                window.studio.render(this.generatedData, "");
                 
-                // Hide reflection panel in studio for friend flow
+                // Hide Personal Controls
                 document.getElementById('privateReflectionPanel').style.display = 'none';
-                document.getElementById('btnToggleDeck').style.display = 'none';
+                document.getElementById('deckControlGroup').style.display = 'none';
+                document.getElementById('btnSaveArchive').style.display = 'none';
 
                 this.runLoadingSequence();
             }
 
             runLoadingSequence() {
+                this.next('screen-loading', null); // Trigger loading screen immediately
                 const phrases = ["Gathering words...", "Creating space...", "Breathe..."];
-                const textEl = document.getElementById('loadingText');
-                let idx = 0;
-
-                const int = setInterval(() => {
+                const textEl = document.getElementById('loadingPhrases');
+                let pIdx = 0;
+                
+                const loadInt = setInterval(() => {
                     textEl.style.opacity = 0;
                     setTimeout(() => {
-                        idx++;
-                        if (idx < phrases.length) { textEl.textContent = phrases[idx]; textEl.style.opacity = 1; }
+                        pIdx++;
+                        if (pIdx < phrases.length) { textEl.textContent = phrases[pIdx]; textEl.style.opacity = 1; }
                     }, 400);
                 }, 2000);
 
-                setTimeout(() => { clearInterval(int); this.next('screen-studio', null); }, phrases.length * 2000);
+                setTimeout(() => { clearInterval(loadInt); this.next('screen-studio', null); }, phrases.length * 2000);
             }
 
             saveToArchive() {
@@ -1214,7 +1038,7 @@
         }
 
         /* --------------------------------------------------------------------------
-           3. STUDIO ENGINE (Canvas rendering, theming, downloading)
+           3. STUDIO ENGINE (Responsive Canvas & Rendering)
            -------------------------------------------------------------------------- */
         class StudioEngine {
             constructor() {
@@ -1222,10 +1046,7 @@
                 this.mainEl = document.getElementById('outMain');
                 this.supEl = document.getElementById('outSupport');
                 this.nameEl = document.getElementById('outName');
-                this.labelEl = document.getElementById('outLabel');
                 
-                // Mini Deck Elements
-                this.deckMain = document.getElementById('artCard');
                 this.deckAct = document.getElementById('artCardAct');
                 this.deckRem = document.getElementById('artCardRem');
                 this.deckContainer = document.getElementById('miniDeckContainer');
@@ -1238,19 +1059,13 @@
                 this.nameEl.textContent = name ? `For: ${name}` : '';
                 this.nameEl.style.display = name ? 'block' : 'none';
                 
-                // Set Reflection Panel if available
                 if (data.reflection) {
-                    document.getElementById('privateReflectionPanel').style.display = 'block';
                     document.getElementById('refText').textContent = data.reflection;
                     document.getElementById('actText').textContent = data.act;
-                    document.getElementById('btnToggleDeck').style.display = 'block';
-                    
-                    // Prep Mini Deck content
                     document.getElementById('outActMain').textContent = data.act;
                     document.getElementById('outRemMain').textContent = data.support;
                 }
                 
-                // Update Copy Text Data
                 document.getElementById('copySocial').textContent = `I needed this reminder today: "${data.main}" 🤎 Created with The Permission Slip Studio by @RachelMcBrideCoaching.`;
                 document.getElementById('copyTextMsg').textContent = `Hey, I saw this and thought of you. Just a reminder: "${data.main}" You don’t have to carry everything alone. 🤎`;
             }
@@ -1259,40 +1074,18 @@
                 this.card.className = `art-card ${theme}`;
                 this.deckAct.className = `art-card ${theme}`;
                 this.deckRem.className = `art-card ${theme}`;
-                
                 btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
                 btn.classList.add('active');
             }
 
             setFormat(type, btn) {
-                const formats = {
-                    story: { w: 1080, h: 1920, mainSize: '7.5rem', subSize: '3.2rem', padding: '12rem 8rem', scale: 0.3, mb: -1344 },
-                    post:  { w: 1080, h: 1080, mainSize: '6.5rem', subSize: '3rem', padding: '8rem 6rem', scale: 0.35, mb: -702 },
-                    print: { w: 1200, h: 1800, mainSize: '8rem', subSize: '3.5rem', padding: '10rem 8rem', scale: 0.3, mb: -1260 },
-                    text:  { w: 1200, h: 675, mainSize: '5.5rem', subSize: '2.8rem', padding: '4rem 6rem', scale: 0.45, mb: -371 }
-                };
-                const f = formats[type];
-                
+                const formatClasses = ['format-story', 'format-post', 'format-print', 'format-text'];
                 const cards = [this.card, this.deckAct, this.deckRem];
+                
                 cards.forEach(c => {
-                    c.style.width = f.w + 'px';
-                    c.style.height = f.h + 'px';
-                    c.style.padding = f.padding;
-                    c.style.transform = `scale(${f.scale})`;
-                    c.style.marginBottom = f.mb + 'px';
-                    c.querySelector('.art-main-text').style.fontSize = f.mainSize;
-                    if(c.querySelector('.art-sub-text')) c.querySelector('.art-sub-text').style.fontSize = f.subSize;
+                    formatClasses.forEach(fc => c.classList.remove(fc));
+                    if (type !== 'story') c.classList.add(`format-${type}`);
                 });
-
-                // Adjust for mobile screens dynamically
-                if (window.innerWidth <= 768) {
-                    const mobileScale = f.scale * 0.7; // shrink more for mobile
-                    const mobileMb = f.h * mobileScale - f.h;
-                    cards.forEach(c => {
-                        c.style.transform = `scale(${mobileScale})`;
-                        c.style.marginBottom = mobileMb + 'px';
-                    });
-                }
 
                 btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
                 btn.classList.add('active');
@@ -1304,19 +1097,17 @@
                 
                 const btn = document.getElementById('btnToggleDeck');
                 if (this.deckVisible) {
-                    btn.classList.add('active');
-                    btn.textContent = "Remove Mini Deck";
+                    btn.classList.add('active'); btn.textContent = "Remove Mini Deck";
                     document.getElementById('outLabel').textContent = "Main Permission";
                 } else {
-                    btn.classList.remove('active');
-                    btn.textContent = "Create Matching Mini Deck";
+                    btn.classList.remove('active'); btn.textContent = "Create Matching Mini Deck";
                     document.getElementById('outLabel').textContent = "Permission Slip";
                 }
             }
 
             remixWords(type) {
-                let main = journey.generatedData.main;
-                let support = journey.generatedData.support;
+                let main = window.journey.generatedData.main;
+                let support = window.journey.generatedData.support;
 
                 if (type !== 'reset' && contentDB.remixes[type]) {
                     const mod = contentDB.remixes[type];
@@ -1325,13 +1116,10 @@
                     support = mod.valMod;
                 }
 
-                this.mainEl.style.opacity = 0;
-                this.supEl.style.opacity = 0;
+                this.mainEl.style.opacity = 0; this.supEl.style.opacity = 0;
                 setTimeout(() => {
-                    this.mainEl.textContent = main;
-                    this.supEl.textContent = support;
-                    this.mainEl.style.opacity = 1;
-                    this.supEl.style.opacity = 1;
+                    this.mainEl.textContent = main; this.supEl.textContent = support;
+                    this.mainEl.style.opacity = 1; this.supEl.style.opacity = 1;
                 }, 400);
             }
 
@@ -1341,15 +1129,14 @@
                 btn.textContent = "Rendering High-Res Artwork...";
                 btn.disabled = true;
 
-                // Target the wrapper if deck is visible, else just the main card
+                // For seamless download of scaled UI, we target the wrapper when deck is active, or card when singular
                 const target = this.deckVisible ? document.getElementById('captureTarget') : this.card;
 
                 document.fonts.ready.then(() => {
                     html2canvas(target, {
-                        scale: this.deckVisible ? 2 : 1.5, // 1.5x on the 1080px base = 1620px wide
+                        scale: this.deckVisible ? 2 : 3, // Upscales the output image drastically
                         backgroundColor: this.deckVisible ? "#FAF7F1" : null,
-                        useCORS: true,
-                        logging: false
+                        useCORS: true, logging: false
                     }).then(canvas => {
                         const link = document.createElement('a');
                         const dateStr = new Date().toISOString().split('T')[0];
@@ -1379,72 +1166,94 @@
         }
 
         /* --------------------------------------------------------------------------
-           4. GLOBAL UTILITIES
+           4. GLOBAL BINDINGS (Guarantees every button works flawlessly)
            -------------------------------------------------------------------------- */
-        const journey = new JourneyManager();
-        const studio = new StudioEngine();
+        window.addEventListener('DOMContentLoaded', () => {
+            window.journey = new JourneyManager();
+            window.studio = new StudioEngine();
+        });
 
-        function saveNameAndNext() {
-            journey.selections.name = document.getElementById('userName').value.trim();
-            journey.next('screen-carrying', 2);
-        }
+        // Navigation & Flow Starters
+        window.nextScreen = (id, step) => window.journey.next(id, step);
+        window.startPersonalFlow = () => window.journey.startPersonalFlow();
+        window.startFriendFlow = () => window.journey.startFriendFlow();
+        window.startDailyFlow = () => {
+            const day = new Date().getDate();
+            const dailyText = contentDB.daily[day % contentDB.daily.length];
+            
+            window.journey.flowType = 'daily';
+            window.journey.generatedData = { main: dailyText, support: "A daily reminder to protect your peace.", reflection: "", act: "Take three deep breaths right now." };
+            
+            window.studio.render(window.journey.generatedData, "");
+            document.getElementById('privateReflectionPanel').style.display = 'none';
+            document.getElementById('deckControlGroup').style.display = 'none';
+            document.getElementById('btnSaveArchive').style.display = 'none';
+            
+            window.journey.runLoadingSequence();
+        };
 
-        function openShareModal() { document.getElementById('shareModal').classList.add('visible'); }
-        function closeShareModal(e, force = false) { 
+        // Form Steps
+        window.startBreathing = () => window.journey.startBreathing();
+        window.performRelease = () => window.journey.performRelease();
+        window.saveNameAndNext = () => {
+            window.journey.selections.name = document.getElementById('userName').value.trim();
+            window.journey.next('screen-carrying', 'Step 4 of 7');
+        };
+
+        // Generators
+        window.generatePersonalCard = () => window.journey.generatePersonalCard();
+        window.generateFriendCard = () => window.journey.generateFriendCard();
+
+        // Studio Controls
+        window.setTheme = (theme, btn) => window.studio.setTheme(theme, btn);
+        window.setFormat = (type, btn) => window.studio.setFormat(type, btn);
+        window.remixWords = (type) => window.studio.remixWords(type);
+        window.toggleMiniDeck = () => window.studio.toggleMiniDeck();
+        window.downloadArtwork = () => window.studio.downloadArtwork();
+        window.execCopy = (type, btn) => window.studio.execCopy(type, btn);
+
+        // Share Modal
+        window.openShareModal = () => document.getElementById('shareModal').classList.add('visible');
+        window.closeShareModal = (e, force = false) => { 
             if (force || e.target.id === 'shareModal') document.getElementById('shareModal').classList.remove('visible'); 
-        }
+        };
 
-        function navToArchive() {
+        // Archive Management
+        window.saveToArchive = () => window.journey.saveToArchive();
+        window.navToArchive = () => {
             const container = document.getElementById('archiveContainer');
             container.innerHTML = '';
             const archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
             
             if (archive.length === 0) {
-                container.innerHTML = '<p class="t-subtitle" style="text-align:left;">Your archive is empty. Create your first permission slip to see it here.</p>';
+                container.innerHTML = '<p class="t-subtitle" style="text-align:left; margin-left:0;">Your archive is empty. Create your first permission slip to see it here.</p>';
             } else {
                 archive.forEach((item, index) => {
                     container.innerHTML += `
                         <div class="archive-card">
-                            <button class="archive-delete" onclick="deleteArchiveItem(${index})">×</button>
+                            <button class="archive-delete" onclick="window.deleteArchiveItem(${index})">×</button>
                             <div class="archive-date">${item.date}</div>
                             <div class="archive-main">"${item.main}"</div>
-                            <div class="archive-act">Action: ${item.action}</div>
+                            <div class="archive-act">Tiny Act: ${item.action}</div>
                         </div>
                     `;
                 });
             }
-            journey.next('screen-archive', null);
-        }
-
-        function deleteArchiveItem(index) {
+            window.journey.next('screen-archive', null);
+        };
+        window.deleteArchiveItem = (index) => {
             let archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
             archive.splice(index, 1);
             localStorage.setItem('rmc_archive', JSON.stringify(archive));
-            navToArchive(); // refresh
-        }
-
-        function clearArchive() {
+            window.navToArchive();
+        };
+        window.clearArchive = () => {
             if(confirm("Are you sure you want to clear your entire archive?")) {
                 localStorage.removeItem('rmc_archive');
-                navToArchive();
+                window.navToArchive();
             }
-        }
-
-        function startDailyFlow() {
-            // Simple hash based on date day
-            const day = new Date().getDate();
-            const dailyText = contentDB.daily[day % contentDB.daily.length];
-            
-            journey.flowType = 'daily';
-            journey.generatedData = { main: dailyText, support: "A daily reminder to protect your peace.", reflection: "", act: "Take three deep breaths right now." };
-            
-            studio.render(journey.generatedData, "");
-            document.getElementById('privateReflectionPanel').style.display = 'none';
-            document.getElementById('btnToggleDeck').style.display = 'none';
-            
-            journey.runLoadingSequence();
-        }
-
+        };
     </script>
 </body>
 </html>
+
