@@ -67,9 +67,9 @@
         .app-container {
             flex-grow: 1;
             display: flex;
-            align-items: flex-start; /* Changed from center to prevent top cut-off */
+            align-items: flex-start;
             justify-content: center;
-            padding: 6rem 1.5rem 3rem; /* Top padding ensures space for fixed progress indicator */
+            padding: 6rem 1.5rem 3rem;
             position: relative;
         }
 
@@ -81,8 +81,8 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            margin-top: auto; /* Safe vertical centering */
-            margin-bottom: auto; /* Safe vertical centering */
+            margin-top: auto;
+            margin-bottom: auto;
         }
 
         .screen.active {
@@ -143,7 +143,7 @@
         /* ── SELECTABLE CARDS ── */
         .options-grid {
             display: flex;
-            flex-direction: column; /* Force single column stacking for elegant look */
+            flex-direction: column;
             gap: 1rem;
             text-align: left;
             margin-bottom: 2rem;
@@ -342,7 +342,7 @@
 
         .fade-out { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
 
-        /* ── FINISH SCREEN ── */
+        /* ── FINISH SCREEN & EMAIL CAPTURE ── */
         .summary-card {
             background: white;
             border-radius: var(--radius);
@@ -362,8 +362,24 @@
             border-radius: var(--radius);
             padding: 3rem 2rem;
             margin-top: 3rem;
+            transition: opacity 0.5s ease;
         }
         .cta-section p { color: var(--warm-brown); font-size: 1rem; margin-bottom: 2rem; }
+
+        .email-form-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            border: 1.5px solid var(--natural-beige);
+            background: white;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--espresso);
+            outline: none;
+            transition: border-color var(--transition);
+        }
+        .email-form-input:focus { border-color: var(--terracotta); }
+        .email-form-input::placeholder { color: rgba(107, 79, 63, 0.4); }
 
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -515,7 +531,7 @@
             <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
         </div>
 
-        <!-- SCREEN 7: FINISH / CTA -->
+        <!-- SCREEN 7: FINISH / EMAIL CAPTURE -->
         <div id="screen-finish" class="screen">
             <h2 class="title-step">You made space to breathe.</h2>
             <p class="subtitle" style="color: var(--espresso);">That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.</p>
@@ -535,11 +551,26 @@
                 </div>
             </div>
 
-            <div class="cta-section">
-                <p>If you’re tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you regulate, release pressure, and feel like yourself again.</p>
+            <!-- EMAIL CAPTURE SECTION -->
+            <div class="cta-section" id="emailCaptureSection">
+                <p style="color: var(--warm-brown); font-size: 1.15rem; font-family: var(--font-serif); font-style: italic; margin-bottom: 1.5rem;">Where should we send your reset summary?</p>
+                
+                <form onsubmit="handleEmailSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+                    <input type="text" placeholder="Your first name" class="email-form-input" required>
+                    <input type="email" placeholder="Your email address" class="email-form-input" required>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">Send to my inbox</button>
+                    <p style="font-size: 0.75rem; color: var(--sage); margin-top: 0.5rem; text-align: center; margin-bottom: 0;">Plus receive occasional calming support. Unsubscribe anytime.</p>
+                </form>
+            </div>
+
+            <!-- FINAL ACTIONS (HIDDEN UNTIL EMAIL SUBMITTED) -->
+            <div class="cta-section" id="finalActionsSection" style="display: none;">
+                <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.4rem; color: var(--sage); margin-bottom: 1rem;">✓ Check your inbox!</p>
+                <p>Your summary is on its way. If you’re tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you regulate and feel like yourself again.</p>
+                
                 <div class="cta-buttons">
                     <a href="mailto:rachel@rachelmcbridecoaching.com" class="btn" style="margin-top: 0;">Book a Call</a>
-                    <a href="#" class="btn btn-outline" style="margin-top: 0;" onclick="alert('This would open an email signup modal.')">Join the Email List</a>
+                    <a href="index.html" class="btn btn-outline" style="margin-top: 0;">Return to Website</a>
                 </div>
             </div>
         </div>
@@ -564,12 +595,10 @@
 
         // Navigation
         function nextScreen(nextScreenId, stepNum) {
-            // Hide all screens
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
             });
             
-            // Update progress
             const progress = document.getElementById('progressIndicator');
             if (stepNum) {
                 progress.style.display = 'block';
@@ -578,10 +607,8 @@
                 progress.style.display = 'none';
             }
 
-            // Scroll to top to ensure clear view of the new step
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Show next after small delay
             setTimeout(() => {
                 document.getElementById(nextScreenId).classList.add('active');
             }, 100);
@@ -644,9 +671,9 @@
                     
                     setTimeout(() => {
                         runBreathCycle();
-                    }, 6000); // 6s exhale
-                }, 2000); // 2s hold
-            }, 4000); // 4s inhale
+                    }, 6000); 
+                }, 2000); 
+            }, 4000); 
         }
 
         // Grounding Logic
@@ -710,11 +737,32 @@
             document.getElementById('summaryRelease').textContent = state.releaseText ? `"${state.releaseText}"` : "The weight you were holding.";
             document.getElementById('summaryAffirmation').textContent = state.affirmation;
             
-            nextScreen('screen-finish', null); // null hides progress indicator
+            nextScreen('screen-finish', null);
+        }
+
+        // Email Submission Logic
+        function handleEmailSubmit(e) {
+            e.preventDefault();
+            const captureSection = document.getElementById('emailCaptureSection');
+            const finalSection = document.getElementById('finalActionsSection');
+            
+            // Fade out the email form
+            captureSection.style.opacity = '0';
+            
+            setTimeout(() => {
+                captureSection.style.display = 'none';
+                // Show final actions
+                finalSection.style.opacity = '0';
+                finalSection.style.display = 'block';
+                
+                // Fade in final actions
+                setTimeout(() => {
+                    finalSection.style.opacity = '1';
+                }, 50);
+            }, 500);
         }
     </script>
 </body>
 </html>
-
 
 ```
