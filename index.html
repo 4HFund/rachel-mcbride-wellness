@@ -31,6 +31,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* iOS Safari link color reset */
+a { color: inherit; text-decoration: none; }
+
 body {
 font-family: var(–font-sans);
 background: var(–warm-white);
@@ -1588,15 +1591,21 @@ justify-content: center;
 
 <script>
   // ── SCROLL FADE-IN ──
+  // Hero content visible immediately — no animation above the fold
+  document.querySelectorAll('#hero .fade-up').forEach(el => {
+    el.classList.add('visible');
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // stop watching once visible
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-up:not(#hero .fade-up)').forEach(el => observer.observe(el));
 
   // ── MOBILE MENU ──
   function toggleMenu() {
@@ -1616,6 +1625,11 @@ justify-content: center;
       e.target.reset();
     }, 3500);
   }
+
+  // ── SAFETY FALLBACK: force visible after 2s if observer didn't fire ──
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  }, 2000);
 
   // ── NAV SCROLL SHADOW ──
   window.addEventListener('scroll', () => {
