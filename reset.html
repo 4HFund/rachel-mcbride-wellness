@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,14 +38,13 @@ DOCTYPE html>
             min-height: 100vh;
         }
 
-        /* ── TYPOGRAPHY ── */
         h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--espresso); line-height: 1.2; }
         .title-main { font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 1rem; }
         .title-step { font-size: clamp(2rem, 6.5vw, 2.8rem); margin-bottom: 1.5rem; }
         .subtitle { font-size: 1.1rem; color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
         .prompt-text { font-size: 1.2rem; font-family: var(--font-serif); font-style: italic; color: var(--terracotta); margin-bottom: 2rem; text-align: center; }
 
-        /* ── LAYOUT & SCREENS ── */
+        /* ── FIXED PROGRESS BAR ── */
         .progress-indicator {
             position: fixed;
             top: 0;
@@ -58,17 +57,20 @@ DOCTYPE html>
             letter-spacing: 0.15em;
             color: var(--sage);
             font-weight: 500;
-            background: var(--warm-white);
+            background: rgba(250,247,241,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(217,203,184,0.3);
             z-index: 100;
             display: none;
         }
 
+        /* ── CONTAINER SPACING FIX ── */
         .app-container {
             flex-grow: 1;
             display: flex;
-            align-items: flex-start;
+            align-items: flex-start; 
             justify-content: center;
-            padding: 6rem 1.5rem 3rem;
+            padding: 7rem 1.5rem 4rem; /* Safely clears the fixed progress bar */
             position: relative;
         }
 
@@ -80,8 +82,8 @@ DOCTYPE html>
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            margin-top: auto;
-            margin-bottom: auto;
+            margin-top: auto; 
+            margin-bottom: auto; 
         }
 
         .screen.active {
@@ -96,7 +98,6 @@ DOCTYPE html>
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── UI COMPONENTS ── */
         .btn {
             display: inline-block;
             background: var(--terracotta);
@@ -139,10 +140,9 @@ DOCTYPE html>
             color: var(--espresso);
         }
 
-        /* ── SELECTABLE CARDS ── */
         .options-grid {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; 
             gap: 1rem;
             text-align: left;
             margin-bottom: 2rem;
@@ -187,7 +187,6 @@ DOCTYPE html>
             animation: fadeIn 0.5s ease forwards;
         }
 
-        /* ── BREATHING ANIMATION ── */
         .breathe-container {
             position: relative;
             width: 260px;
@@ -237,7 +236,6 @@ DOCTYPE html>
 
         .cycle-counter { font-size: 0.85rem; color: var(--sage); margin-top: 1rem; }
 
-        /* ── GROUNDING CHECKLIST ── */
         .grounding-list {
             display: flex;
             flex-direction: column;
@@ -301,7 +299,6 @@ DOCTYPE html>
         }
         .grounding-input:focus { border-color: var(--sage); }
 
-        /* ── RELEASE TEXTAREA ── */
         .release-box {
             width: 100%;
             padding: 1.8rem;
@@ -341,7 +338,6 @@ DOCTYPE html>
 
         .fade-out { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
 
-        /* ── FINISH SCREEN & EMAIL CAPTURE ── */
         .summary-card {
             background: white;
             border-radius: var(--radius);
@@ -382,7 +378,6 @@ DOCTYPE html>
 
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        /* ── FOOTER ── */
         footer {
             text-align: center;
             padding: 3rem 2rem;
@@ -394,7 +389,7 @@ DOCTYPE html>
         .disclaimer { font-size: 0.75rem; color: rgba(107, 79, 63, 0.6); max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
         @media (max-width: 600px) {
-            .app-container { padding: 5rem 1.25rem 2rem; }
+            .app-container { padding: 6.5rem 1.25rem 2rem; } /* Safe padding on mobile */
             .title-main { font-size: 2.2rem; }
             .title-step { font-size: 2rem; }
             .cta-buttons { flex-direction: column; width: 100%; }
@@ -406,7 +401,6 @@ DOCTYPE html>
 </head>
 <body>
 
-    <!-- Progress Indicator - Fixed at the top -->
     <div id="progressIndicator" class="progress-indicator">Step 1 of 5</div>
 
     <main class="app-container">
@@ -654,17 +648,14 @@ DOCTYPE html>
             const circle = document.getElementById('breatheCircle');
             const text = document.getElementById('breatheText');
 
-            // Inhale (4s)
             text.textContent = "Inhale...";
             circle.className = 'breathe-circle inhale';
             
             setTimeout(() => {
-                // Hold (2s)
                 text.textContent = "Hold...";
                 circle.className = 'breathe-circle hold';
                 
                 setTimeout(() => {
-                    // Exhale (6s)
                     text.textContent = "Exhale slowly...";
                     circle.className = 'breathe-circle exhale';
                     
@@ -745,16 +736,13 @@ DOCTYPE html>
             const captureSection = document.getElementById('emailCaptureSection');
             const finalSection = document.getElementById('finalActionsSection');
             
-            // Fade out the email form
             captureSection.style.opacity = '0';
             
             setTimeout(() => {
                 captureSection.style.display = 'none';
-                // Show final actions
                 finalSection.style.opacity = '0';
                 finalSection.style.display = 'block';
                 
-                // Fade in final actions
                 setTimeout(() => {
                     finalSection.style.opacity = '1';
                 }, 50);
