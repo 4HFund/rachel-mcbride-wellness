@@ -1,1259 +1,3022 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Permission Slip Studio | Rachel McBride Coaching</title>
-    <meta name="description" content="Release the pressure. Restore your calm. Generate a personalized emotional permission slip.">
-    
-    <!-- Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    
-    <!-- High-Resolution Canvas Export Engine -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <style>
-        /* ==========================================================================
-           1. CORE VARIABLES & RESETS
-           ========================================================================== */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<title>Permission Slip Studio | Rachel McBride Coaching</title>
+<meta name="description" content="Release the pressure. Restore your calm. Generate a personalized emotional permission slip." />
+<meta name="theme-color" content="#FAF7F1" />
 
-        :root {
-            /* Brand Colors */
-            --warm-white: #FAF7F1;
-            --soft-cream: #F1E9DD;
-            --natural-beige: #D9CBB8;
-            --sage: #8E9B82;
-            --warm-brown: #6B4F3F;
-            --espresso: #352822;
-            --terracotta: #C7744F;
-            --terracotta-light: #D8896A;
-            --terracotta-bg: #F5E6DC;
-            
-            /* Typography */
-            --font-serif: 'Cormorant Garamond', Georgia, serif;
-            --font-sans: 'DM Sans', sans-serif;
-            
-            /* Layout & Effects */
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 32px;
-            --shadow-soft: 0 12px 30px rgba(53, 40, 34, 0.05);
-            --shadow-float: 0 24px 50px rgba(53, 40, 34, 0.1);
-            --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-slow: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        html { scroll-behavior: smooth; font-size: 16px; }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-        body {
-            font-family: var(--font-sans); background-color: var(--warm-white);
-            color: var(--espresso); line-height: 1.6; overflow-x: hidden;
-            display: flex; flex-direction: column; min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--espresso); line-height: 1.15; margin-bottom: 1rem; }
-        
-        .t-display { font-size: clamp(2.8rem, 7vw, 4.5rem); letter-spacing: -0.01em; }
-        .t-heading { font-size: clamp(1.8rem, 5vw, 2.8rem); }
-        .t-subtitle { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
-        .t-prompt { font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.5rem); font-style: italic; color: var(--terracotta); margin-bottom: 2rem; }
-        .t-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--sage); font-weight: 500; }
-        .t-micro { font-size: 0.85rem; color: var(--sage); font-style: italic; opacity: 0.8; margin-top: 1.5rem; }
-        em { font-style: italic; color: var(--terracotta); }
+<style>
+/* ==========================================================================
+   RACHEL MCBRIDE COACHING — PERMISSION SLIP STUDIO
+   ALL-IN-ONE PREMIUM HTML VERSION
+   ========================================================================== */
 
-        /* ==========================================================================
-           2. LAYOUT & SCREENS
-           ========================================================================== */
-        .top-nav {
-            position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100;
-            background: linear-gradient(to bottom, rgba(250,247,241,0.95) 0%, rgba(250,247,241,0) 100%);
-        }
-        .brand-logo { font-family: var(--font-serif); font-size: 1.3rem; color: var(--espresso); text-decoration: none; }
-        .brand-logo span { color: var(--terracotta); font-style: italic; margin-left: 4px; }
+/* ==========================================================================
+   1. CORE VARIABLES, RESET, AND ACCESSIBILITY
+   ========================================================================== */
 
-        .progress-indicator {
-            position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em;
-            color: var(--sage); font-weight: 500; background: rgba(250, 247, 241, 0.98); backdrop-filter: blur(10px); z-index: 90;
-            opacity: 0; pointer-events: none; transition: opacity 0.5s ease; border-bottom: 1px solid rgba(217, 203, 184, 0.3);
-        }
-        .progress-indicator.visible { opacity: 1; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        .app-container {
-            flex-grow: 1; display: flex; align-items: center; justify-content: center;
-            padding: 8rem 1.5rem 5rem; width: 100%; max-width: 1200px; margin: 0 auto;
-        }
+:root {
+  --warm-white: #FAF7F1;
+  --warm-white-rgb: 250, 247, 241;
+  --soft-cream: #F1E9DD;
+  --cream-2: #F8F1E8;
+  --natural-beige: #D9CBB8;
+  --natural-beige-2: #C9B69F;
+  --sage: #8E9B82;
+  --sage-dark: #66755E;
+  --warm-brown: #6B4F3F;
+  --espresso: #352822;
+  --espresso-rgb: 53, 40, 34;
+  --terracotta: #C7744F;
+  --terracotta-dark: #A95E3E;
+  --terracotta-light: #D8896A;
+  --terracotta-bg: #F5E6DC;
+  --rose: #D6AAA0;
+  --muted-gold: #C8A56A;
+  --soft-blue: #B9C2BC;
 
-        .screen {
-            display: none; width: 100%; max-width: 800px; text-align: center;
-            opacity: 0; transform: translateY(20px); transition: var(--transition-slow); margin: auto;
-        }
-        .screen.active { display: block; opacity: 1; transform: translateY(0); animation: fadeIn 0.6s ease forwards; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-        /* Animation Delays */
-        .reveal-1 { opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-        .reveal-2 { opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
-        .reveal-3 { opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
-        .reveal-4 { opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 44px;
+  --radius-pill: 999px;
 
-        /* ==========================================================================
-           3. UI COMPONENTS
-           ========================================================================== */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; background: var(--terracotta); color: white; border: none;
-            padding: 1.2rem 2.5rem; border-radius: 50px; font-family: var(--font-sans); font-size: 1rem; font-weight: 500; letter-spacing: 0.05em;
-            cursor: pointer; transition: var(--transition-fast); text-decoration: none; box-shadow: 0 6px 20px rgba(199, 116, 79, 0.2);
-        }
-        .btn:hover:not(:disabled) { background: var(--warm-brown); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(199, 116, 79, 0.3); }
-        .btn:disabled { background: var(--natural-beige); color: rgba(255,255,255,0.8); cursor: not-allowed; box-shadow: none; transform: none; }
-        
-        .btn-outline { background: transparent; color: var(--warm-brown); border: 1.5px solid var(--natural-beige); box-shadow: none; }
-        .btn-outline:hover:not(:disabled) { border-color: var(--warm-brown); background: var(--soft-cream); color: var(--espresso); }
-        
-        .btn-text { background: transparent; border: none; color: var(--sage); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: var(--transition-fast); }
-        .btn-text:hover { color: var(--espresso); }
+  --shadow-xs: 0 4px 12px rgba(var(--espresso-rgb), 0.05);
+  --shadow-soft: 0 12px 30px rgba(var(--espresso-rgb), 0.06);
+  --shadow-float: 0 24px 70px rgba(var(--espresso-rgb), 0.12);
+  --shadow-deep: 0 34px 110px rgba(var(--espresso-rgb), 0.18);
 
-        .action-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  --border-soft: 1px solid rgba(217, 203, 184, 0.45);
+  --border-white: 1px solid rgba(255, 255, 255, 0.85);
 
-        .input-clean {
-            width: 100%; max-width: 400px; background: transparent; border: none; border-bottom: 2px solid var(--natural-beige);
-            padding: 1rem 0; font-family: var(--font-serif); font-size: 1.8rem; color: var(--espresso); text-align: center; outline: none; margin: 1rem auto 2rem; display: block; transition: var(--transition-fast);
-        }
-        .input-clean:focus { border-color: var(--terracotta); }
-        .input-clean::placeholder { color: var(--natural-beige); font-style: italic; }
+  --transition-fast: 220ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-med: 420ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: 820ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-        /* Grids */
-        .selection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; text-align: left; margin: 0 auto 2.5rem; max-width: 800px; }
-        .selection-grid.single-col { grid-template-columns: 1fr; max-width: 450px; }
+  --screen-max: 860px;
+}
 
-        .option-card {
-            background: rgba(255, 255, 255, 0.8); border: 1.5px solid white; padding: 1.5rem 1.8rem; border-radius: var(--radius-md);
-            cursor: pointer; font-size: 1.05rem; color: var(--warm-brown); transition: var(--transition-fast); box-shadow: var(--shadow-soft);
-            display: flex; align-items: center; position: relative; overflow: hidden;
-        }
-        .option-card:hover { border-color: var(--natural-beige); transform: translateY(-3px); box-shadow: var(--shadow-float); }
-        .option-card.selected { background: var(--terracotta-bg); border-color: var(--terracotta-light); color: var(--espresso); font-weight: 500; }
-        .option-card.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--terracotta); }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-        .msg-validation { display: none; font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--sage); margin: 0 auto 2rem; animation: fadeIn 0.5s ease; }
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--espresso);
+  line-height: 1.6;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(216, 137, 106, 0.13), transparent 32%),
+    radial-gradient(circle at 82% 20%, rgba(142, 155, 130, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 95%, rgba(217, 203, 184, 0.26), transparent 34%),
+    var(--warm-white);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
 
-        /* ==========================================================================
-           4. EXERCISES & ANIMATIONS
-           ========================================================================== */
-        /* Release Textarea */
-        .heavy-textarea {
-            width: 100%; max-width: 500px; background: white; border: 1px solid var(--natural-beige); border-radius: var(--radius-md);
-            padding: 2rem; font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); resize: none; min-height: 160px;
-            outline: none; box-shadow: inset 0 2px 10px rgba(0,0,0,0.03); transition: all 1.5s ease; margin: 0 auto 2rem; display: block;
-        }
-        .heavy-textarea.dissolving { color: transparent !important; text-shadow: 0 0 15px rgba(142, 155, 130, 0.5); transform: translateY(-10px); opacity: 0; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.42) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.42) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+}
 
-        /* Somatic Breathing */
-        .somatic-container { position: relative; width: 280px; height: 280px; margin: 3rem auto; display: flex; align-items: center; justify-content: center; }
-        .breathe-ring { position: absolute; border-radius: 50%; border: 1px solid var(--sage); opacity: 0.2; transition: all ease-in-out; }
-        .breathe-ring-1 { width: 80px; height: 80px; } .breathe-ring-2 { width: 120px; height: 120px; } .breathe-ring-3 { width: 160px; height: 160px; }
-        .breathe-instruction { position: relative; z-index: 10; font-family: var(--font-serif); font-size: 1.8rem; color: var(--espresso); transition: opacity 0.5s; }
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.48'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
 
-        .somatic-container.inhale .breathe-ring-1 { transform: scale(2.8); opacity: 0; transition-duration: 4s; }
-        .somatic-container.inhale .breathe-ring-2 { transform: scale(2.2); opacity: 0.1; transition-duration: 4s; }
-        .somatic-container.inhale .breathe-ring-3 { transform: scale(1.6); opacity: 0.4; transition-duration: 4s; background: rgba(142, 155, 130, 0.05); }
-        .somatic-container.hold .breathe-ring { transition-duration: 2s; }
-        .somatic-container.exhale .breathe-ring { transform: scale(1); opacity: 0.2; transition-duration: 6s; background: transparent; }
+button,
+input,
+textarea {
+  font: inherit;
+}
 
-        /* Cinematic Loading */
-        .premium-loader { position: relative; width: 150px; height: 150px; margin: 4rem auto; display: flex; align-items: center; justify-content: center; }
-        .loader-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--terracotta-light); opacity: 0; animation: ripple 3s infinite cubic-bezier(0.4, 0, 0.2, 1); }
-        .loader-ring:nth-child(2) { animation-delay: 1s; border-color: var(--sage); }
-        .loader-center { width: 40px; height: 40px; border-radius: 50%; background: var(--terracotta-bg); animation: pulse 3s infinite ease-in-out; }
-        
-        @keyframes ripple { 0% { transform: scale(0.5); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.3); opacity: 1; } }
+button {
+  -webkit-tap-highlight-color: transparent;
+}
 
-        /* ==========================================================================
-           5. THE PERMISSION SLIP STUDIO (RESPONSIVE FLUID CARD)
-           ========================================================================== */
-        .studio-layout { display: flex; flex-direction: row; gap: 3rem; width: 100%; max-width: 1100px; text-align: left; align-items: flex-start; }
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(199, 116, 79, 0.35);
+  outline-offset: 4px;
+}
 
-        /* Canvas Wrapper */
-        .canvas-area {
-            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            position: sticky; top: 100px; width: 100%;
-        }
-        
-        .canvas-backdrop {
-            background-image: radial-gradient(rgba(217, 203, 184, 0.4) 1px, transparent 0); background-size: 20px 20px;
-            padding: 2.5rem; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 650px; width: 100%;
-        }
+::selection {
+  background: rgba(199, 116, 79, 0.22);
+}
 
-        /* Fluid CSS Art Card - Scales perfectly without transform hacks */
-        .art-card {
-            position: relative; width: 100%; max-width: 360px; aspect-ratio: 9 / 16; /* Story Ratio */
-            background-color: var(--soft-cream); border-radius: 20px; overflow: hidden;
-            box-shadow: var(--shadow-float); display: flex; flex-direction: column; justify-content: space-between;
-            padding: 2.5rem 1.8rem; text-align: center; transition: all 0.6s ease;
-        }
+/* ==========================================================================
+   2. TYPOGRAPHY
+   ========================================================================== */
 
-        /* Ambient Art Layers */
-        .art-texture { position: absolute; inset: 0; z-index: 10; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E"); pointer-events: none; mix-blend-mode: multiply; }
-        .art-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none; transition: background 1s ease; }
-        .art-orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.6; z-index: 2; transition: all 1.5s ease; }
-        .orb-one { top: -10%; left: -20%; width: 250px; height: 250px; background: rgba(255,255,255,0.5); }
-        .orb-two { bottom: -10%; right: -20%; width: 300px; height: 300px; background: rgba(217, 203, 184, 0.4); }
-        .art-leaf { position: absolute; z-index: 3; opacity: 0.15; transition: all 1s ease; background-size: contain; background-repeat: no-repeat; }
-        .leaf-one { top: 5%; right: -10%; width: 200px; height: 300px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='none' stroke='%23352822' stroke-width='0.5'%3E%3Cpath d='M50 200 Q40 100 20 20 Q50 40 80 10 Q60 80 50 200'/%3E%3Cpath d='M40 120 Q10 100 5 60 Q30 70 45 100'/%3E%3Cpath d='M60 140 Q90 120 95 80 Q70 90 55 120'/%3E%3C/svg%3E"); }
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--espresso);
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
 
-        /* Typography sizing uses fluid relative units inside the card */
-        .art-content { position: relative; z-index: 20; display: flex; flex-direction: column; height: 100%; width: 100%; }
-        .art-header { display: flex; flex-direction: column; align-items: center; }
-        .art-label { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.6; border-bottom: 1px solid currentColor; padding-bottom: 0.5rem; }
-        .art-name { font-family: var(--font-serif); font-size: 1rem; font-style: italic; opacity: 0.8; margin-top: 0.5rem; }
-        
-        .art-body { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
-        .art-main-text { font-family: var(--font-serif); font-size: 2.1rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--espresso); }
-        .art-sub-text { font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.5; font-weight: 300; opacity: 0.85; color: var(--warm-brown); }
-        
-        .art-footer { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-        .art-divider { width: 40px; height: 2px; opacity: 0.4; margin-bottom: 0.5rem; background: var(--terracotta); }
-        .art-brand { font-family: var(--font-serif); font-size: 1rem; color: var(--espresso); line-height: 1; }
-        .art-tagline { font-family: var(--font-sans); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+.t-display {
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  letter-spacing: -0.035em;
+}
 
-        /* ── THEMES ── */
-        .theme-morning { background-color: #FDFBF7; color: #4A3F35; border: 1px solid white; }
-        .theme-morning .orb-one { background: radial-gradient(circle, rgba(255,230,200,0.8) 0%, transparent 70%); }
-        .theme-morning .art-divider { background-color: #C7744F; }
-        .theme-morning .art-leaf { opacity: 0; }
+.t-heading {
+  font-size: clamp(2rem, 5vw, 3.15rem);
+  letter-spacing: -0.025em;
+}
 
-        .theme-sage { background-color: #EAECE6; color: #2C3528; border: none; }
-        .theme-sage .orb-one { background: rgba(255,255,255,0.7); }
-        .theme-sage .orb-two { background: rgba(142, 155, 130, 0.5); left: -10%; right: auto; }
-        .theme-sage .art-divider { background-color: #8E9B82; }
+.t-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  color: var(--warm-brown);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
 
-        .theme-terra { background: linear-gradient(150deg, #F5E6DC 0%, #E8CDBF 100%); color: #5A3A2F; border: none; }
-        .theme-terra .orb-one { background: rgba(216, 137, 106, 0.2); top: auto; bottom: 0; }
-        .theme-terra .art-divider { background-color: #C7744F; }
-        .theme-terra .art-leaf { opacity: 0; }
+.t-prompt {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-style: italic;
+  color: var(--terracotta);
+  margin-bottom: 2rem;
+}
 
-        .theme-quiet { background-color: #F5F2EB; color: #4A3F35; border: 12px solid #FFFFFF; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .theme-quiet .orb-one, .theme-quiet .orb-two, .theme-quiet .art-leaf { display: none; }
-        .theme-quiet .art-main-text { font-size: 2.3rem; }
-        .theme-quiet .art-divider { background-color: #D9CBB8; }
+.t-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
 
-        .theme-paper { background-color: #E8E2D5; color: #352822; border: none; }
-        .theme-paper .art-texture { opacity: 0.15; }
-        .theme-paper .orb-one { background: rgba(255,255,255,0.3); width: 100%; height: 100%; top: 0; left: 0; border-radius: 0; filter: none; }
-        .theme-paper .orb-two, .theme-paper .art-leaf { display: none; }
-        .theme-paper .art-main-text { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.02em; font-size: 2rem; }
-        .theme-paper .art-divider { background-color: #352822; }
+.t-micro {
+  font-size: 0.86rem;
+  color: var(--sage-dark);
+  font-style: italic;
+  opacity: 0.88;
+  margin-top: 1.5rem;
+}
 
-        .theme-ethereal { background-color: #EAEAE4; color: #424953; border: none; }
-        .theme-ethereal .orb-one { background: rgba(217, 203, 184, 0.7); }
-        .theme-ethereal .orb-two { background: rgba(142, 155, 130, 0.5); }
-        .theme-ethereal .art-divider { background-color: #424953; }
-        .theme-ethereal .art-leaf { opacity: 0; }
+em {
+  font-style: italic;
+  color: var(--terracotta);
+}
 
-        .theme-faith { background-color: #F8F5F0; color: #4A3F35; border: none; }
-        .theme-faith .orb-one { background: radial-gradient(circle, rgba(255, 240, 210, 0.9) 0%, transparent 80%); top: -20%; left: 0; width: 400px; height: 400px; }
-        .theme-faith .orb-two, .theme-faith .art-leaf { display: none; }
-        .theme-faith .art-divider { background-color: #D9CBB8; height: 3px; width: 60px; }
+/* ==========================================================================
+   3. NAVIGATION, PROGRESS, AND APP SHELL
+   ========================================================================== */
 
-        .theme-strong { background-color: #352822; color: #FAF7F1; border: none; }
-        .theme-strong .orb-one { background: rgba(107, 79, 63, 0.8); bottom: -10%; top: auto; right: -10%; left: auto; }
-        .theme-strong .orb-two { background: rgba(216, 137, 106, 0.15); top: 0; left: 0; }
-        .theme-strong .art-leaf { opacity: 0; }
-        .theme-strong .art-main-text, .theme-strong .art-brand { color: #FAF7F1; }
-        .theme-strong .art-sub-text { color: #D9CBB8; }
-        .theme-strong .art-name { color: #D8896A; }
-        .theme-strong .art-label, .theme-strong .art-tagline { color: #8E9B82; }
-        .theme-strong .art-divider { background-color: #FAF7F1; }
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.15rem clamp(1rem, 3vw, 2rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(var(--warm-white-rgb),0.98), rgba(var(--warm-white-rgb),0.84));
+  border-bottom: 1px solid rgba(217, 203, 184, 0.35);
+  backdrop-filter: blur(18px);
+}
 
-        /* FORMAT SIZING CLASSES */
-        .format-post { aspect-ratio: 1 / 1; max-width: 400px; padding: 2rem; }
-        .format-post .art-main-text { font-size: 1.8rem; }
-        .format-print { aspect-ratio: 4 / 6; max-width: 380px; padding: 2.5rem 2rem; }
-        .format-text { aspect-ratio: 16 / 9; max-width: 450px; padding: 1.5rem 2rem; }
-        .format-text .art-main-text { font-size: 1.6rem; }
-        .format-text .art-body { gap: 0.5rem; }
+.brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.4vw, 1.42rem);
+  color: var(--espresso);
+  text-decoration: none;
+  white-space: nowrap;
+}
 
-        /* Controls Panel */
-        .controls-area { flex: 1.2; background: white; padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
-        .control-group { margin-bottom: 2rem; }
-        .control-title { border-bottom: 1px solid var(--soft-cream); padding-bottom: 0.5rem; margin-bottom: 1rem; font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); font-weight: 500; }
-        
-        .chip-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .chip { padding: 0.5rem 1rem; border-radius: 30px; border: 1px solid var(--natural-beige); background: white; color: var(--warm-brown); font-size: 0.85rem; cursor: pointer; transition: var(--transition-fast); }
-        .chip:hover { background: var(--soft-cream); }
-        .chip.active { background: var(--espresso); color: white; border-color: var(--espresso); box-shadow: 0 4px 10px rgba(53,40,34,0.1); }
+.brand-logo span {
+  color: var(--terracotta);
+  font-style: italic;
+}
 
-        #miniDeckContainer { display: none; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; width: 100%; align-items: center; animation: fadeIn 0.8s ease; }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
 
-        /* ==========================================================================
-           6. PRIVATE REFLECTION & ARCHIVE
-           ========================================================================== */
-        .reflection-panel { background: var(--soft-cream); padding: 2rem; border-radius: var(--radius-lg); text-align: left; margin-top: 2.5rem; }
-        .ref-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.5rem; font-weight: 500; }
-        .ref-text { font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); line-height: 1.4; margin-bottom: 1.5rem; font-style: italic; border-left: 2px solid var(--terracotta); padding-left: 1rem; }
+.progress-indicator {
+  position: fixed;
+  top: 4.4rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  width: min(88vw, 520px);
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-pill);
+  text-align: center;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--sage-dark);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.72);
+  border: var(--border-white);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-med), transform var(--transition-med);
+}
 
-        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; width: 100%; margin-top: 3rem; text-align: left; }
-        .archive-card { background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); border: 1px solid var(--soft-cream); position: relative; }
-        .archive-date { font-size: 0.7rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
-        .archive-main { font-family: var(--font-serif); font-size: 1.4rem; color: var(--espresso); line-height: 1.3; margin-bottom: 1rem; }
-        .archive-act { font-size: 0.85rem; color: var(--warm-brown); padding-top: 1rem; border-top: 1px dashed var(--natural-beige); }
-        .archive-delete { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--terracotta-light); cursor: pointer; font-size: 1.2rem; opacity: 0.5; transition: opacity 0.3s; line-height: 1; }
-        .archive-delete:hover { opacity: 1; color: var(--terracotta); }
+.progress-indicator.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
-        /* ==========================================================================
-           7. MODALS & FOOTER
-           ========================================================================== */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(53, 40, 34, 0.6); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-        .modal-overlay.visible { opacity: 1; pointer-events: auto; }
-        .modal-content { background: white; padding: 2.5rem; border-radius: var(--radius-md); max-width: 450px; width: 90%; text-align: center; transform: translateY(20px); transition: transform 0.3s; position: relative; }
-        .modal-overlay.visible .modal-content { transform: translateY(0); }
-        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.8rem; cursor: pointer; color: var(--warm-brown); border: none; background: none; }
+.progress-bar {
+  position: absolute;
+  left: 0.35rem;
+  bottom: 0.28rem;
+  height: 3px;
+  width: calc(var(--progress, 0) * 1%);
+  max-width: calc(100% - 0.7rem);
+  background: linear-gradient(90deg, var(--sage), var(--terracotta-light));
+  border-radius: var(--radius-pill);
+  transition: width 650ms ease;
+}
 
-        footer { text-align: center; padding: 4rem 2rem 2rem; background: transparent; margin-top: auto; }
-        .f-brand { font-family: var(--font-serif); font-size: 1.2rem; color: var(--espresso); margin-bottom: 0.2rem; }
-        .f-tag { font-size: 0.85rem; color: var(--terracotta); font-style: italic; margin-bottom: 1rem; }
-        .f-disc { font-size: 0.7rem; color: rgba(107, 79, 63, 0.7); max-width: 500px; margin: 0 auto; line-height: 1.5; }
+.app-container {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 8.5rem 1.4rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        /* ==========================================================================
-           8. RESPONSIVE DESIGN
-           ========================================================================== */
-        @media (max-width: 900px) {
-            .studio-layout { flex-direction: column; align-items: center; gap: 2rem; }
-            .canvas-area { width: 100%; position: relative; top: 0; padding: 1.5rem 1rem; min-height: auto; }
-            .controls-area { width: 100%; padding: 2rem; }
-        }
+.screen {
+  display: none;
+  width: 100%;
+  max-width: var(--screen-max);
+  margin: auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px) scale(0.99);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
 
-        @media (max-width: 600px) {
-            .top-nav { padding: 1rem; background: rgba(250,247,241,0.98); border-bottom: 1px solid rgba(217, 203, 184, 0.3); }
-            .app-container { padding: 6rem 1rem 3rem; }
-            .t-display { font-size: 2.3rem; }
-            .t-heading { font-size: 1.8rem; }
-            .selection-grid { grid-template-columns: 1fr; }
-            .btn { width: 100%; }
-            .action-row { flex-direction: column; width: 100%; gap: 0.5rem; }
-            
-            /* Responsive formatting for card to fit screen */
-            .art-card { max-width: 320px; padding: 2rem 1.5rem; }
-            .art-main-text { font-size: 1.8rem; }
-            .art-sub-text { font-size: 0.85rem; }
-        }
-    </style>
+.screen.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: screenEntrance 740ms ease both;
+}
+
+@keyframes screenEntrance {
+  from { opacity: 0; transform: translateY(20px) scale(0.985); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.reveal-1,
+.reveal-2,
+.reveal-3,
+.reveal-4 {
+  opacity: 0;
+  animation: fadeUp 760ms ease forwards;
+}
+
+.reveal-1 { animation-delay: 120ms; }
+.reveal-2 { animation-delay: 260ms; }
+.reveal-3 { animation-delay: 420ms; }
+.reveal-4 { animation-delay: 580ms; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   4. BUTTONS AND UI COMPONENTS
+   ========================================================================== */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 54px;
+  background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.045em;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    opacity var(--transition-fast);
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(199, 116, 79, 0.24);
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+  transform: translateX(-120%);
+  transition: transform 720ms ease;
+}
+
+.btn:hover:not(:disabled)::before {
+  transform: translateX(120%);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(199, 116, 79, 0.33);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.btn:disabled {
+  background: var(--natural-beige);
+  color: rgba(255,255,255,0.82);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--warm-brown);
+  border: 1.5px solid rgba(217, 203, 184, 0.95);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--warm-brown);
+  background: rgba(255,255,255,0.78);
+  color: var(--espresso);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.32);
+  color: var(--espresso);
+  border: 1px solid rgba(255,255,255,0.85);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: var(--sage-dark);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+  padding: 0.45rem 0.35rem;
+}
+
+.btn-text:hover {
+  color: var(--espresso);
+  transform: translateY(-1px);
+}
+
+.action-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.stacked-center {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-clean {
+  width: 100%;
+  max-width: 430px;
+  background: rgba(255,255,255,0.38);
+  border: none;
+  border-bottom: 2px solid var(--natural-beige);
+  border-radius: 16px 16px 0 0;
+  padding: 1rem 1.1rem 0.95rem;
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  color: var(--espresso);
+  text-align: center;
+  outline: none;
+  margin: 1rem auto 1rem;
+  display: block;
+  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-clean:focus {
+  border-color: var(--terracotta);
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 16px 38px rgba(var(--espresso-rgb), 0.06);
+}
+
+.input-clean::placeholder {
+  color: var(--natural-beige-2);
+  font-style: italic;
+}
+    /* ==========================================================================
+   5. WELCOME SCREEN UPGRADE
+   ========================================================================== */
+
+.intro-label {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.48);
+  border: var(--border-white);
+  box-shadow: var(--shadow-xs);
+}
+
+.intro-copy {
+  margin-top: 1.1rem;
+}
+
+.welcome-points {
+  position: relative;
+  text-align: left;
+  max-width: 390px;
+  margin: 0 auto 2.55rem;
+  color: var(--warm-brown);
+  font-size: 1.05rem;
+  padding: 1.35rem 1.45rem;
+  background: rgba(255,255,255,0.48);
+  border: var(--border-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.welcome-points::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle, rgba(199,116,79,0.12), transparent 48%);
+  animation: floatGlow 8s ease-in-out infinite alternate;
+}
+
+.welcome-points p {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-points p:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes floatGlow {
+  from { transform: translate(-4%, -2%) rotate(0deg); }
+  to { transform: translate(4%, 3%) rotate(10deg); }
+}
+
+/* ==========================================================================
+   6. SELECTION GRIDS AND CARDS
+   ========================================================================== */
+
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 1rem;
+  text-align: left;
+  margin: 0 auto 2.5rem;
+  max-width: 850px;
+}
+
+.selection-grid.single-col {
+  grid-template-columns: 1fr;
+  max-width: 520px;
+}
+
+.option-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 76px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.54));
+  border: 1.5px solid rgba(255,255,255,0.82);
+  padding: 1.3rem 1.45rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 1.01rem;
+  color: var(--warm-brown);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+.option-card::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--natural-beige);
+  box-shadow: 0 0 0 6px rgba(217, 203, 184, 0.18);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.option-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(199,116,79,0.12), transparent 44%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.option-card:hover {
+  border-color: rgba(217, 203, 184, 0.92);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-float);
+}
+
+.option-card:hover::after {
+  opacity: 1;
+}
+
+.option-card.selected {
+  background: linear-gradient(145deg, rgba(245, 230, 220, 0.96), rgba(255,255,255,0.72));
+  border-color: rgba(216, 137, 106, 0.76);
+  color: var(--espresso);
+  font-weight: 600;
+  box-shadow: 0 20px 52px rgba(199, 116, 79, 0.14);
+}
+
+.option-card.selected::before {
+  background: var(--terracotta);
+  box-shadow: 0 0 0 6px rgba(199, 116, 79, 0.16), 0 0 22px rgba(199, 116, 79, 0.32);
+  transform: scale(1.08);
+}
+
+.msg-validation {
+  display: none;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--sage-dark);
+  margin: -0.5rem auto 2rem;
+  animation: fadeUp 0.5s ease both;
+  max-width: 620px;
+}
+
+/* ==========================================================================
+   7. RELEASE AND BREATH EXERCISES
+   ========================================================================== */
+
+.heavy-textarea {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(217, 203, 184, 0.9);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--espresso);
+  resize: none;
+  min-height: 170px;
+  outline: none;
+  box-shadow: inset 0 2px 14px rgba(0,0,0,0.03), var(--shadow-soft);
+  transition:
+    opacity 1.45s ease,
+    transform 1.45s ease,
+    filter 1.45s ease,
+    text-shadow 1.45s ease,
+    border-color var(--transition-fast);
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.heavy-textarea:focus {
+  border-color: rgba(199, 116, 79, 0.72);
+  background: white;
+}
+
+.heavy-textarea.dissolving {
+  color: transparent !important;
+  text-shadow: 0 0 16px rgba(142, 155, 130, 0.58);
+  transform: translateY(-18px) scale(0.98);
+  filter: blur(5px);
+  opacity: 0;
+}
+
+.release-message {
+  display: none;
+  margin-top: 2rem;
+  animation: bloomIn 900ms ease both;
+}
+
+.release-heading {
+  color: var(--sage-dark);
+  font-style: italic;
+}
+
+.release-next {
+  margin-top: 1.5rem;
+}
+
+@keyframes bloomIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.somatic-container {
+  position: relative;
+  width: 295px;
+  height: 295px;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathe-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(142, 155, 130, 0.75);
+  opacity: 0.22;
+  transition: all ease-in-out;
+}
+
+.breathe-ring-1 { width: 80px; height: 80px; }
+.breathe-ring-2 { width: 125px; height: 125px; }
+.breathe-ring-3 { width: 175px; height: 175px; }
+
+.breathe-instruction {
+  position: relative;
+  z-index: 10;
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--espresso);
+  transition: opacity 0.5s;
+}
+
+.somatic-container.inhale .breathe-ring-1 {
+  transform: scale(2.8);
+  opacity: 0;
+  transition-duration: 4s;
+}
+
+.somatic-container.inhale .breathe-ring-2 {
+  transform: scale(2.2);
+  opacity: 0.11;
+  transition-duration: 4s;
+}
+
+.somatic-container.inhale .breathe-ring-3 {
+  transform: scale(1.58);
+  opacity: 0.42;
+  transition-duration: 4s;
+  background: rgba(142, 155, 130, 0.06);
+}
+
+.somatic-container.hold .breathe-ring {
+  transition-duration: 2s;
+}
+
+.somatic-container.exhale .breathe-ring {
+  transform: scale(1);
+  opacity: 0.22;
+  transition-duration: 6s;
+  background: transparent;
+}
+
+/* ==========================================================================
+   8. LOADING SEQUENCE
+   ========================================================================== */
+
+.premium-loader {
+  position: relative;
+  width: 165px;
+  height: 165px;
+  margin: 4rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--terracotta-light);
+  opacity: 0;
+  animation: ripple 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loader-ring:nth-child(2) {
+  animation-delay: 1s;
+  border-color: var(--sage);
+}
+
+.loader-center {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, white, var(--terracotta-bg));
+  animation: pulse 3s infinite ease-in-out;
+  box-shadow: 0 0 40px rgba(199, 116, 79, 0.22);
+}
+
+.loading-text {
+  transition: opacity 400ms ease;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.5); opacity: 0.82; }
+  100% { transform: scale(2.55); opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.68; }
+  50% { transform: scale(1.28); opacity: 1; }
+}
+
+/* ==========================================================================
+   9. STUDIO LAYOUT
+   ========================================================================== */
+
+.studio-screen {
+  max-width: 1420px;
+  padding-top: 2rem;
+}
+
+.studio-title {
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+.studio-layout {
+  display: grid;
+  grid-template-columns: minmax(330px, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3.2rem);
+  width: 100%;
+  text-align: left;
+  align-items: start;
+}
+
+.canvas-area {
+  position: sticky;
+  top: 8.8rem;
+  width: 100%;
+}
+
+.canvas-backdrop {
+  position: relative;
+  min-height: 665px;
+  width: 100%;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(199,116,79,0.12), transparent 32%),
+    radial-gradient(circle at 76% 76%, rgba(142,155,130,0.14), transparent 36%),
+    rgba(255,255,255,0.34);
+  border: var(--border-white);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+}
+
+.canvas-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(217, 203, 184, 0.54) 1px, transparent 0);
+  background-size: 20px 20px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.canvas-backdrop > * {
+  position: relative;
+  z-index: 1;
+}
+
+.art-card {
+  position: relative;
+  width: 100%;
+  max-width: 365px;
+  aspect-ratio: 9 / 16;
+  background-color: var(--soft-cream);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.55rem 1.85rem;
+  text-align: center;
+  transition:
+    background var(--transition-slow),
+    color var(--transition-slow),
+    border var(--transition-slow),
+    border-radius var(--transition-slow),
+    max-width var(--transition-slow),
+    aspect-ratio var(--transition-slow),
+    padding var(--transition-slow),
+    box-shadow var(--transition-slow),
+    transform var(--transition-med);
+}
+
+.art-card:hover {
+  transform: translateY(-2px);
+}
+
+.art-texture {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.065'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.art-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: background 1s ease;
+}
+
+.art-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(42px);
+  opacity: 0.62;
+  z-index: 2;
+  transition: all 1.5s ease;
+}
+
+.orb-one {
+  top: -10%;
+  left: -20%;
+  width: 250px;
+  height: 250px;
+  background: rgba(255,255,255,0.5);
+}
+
+.orb-two {
+  bottom: -10%;
+  right: -20%;
+  width: 305px;
+  height: 305px;
+  background: rgba(217, 203, 184, 0.42);
+}
+
+.art-leaf {
+  position: absolute;
+  z-index: 3;
+  opacity: 0.15;
+  transition: all 1s ease;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.leaf-one {
+  top: 5%;
+  right: -10%;
+  width: 200px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='none' stroke='%23352822' stroke-width='0.5'%3E%3Cpath d='M50 200 Q40 100 20 20 Q50 40 80 10 Q60 80 50 200'/%3E%3Cpath d='M40 120 Q10 100 5 60 Q30 70 45 100'/%3E%3Cpath d='M60 140 Q90 120 95 80 Q70 90 55 120'/%3E%3C/svg%3E");
+}
+
+.art-content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.art-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.art-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.5rem;
+}
+
+.art-name {
+  font-family: var(--font-serif);
+  font-size: 1.04rem;
+  font-style: italic;
+  opacity: 0.83;
+  margin-top: 0.55rem;
+}
+
+.art-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.45rem;
+}
+
+.art-main-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.15rem);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  color: currentColor;
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.art-sub-text {
+  font-family: var(--font-sans);
+  font-size: 0.91rem;
+  line-height: 1.55;
+  font-weight: 300;
+  opacity: 0.86;
+  color: var(--warm-brown);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.art-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.52rem;
+}
+
+.art-divider {
+  width: 42px;
+  height: 2px;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+  background: var(--terracotta);
+}
+
+.art-brand {
+  font-family: var(--font-serif);
+  font-size: 1.04rem;
+  color: currentColor;
+  line-height: 1;
+}
+
+.art-tagline {
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+    /* ==========================================================================
+   10. CARD THEMES
+   ========================================================================== */
+
+.theme-morning {
+  background-color: #FDFBF7;
+  color: #4A3F35;
+  border: 1px solid white;
+}
+
+.theme-morning .orb-one {
+  background: radial-gradient(circle, rgba(255,230,200,0.86) 0%, transparent 70%);
+}
+
+.theme-morning .art-divider {
+  background-color: #C7744F;
+}
+
+.theme-morning .art-leaf {
+  opacity: 0;
+}
+
+.theme-sage {
+  background-color: #EAECE6;
+  color: #2C3528;
+  border: none;
+}
+
+.theme-sage .orb-one {
+  background: rgba(255,255,255,0.75);
+}
+
+.theme-sage .orb-two {
+  background: rgba(142, 155, 130, 0.52);
+  left: -10%;
+  right: auto;
+}
+
+.theme-sage .art-divider {
+  background-color: #8E9B82;
+}
+
+.theme-sage .art-sub-text {
+  color: #54624D;
+}
+
+.theme-terra {
+  background: linear-gradient(150deg, #F5E6DC 0%, #E8CDBF 100%);
+  color: #5A3A2F;
+  border: none;
+}
+
+.theme-terra .orb-one {
+  background: rgba(216, 137, 106, 0.24);
+  top: auto;
+  bottom: 0;
+}
+
+.theme-terra .art-divider {
+  background-color: #C7744F;
+}
+
+.theme-terra .art-leaf {
+  opacity: 0;
+}
+
+.theme-quiet {
+  background-color: #F5F2EB;
+  color: #4A3F35;
+  border: 12px solid #FFFFFF;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.theme-quiet .orb-one,
+.theme-quiet .orb-two,
+.theme-quiet .art-leaf {
+  display: none;
+}
+
+.theme-quiet .art-main-text {
+  font-size: 2.28rem;
+}
+
+.theme-quiet .art-divider {
+  background-color: #D9CBB8;
+}
+
+.theme-paper {
+  background-color: #E8E2D5;
+  color: #352822;
+  border: none;
+}
+
+.theme-paper .art-texture {
+  opacity: 0.18;
+}
+
+.theme-paper .orb-one {
+  background: rgba(255,255,255,0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  filter: none;
+}
+
+.theme-paper .orb-two,
+.theme-paper .art-leaf {
+  display: none;
+}
+
+.theme-paper .art-main-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  font-size: 1.95rem;
+}
+
+.theme-paper .art-divider {
+  background-color: #352822;
+}
+
+.theme-ethereal {
+  background-color: #EAEAE4;
+  color: #424953;
+  border: none;
+}
+
+.theme-ethereal .orb-one {
+  background: rgba(217, 203, 184, 0.72);
+}
+
+.theme-ethereal .orb-two {
+  background: rgba(142, 155, 130, 0.52);
+}
+
+.theme-ethereal .art-divider {
+  background-color: #424953;
+}
+
+.theme-ethereal .art-leaf {
+  opacity: 0;
+}
+
+.theme-faith {
+  background-color: #F8F5F0;
+  color: #4A3F35;
+  border: none;
+}
+
+.theme-faith .orb-one {
+  background: radial-gradient(circle, rgba(255, 240, 210, 0.95) 0%, transparent 80%);
+  top: -20%;
+  left: 0;
+  width: 400px;
+  height: 400px;
+}
+
+.theme-faith .orb-two,
+.theme-faith .art-leaf {
+  display: none;
+}
+
+.theme-faith .art-divider {
+  background-color: #D9CBB8;
+  height: 3px;
+  width: 60px;
+}
+
+.theme-strong {
+  background-color: #352822;
+  color: #FAF7F1;
+  border: none;
+}
+
+.theme-strong .orb-one {
+  background: rgba(107, 79, 63, 0.85);
+  bottom: -10%;
+  top: auto;
+  right: -10%;
+  left: auto;
+}
+
+.theme-strong .orb-two {
+  background: rgba(216, 137, 106, 0.17);
+  top: 0;
+  left: 0;
+}
+
+.theme-strong .art-leaf {
+  opacity: 0;
+}
+
+.theme-strong .art-main-text,
+.theme-strong .art-brand {
+  color: #FAF7F1;
+}
+
+.theme-strong .art-sub-text {
+  color: #D9CBB8;
+}
+
+.theme-strong .art-name {
+  color: #D8896A;
+}
+
+.theme-strong .art-label,
+.theme-strong .art-tagline {
+  color: #AEB8A6;
+}
+
+.theme-strong .art-divider {
+  background-color: #FAF7F1;
+}
+
+.theme-rose {
+  background: linear-gradient(145deg, #F8EFEA, #EBD2CB);
+  color: #4E342D;
+}
+
+.theme-rose .orb-one {
+  background: rgba(214, 170, 160, 0.55);
+}
+
+.theme-rose .orb-two {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.theme-rose .art-divider {
+  background-color: #D6AAA0;
+}
+
+.theme-night {
+  background: radial-gradient(circle at 20% 10%, #6B4F3F, #2D2420 70%);
+  color: #FAF7F1;
+}
+
+.theme-night .orb-one {
+  background: rgba(200,165,106,0.22);
+}
+
+.theme-night .orb-two {
+  background: rgba(216,137,106,0.15);
+}
+
+.theme-night .art-main-text,
+.theme-night .art-brand {
+  color: #FAF7F1;
+}
+
+.theme-night .art-sub-text {
+  color: #E1D5C5;
+}
+
+.theme-night .art-divider {
+  background: #C8A56A;
+}
+
+/* FORMAT SIZING */
+
+.format-post {
+  aspect-ratio: 1 / 1;
+  max-width: 430px;
+  padding: 2.05rem;
+}
+
+.format-post .art-main-text {
+  font-size: 1.82rem;
+}
+
+.format-print {
+  aspect-ratio: 4 / 6;
+  max-width: 386px;
+  padding: 2.6rem 2rem;
+}
+
+.format-text {
+  aspect-ratio: 16 / 9;
+  max-width: 510px;
+  padding: 1.55rem 2.05rem;
+}
+
+.format-text .art-main-text {
+  font-size: 1.62rem;
+}
+
+.format-text .art-body {
+  gap: 0.55rem;
+}
+
+.format-text .art-footer {
+  gap: 0.25rem;
+}
+
+.format-text .art-label {
+  padding-bottom: 0.28rem;
+}
+
+/* ==========================================================================
+   11. CONTROLS PANEL
+   ========================================================================== */
+
+.controls-area {
+  position: relative;
+  background:
+    linear-gradient(150deg, rgba(255,255,255,0.82), rgba(255,255,255,0.58));
+  padding: clamp(1.5rem, 3vw, 2.55rem);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  border: var(--border-white);
+  backdrop-filter: blur(16px);
+}
+
+.controls-kicker {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: rgba(245,230,220,0.75);
+  color: var(--terracotta-dark);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.control-group {
+  margin-bottom: 2rem;
+}
+
+.control-title {
+  border-bottom: 1px solid rgba(241, 233, 221, 0.95);
+  padding-bottom: 0.62rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sage-dark);
+  font-weight: 800;
+}
+
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.62rem;
+}
+
+.chip {
+  position: relative;
+  padding: 0.58rem 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(217, 203, 184, 0.95);
+  background: rgba(255,255,255,0.68);
+  color: var(--warm-brown);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.chip:hover {
+  background: var(--soft-cream);
+  transform: translateY(-2px);
+}
+
+.chip.active {
+  background: var(--espresso);
+  color: white;
+  border-color: var(--espresso);
+  box-shadow: 0 9px 18px rgba(53,40,34,0.13);
+}
+
+#miniDeckContainer {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  align-items: center;
+  animation: fadeUp 0.8s ease both;
+}
+
+.mini-main {
+  font-size: 2.4rem;
+}
+
+.reflection-panel {
+  background:
+    linear-gradient(145deg, rgba(241, 233, 221, 0.88), rgba(250, 247, 241, 0.72));
+  padding: 1.65rem;
+  border-radius: var(--radius-lg);
+  text-align: left;
+  margin-top: 2rem;
+  border: 1px solid rgba(255,255,255,0.82);
+}
+
+.ref-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sage-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.ref-text {
+  font-family: var(--font-serif);
+  font-size: 1.32rem;
+  color: var(--espresso);
+  line-height: 1.42;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+  border-left: 2px solid var(--terracotta);
+  padding-left: 1rem;
+}
+
+.studio-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.studio-actions .btn {
+  width: 100%;
+  margin: 0;
+}
+
+.split-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.split-actions .btn {
+  flex: 1;
+}
+
+/* ==========================================================================
+   12. ARCHIVE
+   ========================================================================== */
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.archive-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.78);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: var(--border-white);
+}
+
+.archive-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(199,116,79,0.1), transparent 45%);
+  pointer-events: none;
+}
+
+.archive-date {
+  position: relative;
+  font-size: 0.7rem;
+  color: var(--sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+  font-weight: 800;
+}
+
+.archive-main {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: 1.42rem;
+  color: var(--espresso);
+  line-height: 1.28;
+  margin-bottom: 1rem;
+}
+
+.archive-act {
+  position: relative;
+  font-size: 0.85rem;
+  color: var(--warm-brown);
+  padding-top: 1rem;
+  border-top: 1px dashed var(--natural-beige);
+}
+
+.archive-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background: none;
+  border: none;
+  color: var(--terracotta-light);
+  cursor: pointer;
+  font-size: 1.35rem;
+  opacity: 0.55;
+  transition: opacity 0.3s, color 0.3s;
+  line-height: 1;
+}
+
+.archive-delete:hover {
+  opacity: 1;
+  color: var(--terracotta);
+}
+    /* ==========================================================================
+   13. CTA, MODAL, TOAST, FOOTER
+   ========================================================================== */
+
+.cta-card {
+  background: rgba(255,255,255,0.78);
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-float);
+  max-width: 540px;
+  margin: 0 auto 3rem;
+  border: var(--border-white);
+  backdrop-filter: blur(14px);
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.email-form .input-clean {
+  margin: 0;
+  font-size: 1.18rem;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  max-width: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(53, 40, 34, 0.6);
+  backdrop-filter: blur(7px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 1.2rem;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--warm-white);
+  padding: 2.4rem;
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.3s;
+  box-shadow: var(--shadow-deep);
+}
+
+.modal-overlay.visible .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.3rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--warm-brown);
+  border: none;
+  background: none;
+}
+
+.copy-box {
+  font-size: 0.95rem;
+  color: var(--espresso);
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: var(--radius-sm);
+  font-style: italic;
+  border: var(--border-soft);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.4rem;
+  transform: translateX(-50%) translateY(18px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1500;
+  background: rgba(53,40,34,0.94);
+  color: white;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.86rem;
+  box-shadow: var(--shadow-float);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+footer {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  background: transparent;
+  margin-top: auto;
+}
+
+.f-brand {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--espresso);
+  margin-bottom: 0.2rem;
+}
+
+.f-tag {
+  font-size: 0.85rem;
+  color: var(--terracotta);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.f-disc {
+  font-size: 0.72rem;
+  color: rgba(107, 79, 63, 0.72);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   14. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-area {
+    position: relative;
+    top: 0;
+  }
+
+  .canvas-backdrop {
+    min-height: auto;
+  }
+
+  .controls-area {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .top-nav {
+    align-items: flex-start;
+  }
+
+  .nav-actions {
+    gap: 0.15rem;
+  }
+
+  .btn-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .progress-indicator {
+    top: 4.2rem;
+    width: calc(100vw - 1.6rem);
+    padding: 0.65rem 0.8rem;
+    font-size: 0.62rem;
+  }
+
+  .app-container {
+    padding: 7.7rem 0.9rem 3rem;
+  }
+
+  .t-display {
+    font-size: 2.55rem;
+  }
+
+  .t-heading {
+    font-size: 2rem;
+  }
+
+  .selection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .action-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  .welcome-points {
+    max-width: 100%;
+  }
+
+  .art-card {
+    max-width: 315px;
+    padding: 2rem 1.35rem;
+  }
+
+  .art-main-text {
+    font-size: 1.76rem;
+  }
+
+  .art-sub-text {
+    font-size: 0.84rem;
+  }
+
+  .format-text {
+    max-width: 340px;
+    aspect-ratio: 4 / 5;
+  }
+
+  .split-actions {
+    flex-direction: column;
+  }
+
+  .modal-content {
+    padding: 2.1rem 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <a href="#" class="brand-logo" onclick="location.reload()">Rachel <span>McBride</span></a>
-        <div style="display: flex; gap: 0.5rem;">
-            <button class="btn-text" onclick="startDailyFlow()">Today's Note</button>
-            <button class="btn-text" onclick="navToArchive()">My Archive</button>
-        </div>
-    </nav>
+<nav class="top-nav">
+  <a href="#" class="brand-logo" onclick="location.reload()">Rachel <span>McBride</span></a>
+  <div class="nav-actions">
+    <button class="btn-text" onclick="startDailyFlow()">Today's Note</button>
+    <button class="btn-text" onclick="navToArchive()">My Archive</button>
+  </div>
+</nav>
 
-    <!-- Fixed Progress Indicator -->
-    <div id="progressIndicator" class="progress-indicator">Step 1 of 7</div>
+<div id="progressIndicator" class="progress-indicator">
+  <span id="progressText">Step 1 of 7</span>
+  <span id="progressBar" class="progress-bar"></span>
+</div>
 
-    <main class="app-container">
+<main class="app-container">
 
-        <!-- ==========================================
-             SCREEN 1: WELCOME
-             ========================================== -->
-        <div id="screen-welcome" class="screen active">
-            <div class="reveal-1">
-                <span class="t-label" style="margin-bottom: 1rem; display: block;">A Guided Experience</span>
-                <h1 class="t-display">The Permission Slip Studio</h1>
-            </div>
-            
-            <p class="t-subtitle reveal-2" style="margin-top: 1rem;">
-                Take a breath, lay down the heavy things, and generate a beautiful piece of digital art to remind you of what your heart actually needs today.
-            </p>
-            
-            <div style="text-align: left; max-width: 280px; margin: 0 auto 2.5rem; color: var(--warm-brown); font-size: 1.05rem;" class="reveal-2">
-                <p style="margin-bottom: 0.5rem;">✨ You are allowed to rest.</p>
-                <p style="margin-bottom: 0.5rem;">✨ You are allowed to need support.</p>
-                <p>✨ You are allowed to stop carrying it all.</p>
-            </div>
-
-            <div class="reveal-3 action-row">
-                <button class="btn" onclick="startPersonalFlow()">Create My Permission Slip</button>
-                <button class="btn btn-outline" onclick="startFriendFlow()">Make One For a Friend</button>
-            </div>
-            <div class="t-micro reveal-3">Takes less than 2 minutes.</div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 2: SOMATIC BREATH
-             ========================================== -->
-        <div id="screen-breath" class="screen">
-            <h2 class="t-heading reveal-1">Before we begin.</h2>
-            <p class="t-subtitle reveal-2">Place a hand on your chest. Let's take three breaths together to arrive in this moment.</p>
-
-            <div class="somatic-container reveal-3" id="breathController">
-                <div class="breathe-ring breathe-ring-1"></div>
-                <div class="breathe-ring breathe-ring-2"></div>
-                <div class="breathe-ring breathe-ring-3"></div>
-                <div class="breathe-instruction" id="breathText">Ready.</div>
-            </div>
-
-            <div class="reveal-4 action-row" style="flex-direction: column; align-items: center;">
-                <button class="btn" id="btnStartBreath" onclick="startBreathing()">Start Breathing</button>
-                <button class="btn-text" id="btnSkipBreath" onclick="nextScreen('screen-release', 'Step 2 of 7')">Skip this step</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 3: THE DROP (RELEASE)
-             ========================================== -->
-        <div id="screen-release" class="screen">
-            <h2 class="t-heading reveal-1">What is heavy right now?</h2>
-            <p class="t-subtitle reveal-2">Name the expectation, the worry, or the pressure you are carrying today. Don't overthink it.</p>
-
-            <div class="reveal-3">
-                <textarea id="heavyInput" class="heavy-textarea" placeholder="I am carrying..."></textarea>
-            </div>
-
-            <div class="reveal-4 action-row">
-                <button class="btn" id="btnRelease" onclick="performRelease()">Let It Go</button>
-            </div>
-            
-            <div id="releaseMessage" style="display: none; margin-top: 2rem;">
-                <p class="t-heading" style="color: var(--sage); font-style: italic;">It is safe to set that down.</p>
-                <button class="btn btn-outline" style="margin-top: 1.5rem;" onclick="nextScreen('screen-name', 'Step 3 of 7')">Take the next step</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 4: NAME
-             ========================================== -->
-        <div id="screen-name" class="screen">
-            <h2 class="t-heading reveal-1">Let’s make this feel personal.</h2>
-            <p class="t-prompt reveal-2">What name would you like on your permission slip?</p>
-            
-            <div class="reveal-3">
-                <input type="text" id="userName" class="input-clean" placeholder="Your name">
-                <div class="t-micro" style="margin-top: 0.5rem;">You can leave this blank if you prefer.</div>
-                <button class="btn" onclick="saveNameAndNext()">Continue</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 5: CARRYING
-             ========================================== -->
-        <div id="screen-carrying" class="screen">
-            <h2 class="t-heading reveal-1">What are you carrying today?</h2>
-            <p class="t-prompt reveal-2">Choose the weight that feels closest.</p>
-            
-            <div class="selection-grid reveal-3" id="grid-carrying"></div>
-
-            <div class="reveal-4">
-                <button class="btn" id="btn-carrying" disabled onclick="nextScreen('screen-feeling', 'Step 5 of 7')">Continue</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 6: FEELING
-             ========================================== -->
-        <div id="screen-feeling" class="screen">
-            <h2 class="t-heading reveal-1">Underneath that weight, how are you feeling?</h2>
-            <p class="t-prompt reveal-2">There is no wrong answer.</p>
-            
-            <div class="selection-grid reveal-3" id="grid-feeling"></div>
-            
-            <div id="msg-feeling" class="msg-validation">
-                That makes sense. You do not have to explain your exhaustion here.
-            </div>
-
-            <div class="reveal-4">
-                <button class="btn" id="btn-feeling" disabled onclick="nextScreen('screen-permission', 'Step 6 of 7')">Continue</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 7: PERMISSION
-             ========================================== -->
-        <div id="screen-permission" class="screen">
-            <h2 class="t-heading reveal-1">What do you need permission for today?</h2>
-            <p class="t-prompt reveal-2">Choose what your heart needs most.</p>
-            
-            <div class="selection-grid reveal-3" id="grid-permission"></div>
-
-            <div id="msg-permission" class="msg-validation">
-                You are allowed to need that.
-            </div>
-
-            <div class="reveal-4">
-                <button class="btn" id="btn-permission" disabled onclick="nextScreen('screen-tone', 'Step 7 of 7')">Continue</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 8: TONE
-             ========================================== -->
-        <div id="screen-tone" class="screen">
-            <h2 class="t-heading reveal-1">How do you need the words to feel?</h2>
-            <p class="t-prompt reveal-2">Choose the tone of support that feels best.</p>
-            
-            <div class="selection-grid single-col reveal-3" id="grid-tone"></div>
-
-            <div class="reveal-4">
-                <button class="btn" id="btn-tone" disabled onclick="generatePersonalCard()">Enter the Studio</button>
-            </div>
-        </div>
-
-        <!-- ==========================================
-             FRIEND FLOW (Alternate Path)
-             ========================================== -->
-        <div id="screen-friend-who" class="screen">
-            <h2 class="t-heading reveal-1">Who is this for?</h2>
-            <p class="t-prompt reveal-2">Choose who needs this reminder today.</p>
-            <div class="selection-grid single-col reveal-3" id="grid-friend-who"></div>
-            <button id="btn-friend-who" class="btn reveal-4" disabled onclick="nextScreen('screen-friend-need', 'Step 2 of 2')">Continue</button>
-        </div>
-
-        <div id="screen-friend-need" class="screen">
-            <h2 class="t-heading reveal-1">What does she need to hear?</h2>
-            <div class="selection-grid reveal-2" id="grid-friend-need"></div>
-            <button id="btn-friend-need" class="btn reveal-3" disabled onclick="generateFriendCard()">Create Her Card</button>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 9: LOADING
-             ========================================== -->
-        <div id="screen-loading" class="screen">
-            <div class="premium-loader">
-                <div class="loader-ring"></div>
-                <div class="loader-ring"></div>
-                <div class="loader-center"></div>
-            </div>
-            <h2 class="loading-text" id="loadingPhrases">Gathering your words...</h2>
-            <div class="t-micro">One small permission can open a little space.</div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 10: THE STUDIO (GENERATOR UI)
-             ========================================== -->
-        <div id="screen-studio" class="screen" style="max-width: 1400px; padding-top: 6rem; justify-content: flex-start;">
-            
-            <h2 class="t-display" style="margin-bottom: 2rem;">Your Artwork</h2>
-
-            <div class="studio-layout">
-                
-                <!-- LEFT: Canvas Area -->
-                <div class="canvas-area">
-                    <div class="canvas-backdrop" id="captureTarget">
-                        
-                        <!-- MAIN CARD -->
-                        <div id="artCard" class="art-card theme-morning">
-                            <div class="art-glow"></div>
-                            <div class="art-orb orb-one"></div>
-                            <div class="art-orb orb-two"></div>
-                            <div class="art-leaf leaf-one"></div>
-                            <div class="art-texture"></div>
-                            
-                            <div class="art-content">
-                                <div class="art-header">
-                                    <span class="art-label" id="outLabel">Permission Slip</span>
-                                    <span id="outName" class="art-name"></span>
-                                </div>
-                                
-                                <div class="art-body">
-                                    <h3 id="outMain" class="art-main-text">Main text</h3>
-                                    <p id="outSupport" class="art-sub-text">Support text</p>
-                                </div>
-                                
-                                <div class="art-footer">
-                                    <div class="art-divider"></div>
-                                    <span class="art-brand">Rachel McBride Coaching</span>
-                                    <span class="art-tagline">Release the pressure. Restore your calm.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MINI DECK (Hidden by default) -->
-                        <div id="miniDeckContainer">
-                            <!-- Card 2: Tiny Act -->
-                            <div id="artCardAct" class="art-card theme-morning">
-                                <div class="art-glow"></div><div class="art-orb orb-one"></div><div class="art-texture"></div>
-                                <div class="art-content">
-                                    <div class="art-header"><span class="art-label">Tiny Act</span></div>
-                                    <div class="art-body">
-                                        <h3 id="outActMain" class="art-main-text" style="font-size: 2.5rem;">Act text</h3>
-                                    </div>
-                                    <div class="art-footer"><div class="art-divider"></div><span class="art-brand">Rachel McBride</span></div>
-                                </div>
-                            </div>
-                            <!-- Card 3: Reminder -->
-                            <div id="artCardRem" class="art-card theme-morning">
-                                <div class="art-glow"></div><div class="art-orb orb-two"></div><div class="art-texture"></div>
-                                <div class="art-content">
-                                    <div class="art-header"><span class="art-label">Reminder</span></div>
-                                    <div class="art-body">
-                                        <h3 id="outRemMain" class="art-main-text" style="font-size: 2.2rem;">Rem text</h3>
-                                    </div>
-                                    <div class="art-footer"><div class="art-divider"></div><span class="art-brand">Rachel McBride</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- RIGHT: Controls -->
-                <div class="controls-area reveal-2">
-                    
-                    <div class="control-group">
-                        <div class="control-title"><h4>Visual Theme</h4></div>
-                        <div class="chip-grid">
-                            <button class="chip active" onclick="setTheme('theme-morning', this)">Morning Light</button>
-                            <button class="chip" onclick="setTheme('theme-sage', this)">Sage Garden</button>
-                            <button class="chip" onclick="setTheme('theme-terra', this)">Terracotta Sunset</button>
-                            <button class="chip" onclick="setTheme('theme-quiet', this)">Quiet Room</button>
-                            <button class="chip" onclick="setTheme('theme-paper', this)">Paper & Ink</button>
-                            <button class="chip" onclick="setTheme('theme-ethereal', this)">Deep Exhale</button>
-                            <button class="chip" onclick="setTheme('theme-faith', this)">Faith & Grace</button>
-                            <button class="chip" onclick="setTheme('theme-strong', this)">Strong Boundary</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-title"><h4>Canvas Format</h4></div>
-                        <div class="chip-grid">
-                            <button class="chip active" onclick="setFormat('story', this)">Story / Wallpaper</button>
-                            <button class="chip" onclick="setFormat('post', this)">Instagram Post</button>
-                            <button class="chip" onclick="setFormat('print', this)">Printable (4x6)</button>
-                            <button class="chip" onclick="setFormat('text', this)">Horizontal (Text)</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-title"><h4>Word Alchemy</h4></div>
-                        <div class="chip-grid">
-                            <button class="chip" onclick="remixWords('softer')">Make it Softer</button>
-                            <button class="chip" onclick="remixWords('stronger')">Make it Fiercer</button>
-                            <button class="chip" onclick="remixWords('poetic')">Make it Poetic</button>
-                            <button class="chip" onclick="remixWords('reset')">Original Words</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group" id="deckControlGroup">
-                        <div class="control-title"><h4>Advanced Sets</h4></div>
-                        <div class="chip-grid">
-                            <button class="chip" id="btnToggleDeck" onclick="toggleMiniDeck()">Create Matching Mini Deck</button>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem;">
-                        <button class="btn" id="btnDownload" onclick="downloadArtwork()" style="width: 100%; margin:0;">Download High-Res Artwork</button>
-                        <div class="action-row" style="margin-top: 0; gap: 1rem;">
-                            <button class="btn btn-outline" style="flex: 1; margin:0;" onclick="openShareModal()">Share Text</button>
-                            <button class="btn btn-outline" style="flex: 1; margin:0;" id="btnSaveArchive" onclick="saveToArchive()">Save to Archive</button>
-                        </div>
-                    </div>
-
-                    <!-- Private Reflection (Personal Flow Only) -->
-                    <div id="privateReflectionPanel" class="reflection-panel">
-                        <div class="ref-label">Your Private Reflection</div>
-                        <div id="refText" class="ref-text"></div>
-                        
-                        <div class="ref-label" style="margin-top: 2rem;">Tiny Act of Permission</div>
-                        <div id="actText" class="ref-text" style="border-color: var(--sage); color: var(--sage);"></div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 11: CTA / EMAIL CAPTURE
-             ========================================== -->
-        <div id="screen-cta" class="screen">
-            <h2 class="t-display">You are allowed to need care, too.</h2>
-            <p class="t-subtitle" style="margin-bottom: 3rem;">
-                If you are tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you release pressure, regulate your nervous system, and feel like yourself again.
-            </p>
-
-            <div style="background: white; padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-float); max-width: 500px; margin: 0 auto 3rem;">
-                <h3 class="t-heading" style="color: var(--terracotta); font-size: 1.8rem;">Stay Connected</h3>
-                <p style="color: var(--warm-brown); margin-bottom: 2rem; font-size: 0.95rem;">Join my email list for gentle resets, nervous system tools, and coaching insights sent straight to your inbox.</p>
-                
-                <form onsubmit="event.preventDefault(); alert('Connected to ESP!');" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <input type="text" class="input-clean" style="margin:0; font-size: 1.2rem; padding: 0.5rem; text-align: left;" placeholder="First Name" required>
-                    <input type="email" class="input-clean" style="margin:0 0 1rem; font-size: 1.2rem; padding: 0.5rem; text-align: left;" placeholder="Email Address" required>
-                    <button type="submit" class="btn" style="width: 100%; margin: 0;">Send me support</button>
-                </form>
-            </div>
-
-            <div class="action-row">
-                <a href="mailto:rachel@rachelmcbridecoaching.com" class="btn">Book a Call</a>
-                <a href="https://rachelmcbridecoaching.com" target="_blank" class="btn btn-outline">Explore Coaching</a>
-            </div>
-            
-            <button class="btn-text" style="margin-top: 3rem;" onclick="location.reload()">Create Another Slip</button>
-        </div>
-
-        <!-- ==========================================
-             SCREEN 12: MY ARCHIVE
-             ========================================== -->
-        <div id="screen-archive" class="screen" style="max-width: 1200px;">
-            <h2 class="t-display">My Archive</h2>
-            <p class="t-subtitle">Your private collection of permissions.</p>
-
-            <div id="archiveContainer" class="archive-grid">
-                <!-- Populated via LocalStorage -->
-            </div>
-
-            <div class="action-row" style="margin-top: 4rem;">
-                <button class="btn btn-outline" onclick="location.reload()">Create a New Slip</button>
-                <button class="btn-text" onclick="clearArchive()">Clear Archive</button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Modal for Social/Text Sharing -->
-    <div id="shareModal" class="modal-overlay" onclick="closeShareModal(event)">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close" onclick="closeShareModal(event, true)">&times;</button>
-            <h3 style="margin-bottom: 0.5rem;">Share the Calm</h3>
-            <p style="font-size: 0.9rem; color: var(--sage); margin-bottom: 1.5rem;">Copy a pre-written caption or text message.</p>
-            
-            <div style="text-align: left; margin-bottom: 1rem;">
-                <span class="t-label">For Instagram / Social</span>
-                <div id="copySocial" style="font-size: 0.95rem; color: var(--espresso); margin-top: 0.5rem; padding: 1rem; background: var(--warm-white); border-radius: var(--radius-sm); font-style: italic;">
-                    I needed this reminder today: [Slip]. Maybe someone else does too. Permission to rest before resentment. 🤎 Created with The Permission Slip Studio by @RachelMcBrideCoaching.
-                </div>
-                <button class="btn-text" style="padding-left:0;" onclick="execCopy('social', this)">Copy Caption</button>
-            </div>
-
-            <div style="text-align: left;">
-                <span class="t-label">For a Friend (Text Message)</span>
-                <div id="copyTextMsg" style="font-size: 0.95rem; color: var(--espresso); margin-top: 0.5rem; padding: 1rem; background: var(--warm-white); border-radius: var(--radius-sm); font-style: italic;">
-                    Hey, I saw this and thought of you. Just a reminder: [Slip]. You don’t have to carry everything alone. 🤎
-                </div>
-                <button class="btn-text" style="padding-left:0;" onclick="execCopy('text', this)">Copy Text Message</button>
-            </div>
-        </div>
+  <!-- SCREEN 1: WELCOME -->
+  <section id="screen-welcome" class="screen active">
+    <div class="reveal-1">
+      <span class="t-label intro-label">A Guided Experience</span>
+      <h1 class="t-display">The Permission Slip Studio</h1>
     </div>
 
-    <footer>
-        <div class="f-brand">Rachel McBride Coaching</div>
-        <div class="f-tag">Release the pressure. Restore your calm.</div>
-        <p class="f-disc">This tool is designed for general wellness encouragement and reflection. It is not a substitute for medical or mental health care.</p>
-    </footer>
+    <p class="t-subtitle reveal-2 intro-copy">
+      Take a breath, lay down the heavy things, and create a beautiful digital reminder of what your heart actually needs today.
+    </p>
 
-    <!-- ==========================================================================
-         JAVASCRIPT LOGIC ENGINE
-         ========================================================================== -->
-    <script>
-        /* --------------------------------------------------------------------------
-           1. DATA DICTIONARIES (The Emotional Logic)
-           -------------------------------------------------------------------------- */
-        const contentDB = {
-            carrying: [
-                { id: 'mentalLoad', label: "The heavy mental load", ref: "You have been carrying the invisible list for so long that even rest can feel like another task." },
-                { id: 'everyoneNeedsMe', label: "Everyone needing me", ref: "It makes sense that you feel stretched thin when so many people keep reaching for you." },
-                { id: 'guilt', label: "Deep guilt", ref: "Guilt can make care feel selfish, but your needs are not a betrayal." },
-                { id: 'pressure', label: "Pressure to perform", ref: "You do not have to perform your way into being worthy." },
-                { id: 'peacekeeping', label: "Trying to keep the peace", ref: "You are allowed to stop abandoning yourself to keep everything calm." },
-                { id: 'behind', label: "Feeling chronically behind", ref: "One unfinished day does not mean you are failing." },
-                { id: 'disappointing', label: "Fear of disappointing people", ref: "You can disappoint an expectation without becoming a disappointment." },
-                { id: 'exhaustion', label: "Bone-deep exhaustion", ref: "Your tiredness is information, not a character flaw." },
-                { id: 'resentment', label: "Quiet resentment", ref: "Resentment often shows up where your limits have been ignored too long." },
-                { id: 'lostSelf', label: "Losing myself", ref: "You are allowed to return to the woman underneath all the roles." },
-                { id: 'strong', label: "Being strong for everyone", ref: "You do not have to prove strength by never needing support." },
-                { id: 'decisions', label: "Too many decisions", ref: "Decision fatigue is real. You are allowed to choose less right now." },
-                { id: 'space', label: "Not having space to breathe", ref: "You are allowed to need room to hear yourself think." }
-            ],
-            feelings: [
-                { id: 'racing', label: "I feel like my mind will not stop racing.", root: "overstimulation" },
-                { id: 'tense', label: "I feel tense in my body.", root: "hypervigilance" },
-                { id: 'drained', label: "I feel emotionally drained.", root: "burnout" },
-                { id: 'behind_feel', label: "I feel behind on everything.", root: "perfectionism" },
-                { id: 'guilty_feel', label: "I feel guilty when I rest.", root: "conditioning" },
-                { id: 'needed', label: "I feel like everyone needs something from me.", root: "boundaries" },
-                { id: 'snap', label: "I feel like I am about to snap.", root: "overwhelm" },
-                { id: 'disconnected', label: "I feel disconnected from myself.", root: "identity" },
-                { id: 'notenough', label: "I feel like I am doing everything but still not enough.", root: "worth" },
-                { id: 'moment', label: "I just need a moment to breathe.", root: "space" }
-            ],
-            permissions: [
-                { id: 'rest', label: "Rest", main: "Today, I give myself permission to rest before my body has to beg for it.", act: "Sit down for five minutes without multitasking." },
-                { id: 'no', label: "Saying no", main: "Today, I give myself permission to say no without turning it into an apology.", act: "Pause before giving one automatic yes today." },
-                { id: 'help', label: "Asking for help", main: "Today, I give myself permission to ask for help before I disappear under the weight of doing it all.", act: "Ask one person for one specific kind of help." },
-                { id: 'slow', label: "Slowing down", main: "Today, I give myself permission to move slowly without calling it failure.", act: "Do the next task at half speed and breathe while doing it." },
-                { id: 'fix', label: "Not fixing everything", main: "Today, I give myself permission to stop being the place where everyone else’s problems land.", act: "Let one person solve their own problem today." },
-                { id: 'break', label: "Taking a break", main: "Today, I give myself permission to pause and step completely away.", act: "Leave the room you are currently in and take ten deep breaths." },
-                { id: 'honest', label: "Being honest", main: "Today, I give myself permission to be honest about my actual capacity.", act: "Say 'I don't have the bandwidth for that right now' to one request." },
-                { id: 'guilt_perm', label: "Letting go of guilt", main: "Today, I give myself permission to let go of guilt and choose peace.", act: "Notice one guilty thought and gently say, 'I am allowed to have needs.'" },
-                { id: 'support', label: "Needing support", main: "Today, I give myself permission to lean on others without feeling weak.", act: "Text a friend and say, 'I'm having a hard day.'" },
-                { id: 'peace', label: "Protecting my peace", main: "Today, I give myself permission to protect my peace without explaining why I need it.", act: "Mute one notification or step away from one draining conversation." },
-                { id: 'less', label: "Doing less", main: "Today, I give myself permission to do less and still be completely enough.", act: "Cross one non-essential item off your to-do list today." },
-                { id: 'tomorrow', label: "Starting again tomorrow", main: "Today, I give myself permission to stop for now and begin again tomorrow.", act: "Close the laptop or put the task away for the rest of the evening." },
-                { id: 'feelings', label: "Feeling my feelings", main: "Today, I give myself permission to feel what I feel without rushing myself into being okay.", act: "Write one honest sentence about what you feel right now." },
-                { id: 'unavailable', label: "Not being available", main: "Today, I give myself permission to be unavailable to everyone but myself.", act: "Put your phone on Do Not Disturb for 30 minutes." },
-                { id: 'myself', label: "Choosing myself", main: "Today, I give myself permission to come back to the woman underneath all the roles.", act: "Do one small thing that reminds you that you exist too." }
-            ],
-            tones: [
-                { id: 'gentle', label: "Soft & Gentle (Tender validation)" },
-                { id: 'strong', label: "Fierce & Strong (Boundary setting)" },
-                { id: 'grounding', label: "Calm & Grounding (Somatic focus)" },
-                { id: 'poetic', label: "Poetic & Deep (Metaphorical)" },
-                { id: 'faith', label: "Faith-friendly (Grace & Peace)" },
-                { id: 'simple', label: "Simple & Direct" }
-            ],
-            validations: {
-                overstimulation: "You do not have to solve your whole life in one breath. Your mind is allowed to quiet.",
-                hypervigilance: "Your body is allowed to stop bracing. You are safe to soften here.",
-                burnout: "You are not empty because you failed. You are empty because you have been pouring for too long.",
-                perfectionism: "You are not behind as a person. You are carrying more than one day was meant to hold.",
-                conditioning: "You are not lazy for needing rest. You are human for needing care.",
-                boundaries: "You can love people deeply without becoming the place where every need lands.",
-                overwhelm: "It makes sense that you are overwhelmed. You were not meant to carry this much.",
-                identity: "You are still in there, underneath the roles, the lists, and the expectations.",
-                worth: "Your worth is not measured by how much you get done for everyone else.",
-                space: "One small pause is enough for right now.",
-                default: "Your needs matter, too."
-            },
-            remixes: {
-                softer: { pre: "I gently grant myself permission to ", valMod: "You are allowed to be tender with yourself today." },
-                stronger: { pre: "I fiercely claim my right to ", valMod: "My limits are not a failure. They protect what I have left to give." },
-                poetic: { pre: "Let it be known: I grant my soul permission to ", valMod: "Like the changing seasons, I too am allowed to pause and undo." }
-            },
-            friendWho: [
-                { id: 'friend', label: "My friend" }, { id: 'sister', label: "My sister" }, { id: 'daughter', label: "My daughter" },
-                { id: 'tired', label: "A tired mom" }, { id: 'carrying', label: "A woman carrying too much" }, { id: 'starting', label: "Someone starting over" },
-                { id: 'rest', label: "Someone who needs rest" }, { id: 'boundary', label: "Someone who needs a boundary" }
-            ],
-            friendNeed: [
-                { id: 'rest', label: "She can rest", text: "You are allowed to rest before your body begs for it." },
-                { id: 'no', label: "She can say no", text: "You are allowed to say no without apologizing." },
-                { id: 'notfailing', label: "She is not failing", text: "You are not failing. You are just carrying a very heavy load." },
-                { id: 'support', label: "She is allowed to need support", text: "You are allowed to need support before you fall apart." },
-                { id: 'tomorrow', label: "She can start again tomorrow", text: "You are allowed to leave it unfinished and begin again tomorrow." },
-                { id: 'peace', label: "Her peace matters", text: "Your peace matters more than keeping everyone else comfortable." },
-                { id: 'enough', label: "She is still enough", text: "You are still enough, even when you cannot do it all." }
-            ],
-            daily: [
-                "You are allowed to move slowly today. Not everything urgent is sacred.",
-                "You are allowed to rest before resentment.",
-                "You are allowed to answer later.",
-                "You are allowed to leave one thing unfinished.",
-                "You are allowed to need quiet.",
-                "You are allowed to ask for help.",
-                "You are allowed to protect your peace.",
-                "You are allowed to stop proving you are strong by never needing anything.",
-                "You are allowed to begin again tomorrow.",
-                "You are allowed to be a person, not just the one who keeps everything moving."
-            ]
-        };
+    <div class="welcome-points reveal-2">
+      <p>✨ You are allowed to rest.</p>
+      <p>✨ You are allowed to need support.</p>
+      <p>✨ You are allowed to stop carrying it all.</p>
+    </div>
 
-        /* --------------------------------------------------------------------------
-           2. APP STATE & JOURNEY MANAGER
-           -------------------------------------------------------------------------- */
-        class JourneyManager {
-            constructor() {
-                this.selections = {};
-                this.flowType = 'personal'; 
-                this.generatedData = { main: '', support: '', reflection: '', act: '' };
-                this.initGrids();
-            }
+    <div class="reveal-3 action-row">
+      <button class="btn" onclick="startPersonalFlow()">Create My Permission Slip</button>
+      <button class="btn btn-outline" onclick="startFriendFlow()">Make One For a Friend</button>
+    </div>
 
-            initGrids() {
-                this.buildGrid('grid-carrying', contentDB.carrying, 'carrying', 'btn-carrying');
-                this.buildGrid('grid-feeling', contentDB.feelings, 'feeling', 'btn-feeling');
-                this.buildGrid('grid-permission', contentDB.permissions, 'permission', 'btn-permission');
-                this.buildGrid('grid-tone', contentDB.tones, 'tone', 'btn-tone');
-                this.buildGrid('grid-friend-who', contentDB.friendWho, 'friendWho', 'btn-friend-who');
-                this.buildGrid('grid-friend-need', contentDB.friendNeed, 'friendNeed', 'btn-friend-need');
-            }
+    <div class="t-micro reveal-3">Takes less than 2 minutes. Nothing is saved unless you choose to save it.</div>
+  </section>
 
-            buildGrid(containerId, dataArray, type, btnId) {
-                const container = document.getElementById(containerId);
-                if (!container) return;
-                container.innerHTML = '';
-                dataArray.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'option-card';
-                    div.textContent = item.label;
-                    div.onclick = () => {
-                        container.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-                        div.classList.add('selected');
-                        this.selections[type] = item.id;
-                        if(btnId) document.getElementById(btnId).disabled = false;
-                        
-                        if(type === 'feeling') document.getElementById('msg-feeling').style.display = 'block';
-                        if(type === 'permission') document.getElementById('msg-permission').style.display = 'block';
-                    };
-                    container.appendChild(div);
-                });
-            }
+  <!-- SCREEN 2: BREATH -->
+  <section id="screen-breath" class="screen">
+    <h2 class="t-heading reveal-1">Before we begin.</h2>
+    <p class="t-subtitle reveal-2">Place a hand on your chest. Let’s take three breaths together so your body knows it can arrive here.</p>
 
-            next(screenId, stepText) {
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                
-                const prog = document.getElementById('progressIndicator');
-                if (stepText) {
-                    prog.classList.add('visible');
-                    prog.textContent = stepText;
-                } else {
-                    prog.classList.remove('visible');
-                }
+    <div class="somatic-container reveal-3" id="breathController">
+      <div class="breathe-ring breathe-ring-1"></div>
+      <div class="breathe-ring breathe-ring-2"></div>
+      <div class="breathe-ring breathe-ring-3"></div>
+      <div class="breathe-instruction" id="breathText">Ready.</div>
+    </div>
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setTimeout(() => { 
-                    const nxt = document.getElementById(screenId);
-                    if(nxt) nxt.classList.add('active'); 
-                }, 50);
-            }
+    <div class="reveal-4 action-row stacked-center">
+      <button class="btn" id="btnStartBreath" onclick="startBreathing()">Start Breathing</button>
+      <button class="btn-text" id="btnSkipBreath" onclick="nextScreen('screen-release', 'Step 2 of 7', 28)">Skip this step</button>
+    </div>
+  </section>
 
-            startPersonalFlow() { this.flowType = 'personal'; this.next('screen-breath', 'Step 1 of 7'); }
-            startFriendFlow() { this.flowType = 'friend'; this.next('screen-friend-who', 'Step 1 of 2'); }
-            
-            startBreathing() {
-                const btn = document.getElementById('btnStartBreath');
-                const skipBtn = document.getElementById('btnSkipBreath');
-                const text = document.getElementById('breathText');
-                const container = document.getElementById('breathController');
-                
-                btn.style.display = 'none'; skipBtn.style.display = 'none';
+  <!-- SCREEN 3: RELEASE -->
+  <section id="screen-release" class="screen">
+    <h2 class="t-heading reveal-1">What is heavy right now?</h2>
+    <p class="t-subtitle reveal-2">Name the expectation, the worry, or the pressure you are carrying today. Don’t overthink it.</p>
 
-                let cycle = 0; const maxCycles = 3;
-                const breathLoop = () => {
-                    if (cycle >= maxCycles) {
-                        text.textContent = "Thank you for pausing.";
-                        container.className = 'somatic-container';
-                        setTimeout(() => this.next('screen-release', 'Step 2 of 7'), 2000);
-                        return;
-                    }
-                    cycle++;
-                    text.textContent = "Inhale deeply...";
-                    container.className = 'somatic-container inhale';
-                    setTimeout(() => {
-                        text.textContent = "Hold gently...";
-                        container.className = 'somatic-container hold';
-                        setTimeout(() => {
-                            text.textContent = "Exhale slowly...";
-                            container.className = 'somatic-container exhale';
-                            setTimeout(() => { breathLoop(); }, 6000);
-                        }, 2000);
-                    }, 4000);
-                };
-                breathLoop();
-            }
+    <div class="reveal-3">
+      <textarea id="heavyInput" class="heavy-textarea" placeholder="I am carrying..." maxlength="220"></textarea>
+      <div id="charCounter" class="t-micro">0 / 220</div>
+    </div>
 
-            performRelease() {
-                const input = document.getElementById('heavyInput');
-                if (!input.value.trim()) { input.placeholder = "Please type something, even just a single word..."; return; }
-                
-                const btn = document.getElementById('btnRelease');
-                btn.disabled = true; btn.textContent = "Releasing...";
-                input.classList.add('dissolving');
-                
-                setTimeout(() => {
-                    input.style.display = 'none'; btn.style.display = 'none';
-                    document.getElementById('releaseMessage').style.display = 'block';
-                }, 1500);
-            }
+    <div class="reveal-4 action-row">
+      <button class="btn" id="btnRelease" onclick="performRelease()">Let It Go</button>
+      <button class="btn btn-outline" onclick="skipRelease()">I’d rather skip writing</button>
+    </div>
 
-            generatePersonalCard() {
-                const carryObj = contentDB.carrying.find(c => c.id === this.selections.carrying) || contentDB.carrying[0];
-                const feelObj = contentDB.feelings.find(f => f.id === this.selections.feeling) || contentDB.feelings[0];
-                const permObj = contentDB.permissions.find(p => p.id === this.selections.permission) || contentDB.permissions[0];
-                
-                let mainText = permObj.main;
-                let supportText = contentDB.validations[feelObj.root] || contentDB.validations.default;
+    <div id="releaseMessage" class="release-message">
+      <p class="t-heading release-heading">It is safe to set that down.</p>
+      <button class="btn btn-outline release-next" onclick="nextScreen('screen-name', 'Step 3 of 7', 42)">Take the next step</button>
+    </div>
+  </section>
 
-                if (this.selections.tone === 'faith') supportText = "I am allowed to lay my burdens down. Grace meets me here.";
+  <!-- SCREEN 4: NAME -->
+  <section id="screen-name" class="screen">
+    <h2 class="t-heading reveal-1">Let’s make this feel personal.</h2>
+    <p class="t-prompt reveal-2">What name would you like on your permission slip?</p>
 
-                this.generatedData = {
-                    main: mainText,
-                    support: supportText,
-                    reflection: `${carryObj.ref} ${supportText}`,
-                    act: permObj.act
-                };
+    <div class="reveal-3">
+      <input type="text" id="userName" class="input-clean" placeholder="Your name" maxlength="35">
+      <div class="t-micro">You can leave this blank if you prefer.</div>
+      <div class="action-row">
+        <button class="btn" onclick="saveNameAndNext()">Continue</button>
+        <button class="btn btn-outline" onclick="document.getElementById('userName').value=''; saveNameAndNext()">Skip Name</button>
+      </div>
+    </div>
+  </section>
+    <!-- SCREEN 5: CARRYING -->
+  <section id="screen-carrying" class="screen">
+    <h2 class="t-heading reveal-1">What are you carrying today?</h2>
+    <p class="t-prompt reveal-2">Choose the weight that feels closest.</p>
+    <div class="selection-grid reveal-3" id="grid-carrying"></div>
+    <div class="reveal-4 action-row">
+      <button class="btn" id="btn-carrying" disabled onclick="nextScreen('screen-feeling', 'Step 5 of 7', 70)">Continue</button>
+      <button class="btn btn-outline" onclick="randomizeCurrentGrid('carrying')">Choose for me</button>
+    </div>
+  </section>
 
-                window.studio.render(this.generatedData, this.selections.name);
+  <!-- SCREEN 6: FEELING -->
+  <section id="screen-feeling" class="screen">
+    <h2 class="t-heading reveal-1">Underneath that weight, how are you feeling?</h2>
+    <p class="t-prompt reveal-2">There is no wrong answer.</p>
+    <div class="selection-grid reveal-3" id="grid-feeling"></div>
 
-                // Restore Personal Controls
-                document.getElementById('privateReflectionPanel').style.display = 'block';
-                document.getElementById('deckControlGroup').style.display = 'block';
-                document.getElementById('btnSaveArchive').style.display = 'inline-flex';
+    <div id="msg-feeling" class="msg-validation">
+      That makes sense. You do not have to explain your exhaustion here.
+    </div>
 
-                this.runLoadingSequence();
-            }
+    <div class="reveal-4 action-row">
+      <button class="btn" id="btn-feeling" disabled onclick="nextScreen('screen-permission', 'Step 6 of 7', 84)">Continue</button>
+      <button class="btn btn-outline" onclick="randomizeCurrentGrid('feeling')">Choose for me</button>
+    </div>
+  </section>
 
-            generateFriendCard() {
-                const whoObj = contentDB.friendWho.find(w => w.id === this.selections.friendWho) || contentDB.friendWho[0];
-                const needObj = contentDB.friendNeed.find(n => n.id === this.selections.friendNeed) || contentDB.friendNeed[0];
-                
-                this.generatedData = { main: needObj.text, support: `For ${whoObj.label.toLowerCase()}`, reflection: "", act: "Send this card to her." };
+  <!-- SCREEN 7: PERMISSION -->
+  <section id="screen-permission" class="screen">
+    <h2 class="t-heading reveal-1">What do you need permission for today?</h2>
+    <p class="t-prompt reveal-2">Choose what your heart needs most.</p>
+    <div class="selection-grid reveal-3" id="grid-permission"></div>
 
-                window.studio.render(this.generatedData, "");
-                
-                // Hide Personal Controls
-                document.getElementById('privateReflectionPanel').style.display = 'none';
-                document.getElementById('deckControlGroup').style.display = 'none';
-                document.getElementById('btnSaveArchive').style.display = 'none';
+    <div id="msg-permission" class="msg-validation">
+      You are allowed to need that.
+    </div>
 
-                this.runLoadingSequence();
-            }
+    <div class="reveal-4 action-row">
+      <button class="btn" id="btn-permission" disabled onclick="nextScreen('screen-tone', 'Step 7 of 7', 96)">Continue</button>
+      <button class="btn btn-outline" onclick="randomizeCurrentGrid('permission')">Choose for me</button>
+    </div>
+  </section>
 
-            runLoadingSequence() {
-                this.next('screen-loading', null); // Trigger loading screen immediately
-                const phrases = ["Gathering words...", "Creating space...", "Breathe..."];
-                const textEl = document.getElementById('loadingPhrases');
-                let pIdx = 0;
-                
-                const loadInt = setInterval(() => {
-                    textEl.style.opacity = 0;
-                    setTimeout(() => {
-                        pIdx++;
-                        if (pIdx < phrases.length) { textEl.textContent = phrases[pIdx]; textEl.style.opacity = 1; }
-                    }, 400);
-                }, 2000);
+  <!-- SCREEN 8: TONE -->
+  <section id="screen-tone" class="screen">
+    <h2 class="t-heading reveal-1">How do you need the words to feel?</h2>
+    <p class="t-prompt reveal-2">Choose the tone of support that feels best.</p>
+    <div class="selection-grid single-col reveal-3" id="grid-tone"></div>
 
-                setTimeout(() => { clearInterval(loadInt); this.next('screen-studio', null); }, phrases.length * 2000);
-            }
+    <div class="reveal-4 action-row">
+      <button class="btn" id="btn-tone" disabled onclick="generatePersonalCard()">Enter the Studio</button>
+      <button class="btn btn-outline" onclick="randomizeCurrentGrid('tone')">Surprise me</button>
+    </div>
+  </section>
 
-            saveToArchive() {
-                const slip = {
-                    date: new Date().toLocaleDateString(),
-                    main: this.generatedData.main,
-                    action: this.generatedData.act || "N/A"
-                };
-                let archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
-                archive.unshift(slip);
-                localStorage.setItem('rmc_archive', JSON.stringify(archive));
-                this.next('screen-cta', null);
-            }
+  <!-- FRIEND FLOW -->
+  <section id="screen-friend-who" class="screen">
+    <h2 class="t-heading reveal-1">Who is this for?</h2>
+    <p class="t-prompt reveal-2">Choose who needs this reminder today.</p>
+    <div class="selection-grid single-col reveal-3" id="grid-friend-who"></div>
+    <div class="action-row">
+      <button id="btn-friend-who" class="btn reveal-4" disabled onclick="nextScreen('screen-friend-need', 'Step 2 of 2', 75)">Continue</button>
+    </div>
+  </section>
+
+  <section id="screen-friend-need" class="screen">
+    <h2 class="t-heading reveal-1">What does she need to hear?</h2>
+    <p class="t-prompt reveal-2">Choose the words you want to give her.</p>
+    <div class="selection-grid reveal-2" id="grid-friend-need"></div>
+    <div class="action-row">
+      <button id="btn-friend-need" class="btn reveal-3" disabled onclick="generateFriendCard()">Create Her Card</button>
+      <button class="btn btn-outline" onclick="randomizeCurrentGrid('friendNeed')">Choose for me</button>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section id="screen-loading" class="screen">
+    <div class="premium-loader">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-center"></div>
+    </div>
+    <h2 class="loading-text" id="loadingPhrases">Gathering your words...</h2>
+    <div class="t-micro">One small permission can open a little space.</div>
+  </section>
+
+  <!-- STUDIO -->
+  <section id="screen-studio" class="screen studio-screen">
+    <span class="controls-kicker">Your calm, made visible</span>
+    <h2 class="t-display studio-title">Your Artwork</h2>
+
+    <div class="studio-layout">
+
+      <div class="canvas-area">
+        <div class="canvas-backdrop" id="captureTarget">
+
+          <div id="artCard" class="art-card theme-morning">
+            <div class="art-glow"></div>
+            <div class="art-orb orb-one"></div>
+            <div class="art-orb orb-two"></div>
+            <div class="art-leaf leaf-one"></div>
+            <div class="art-texture"></div>
+
+            <div class="art-content">
+              <div class="art-header">
+                <span class="art-label" id="outLabel">Permission Slip</span>
+                <span id="outName" class="art-name"></span>
+              </div>
+
+              <div class="art-body">
+                <h3 id="outMain" class="art-main-text">Main text</h3>
+                <p id="outSupport" class="art-sub-text">Support text</p>
+              </div>
+
+              <div class="art-footer">
+                <div class="art-divider"></div>
+                <span class="art-brand">Rachel McBride Coaching</span>
+                <span class="art-tagline">Release the pressure. Restore your calm.</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="miniDeckContainer">
+            <div id="artCardAct" class="art-card theme-morning">
+              <div class="art-glow"></div>
+              <div class="art-orb orb-one"></div>
+              <div class="art-texture"></div>
+              <div class="art-content">
+                <div class="art-header"><span class="art-label">Tiny Act</span></div>
+                <div class="art-body">
+                  <h3 id="outActMain" class="art-main-text mini-main">Act text</h3>
+                </div>
+                <div class="art-footer">
+                  <div class="art-divider"></div>
+                  <span class="art-brand">Rachel McBride</span>
+                  <span class="art-tagline">One gentle next step</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="artCardRem" class="art-card theme-morning">
+              <div class="art-glow"></div>
+              <div class="art-orb orb-two"></div>
+              <div class="art-texture"></div>
+              <div class="art-content">
+                <div class="art-header"><span class="art-label">Reminder</span></div>
+                <div class="art-body">
+                  <h3 id="outRemMain" class="art-main-text">Rem text</h3>
+                </div>
+                <div class="art-footer">
+                  <div class="art-divider"></div>
+                  <span class="art-brand">Rachel McBride</span>
+                  <span class="art-tagline">Return to yourself</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="controls-area reveal-2">
+
+        <div class="control-group">
+          <div class="control-title">Visual Theme</div>
+          <div class="chip-grid">
+            <button class="chip active" onclick="setTheme('theme-morning', this)">Morning Light</button>
+            <button class="chip" onclick="setTheme('theme-sage', this)">Sage Garden</button>
+            <button class="chip" onclick="setTheme('theme-terra', this)">Terracotta Sunset</button>
+            <button class="chip" onclick="setTheme('theme-quiet', this)">Quiet Room</button>
+            <button class="chip" onclick="setTheme('theme-paper', this)">Paper & Ink</button>
+            <button class="chip" onclick="setTheme('theme-ethereal', this)">Deep Exhale</button>
+            <button class="chip" onclick="setTheme('theme-faith', this)">Faith & Grace</button>
+            <button class="chip" onclick="setTheme('theme-strong', this)">Strong Boundary</button>
+            <button class="chip" onclick="setTheme('theme-rose', this)">Soft Rose</button>
+            <button class="chip" onclick="setTheme('theme-night', this)">Quiet Night</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-title">Canvas Format</div>
+          <div class="chip-grid">
+            <button class="chip active" onclick="setFormat('story', this)">Story / Wallpaper</button>
+            <button class="chip" onclick="setFormat('post', this)">Instagram Post</button>
+            <button class="chip" onclick="setFormat('print', this)">Printable 4x6</button>
+            <button class="chip" onclick="setFormat('text', this)">Horizontal</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-title">Word Alchemy</div>
+          <div class="chip-grid">
+            <button class="chip" onclick="remixWords('softer')">Make it Softer</button>
+            <button class="chip" onclick="remixWords('stronger')">Make it Fiercer</button>
+            <button class="chip" onclick="remixWords('poetic')">Make it Poetic</button>
+            <button class="chip" onclick="remixWords('faith')">Add Grace</button>
+            <button class="chip" onclick="remixWords('short')">Shorten</button>
+            <button class="chip" onclick="remixWords('reset')">Original Words</button>
+          </div>
+        </div>
+
+        <div class="control-group" id="deckControlGroup">
+          <div class="control-title">Advanced Set</div>
+          <div class="chip-grid">
+            <button class="chip" id="btnToggleDeck" onclick="toggleMiniDeck()">Create Matching Mini Deck</button>
+          </div>
+        </div>
+
+        <div class="studio-actions">
+          <button class="btn" id="btnDownload" onclick="downloadArtwork()">Download High-Res Artwork</button>
+          <div class="split-actions">
+            <button class="btn btn-outline" onclick="openShareModal()">Share Text</button>
+            <button class="btn btn-outline" id="btnSaveArchive" onclick="saveToArchive()">Save to Archive</button>
+          </div>
+          <button class="btn btn-ghost" onclick="nextScreen('screen-cta', null, 100)">Continue</button>
+        </div>
+
+        <div id="privateReflectionPanel" class="reflection-panel">
+          <div class="ref-label">Your Private Reflection</div>
+          <div id="refText" class="ref-text"></div>
+
+          <div class="ref-label" style="margin-top: 1.6rem;">Tiny Act of Permission</div>
+          <div id="actText" class="ref-text" style="border-color: var(--sage); color: var(--sage-dark); margin-bottom: 0;"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+    <!-- CTA -->
+  <section id="screen-cta" class="screen">
+    <h2 class="t-display">You are allowed to need care, too.</h2>
+    <p class="t-subtitle">
+      If you are tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you release pressure, regulate your nervous system, and feel like yourself again.
+    </p>
+
+    <div class="cta-card">
+      <h3 class="t-heading" style="color: var(--terracotta); font-size: 1.9rem;">Stay Connected</h3>
+      <p style="color: var(--warm-brown); margin-bottom: 2rem; font-size: 0.95rem;">
+        Join my email list for gentle resets, nervous system tools, and coaching insights sent straight to your inbox.
+      </p>
+
+      <form class="email-form" onsubmit="event.preventDefault(); showToast('This form is ready to connect to your email platform.');">
+        <input type="text" class="input-clean" placeholder="First Name" required>
+        <input type="email" class="input-clean" placeholder="Email Address" required>
+        <button type="submit" class="btn">Send me support</button>
+      </form>
+    </div>
+
+    <div class="action-row">
+      <a href="mailto:rachel@rachelmcbridecoaching.com" class="btn">Book a Call</a>
+      <a href="https://rachelmcbridecoaching.com" target="_blank" class="btn btn-outline" rel="noopener">Explore Coaching</a>
+    </div>
+
+    <button class="btn-text" style="margin-top: 3rem;" onclick="location.reload()">Create Another Slip</button>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section id="screen-archive" class="screen" style="max-width: 1200px;">
+    <h2 class="t-display">My Archive</h2>
+    <p class="t-subtitle">Your private collection of permissions. This only saves on this device.</p>
+
+    <div id="archiveContainer" class="archive-grid"></div>
+
+    <div class="action-row" style="margin-top: 4rem;">
+      <button class="btn btn-outline" onclick="location.reload()">Create a New Slip</button>
+      <button class="btn-text" onclick="clearArchive()">Clear Archive</button>
+    </div>
+  </section>
+
+</main>
+
+<div id="shareModal" class="modal-overlay" onclick="closeShareModal(event)">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close" onclick="closeShareModal(event, true)">&times;</button>
+    <h3 style="margin-bottom: 0.5rem;">Share the Calm</h3>
+    <p style="font-size: 0.9rem; color: var(--sage-dark); margin-bottom: 1.5rem;">Copy a pre-written caption or text message.</p>
+
+    <div style="text-align: left; margin-bottom: 1rem;">
+      <span class="t-label">For Instagram / Social</span>
+      <div id="copySocial" class="copy-box">
+        I needed this reminder today. Maybe someone else does too. 🤎 Created with The Permission Slip Studio by Rachel McBride Coaching.
+      </div>
+      <button class="btn-text" style="padding-left:0;" onclick="execCopy('social', this)">Copy Caption</button>
+    </div>
+
+    <div style="text-align: left;">
+      <span class="t-label">For a Friend</span>
+      <div id="copyTextMsg" class="copy-box">
+        Hey, I saw this and thought of you. You don’t have to carry everything alone. 🤎
+      </div>
+      <button class="btn-text" style="padding-left:0;" onclick="execCopy('text', this)">Copy Text Message</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast">Copied.</div>
+
+<footer>
+  <div class="f-brand">Rachel McBride Coaching</div>
+  <div class="f-tag">Release the pressure. Restore your calm.</div>
+  <p class="f-disc">
+    This tool is designed for general wellness encouragement and reflection. It is not a substitute for medical, crisis, or mental health care.
+  </p>
+</footer>
+
+<script>
+/* ==========================================================================
+   1. CONTENT DATABASE
+   ========================================================================== */
+
+const contentDB = {
+  carrying: [
+    { id: 'mentalLoad', label: "The heavy mental load", ref: "You have been carrying the invisible list for so long that even rest can feel like another task." },
+    { id: 'everyoneNeedsMe', label: "Everyone needing me", ref: "It makes sense that you feel stretched thin when so many people keep reaching for you." },
+    { id: 'guilt', label: "Deep guilt", ref: "Guilt can make care feel selfish, but your needs are not a betrayal." },
+    { id: 'pressure', label: "Pressure to perform", ref: "You do not have to perform your way into being worthy." },
+    { id: 'peacekeeping', label: "Trying to keep the peace", ref: "You are allowed to stop abandoning yourself to keep everything calm." },
+    { id: 'behind', label: "Feeling chronically behind", ref: "One unfinished day does not mean you are failing." },
+    { id: 'disappointing', label: "Fear of disappointing people", ref: "You can disappoint an expectation without becoming a disappointment." },
+    { id: 'exhaustion', label: "Bone-deep exhaustion", ref: "Your tiredness is information, not a character flaw." },
+    { id: 'resentment', label: "Quiet resentment", ref: "Resentment often shows up where your limits have been ignored too long." },
+    { id: 'lostSelf', label: "Losing myself", ref: "You are allowed to return to the woman underneath all the roles." },
+    { id: 'strong', label: "Being strong for everyone", ref: "You do not have to prove strength by never needing support." },
+    { id: 'decisions', label: "Too many decisions", ref: "Decision fatigue is real. You are allowed to choose less right now." },
+    { id: 'space', label: "Not having space to breathe", ref: "You are allowed to need room to hear yourself think." }
+  ],
+
+  feelings: [
+    { id: 'racing', label: "I feel like my mind will not stop racing.", root: "overstimulation" },
+    { id: 'tense', label: "I feel tense in my body.", root: "hypervigilance" },
+    { id: 'drained', label: "I feel emotionally drained.", root: "burnout" },
+    { id: 'behind_feel', label: "I feel behind on everything.", root: "perfectionism" },
+    { id: 'guilty_feel', label: "I feel guilty when I rest.", root: "conditioning" },
+    { id: 'needed', label: "I feel like everyone needs something from me.", root: "boundaries" },
+    { id: 'snap', label: "I feel like I am about to snap.", root: "overwhelm" },
+    { id: 'disconnected', label: "I feel disconnected from myself.", root: "identity" },
+    { id: 'notenough', label: "I feel like I am doing everything but still not enough.", root: "worth" },
+    { id: 'moment', label: "I just need a moment to breathe.", root: "space" }
+  ],
+
+  permissions: [
+    { id: 'rest', label: "Rest", short: "rest", main: "Today, I give myself permission to rest before my body has to beg for it.", act: "Sit down for five minutes without multitasking." },
+    { id: 'no', label: "Saying no", short: "say no", main: "Today, I give myself permission to say no without turning it into an apology.", act: "Pause before giving one automatic yes today." },
+    { id: 'help', label: "Asking for help", short: "ask for help", main: "Today, I give myself permission to ask for help before I disappear under the weight of doing it all.", act: "Ask one person for one specific kind of help." },
+    { id: 'slow', label: "Slowing down", short: "move slowly", main: "Today, I give myself permission to move slowly without calling it failure.", act: "Do the next task at half speed and breathe while doing it." },
+    { id: 'fix', label: "Not fixing everything", short: "stop fixing everything", main: "Today, I give myself permission to stop being the place where everyone else’s problems land.", act: "Let one person solve their own problem today." },
+    { id: 'break', label: "Taking a break", short: "take a break", main: "Today, I give myself permission to pause and step completely away.", act: "Leave the room you are currently in and take ten deep breaths." },
+    { id: 'honest', label: "Being honest", short: "be honest", main: "Today, I give myself permission to be honest about my actual capacity.", act: "Say, “I don’t have the bandwidth for that right now,” to one request." },
+    { id: 'guilt_perm', label: "Letting go of guilt", short: "release guilt", main: "Today, I give myself permission to let go of guilt and choose peace.", act: "Notice one guilty thought and gently say, “I am allowed to have needs.”" },
+    { id: 'support', label: "Needing support", short: "need support", main: "Today, I give myself permission to lean on others without feeling weak.", act: "Text a friend and say, “I’m having a hard day.”" },
+    { id: 'peace', label: "Protecting my peace", short: "protect my peace", main: "Today, I give myself permission to protect my peace without explaining why I need it.", act: "Mute one notification or step away from one draining conversation." },
+    { id: 'less', label: "Doing less", short: "do less", main: "Today, I give myself permission to do less and still be completely enough.", act: "Cross one non-essential item off your to-do list today." },
+    { id: 'tomorrow', label: "Starting again tomorrow", short: "begin again tomorrow", main: "Today, I give myself permission to stop for now and begin again tomorrow.", act: "Close the laptop or put the task away for the rest of the evening." },
+    { id: 'feelings', label: "Feeling my feelings", short: "feel what I feel", main: "Today, I give myself permission to feel what I feel without rushing myself into being okay.", act: "Write one honest sentence about what you feel right now." },
+    { id: 'unavailable', label: "Not being available", short: "be unavailable", main: "Today, I give myself permission to be unavailable to everyone but myself.", act: "Put your phone on Do Not Disturb for 30 minutes." },
+    { id: 'myself', label: "Choosing myself", short: "choose myself", main: "Today, I give myself permission to come back to the woman underneath all the roles.", act: "Do one small thing that reminds you that you exist too." }
+  ],
+
+  tones: [
+    { id: 'gentle', label: "Soft & Gentle — tender validation" },
+    { id: 'strong', label: "Fierce & Strong — boundary setting" },
+    { id: 'grounding', label: "Calm & Grounding — body-based support" },
+    { id: 'poetic', label: "Poetic & Deep — metaphorical and emotional" },
+    { id: 'faith', label: "Faith-friendly — grace and peace" },
+    { id: 'simple', label: "Simple & Direct — clear and uncluttered" }
+  ],
+
+  validations: {
+    overstimulation: "You do not have to solve your whole life in one breath. Your mind is allowed to quiet.",
+    hypervigilance: "Your body is allowed to stop bracing. You are safe to soften here.",
+    burnout: "You are not empty because you failed. You are empty because you have been pouring for too long.",
+    perfectionism: "You are not behind as a person. You are carrying more than one day was meant to hold.",
+    conditioning: "You are not lazy for needing rest. You are human for needing care.",
+    boundaries: "You can love people deeply without becoming the place where every need lands.",
+    overwhelm: "It makes sense that you are overwhelmed. You were not meant to carry this much.",
+    identity: "You are still in there, underneath the roles, the lists, and the expectations.",
+    worth: "Your worth is not measured by how much you get done for everyone else.",
+    space: "One small pause is enough for right now.",
+    default: "Your needs matter, too."
+  },
+
+  friendWho: [
+    { id: 'friend', label: "My friend" },
+    { id: 'sister', label: "My sister" },
+    { id: 'daughter', label: "My daughter" },
+    { id: 'tired', label: "A tired mom" },
+    { id: 'carrying', label: "A woman carrying too much" },
+    { id: 'starting', label: "Someone starting over" },
+    { id: 'rest', label: "Someone who needs rest" },
+    { id: 'boundary', label: "Someone who needs a boundary" }
+  ],
+
+  friendNeed: [
+    { id: 'rest', label: "She can rest", text: "You are allowed to rest before your body begs for it." },
+    { id: 'no', label: "She can say no", text: "You are allowed to say no without apologizing." },
+    { id: 'notfailing', label: "She is not failing", text: "You are not failing. You are just carrying a very heavy load." },
+    { id: 'support', label: "She is allowed to need support", text: "You are allowed to need support before you fall apart." },
+    { id: 'tomorrow', label: "She can start again tomorrow", text: "You are allowed to leave it unfinished and begin again tomorrow." },
+    { id: 'peace', label: "Her peace matters", text: "Your peace matters more than keeping everyone else comfortable." },
+    { id: 'enough', label: "She is still enough", text: "You are still enough, even when you cannot do it all." }
+  ],
+
+  daily: [
+    "You are allowed to move slowly today. Not everything urgent is sacred.",
+    "You are allowed to rest before resentment.",
+    "You are allowed to answer later.",
+    "You are allowed to leave one thing unfinished.",
+    "You are allowed to need quiet.",
+    "You are allowed to ask for help.",
+    "You are allowed to protect your peace.",
+    "You are allowed to stop proving you are strong by never needing anything.",
+    "You are allowed to begin again tomorrow.",
+    "You are allowed to be a person, not just the one who keeps everything moving."
+  ]
+};
+    /* ==========================================================================
+   2. APP STATE AND JOURNEY MANAGER
+   ========================================================================== */
+
+class JourneyManager {
+  constructor() {
+    this.selections = {};
+    this.flowType = 'personal';
+    this.generatedData = {
+      main: '',
+      support: '',
+      reflection: '',
+      act: '',
+      originalMain: '',
+      originalSupport: ''
+    };
+
+    this.initGrids();
+    this.bindTextCounters();
+  }
+
+  initGrids() {
+    this.buildGrid('grid-carrying', contentDB.carrying, 'carrying', 'btn-carrying');
+    this.buildGrid('grid-feeling', contentDB.feelings, 'feeling', 'btn-feeling');
+    this.buildGrid('grid-permission', contentDB.permissions, 'permission', 'btn-permission');
+    this.buildGrid('grid-tone', contentDB.tones, 'tone', 'btn-tone');
+    this.buildGrid('grid-friend-who', contentDB.friendWho, 'friendWho', 'btn-friend-who');
+    this.buildGrid('grid-friend-need', contentDB.friendNeed, 'friendNeed', 'btn-friend-need');
+  }
+
+  bindTextCounters() {
+    const input = document.getElementById('heavyInput');
+    const counter = document.getElementById('charCounter');
+
+    if (!input || !counter) return;
+
+    input.addEventListener('input', () => {
+      counter.textContent = `${input.value.length} / ${input.maxLength}`;
+    });
+  }
+
+  buildGrid(containerId, dataArray, type, btnId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    dataArray.forEach(item => {
+      const div = document.createElement('button');
+      div.type = 'button';
+      div.className = 'option-card';
+      div.textContent = item.label;
+      div.dataset.optionId = item.id;
+
+      div.onclick = () => {
+        this.selectOption(container, div, item, type, btnId);
+      };
+
+      container.appendChild(div);
+    });
+  }
+
+  selectOption(container, card, item, type, btnId) {
+    container.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+
+    this.selections[type] = item.id;
+
+    const button = document.getElementById(btnId);
+    if (button) button.disabled = false;
+
+    if (type === 'feeling') {
+      const feelObj = contentDB.feelings.find(f => f.id === item.id);
+      const validation = contentDB.validations[feelObj?.root] || contentDB.validations.default;
+      const msg = document.getElementById('msg-feeling');
+      msg.textContent = validation;
+      msg.style.display = 'block';
+    }
+
+    if (type === 'permission') {
+      document.getElementById('msg-permission').style.display = 'block';
+    }
+  }
+
+  randomize(type) {
+    const map = {
+      carrying: ['grid-carrying', contentDB.carrying, 'btn-carrying'],
+      feeling: ['grid-feeling', contentDB.feelings, 'btn-feeling'],
+      permission: ['grid-permission', contentDB.permissions, 'btn-permission'],
+      tone: ['grid-tone', contentDB.tones, 'btn-tone'],
+      friendWho: ['grid-friend-who', contentDB.friendWho, 'btn-friend-who'],
+      friendNeed: ['grid-friend-need', contentDB.friendNeed, 'btn-friend-need']
+    };
+
+    const selectedMap = map[type];
+    if (!selectedMap) return;
+
+    const [gridId, array, btnId] = selectedMap;
+    const item = array[Math.floor(Math.random() * array.length)];
+    const container = document.getElementById(gridId);
+    const card = container?.querySelector(`[data-option-id="${item.id}"]`);
+
+    if (container && card) {
+      this.selectOption(container, card, item, type, btnId);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  next(screenId, stepText, progress = 0) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+
+    const progressIndicator = document.getElementById('progressIndicator');
+    const progressText = document.getElementById('progressText');
+    const progressBar = document.getElementById('progressBar');
+
+    if (stepText) {
+      progressIndicator.classList.add('visible');
+      progressText.textContent = stepText;
+      progressBar.style.setProperty('--progress', progress);
+    } else {
+      progressIndicator.classList.remove('visible');
+      progressBar.style.setProperty('--progress', 0);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(() => {
+      const nextScreen = document.getElementById(screenId);
+      if (nextScreen) nextScreen.classList.add('active');
+    }, 60);
+  }
+
+  startPersonalFlow() {
+    this.flowType = 'personal';
+    this.next('screen-breath', 'Step 1 of 7', 14);
+  }
+
+  startFriendFlow() {
+    this.flowType = 'friend';
+    this.next('screen-friend-who', 'Step 1 of 2', 38);
+  }
+
+  startBreathing() {
+    const btn = document.getElementById('btnStartBreath');
+    const skipBtn = document.getElementById('btnSkipBreath');
+    const text = document.getElementById('breathText');
+    const container = document.getElementById('breathController');
+
+    btn.style.display = 'none';
+    skipBtn.style.display = 'none';
+
+    let cycle = 0;
+    const maxCycles = 3;
+
+    const breathLoop = () => {
+      if (cycle >= maxCycles) {
+        text.textContent = "Thank you for pausing.";
+        container.className = 'somatic-container';
+        setTimeout(() => this.next('screen-release', 'Step 2 of 7', 28), 1600);
+        return;
+      }
+
+      cycle++;
+      text.textContent = "Inhale deeply...";
+      container.className = 'somatic-container inhale';
+
+      setTimeout(() => {
+        text.textContent = "Hold gently...";
+        container.className = 'somatic-container hold';
+
+        setTimeout(() => {
+          text.textContent = "Exhale slowly...";
+          container.className = 'somatic-container exhale';
+
+          setTimeout(() => {
+            breathLoop();
+          }, 6000);
+        }, 2000);
+      }, 4000);
+    };
+
+    breathLoop();
+  }
+
+  performRelease() {
+    const input = document.getElementById('heavyInput');
+
+    if (!input.value.trim()) {
+      input.placeholder = "Even one word is enough...";
+      input.focus();
+      showToast('Write one word, or skip this step.');
+      return;
+    }
+
+    this.selections.release = input.value.trim();
+
+    const btn = document.getElementById('btnRelease');
+    btn.disabled = true;
+    btn.textContent = "Releasing...";
+
+    input.classList.add('dissolving');
+
+    setTimeout(() => {
+      input.style.display = 'none';
+      btn.style.display = 'none';
+      document.getElementById('charCounter').style.display = 'none';
+      document.getElementById('releaseMessage').style.display = 'block';
+    }, 1450);
+  }
+
+  skipRelease() {
+    this.selections.release = '';
+    this.next('screen-name', 'Step 3 of 7', 42);
+  }
+
+  generatePersonalCard() {
+    const carryObj = contentDB.carrying.find(c => c.id === this.selections.carrying) || contentDB.carrying[0];
+    const feelObj = contentDB.feelings.find(f => f.id === this.selections.feeling) || contentDB.feelings[0];
+    const permObj = contentDB.permissions.find(p => p.id === this.selections.permission) || contentDB.permissions[0];
+
+    let mainText = permObj.main;
+    let supportText = contentDB.validations[feelObj.root] || contentDB.validations.default;
+
+    if (this.selections.tone === 'faith') {
+      supportText = "You are allowed to lay your burdens down. Grace meets you here.";
+    }
+
+    if (this.selections.tone === 'strong') {
+      supportText = "Your limits are not selfish. They are how you protect what is still sacred in you.";
+    }
+
+    if (this.selections.tone === 'grounding') {
+      supportText = "Feel your feet. Loosen your jaw. Let this moment be smaller than your fear.";
+    }
+
+    if (this.selections.tone === 'poetic') {
+      supportText = "Even the earth rests between seasons. You are allowed to have seasons, too.";
+    }
+
+    if (this.selections.tone === 'simple') {
+      supportText = "You can pause. You can need help. You can do less today.";
+    }
+
+    this.generatedData = {
+      main: mainText,
+      support: supportText,
+      originalMain: mainText,
+      originalSupport: supportText,
+      reflection: `${carryObj.ref} ${supportText}`,
+      act: permObj.act,
+      shortAction: permObj.short
+    };
+
+    window.studio.render(this.generatedData, this.selections.name);
+
+    document.getElementById('privateReflectionPanel').style.display = 'block';
+    document.getElementById('deckControlGroup').style.display = 'block';
+    document.getElementById('btnSaveArchive').style.display = 'inline-flex';
+
+    this.runLoadingSequence();
+  }
+
+  generateFriendCard() {
+    const whoObj = contentDB.friendWho.find(w => w.id === this.selections.friendWho) || contentDB.friendWho[0];
+    const needObj = contentDB.friendNeed.find(n => n.id === this.selections.friendNeed) || contentDB.friendNeed[0];
+
+    this.generatedData = {
+      main: needObj.text,
+      support: `For ${whoObj.label.toLowerCase()}`,
+      originalMain: needObj.text,
+      originalSupport: `For ${whoObj.label.toLowerCase()}`,
+      reflection: "",
+      act: "Send this card to her.",
+      shortAction: "send this reminder"
+    };
+
+    window.studio.render(this.generatedData, "");
+
+    document.getElementById('privateReflectionPanel').style.display = 'none';
+    document.getElementById('deckControlGroup').style.display = 'none';
+    document.getElementById('btnSaveArchive').style.display = 'none';
+
+    this.runLoadingSequence();
+  }
+
+  runLoadingSequence() {
+    this.next('screen-loading', null, 0);
+
+    const phrases = [
+      "Gathering your words...",
+      "Creating a little space...",
+      "Softening the edges...",
+      "Almost ready..."
+    ];
+
+    const textEl = document.getElementById('loadingPhrases');
+    let index = 0;
+
+    const loadInterval = setInterval(() => {
+      textEl.style.opacity = 0;
+
+      setTimeout(() => {
+        index++;
+        if (index < phrases.length) {
+          textEl.textContent = phrases[index];
+          textEl.style.opacity = 1;
         }
+      }, 350);
+    }, 1100);
 
-        /* --------------------------------------------------------------------------
-           3. STUDIO ENGINE (Responsive Canvas & Rendering)
-           -------------------------------------------------------------------------- */
-        class StudioEngine {
-            constructor() {
-                this.card = document.getElementById('artCard');
-                this.mainEl = document.getElementById('outMain');
-                this.supEl = document.getElementById('outSupport');
-                this.nameEl = document.getElementById('outName');
-                
-                this.deckAct = document.getElementById('artCardAct');
-                this.deckRem = document.getElementById('artCardRem');
-                this.deckContainer = document.getElementById('miniDeckContainer');
-                this.deckVisible = false;
-            }
+    setTimeout(() => {
+      clearInterval(loadInterval);
+      this.next('screen-studio', null, 100);
+    }, 4200);
+  }
 
-            render(data, name) {
-                this.mainEl.textContent = data.main;
-                this.supEl.textContent = data.support;
-                this.nameEl.textContent = name ? `For: ${name}` : '';
-                this.nameEl.style.display = name ? 'block' : 'none';
-                
-                if (data.reflection) {
-                    document.getElementById('refText').textContent = data.reflection;
-                    document.getElementById('actText').textContent = data.act;
-                    document.getElementById('outActMain').textContent = data.act;
-                    document.getElementById('outRemMain').textContent = data.support;
-                }
-                
-                document.getElementById('copySocial').textContent = `I needed this reminder today: "${data.main}" 🤎 Created with The Permission Slip Studio by @RachelMcBrideCoaching.`;
-                document.getElementById('copyTextMsg').textContent = `Hey, I saw this and thought of you. Just a reminder: "${data.main}" You don’t have to carry everything alone. 🤎`;
-            }
+  saveToArchive() {
+    const slip = {
+      date: new Date().toLocaleDateString(),
+      main: this.generatedData.main,
+      support: this.generatedData.support,
+      action: this.generatedData.act || "N/A"
+    };
 
-            setTheme(theme, btn) {
-                this.card.className = `art-card ${theme}`;
-                this.deckAct.className = `art-card ${theme}`;
-                this.deckRem.className = `art-card ${theme}`;
-                btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-            }
+    let archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
+    archive.unshift(slip);
+    localStorage.setItem('rmc_archive', JSON.stringify(archive));
 
-            setFormat(type, btn) {
-                const formatClasses = ['format-story', 'format-post', 'format-print', 'format-text'];
-                const cards = [this.card, this.deckAct, this.deckRem];
-                
-                cards.forEach(c => {
-                    formatClasses.forEach(fc => c.classList.remove(fc));
-                    if (type !== 'story') c.classList.add(`format-${type}`);
-                });
+    showToast('Saved to your private archive.');
+    setTimeout(() => this.next('screen-cta', null, 100), 500);
+  }
+}
 
-                btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-            }
+/* ==========================================================================
+   3. STUDIO ENGINE
+   ========================================================================== */
 
-            toggleMiniDeck() {
-                this.deckVisible = !this.deckVisible;
-                this.deckContainer.style.display = this.deckVisible ? 'flex' : 'none';
-                
-                const btn = document.getElementById('btnToggleDeck');
-                if (this.deckVisible) {
-                    btn.classList.add('active'); btn.textContent = "Remove Mini Deck";
-                    document.getElementById('outLabel').textContent = "Main Permission";
-                } else {
-                    btn.classList.remove('active'); btn.textContent = "Create Matching Mini Deck";
-                    document.getElementById('outLabel').textContent = "Permission Slip";
-                }
-            }
+class StudioEngine {
+  constructor() {
+    this.card = document.getElementById('artCard');
+    this.mainEl = document.getElementById('outMain');
+    this.supEl = document.getElementById('outSupport');
+    this.nameEl = document.getElementById('outName');
 
-            remixWords(type) {
-                let main = window.journey.generatedData.main;
-                let support = window.journey.generatedData.support;
+    this.deckAct = document.getElementById('artCardAct');
+    this.deckRem = document.getElementById('artCardRem');
+    this.deckContainer = document.getElementById('miniDeckContainer');
 
-                if (type !== 'reset' && contentDB.remixes[type]) {
-                    const mod = contentDB.remixes[type];
-                    let action = main.replace("Today, I give myself permission to ", "").replace(".", "");
-                    main = mod.pre + action + ".";
-                    support = mod.valMod;
-                }
+    this.deckVisible = false;
+    this.currentTheme = 'theme-morning';
+    this.currentFormat = 'story';
+  }
 
-                this.mainEl.style.opacity = 0; this.supEl.style.opacity = 0;
-                setTimeout(() => {
-                    this.mainEl.textContent = main; this.supEl.textContent = support;
-                    this.mainEl.style.opacity = 1; this.supEl.style.opacity = 1;
-                }, 400);
-            }
+  render(data, name) {
+    this.mainEl.textContent = data.main;
+    this.supEl.textContent = data.support;
 
-            downloadArtwork() {
-                const btn = document.getElementById('btnDownload');
-                const orig = btn.textContent;
-                btn.textContent = "Rendering High-Res Artwork...";
-                btn.disabled = true;
+    this.nameEl.textContent = name ? `For: ${name}` : '';
+    this.nameEl.style.display = name ? 'block' : 'none';
 
-                // For seamless download of scaled UI, we target the wrapper when deck is active, or card when singular
-                const target = this.deckVisible ? document.getElementById('captureTarget') : this.card;
+    if (data.reflection) {
+      document.getElementById('refText').textContent = data.reflection;
+      document.getElementById('actText').textContent = data.act;
+    }
 
-                document.fonts.ready.then(() => {
-                    html2canvas(target, {
-                        scale: this.deckVisible ? 2 : 3, // Upscales the output image drastically
-                        backgroundColor: this.deckVisible ? "#FAF7F1" : null,
-                        useCORS: true, logging: false
-                    }).then(canvas => {
-                        const link = document.createElement('a');
-                        const dateStr = new Date().toISOString().split('T')[0];
-                        link.download = `permission-slip-${dateStr}.png`;
-                        link.href = canvas.toDataURL('image/png');
-                        link.click();
-                        
-                        btn.textContent = "Artwork Saved!";
-                        setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
-                    }).catch(err => {
-                        console.error(err);
-                        alert("There was an issue generating the file. You can take a screenshot instead!");
-                        btn.textContent = orig; btn.disabled = false;
-                    });
-                });
-            }
+    document.getElementById('outActMain').textContent = data.act || "Take one gentle next step.";
+    document.getElementById('outRemMain').textContent = data.support || "You are allowed to need care.";
 
-            execCopy(type, btn) {
-                const el = type === 'social' ? 'copySocial' : 'copyTextMsg';
-                const text = document.getElementById(el).textContent.trim();
-                navigator.clipboard.writeText(text).then(() => {
-                    const orig = btn.textContent;
-                    btn.textContent = "Copied!";
-                    setTimeout(() => { btn.textContent = orig; }, 2000);
-                });
-            }
-        }
+    document.getElementById('copySocial').textContent =
+      `I needed this reminder today: "${data.main}" 🤎 Created with The Permission Slip Studio by Rachel McBride Coaching.`;
 
-        /* --------------------------------------------------------------------------
-           4. GLOBAL BINDINGS (Guarantees every button works flawlessly)
-           -------------------------------------------------------------------------- */
-        window.addEventListener('DOMContentLoaded', () => {
-            window.journey = new JourneyManager();
-            window.studio = new StudioEngine();
-        });
+    document.getElementById('copyTextMsg').textContent =
+      `Hey, I saw this and thought of you. Just a reminder: "${data.main}" You don’t have to carry everything alone. 🤎`;
+  }
 
-        // Navigation & Flow Starters
-        window.nextScreen = (id, step) => window.journey.next(id, step);
-        window.startPersonalFlow = () => window.journey.startPersonalFlow();
-        window.startFriendFlow = () => window.journey.startFriendFlow();
-        window.startDailyFlow = () => {
-            const day = new Date().getDate();
-            const dailyText = contentDB.daily[day % contentDB.daily.length];
-            
-            window.journey.flowType = 'daily';
-            window.journey.generatedData = { main: dailyText, support: "A daily reminder to protect your peace.", reflection: "", act: "Take three deep breaths right now." };
-            
-            window.studio.render(window.journey.generatedData, "");
-            document.getElementById('privateReflectionPanel').style.display = 'none';
-            document.getElementById('deckControlGroup').style.display = 'none';
-            document.getElementById('btnSaveArchive').style.display = 'none';
-            
-            window.journey.runLoadingSequence();
-        };
+  setTheme(theme, btn) {
+    this.currentTheme = theme;
+    const classes = [this.card, this.deckAct, this.deckRem];
 
-        // Form Steps
-        window.startBreathing = () => window.journey.startBreathing();
-        window.performRelease = () => window.journey.performRelease();
-        window.saveNameAndNext = () => {
-            window.journey.selections.name = document.getElementById('userName').value.trim();
-            window.journey.next('screen-carrying', 'Step 4 of 7');
-        };
+    classes.forEach(card => {
+      const formatClass = this.currentFormat !== 'story' ? `format-${this.currentFormat}` : '';
+      card.className = `art-card ${theme} ${formatClass}`.trim();
+    });
 
-        // Generators
-        window.generatePersonalCard = () => window.journey.generatePersonalCard();
-        window.generateFriendCard = () => window.journey.generateFriendCard();
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+  }
 
-        // Studio Controls
-        window.setTheme = (theme, btn) => window.studio.setTheme(theme, btn);
-        window.setFormat = (type, btn) => window.studio.setFormat(type, btn);
-        window.remixWords = (type) => window.studio.remixWords(type);
-        window.toggleMiniDeck = () => window.studio.toggleMiniDeck();
-        window.downloadArtwork = () => window.studio.downloadArtwork();
-        window.execCopy = (type, btn) => window.studio.execCopy(type, btn);
+  setFormat(type, btn) {
+    this.currentFormat = type;
 
-        // Share Modal
-        window.openShareModal = () => document.getElementById('shareModal').classList.add('visible');
-        window.closeShareModal = (e, force = false) => { 
-            if (force || e.target.id === 'shareModal') document.getElementById('shareModal').classList.remove('visible'); 
-        };
+    const formatClasses = ['format-post', 'format-print', 'format-text'];
+    const cards = [this.card, this.deckAct, this.deckRem];
 
-        // Archive Management
-        window.saveToArchive = () => window.journey.saveToArchive();
-        window.navToArchive = () => {
-            const container = document.getElementById('archiveContainer');
-            container.innerHTML = '';
-            const archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
-            
-            if (archive.length === 0) {
-                container.innerHTML = '<p class="t-subtitle" style="text-align:left; margin-left:0;">Your archive is empty. Create your first permission slip to see it here.</p>';
-            } else {
-                archive.forEach((item, index) => {
-                    container.innerHTML += `
-                        <div class="archive-card">
-                            <button class="archive-delete" onclick="window.deleteArchiveItem(${index})">×</button>
-                            <div class="archive-date">${item.date}</div>
-                            <div class="archive-main">"${item.main}"</div>
-                            <div class="archive-act">Tiny Act: ${item.action}</div>
-                        </div>
-                    `;
-                });
-            }
-            window.journey.next('screen-archive', null);
-        };
-        window.deleteArchiveItem = (index) => {
-            let archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
-            archive.splice(index, 1);
-            localStorage.setItem('rmc_archive', JSON.stringify(archive));
-            window.navToArchive();
-        };
-        window.clearArchive = () => {
-            if(confirm("Are you sure you want to clear your entire archive?")) {
-                localStorage.removeItem('rmc_archive');
-                window.navToArchive();
-            }
-        };
-    </script>
+    cards.forEach(card => {
+      formatClasses.forEach(fc => card.classList.remove(fc));
+      if (type !== 'story') card.classList.add(`format-${type}`);
+    });
+
+    btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+  }
+      toggleMiniDeck() {
+    this.deckVisible = !this.deckVisible;
+    this.deckContainer.style.display = this.deckVisible ? 'flex' : 'none';
+
+    const btn = document.getElementById('btnToggleDeck');
+
+    if (this.deckVisible) {
+      btn.classList.add('active');
+      btn.textContent = "Remove Mini Deck";
+      document.getElementById('outLabel').textContent = "Main Permission";
+      showToast('Matching mini deck created.');
+    } else {
+      btn.classList.remove('active');
+      btn.textContent = "Create Matching Mini Deck";
+      document.getElementById('outLabel').textContent = "Permission Slip";
+    }
+  }
+
+  remixWords(type) {
+    const data = window.journey.generatedData;
+    let main = data.originalMain || data.main;
+    let support = data.originalSupport || data.support;
+    const action = data.shortAction || main.replace("Today, I give myself permission to ", "").replace(".", "");
+
+    if (type === 'softer') {
+      main = `I gently give myself permission to ${action}.`;
+      support = "Softness is not weakness. It is a way back to yourself.";
+    }
+
+    if (type === 'stronger') {
+      main = `I am allowed to choose ${action}, even if someone else does not understand.`;
+      support = "Your boundary does not need to be defended to be valid.";
+    }
+
+    if (type === 'poetic') {
+      main = `Let this be the day I stop asking my soul to carry what was never mine to hold.`;
+      support = "There is wisdom in the pause. There is mercy in the exhale.";
+    }
+
+    if (type === 'faith') {
+      main = `Today, I give myself permission to lay this burden down.`;
+      support = "Grace is not waiting for you to earn rest. Grace meets you here.";
+    }
+
+    if (type === 'short') {
+      main = `I am allowed to ${action}.`;
+      support = "That is enough for today.";
+    }
+
+    if (type === 'reset') {
+      main = data.originalMain || data.main;
+      support = data.originalSupport || data.support;
+    }
+
+    this.mainEl.style.opacity = 0;
+    this.supEl.style.opacity = 0;
+    this.mainEl.style.transform = 'translateY(6px)';
+    this.supEl.style.transform = 'translateY(6px)';
+
+    setTimeout(() => {
+      this.mainEl.textContent = main;
+      this.supEl.textContent = support;
+      document.getElementById('outRemMain').textContent = support;
+
+      this.mainEl.style.opacity = 1;
+      this.supEl.style.opacity = 1;
+      this.mainEl.style.transform = 'translateY(0)';
+      this.supEl.style.transform = 'translateY(0)';
+
+      data.main = main;
+      data.support = support;
+
+      document.getElementById('copySocial').textContent =
+        `I needed this reminder today: "${main}" 🤎 Created with The Permission Slip Studio by Rachel McBride Coaching.`;
+
+      document.getElementById('copyTextMsg').textContent =
+        `Hey, I saw this and thought of you. Just a reminder: "${main}" You don’t have to carry everything alone. 🤎`;
+    }, 350);
+  }
+
+  downloadArtwork() {
+    const btn = document.getElementById('btnDownload');
+    const original = btn.textContent;
+
+    btn.textContent = "Rendering High-Res Artwork...";
+    btn.disabled = true;
+
+    const target = this.deckVisible ? document.getElementById('captureTarget') : this.card;
+
+    if (!window.html2canvas) {
+      showToast('Image renderer did not load. Take a screenshot instead.');
+      btn.textContent = original;
+      btn.disabled = false;
+      return;
+    }
+
+    document.fonts.ready.then(() => {
+      return html2canvas(target, {
+        scale: this.deckVisible ? 2 : 3,
+        backgroundColor: this.deckVisible ? "#FAF7F1" : null,
+        useCORS: true,
+        logging: false
+      });
+    }).then(canvas => {
+      const link = document.createElement('a');
+      const dateStr = new Date().toISOString().split('T')[0];
+      link.download = `permission-slip-${dateStr}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
+      btn.textContent = "Artwork Saved!";
+      showToast('Artwork downloaded.');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 2400);
+    }).catch(error => {
+      console.error(error);
+      showToast('Download failed. Try taking a screenshot.');
+      btn.textContent = original;
+      btn.disabled = false;
+    });
+  }
+
+  execCopy(type, btn) {
+    const el = type === 'social' ? 'copySocial' : 'copyTextMsg';
+    const text = document.getElementById(el).textContent.trim();
+
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = "Copied!";
+      showToast('Copied to clipboard.');
+      setTimeout(() => btn.textContent = original, 1800);
+    }).catch(() => {
+      showToast('Copy failed. You can manually select the text.');
+    });
+  }
+}
+
+/* ==========================================================================
+   4. GLOBAL BINDINGS
+   ========================================================================== */
+
+window.addEventListener('DOMContentLoaded', () => {
+  window.journey = new JourneyManager();
+  window.studio = new StudioEngine();
+});
+
+window.nextScreen = (id, step, progress) => window.journey.next(id, step, progress);
+window.startPersonalFlow = () => window.journey.startPersonalFlow();
+window.startFriendFlow = () => window.journey.startFriendFlow();
+
+window.startDailyFlow = () => {
+  const day = new Date().getDate();
+  const dailyText = contentDB.daily[day % contentDB.daily.length];
+
+  window.journey.flowType = 'daily';
+  window.journey.generatedData = {
+    main: dailyText,
+    support: "A daily reminder to protect your peace.",
+    originalMain: dailyText,
+    originalSupport: "A daily reminder to protect your peace.",
+    reflection: "",
+    act: "Take three deep breaths right now.",
+    shortAction: "protect your peace"
+  };
+
+  window.studio.render(window.journey.generatedData, "");
+
+  document.getElementById('privateReflectionPanel').style.display = 'none';
+  document.getElementById('deckControlGroup').style.display = 'none';
+  document.getElementById('btnSaveArchive').style.display = 'none';
+
+  window.journey.runLoadingSequence();
+};
+
+window.startBreathing = () => window.journey.startBreathing();
+window.performRelease = () => window.journey.performRelease();
+window.skipRelease = () => window.journey.skipRelease();
+
+window.saveNameAndNext = () => {
+  window.journey.selections.name = document.getElementById('userName').value.trim();
+  window.journey.next('screen-carrying', 'Step 4 of 7', 56);
+};
+
+window.generatePersonalCard = () => window.journey.generatePersonalCard();
+window.generateFriendCard = () => window.journey.generateFriendCard();
+
+window.randomizeCurrentGrid = (type) => window.journey.randomize(type);
+
+window.setTheme = (theme, btn) => window.studio.setTheme(theme, btn);
+window.setFormat = (type, btn) => window.studio.setFormat(type, btn);
+window.remixWords = (type) => window.studio.remixWords(type);
+window.toggleMiniDeck = () => window.studio.toggleMiniDeck();
+window.downloadArtwork = () => window.studio.downloadArtwork();
+window.execCopy = (type, btn) => window.studio.execCopy(type, btn);
+
+window.openShareModal = () => document.getElementById('shareModal').classList.add('visible');
+
+window.closeShareModal = (event, force = false) => {
+  if (force || event.target.id === 'shareModal') {
+    document.getElementById('shareModal').classList.remove('visible');
+  }
+};
+
+window.saveToArchive = () => window.journey.saveToArchive();
+
+window.navToArchive = () => {
+  const container = document.getElementById('archiveContainer');
+  container.innerHTML = '';
+
+  const archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
+
+  if (archive.length === 0) {
+    container.innerHTML = '<p class="t-subtitle" style="text-align:left; margin-left:0;">Your archive is empty. Create your first permission slip to see it here.</p>';
+  } else {
+    archive.forEach((item, index) => {
+      container.innerHTML += `
+        <div class="archive-card">
+          <button class="archive-delete" aria-label="Delete archived permission" onclick="window.deleteArchiveItem(${index})">×</button>
+          <div class="archive-date">${escapeHTML(item.date)}</div>
+          <div class="archive-main">“${escapeHTML(item.main)}”</div>
+          <div class="archive-act">Tiny Act: ${escapeHTML(item.action)}</div>
+        </div>
+      `;
+    });
+  }
+
+  window.journey.next('screen-archive', null, 100);
+};
+
+window.deleteArchiveItem = (index) => {
+  let archive = JSON.parse(localStorage.getItem('rmc_archive') || '[]');
+  archive.splice(index, 1);
+  localStorage.setItem('rmc_archive', JSON.stringify(archive));
+  window.navToArchive();
+  showToast('Archive item removed.');
+};
+
+window.clearArchive = () => {
+  if (confirm("Are you sure you want to clear your entire archive?")) {
+    localStorage.removeItem('rmc_archive');
+    window.navToArchive();
+    showToast('Archive cleared.');
+  }
+};
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('visible');
+
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.classList.remove('visible');
+  }, 2400);
+}
+
+function escapeHTML(str) {
+  return String(str || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    document.getElementById('shareModal').classList.remove('visible');
+  }
+});
+</script>
 </body>
 </html>
-
+</script>
+</body>
+</html>
