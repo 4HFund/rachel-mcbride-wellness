@@ -435,8 +435,7 @@ section {
   }
 
   .float-card,
-  .float-tag,
-  .hero-pulse {
+  .float-tag {
     animation: none !important;
   }
 }
@@ -566,69 +565,72 @@ section {
   line-height: 1.65;
 }
 
+/* HERO PHOTO */
+
 .hero-visual {
   min-height: 100vh;
   position: relative;
-
-  background:
-    radial-gradient(circle at 75% 25%, rgba(199,116,79,0.13), transparent 28%),
-    radial-gradient(circle at 10% 80%, rgba(142,155,130,0.13), transparent 34%),
-    var(--soft-cream);
-
   overflow: hidden;
 }
 
-.hero-bg-blob {
-  position: absolute;
-  top: -12%;
-  right: -8%;
-
-  width: 92%;
-  height: 112%;
-
+.hero-photo-visual {
   background:
-    radial-gradient(ellipse at 60% 40%, #E8D5C3 0%, #D9CBB8 42%, #C9B89F 82%, transparent 100%);
-
-  border-radius: 40% 60% 55% 45% / 45% 50% 60% 40%;
-  opacity: 0.72;
-}
-
-.hero-circle-accent {
-  position: absolute;
-  bottom: 13%;
-  left: 10%;
-
-  width: 180px;
-  height: 180px;
-
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(199,116,79,0.13) 0%, transparent 70%);
-  border: 1.5px solid rgba(199,116,79,0.18);
-}
-
-.hero-line-accent {
-  position: absolute;
-  top: 20%;
-  left: 15%;
-
-  width: 1px;
-  height: 140px;
-
-  background: linear-gradient(to bottom, transparent, rgba(107,79,63,0.22), transparent);
-}
-
-.hero-organic-wrap {
-  position: absolute;
-  inset: 0;
+    radial-gradient(circle at 80% 20%, rgba(199,116,79,0.16), transparent 30%),
+    radial-gradient(circle at 10% 85%, rgba(142,155,130,0.16), transparent 34%),
+    linear-gradient(145deg, #F1E9DD, #D9CBB8);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 7rem 3rem 4rem;
 }
 
-.hero-organic-wrap svg {
-  opacity: 0.62;
-  filter: drop-shadow(0 22px 40px rgba(53,40,34,0.06));
+.hero-photo-visual::before {
+  content: '';
+  position: absolute;
+  width: 78%;
+  height: 82%;
+  right: -16%;
+  top: 9%;
+  background: rgba(250,247,241,0.38);
+  border-radius: 45% 55% 50% 50% / 45% 42% 58% 55%;
+  z-index: 0;
+}
+
+.hero-photo-visual::after {
+  content: '';
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  left: -80px;
+  bottom: -80px;
+  border-radius: 50%;
+  background: rgba(142,155,130,0.18);
+  z-index: 0;
+}
+
+.hero-photo-frame {
+  position: relative;
+  z-index: 2;
+
+  width: min(430px, 88vw);
+  aspect-ratio: 4 / 5.2;
+
+  border-radius: 38px;
+  overflow: hidden;
+
+  box-shadow: 0 28px 70px rgba(53,40,34,0.22);
+  border: 10px solid rgba(250,247,241,0.72);
+  background: var(--soft-cream);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 .float-card {
@@ -700,38 +702,6 @@ section {
   box-shadow: 0 14px 32px rgba(199,116,79,0.25);
 
   animation: floatCard 5.5s 1s ease-in-out infinite;
-}
-
-.hero-pulse {
-  position: absolute;
-  top: 47%;
-  right: 24%;
-
-  width: 17px;
-  height: 17px;
-
-  border-radius: 50%;
-  background: rgba(199,116,79,0.32);
-  z-index: 2;
-
-  animation: pulse 2.7s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(199,116,79,0.22);
-  }
-
-  70% {
-    transform: scale(1.12);
-    box-shadow: 0 0 0 22px rgba(199,116,79,0);
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(199,116,79,0);
-  }
 }
 
 /* TRUST STRIP */
@@ -1203,27 +1173,50 @@ section {
   box-shadow: var(--shadow);
 }
 
-.ideal-visual-inner {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ideal-photo-visual {
+  position: relative;
+  min-height: 540px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--soft-cream);
+  box-shadow: var(--shadow-hover);
 }
 
-.ideal-quote-card {
-  background: rgba(250,247,241,0.9);
+.ideal-photo-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
 
+.ideal-photo-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(53,40,34,0.72), rgba(53,40,34,0.08) 58%),
+    radial-gradient(circle at top right, rgba(199,116,79,0.12), transparent 40%);
+  z-index: 1;
+}
+
+.ideal-photo-overlay {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 2;
+
+  background: rgba(250,247,241,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border-radius: 20px;
-  padding: 2.25rem 2.25rem;
-  margin: 2rem;
+  border: 1px solid rgba(250,247,241,0.58);
+  border-radius: 22px;
+  padding: 1.65rem 1.75rem;
 
-  box-shadow: 0 16px 48px rgba(53,40,34,0.13);
-  border: 1px solid rgba(250,247,241,0.65);
+  box-shadow: 0 18px 46px rgba(30,20,15,0.24);
 }
 
 .ideal-quote-mark {
@@ -1244,25 +1237,22 @@ section {
   margin-bottom: 1.1rem;
 }
 
+.ideal-photo-overlay .ideal-quote-mark {
+  font-size: 3.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.ideal-photo-overlay .ideal-quote-text {
+  font-size: 1.18rem;
+  margin-bottom: 0.8rem;
+}
+
 .ideal-quote-attr {
   font-size: 0.72rem;
   color: var(--sage-dark);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.ideal-blob {
-  position: absolute;
-  bottom: -28%;
-  right: -18%;
-
-  width: 62%;
-  height: 70%;
-
-  border-radius: 50%;
-  background: rgba(142,155,130,0.2);
-  pointer-events: none;
 }
 
 .ideal-checklist {
@@ -1806,8 +1796,19 @@ footer {
 
   .hero-visual {
     order: -1;
-    min-height: 330px;
+    min-height: 420px;
     margin-top: 66px;
+  }
+
+  .hero-photo-visual {
+    padding: 5.5rem 1.5rem 2.5rem;
+  }
+
+  .hero-photo-frame {
+    width: min(330px, 82vw);
+    aspect-ratio: 4 / 4.7;
+    border-radius: 30px;
+    border-width: 8px;
   }
 
   .hero-content {
@@ -1825,6 +1826,11 @@ footer {
   .services-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ideal-photo-visual,
+  .ideal-photo-visual img {
+    min-height: 420px;
   }
 
   .footer-inner {
@@ -1869,7 +1875,16 @@ footer {
   }
 
   .hero-visual {
-    min-height: 285px;
+    min-height: 360px;
+  }
+
+  .hero-photo-visual {
+    padding: 4.5rem 1rem 2rem;
+  }
+
+  .hero-photo-frame {
+    width: min(270px, 78vw);
+    aspect-ratio: 4 / 4.5;
   }
 
   .float-card {
@@ -1925,17 +1940,20 @@ footer {
     min-height: auto;
   }
 
-  .ideal-visual {
-    min-height: 320px;
+  .ideal-photo-visual,
+  .ideal-photo-visual img {
+    min-height: 380px;
   }
 
-  .ideal-quote-card {
-    margin: 1.2rem;
-    padding: 1.7rem;
+  .ideal-photo-overlay {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 1.35rem;
   }
 
-  .ideal-quote-text {
-    font-size: 1.18rem;
+  .ideal-photo-overlay .ideal-quote-text {
+    font-size: 1.05rem;
   }
 
   .booking-embed-container {
@@ -2020,43 +2038,9 @@ footer {
     </p>
   </div>
 
-  <div class="hero-visual" aria-hidden="true">
-    <div class="hero-bg-blob"></div>
-    <div class="hero-circle-accent"></div>
-    <div class="hero-line-accent"></div>
-    <div class="hero-pulse"></div>
-
-    <div class="hero-organic-wrap">
-      <svg width="380" height="460" viewBox="0 0 380 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M190 430 Q188 340 185 280 Q182 220 175 160" stroke="#8E9B82" stroke-width="1.5" fill="none" opacity="0.7"/>
-        <path d="M190 430 Q194 360 198 300 Q204 240 210 180" stroke="#8E9B82" stroke-width="1.2" fill="none" opacity="0.5"/>
-        <path d="M185 280 Q160 250 140 230 Q118 210 100 200" stroke="#8E9B82" stroke-width="1" fill="none" opacity="0.5"/>
-        <path d="M185 280 Q212 265 235 255 Q260 244 278 235" stroke="#8E9B82" stroke-width="1" fill="none" opacity="0.5"/>
-        <path d="M183 320 Q150 308 130 300" stroke="#8E9B82" stroke-width="1" fill="none" opacity="0.4"/>
-        <path d="M198 300 Q225 292 248 286" stroke="#8E9B82" stroke-width="1" fill="none" opacity="0.4"/>
-
-        <ellipse cx="160" cy="215" rx="42" ry="22" transform="rotate(-40 160 215)" fill="#8E9B82" opacity="0.35"/>
-        <ellipse cx="248" cy="238" rx="38" ry="20" transform="rotate(30 248 238)" fill="#8E9B82" opacity="0.3"/>
-        <ellipse cx="115" cy="196" rx="36" ry="18" transform="rotate(-50 115 196)" fill="#A0AB94" opacity="0.25"/>
-        <ellipse cx="268" cy="222" rx="32" ry="16" transform="rotate(20 268 222)" fill="#8E9B82" opacity="0.28"/>
-        <ellipse cx="140" cy="295" rx="28" ry="14" transform="rotate(-35 140 295)" fill="#8E9B82" opacity="0.25"/>
-        <ellipse cx="238" cy="282" rx="26" ry="12" transform="rotate(25 238 282)" fill="#8E9B82" opacity="0.22"/>
-
-        <circle cx="176" cy="145" r="24" fill="#D9CBB8" opacity="0.6"/>
-        <circle cx="176" cy="145" r="16" fill="#E8D0BE" opacity="0.7"/>
-        <circle cx="176" cy="145" r="8" fill="#C7744F" opacity="0.5"/>
-
-        <circle cx="212" cy="168" r="14" fill="#D9CBB8" opacity="0.4"/>
-        <circle cx="212" cy="168" r="8" fill="#E8D0BE" opacity="0.5"/>
-
-        <circle cx="100" cy="200" r="4" fill="#C7744F" opacity="0.25"/>
-        <circle cx="278" cy="235" r="4" fill="#8E9B82" opacity="0.35"/>
-        <circle cx="130" cy="300" r="3" fill="#C7744F" opacity="0.2"/>
-        <circle cx="248" cy="286" r="3" fill="#8E9B82" opacity="0.25"/>
-
-        <circle cx="190" cy="430" r="6" fill="#D9CBB8" opacity="0.4"/>
-        <circle cx="190" cy="430" r="12" fill="none" stroke="#D9CBB8" stroke-width="1" opacity="0.3"/>
-      </svg>
+  <div class="hero-visual hero-photo-visual" aria-label="Rachel McBride smiling outdoors">
+    <div class="hero-photo-frame">
+      <img src="IMG_4099.jpeg" alt="Rachel McBride, coach and founder of Rachel McBride Coaching">
     </div>
 
     <div class="float-card">
@@ -2344,17 +2328,15 @@ footer {
 <section id="ideal">
   <div class="container">
     <div class="ideal-inner">
-      <div class="ideal-visual fade-up">
-        <div class="ideal-blob"></div>
+      <div class="ideal-visual ideal-photo-visual fade-up">
+        <img src="IMG_4100.jpeg" alt="Rachel McBride with her family outdoors">
 
-        <div class="ideal-visual-inner">
-          <div class="ideal-quote-card">
-            <span class="ideal-quote-mark">“</span>
-            <p class="ideal-quote-text">
-              I finally had someone in my corner who understood the weight I was carrying — without me having to explain it perfectly.
-            </p>
-            <div class="ideal-quote-attr">— A client’s words</div>
-          </div>
+        <div class="ideal-photo-overlay">
+          <span class="ideal-quote-mark">“</span>
+          <p class="ideal-quote-text">
+            Support for the woman who is holding a family, a schedule, a home, and a heart — all at once.
+          </p>
+          <div class="ideal-quote-attr">Real life. Real support.</div>
         </div>
       </div>
 
