@@ -1,753 +1,1526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 5-Minute Calm Reset | Rachel McBride Coaching</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        :root {
-            --warm-white: #FAF7F1;
-            --soft-cream: #F1E9DD;
-            --natural-beige: #D9CBB8;
-            --sage: #8E9B82;
-            --warm-brown: #6B4F3F;
-            --espresso: #352822;
-            --terracotta: #C7744F;
-            --terracotta-light: #D8896A;
-            --terracotta-bg: #F5E6DC;
-            --font-serif: 'Cormorant Garamond', Georgia, serif;
-            --font-sans: 'DM Sans', sans-serif;
-            --radius: 16px;
-            --shadow: 0 8px 32px rgba(53, 40, 34, 0.05);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+<title>The 5-Minute Calm Reset | Rachel McBride Coaching</title>
 
-        body {
-            font-family: var(--font-sans);
-            background: var(--warm-white);
-            color: var(--espresso);
-            line-height: 1.7;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+<meta name="description" content="A gentle 5-minute guided reset from Rachel McBride Coaching to help overwhelmed moms breathe, ground, release, and reconnect." />
 
-        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--espresso); line-height: 1.2; }
-        .title-main { font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 1rem; }
-        .title-step { font-size: clamp(2rem, 6.5vw, 2.8rem); margin-bottom: 1.5rem; }
-        .subtitle { font-size: 1.1rem; color: var(--warm-brown); max-width: 600px; margin: 0 auto 2rem; font-weight: 300; }
-        .prompt-text { font-size: 1.2rem; font-family: var(--font-serif); font-style: italic; color: var(--terracotta); margin-bottom: 2rem; text-align: center; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* ── FIXED PROGRESS BAR ── */
-        .progress-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--sage);
-            font-weight: 500;
-            background: rgba(250,247,241,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(217,203,184,0.3);
-            z-index: 100;
-            display: none;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* ── CONTAINER SPACING FIX ── */
-        .app-container {
-            flex-grow: 1;
-            display: flex;
-            align-items: flex-start; 
-            justify-content: center;
-            padding: 7rem 1.5rem 4rem; /* Safely clears the fixed progress bar */
-            position: relative;
-        }
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        .screen {
-            display: none;
-            width: 100%;
-            max-width: 680px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            margin-top: auto; 
-            margin-bottom: auto; 
-        }
+:root {
+  --warm-white: #FAF7F1;
+  --soft-cream: #F1E9DD;
+  --natural-beige: #D9CBB8;
+  --sage: #8E9B82;
+  --sage-dark: #6f7c66;
+  --warm-brown: #6B4F3F;
+  --espresso: #352822;
+  --terracotta: #C7744F;
+  --terracotta-light: #D8896A;
+  --terracotta-bg: #F5E6DC;
 
-        .screen.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            animation: fadeIn 0.6s ease forwards;
-        }
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', sans-serif;
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  --radius: 22px;
+  --radius-lg: 34px;
 
-        .btn {
-            display: inline-block;
-            background: var(--terracotta);
-            color: white;
-            border: none;
-            padding: 1.1rem 2.5rem;
-            border-radius: 50px;
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            margin-top: 2rem;
-            width: fit-content;
-        }
-        
-        .btn:hover:not(:disabled) {
-            background: var(--warm-brown);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(199, 116, 79, 0.2);
-        }
+  --shadow: 0 14px 44px rgba(53,40,34,0.09);
+  --shadow-strong: 0 22px 70px rgba(53,40,34,0.15);
 
-        .btn:disabled {
-            background: var(--natural-beige);
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
+  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-        .btn-outline {
-            background: transparent;
-            color: var(--warm-brown);
-            border: 1.5px solid var(--natural-beige);
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        .btn-outline:hover {
-            border-color: var(--warm-brown);
-            background: var(--soft-cream);
-            color: var(--espresso);
-        }
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--espresso);
+  line-height: 1.7;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(199,116,79,0.10), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(142,155,130,0.14), transparent 32%),
+    linear-gradient(145deg, #FAF7F1, #F1E9DD);
+}
 
-        .options-grid {
-            display: flex;
-            flex-direction: column; 
-            gap: 1rem;
-            text-align: left;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+button,
+input,
+textarea {
+  font-family: inherit;
+}
 
-        .option-card {
-            background: white;
-            border: 1.5px solid white;
-            padding: 1.4rem 1.5rem;
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-size: 1rem;
-            color: var(--warm-brown);
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-        }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-        .option-card:hover {
-            border-color: var(--natural-beige);
-            transform: translateY(-2px);
-        }
+::selection {
+  background: rgba(199,116,79,0.25);
+}
 
-        .option-card.selected {
-            background: var(--terracotta-bg);
-            border-color: var(--terracotta-light);
-            color: var(--espresso);
-            font-weight: 500;
-        }
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-        .soft-message {
-            display: none;
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--sage);
-            margin: 2rem 0 1rem;
-            animation: fadeIn 0.5s ease forwards;
-        }
+/* TOP BAR */
 
-        .breathe-container {
-            position: relative;
-            width: 260px;
-            height: 260px;
-            margin: 3rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 
-        .breathe-circle {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(142, 155, 130, 0.15);
-            border: 1px solid rgba(142, 155, 130, 0.4);
-            transform: scale(1);
-            transition: transform ease-in-out;
-        }
+  z-index: 100;
 
-        .breathe-circle.inhale {
-            transform: scale(2.4);
-            transition-duration: 4s;
-            background: rgba(142, 155, 130, 0.25);
-        }
+  background: rgba(250,247,241,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-        .breathe-circle.hold {
-            transform: scale(2.4);
-            transition-duration: 2s;
-        }
+  border-bottom: 1px solid rgba(217,203,184,0.5);
+}
 
-        .breathe-circle.exhale {
-            transform: scale(1);
-            transition-duration: 6s;
-            background: rgba(142, 155, 130, 0.15);
-        }
+.top-bar-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
 
-        .breathe-text {
-            position: relative;
-            z-index: 2;
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--espresso);
-            transition: opacity 0.3s ease;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
-        .cycle-counter { font-size: 0.85rem; color: var(--sage); margin-top: 1rem; }
+.brand-link {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--espresso);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
 
-        .grounding-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            text-align: left;
-            max-width: 450px;
-            margin: 0 auto;
-        }
+.brand-link span {
+  color: var(--terracotta);
+  font-style: italic;
+}
 
-        .grounding-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.2rem;
-            font-size: 1.05rem;
-            color: var(--warm-brown);
-            cursor: pointer;
-        }
+.exit-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--warm-brown);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.82;
+  transition: var(--transition);
+}
 
-        .grounding-item input[type="checkbox"] {
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border: 1.5px solid var(--natural-beige);
-            border-radius: 6px;
-            margin-top: 3px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.2s;
-            flex-shrink: 0;
-            background: white;
-        }
+.exit-link:hover {
+  color: var(--terracotta);
+}
 
-        .grounding-item input[type="checkbox"]:checked {
-            background-color: var(--sage);
-            border-color: var(--sage);
-        }
+/* PROGRESS */
 
-        .grounding-item input[type="checkbox"]:checked::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 14px;
-        }
+.progress-area {
+  display: none;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.25rem 1rem;
+}
 
-        .grounding-item.completed { color: var(--sage); }
+.progress-area.visible {
+  display: block;
+}
 
-        .grounding-input {
-            width: 100%;
-            padding: 0.5rem 0;
-            border: none;
-            border-bottom: 1px dashed var(--natural-beige);
-            background: transparent;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--espresso);
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .grounding-input:focus { border-color: var(--sage); }
+.progress-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
 
-        .release-box {
-            width: 100%;
-            padding: 1.8rem;
-            border-radius: var(--radius);
-            border: 1.5px solid var(--natural-beige);
-            background: white;
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            color: var(--espresso);
-            resize: none;
-            outline: none;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        .release-box:focus { border-color: var(--terracotta); background: var(--warm-white); }
-        .release-box::placeholder { color: rgba(107, 79, 63, 0.4); font-style: italic; }
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 
-        .released-card {
-            display: none;
-            background: var(--soft-cream);
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius);
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--sage);
-            margin: 2rem 0;
-            border: 1px solid rgba(142, 155, 130, 0.3);
-            animation: floatUp 1s ease forwards;
-        }
+  color: var(--sage-dark);
+}
 
-        @keyframes floatUp {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+.progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(217,203,184,0.75);
+  overflow: hidden;
+}
 
-        .fade-out { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--terracotta), var(--sage));
+  transition: width 0.45s ease;
+}
 
-        .summary-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 3rem 2.5rem;
-            margin: 2.5rem 0;
-            text-align: left;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--soft-cream);
-        }
+/* MAIN APP */
 
-        .summary-item { margin-bottom: 2rem; }
-        .summary-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage); margin-bottom: 0.5rem; }
-        .summary-value { font-family: var(--font-serif); font-size: 1.35rem; color: var(--espresso); font-style: italic; }
+.app-container {
+  flex: 1;
+  width: 100%;
 
-        .cta-section {
-            background: var(--terracotta-bg);
-            border-radius: var(--radius);
-            padding: 3rem 2rem;
-            margin-top: 3rem;
-            transition: opacity 0.5s ease;
-        }
-        .cta-section p { color: var(--warm-brown); font-size: 1rem; margin-bottom: 2rem; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        .email-form-input {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            border-radius: 12px;
-            border: 1.5px solid var(--natural-beige);
-            background: white;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--espresso);
-            outline: none;
-            transition: border-color var(--transition);
-        }
-        .email-form-input:focus { border-color: var(--terracotta); }
-        .email-form-input::placeholder { color: rgba(107, 79, 63, 0.4); }
+  padding: 8.75rem 1.25rem 4rem;
+}
 
-        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.reset-card {
+  width: 100%;
+  max-width: 760px;
 
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--soft-cream);
-            color: var(--warm-brown);
-        }
-        .footer-brand { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 0.3rem; color: var(--espresso); }
-        .footer-tagline { font-size: 0.9rem; font-style: italic; color: var(--terracotta); margin-bottom: 1.5rem; }
-        .disclaimer { font-size: 0.75rem; color: rgba(107, 79, 63, 0.6); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+  position: relative;
 
-        @media (max-width: 600px) {
-            .app-container { padding: 6.5rem 1.25rem 2rem; } /* Safe padding on mobile */
-            .title-main { font-size: 2.2rem; }
-            .title-step { font-size: 2rem; }
-            .cta-buttons { flex-direction: column; width: 100%; }
-            .cta-buttons .btn { width: 100%; margin-top: 0.5rem; }
-            .summary-card { padding: 2rem 1.5rem; }
-            .option-card { padding: 1.2rem 1.2rem; font-size: 0.95rem; }
-        }
-    </style>
+  background: rgba(250,247,241,0.84);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(217,203,184,0.72);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-strong);
+
+  overflow: hidden;
+}
+
+.reset-card::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  right: -160px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(199,116,79,0.10);
+  pointer-events: none;
+}
+
+.reset-card::after {
+  content: '';
+  position: absolute;
+  bottom: -170px;
+  left: -170px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: rgba(142,155,130,0.12);
+  pointer-events: none;
+}
+
+.screen {
+  display: none;
+  position: relative;
+  z-index: 2;
+
+  padding: clamp(2.3rem, 6vw, 4.2rem);
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.screen.active {
+  display: block;
+  animation: screenIn 0.55s ease forwards;
+}
+
+@keyframes screenIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--sage-dark);
+
+  margin-bottom: 1.2rem;
+}
+
+.kicker::before,
+.kicker::after {
+  content: '';
+  width: 24px;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.65;
+}
+
+.title-main,
+.title-step {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--espresso);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.title-main {
+  font-size: clamp(2.65rem, 8vw, 4.35rem);
+  margin-bottom: 1.1rem;
+}
+
+.title-step {
+  font-size: clamp(2.15rem, 6vw, 3.35rem);
+  margin-bottom: 1rem;
+}
+
+.title-main em,
+.title-step em {
+  color: var(--terracotta);
+  font-style: italic;
+}
+
+.subtitle {
+  max-width: 590px;
+  margin: 0 auto 1.5rem;
+
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-weight: 300;
+  color: var(--warm-brown);
+  line-height: 1.82;
+}
+
+.soft-intro {
+  max-width: 570px;
+  margin: 1.5rem auto 2rem;
+
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-style: italic;
+  color: var(--sage-dark);
+  line-height: 1.52;
+}
+
+.prompt-text {
+  max-width: 620px;
+  margin: 0 auto 2rem;
+
+  font-family: var(--font-serif);
+  font-size: clamp(1.28rem, 3vw, 1.6rem);
+  font-style: italic;
+  color: var(--terracotta);
+  line-height: 1.42;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--terracotta);
+  color: white;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 1rem 2rem;
+
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+  transition: var(--transition);
+
+  box-shadow: 0 12px 28px rgba(199,116,79,0.24);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--warm-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(199,116,79,0.28);
+}
+
+.btn:disabled {
+  background: var(--natural-beige);
+  cursor: not-allowed;
+  opacity: 0.75;
+  box-shadow: none;
+}
+
+.btn-outline {
+  background: rgba(250,247,241,0.55);
+  color: var(--warm-brown);
+  border: 1.5px solid rgba(217,203,184,0.9);
+  box-shadow: none;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--soft-cream);
+  color: var(--espresso);
+}
+
+/* OPTIONS */
+
+.options-grid {
+  display: grid;
+  gap: 0.9rem;
+
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+
+  text-align: left;
+}
+
+.option-card {
+  position: relative;
+
+  background: rgba(255,255,255,0.78);
+  border: 1.5px solid rgba(255,255,255,0.8);
+  border-radius: 18px;
+
+  padding: 1.1rem 1.2rem 1.1rem 3.1rem;
+
+  color: var(--warm-brown);
+  font-size: 0.98rem;
+  line-height: 1.5;
+
+  cursor: pointer;
+  transition: var(--transition);
+
+  box-shadow: 0 8px 24px rgba(53,40,34,0.045);
+}
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+  border: 1.5px solid rgba(199,116,79,0.38);
+
+  transform: translateY(-50%);
+  transition: var(--transition);
+}
+
+.option-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217,203,184,0.9);
+  box-shadow: 0 12px 30px rgba(53,40,34,0.075);
+}
+
+.option-card.selected {
+  background: var(--terracotta-bg);
+  border-color: rgba(199,116,79,0.45);
+  color: var(--espresso);
+  font-weight: 600;
+}
+
+.option-card.selected::before {
+  background: var(--terracotta);
+  box-shadow: inset 0 0 0 4px var(--terracotta-bg);
+}
+
+.soft-message {
+  display: none;
+
+  max-width: 560px;
+  margin: 1.7rem auto 0;
+
+  font-family: var(--font-serif);
+  font-size: 1.32rem;
+  font-style: italic;
+
+  color: var(--sage-dark);
+  line-height: 1.45;
+
+  animation: smallFade 0.4s ease forwards;
+}
+
+@keyframes smallFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BREATHING */
+
+.breathe-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+
+  margin: 2.6rem auto 1.7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathe-halo {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(142,155,130,0.18);
+}
+
+.breathe-circle {
+  position: absolute;
+
+  width: 105px;
+  height: 105px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle, rgba(250,247,241,0.78), rgba(142,155,130,0.18));
+
+  border: 1.5px solid rgba(142,155,130,0.42);
+  box-shadow: 0 20px 50px rgba(142,155,130,0.13);
+
+  transform: scale(1);
+  transition: transform ease-in-out, background ease-in-out;
+}
+
+.breathe-circle.inhale {
+  transform: scale(2.35);
+  transition-duration: 4s;
+  background:
+    radial-gradient(circle, rgba(250,247,241,0.92), rgba(142,155,130,0.28));
+}
+
+.breathe-circle.hold {
+  transform: scale(2.35);
+  transition-duration: 2s;
+}
+
+.breathe-circle.exhale {
+  transform: scale(1);
+  transition-duration: 6s;
+  background:
+    radial-gradient(circle, rgba(250,247,241,0.78), rgba(142,155,130,0.16));
+}
+
+.breathe-text {
+  position: relative;
+  z-index: 2;
+
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-style: italic;
+  color: var(--espresso);
+}
+
+.cycle-counter {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+}
+
+/* GROUNDING */
+
+.grounding-list {
+  display: grid;
+  gap: 0.95rem;
+
+  max-width: 560px;
+  margin: 0 auto 1.4rem;
+
+  text-align: left;
+}
+
+.grounding-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(217,203,184,0.7);
+  border-radius: 18px;
+
+  padding: 1rem 1.05rem;
+
+  color: var(--warm-brown);
+  font-size: 0.98rem;
+  line-height: 1.55;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.grounding-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(53,40,34,0.06);
+}
+
+.grounding-item.completed {
+  color: var(--sage-dark);
+  background: rgba(142,155,130,0.10);
+}
+
+.grounding-item input[type="checkbox"] {
+  appearance: none;
+
+  width: 24px;
+  height: 24px;
+
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  border: 1.5px solid var(--natural-beige);
+  border-radius: 8px;
+
+  background: white;
+  cursor: pointer;
+
+  position: relative;
+  transition: var(--transition);
+}
+
+.grounding-item input[type="checkbox"]:checked {
+  background: var(--sage);
+  border-color: var(--sage);
+}
+
+.grounding-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.grounding-input {
+  width: 100%;
+  margin-top: 0.45rem;
+
+  padding: 0.4rem 0;
+
+  border: none;
+  border-bottom: 1px dashed var(--natural-beige);
+  background: transparent;
+
+  font-size: 0.98rem;
+  color: var(--espresso);
+
+  outline: none;
+}
+
+.grounding-input:focus {
+  border-color: var(--sage);
+}
+
+/* RELEASE */
+
+.release-box {
+  width: 100%;
+
+  max-width: 580px;
+  min-height: 140px;
+
+  padding: 1.5rem;
+
+  border-radius: 20px;
+  border: 1.5px solid rgba(217,203,184,0.9);
+
+  background: rgba(255,255,255,0.8);
+
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--espresso);
+  line-height: 1.45;
+
+  resize: vertical;
+  outline: none;
+
+  box-shadow: 0 12px 32px rgba(53,40,34,0.06);
+  transition: var(--transition);
+}
+
+.release-box:focus {
+  border-color: rgba(199,116,79,0.7);
+  background: var(--warm-white);
+}
+
+.release-box::placeholder {
+  color: rgba(107,79,63,0.38);
+  font-style: italic;
+}
+
+.micro-note {
+  max-width: 520px;
+  margin: 1.2rem auto 0;
+
+  font-size: 0.9rem;
+  color: var(--sage-dark);
+  line-height: 1.6;
+}
+
+.released-card {
+  display: none;
+
+  max-width: 590px;
+  margin: 2rem auto;
+
+  background: rgba(241,233,221,0.85);
+  border: 1px solid rgba(142,155,130,0.28);
+  border-radius: 24px;
+
+  padding: 2rem;
+
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--sage-dark);
+  line-height: 1.45;
+
+  animation: floatUp 0.75s ease forwards;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.65s ease;
+}
+
+/* SUMMARY */
+
+.summary-card {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(217,203,184,0.72);
+  border-radius: 26px;
+
+  padding: 2.5rem;
+  margin: 2rem auto;
+
+  max-width: 640px;
+
+  text-align: left;
+  box-shadow: 0 14px 38px rgba(53,40,34,0.07);
+}
+
+.summary-item {
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(217,203,184,0.65);
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.summary-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--sage-dark);
+  margin-bottom: 0.45rem;
+}
+
+.summary-value {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--espresso);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.cta-section {
+  max-width: 640px;
+  margin: 2rem auto 0;
+
+  background: var(--terracotta-bg);
+  border: 1px solid rgba(199,116,79,0.18);
+  border-radius: 26px;
+
+  padding: 2.3rem;
+
+  transition: opacity 0.5s ease;
+}
+
+.cta-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--espresso);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.cta-section p {
+  color: var(--warm-brown);
+  font-size: 0.96rem;
+}
+
+.email-form {
+  display: grid;
+  gap: 0.95rem;
+  margin-top: 1.3rem;
+}
+
+.email-form-input {
+  width: 100%;
+
+  padding: 1.05rem 1.15rem;
+
+  border-radius: 14px;
+  border: 1.5px solid rgba(217,203,184,0.95);
+
+  background: white;
+
+  font-size: 0.98rem;
+  color: var(--espresso);
+
+  outline: none;
+  transition: var(--transition);
+}
+
+.email-form-input:focus {
+  border-color: var(--terracotta);
+}
+
+.email-form-input::placeholder {
+  color: rgba(107,79,63,0.42);
+}
+
+.form-note {
+  font-size: 0.74rem !important;
+  color: var(--sage-dark) !important;
+  text-align: center;
+  line-height: 1.55;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.4rem;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 2.6rem 1.25rem;
+  background: rgba(241,233,221,0.7);
+  color: var(--warm-brown);
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+  color: var(--espresso);
+}
+
+.footer-brand span {
+  color: var(--terracotta);
+  font-style: italic;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--terracotta);
+  margin-bottom: 1.2rem;
+}
+
+.disclaimer {
+  max-width: 560px;
+  margin: 0 auto;
+
+  font-size: 0.74rem;
+  color: rgba(107,79,63,0.62);
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 680px) {
+  .top-bar-inner {
+    padding: 0.9rem 1rem;
+  }
+
+  .brand-link {
+    font-size: 1.02rem;
+  }
+
+  .exit-link {
+    font-size: 0.68rem;
+  }
+
+  .app-container {
+    padding: 8.2rem 1rem 2.4rem;
+    align-items: flex-start;
+  }
+
+  .reset-card {
+    border-radius: 28px;
+  }
+
+  .screen {
+    padding: 2.25rem 1.15rem;
+  }
+
+  .title-main {
+    font-size: 2.62rem;
+  }
+
+  .title-step {
+    font-size: 2.15rem;
+  }
+
+  .subtitle {
+    font-size: 0.98rem;
+  }
+
+  .soft-intro {
+    font-size: 1.12rem;
+  }
+
+  .prompt-text {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem 1.25rem;
+  }
+
+  .option-card {
+    padding: 1rem 1rem 1rem 2.85rem;
+    font-size: 0.94rem;
+  }
+
+  .breathe-container {
+    width: 230px;
+    height: 230px;
+  }
+
+  .breathe-circle {
+    width: 92px;
+    height: 92px;
+  }
+
+  .breathe-circle.inhale,
+  .breathe-circle.hold {
+    transform: scale(2.05);
+  }
+
+  .grounding-item {
+    padding: 0.92rem;
+    font-size: 0.93rem;
+  }
+
+  .release-box {
+    font-size: 1.18rem;
+  }
+
+  .summary-card,
+  .cta-section {
+    padding: 1.55rem;
+    border-radius: 22px;
+  }
+
+  .summary-value {
+    font-size: 1.18rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .screen.active {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <div id="progressIndicator" class="progress-indicator">Step 1 of 5</div>
+<div class="page-shell">
 
-    <main class="app-container">
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="index.html" class="brand-link">Rachel <span>McBride</span> Coaching</a>
+      <a href="index.html" class="exit-link">Return to Site</a>
+    </div>
 
-        <!-- SCREEN 1: WELCOME -->
-        <div id="screen-welcome" class="screen active">
-            <h1 class="title-main">The 5-Minute<br>Calm Reset</h1>
-            <p class="subtitle">A simple guided pause for the mom who’s holding everything together but needs a moment to come back to herself.</p>
-            <p style="color: var(--sage); font-style: italic; font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 2rem;">
-                This is not another thing to accomplish.<br>It’s a small space to breathe, soften, and reset.
+    <div id="progressArea" class="progress-area">
+      <div class="progress-label-row">
+        <span id="progressIndicator">Step 1 of 5</span>
+        <span id="progressPercent">20%</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+
+    <section class="reset-card">
+
+      <!-- SCREEN 1: WELCOME -->
+      <div id="screen-welcome" class="screen active">
+        <div class="kicker">A guided pause</div>
+
+        <h1 class="title-main">
+          The 5-Minute<br>
+          <em>Calm Reset</em>
+        </h1>
+
+        <p class="subtitle">
+          A simple guided pause for the mom who is holding everything together but needs a moment to come back to herself.
+        </p>
+
+        <p class="soft-intro">
+          This is not another thing to accomplish. It is a small space to breathe, soften, and reset.
+        </p>
+
+        <button class="btn" onclick="nextScreen('screen-checkin', 1)">Begin the Reset</button>
+      </div>
+
+      <!-- SCREEN 2: CHECK-IN -->
+      <div id="screen-checkin" class="screen">
+        <div class="kicker">Notice</div>
+
+        <h2 class="title-step">
+          First, notice where you are.
+        </h2>
+
+        <div class="prompt-text">
+          What feels heaviest right now?
+        </div>
+
+        <div class="options-grid" id="checkinOptions">
+          <div class="option-card" onclick="selectCheckin(this, 'My mind will not stop racing')">My mind will not stop racing.</div>
+          <div class="option-card" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense.</div>
+          <div class="option-card" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained.</div>
+          <div class="option-card" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything.</div>
+          <div class="option-card" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap.</div>
+          <div class="option-card" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment.</div>
+        </div>
+
+        <div id="checkinMessage" class="soft-message">
+          That makes sense. You do not have to fix everything right now. Just start here.
+        </div>
+
+        <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Continue</button>
+      </div>
+
+      <!-- SCREEN 3: BREATHE -->
+      <div id="screen-breathe" class="screen">
+        <div class="kicker">Breathe</div>
+
+        <h2 class="title-step">
+          Let your body know<br>
+          you are here.
+        </h2>
+
+        <p class="subtitle">
+          Place one hand on your chest and one hand on your belly. We will breathe together three times.
+        </p>
+
+        <div class="breathe-container">
+          <div class="breathe-halo"></div>
+          <div id="breatheCircle" class="breathe-circle"></div>
+          <div id="breatheText" class="breathe-text">Ready</div>
+        </div>
+
+        <div id="cycleCounter" class="cycle-counter" style="display:none;">Cycle 1 of 3</div>
+
+        <button id="btnStartBreathing" class="btn" onclick="startBreathing()">Start Breathing</button>
+
+        <div id="breatheComplete" class="soft-message">
+          You are allowed to slow down.
+        </div>
+
+        <button id="btnBreatheNext" class="btn" style="display:none;" onclick="nextScreen('screen-ground', 3)">Next Step</button>
+      </div>
+
+      <!-- SCREEN 4: GROUND -->
+      <div id="screen-ground" class="screen">
+        <div class="kicker">Ground</div>
+
+        <h2 class="title-step">
+          Come back to<br>
+          right now.
+        </h2>
+
+        <div class="prompt-text">
+          Look around your physical space. Let your senses remind you that this moment is here.
+        </div>
+
+        <div class="grounding-list">
+          <label class="grounding-item">
+            <input type="checkbox" onchange="checkGrounding()">
+            <span>I have noticed <strong>5</strong> things I can see.</span>
+          </label>
+
+          <label class="grounding-item">
+            <input type="checkbox" onchange="checkGrounding()">
+            <span>I have noticed <strong>4</strong> things I can feel.</span>
+          </label>
+
+          <label class="grounding-item">
+            <input type="checkbox" onchange="checkGrounding()">
+            <span>I have noticed <strong>3</strong> things I can hear.</span>
+          </label>
+
+          <label class="grounding-item">
+            <input type="checkbox" onchange="checkGrounding()">
+            <span>I have noticed <strong>2</strong> things I can smell.</span>
+          </label>
+
+          <div class="grounding-item">
+            <input type="checkbox" id="checkChoose" onchange="checkGrounding()">
+            <span style="flex-grow:1;">
+              I am choosing <strong>1</strong> small thing for right now:
+              <input type="text" id="groundingInput" class="grounding-input" placeholder="A glass of water, a slower breath, a quiet minute..." oninput="handleGroundingInput(this)">
+            </span>
+          </div>
+        </div>
+
+        <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">I’m Grounded</button>
+      </div>
+
+      <!-- SCREEN 5: RELEASE -->
+      <div id="screen-release" class="screen">
+        <div class="kicker">Release</div>
+
+        <h2 class="title-step">
+          Set one thing down.
+        </h2>
+
+        <div class="prompt-text">
+          What is one thing you are carrying right now that you can set down for the next five minutes?
+        </div>
+
+        <div id="releaseInputContainer">
+          <textarea id="releaseText" class="release-box" rows="3" placeholder="I can set down..."></textarea>
+
+          <p class="micro-note">
+            You do not have to release everything. Just one thing. Just for now.
+          </p>
+
+          <button id="btnDoRelease" class="btn" onclick="animateRelease()">Release It</button>
+        </div>
+
+        <div id="releasedCard" class="released-card"></div>
+
+        <button id="btnReleaseNext" class="btn" style="display:none;" onclick="nextScreen('screen-reconnect', 5)">Next Step</button>
+      </div>
+
+      <!-- SCREEN 6: RECONNECT -->
+      <div id="screen-reconnect" class="screen">
+        <div class="kicker">Reconnect</div>
+
+        <h2 class="title-step">
+          Choose what your body<br>
+          needs to hear.
+        </h2>
+
+        <div class="prompt-text">
+          Pick one sentence to carry with you today.
+        </div>
+
+        <div class="options-grid" id="affirmationOptions">
+          <div class="option-card" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</div>
+          <div class="option-card" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</div>
+          <div class="option-card" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</div>
+          <div class="option-card" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</div>
+          <div class="option-card" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</div>
+          <div class="option-card" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</div>
+        </div>
+
+        <div id="affirmationDisplay" class="released-card" style="font-size:1.55rem; color:var(--terracotta); background:var(--terracotta-bg); border-color:transparent;"></div>
+
+        <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
+      </div>
+
+      <!-- SCREEN 7: FINISH -->
+      <div id="screen-finish" class="screen">
+        <div class="kicker">Complete</div>
+
+        <h2 class="title-step">
+          You made space<br>
+          to breathe.
+        </h2>
+
+        <p class="subtitle" style="color:var(--espresso);">
+          That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.
+        </p>
+
+        <div class="summary-card">
+          <div class="summary-item">
+            <div class="summary-label">Today you noticed</div>
+            <div id="summaryCheckin" class="summary-value"></div>
+          </div>
+
+          <div class="summary-item">
+            <div class="summary-label">You released</div>
+            <div id="summaryRelease" class="summary-value"></div>
+          </div>
+
+          <div class="summary-item">
+            <div class="summary-label">You chose to remember</div>
+            <div id="summaryAffirmation" class="summary-value" style="color:var(--terracotta);"></div>
+          </div>
+        </div>
+
+        <div class="cta-section" id="emailCaptureSection">
+          <div class="cta-section-title">
+            Want to keep this reset summary?
+          </div>
+
+          <p>
+            Add your name and email below. This form can be connected later to your email platform so Rachel can follow up with calming support.
+          </p>
+
+          <form class="email-form" onsubmit="handleEmailSubmit(event)">
+            <input type="text" placeholder="Your first name" class="email-form-input" required>
+            <input type="email" placeholder="Your email address" class="email-form-input" required>
+
+            <button type="submit" class="btn">Save My Reset</button>
+
+            <p class="form-note">
+              This demo currently shows the success message on-screen. To actually collect emails, connect this form to Acuity, Mailchimp, ConvertKit, Formspree, Google Forms, or another form tool.
             </p>
-            <button class="btn" onclick="nextScreen('screen-checkin', 1)">Begin the Reset</button>
+          </form>
         </div>
 
-        <!-- SCREEN 2: CHECK-IN -->
-        <div id="screen-checkin" class="screen">
-            <h2 class="title-step">First, notice where you are.</h2>
-            <div class="prompt-text">What feels heaviest right now?</div>
-            
-            <div class="options-grid" id="checkinOptions">
-                <div class="option-card" onclick="selectCheckin(this, 'My mind won’t stop racing')">My mind won’t stop racing</div>
-                <div class="option-card" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense</div>
-                <div class="option-card" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained</div>
-                <div class="option-card" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything</div>
-                <div class="option-card" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap</div>
-                <div class="option-card" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment</div>
-            </div>
+        <div class="cta-section" id="finalActionsSection" style="display:none;">
+          <div class="cta-section-title" style="color:var(--sage-dark);">
+            ✓ Your reset has been saved.
+          </div>
 
-            <div id="checkinMessage" class="soft-message">
-                That makes sense. You don’t have to fix everything right now. Just start here.
-            </div>
+          <p>
+            If you are tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you regulate, reconnect, and feel like yourself again.
+          </p>
 
-            <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Continue</button>
+          <div class="cta-buttons">
+            <a href="index.html#booking" class="btn">Book a Call</a>
+            <a href="index.html" class="btn btn-outline">Return to Website</a>
+          </div>
         </div>
+      </div>
 
-        <!-- SCREEN 3: BREATHE -->
-        <div id="screen-breathe" class="screen">
-            <h2 class="title-step">Step 1: Breathe</h2>
-            <p class="subtitle">Place one hand on your chest and one hand on your belly.<br>We will breathe together 3 times.</p>
-            
-            <div class="breathe-container">
-                <div id="breatheCircle" class="breathe-circle"></div>
-                <div id="breatheText" class="breathe-text">Ready</div>
-            </div>
+    </section>
 
-            <div id="cycleCounter" class="cycle-counter" style="display: none;">Cycle 1 of 3</div>
+  </main>
 
-            <button id="btnStartBreathing" class="btn" onclick="startBreathing()">Start Breathing</button>
-            
-            <div id="breatheComplete" class="soft-message" style="margin-top: 1rem;">
-                You are allowed to slow down.
-            </div>
-            <button id="btnBreatheNext" class="btn" style="display: none;" onclick="nextScreen('screen-ground', 3)">Next Step</button>
-        </div>
+  <footer>
+    <div class="footer-brand">Rachel <span>McBride</span> Coaching</div>
+    <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+    <p class="disclaimer">
+      This reset is for general wellness support and is not a substitute for medical or mental health care. If you are in crisis or feel unsafe, please contact emergency services or a licensed mental health professional.
+    </p>
+  </footer>
 
-        <!-- SCREEN 4: GROUND -->
-        <div id="screen-ground" class="screen">
-            <h2 class="title-step">Step 2: Ground</h2>
-            <div class="prompt-text">Look around your physical space.</div>
-            
-            <div class="grounding-list">
-                <label class="grounding-item">
-                    <input type="checkbox" onchange="checkGrounding()">
-                    <span>I have noticed <b>5</b> things I can see.</span>
-                </label>
-                <label class="grounding-item">
-                    <input type="checkbox" onchange="checkGrounding()">
-                    <span>I have noticed <b>4</b> things I can feel.</span>
-                </label>
-                <label class="grounding-item">
-                    <input type="checkbox" onchange="checkGrounding()">
-                    <span>I have noticed <b>3</b> things I can hear.</span>
-                </label>
-                <label class="grounding-item">
-                    <input type="checkbox" onchange="checkGrounding()">
-                    <span>I have noticed <b>2</b> things I can smell.</span>
-                </label>
-                <div class="grounding-item" style="align-items: center;">
-                    <input type="checkbox" id="checkChoose" onchange="checkGrounding()">
-                    <span style="flex-grow: 1;">
-                        I am choosing <b>1</b> thing for right now:
-                        <input type="text" id="groundingInput" class="grounding-input" placeholder="e.g., A glass of water" oninput="document.getElementById('checkChoose').checked = this.value.length > 0; checkGrounding();">
-                    </span>
-                </div>
-            </div>
+</div>
 
-            <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">I'm Grounded</button>
-        </div>
+<script>
+const state = {
+  checkIn: '',
+  releaseText: '',
+  affirmation: ''
+};
 
-        <!-- SCREEN 5: RELEASE -->
-        <div id="screen-release" class="screen">
-            <h2 class="title-step">Step 3: Release</h2>
-            <div class="prompt-text">What is one thing you are carrying right now that you can set down for the next five minutes?</div>
-            
-            <div id="releaseInputContainer">
-                <textarea id="releaseText" class="release-box" rows="3" placeholder="I can set down..."></textarea>
-                <p style="font-size: 0.9rem; color: var(--sage); margin-top: 1.5rem;">You don’t have to release everything.<br>Just one thing. Just for now.</p>
-                <button id="btnDoRelease" class="btn" onclick="animateRelease()">Release It</button>
-            </div>
+const totalSteps = 5;
 
-            <div id="releasedCard" class="released-card"></div>
-            <button id="btnReleaseNext" class="btn" style="display: none;" onclick="nextScreen('screen-reconnect', 5)">Next Step</button>
-        </div>
+function updateProgress(stepNum) {
+  const progressArea = document.getElementById('progressArea');
+  const progressIndicator = document.getElementById('progressIndicator');
+  const progressPercent = document.getElementById('progressPercent');
+  const progressFill = document.getElementById('progressFill');
 
-        <!-- SCREEN 6: RECONNECT -->
-        <div id="screen-reconnect" class="screen">
-            <h2 class="title-step">Step 4: Reconnect</h2>
-            <div class="prompt-text">Choose one sentence your body needs to hear right now.</div>
-            
-            <div class="options-grid" id="affirmationOptions">
-                <div class="option-card" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</div>
-                <div class="option-card" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</div>
-                <div class="option-card" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</div>
-                <div class="option-card" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</div>
-                <div class="option-card" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</div>
-                <div class="option-card" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</div>
-            </div>
+  if (!stepNum) {
+    progressArea.classList.remove('visible');
+    return;
+  }
 
-            <div id="affirmationDisplay" class="released-card" style="font-size: 1.6rem; color: var(--terracotta); background: var(--terracotta-bg); border-color: transparent;"></div>
+  const percentage = Math.round((stepNum / totalSteps) * 100);
 
-            <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
-        </div>
+  progressArea.classList.add('visible');
+  progressIndicator.textContent = `Step ${stepNum} of ${totalSteps}`;
+  progressPercent.textContent = `${percentage}%`;
+  progressFill.style.width = `${percentage}%`;
+}
 
-        <!-- SCREEN 7: FINISH / EMAIL CAPTURE -->
-        <div id="screen-finish" class="screen">
-            <h2 class="title-step">You made space to breathe.</h2>
-            <p class="subtitle" style="color: var(--espresso);">That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.</p>
-            
-            <div class="summary-card">
-                <div class="summary-item">
-                    <div class="summary-label">Today you noticed</div>
-                    <div id="summaryCheckin" class="summary-value"></div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-label">You released</div>
-                    <div id="summaryRelease" class="summary-value"></div>
-                </div>
-                <div class="summary-item" style="margin-bottom: 0;">
-                    <div class="summary-label">You chose to remember</div>
-                    <div id="summaryAffirmation" class="summary-value" style="color: var(--terracotta);"></div>
-                </div>
-            </div>
+function nextScreen(nextScreenId, stepNum) {
+  document.querySelectorAll('.screen').forEach((screen) => {
+    screen.classList.remove('active');
+  });
 
-            <!-- EMAIL CAPTURE SECTION -->
-            <div class="cta-section" id="emailCaptureSection">
-                <p style="color: var(--warm-brown); font-size: 1.15rem; font-family: var(--font-serif); font-style: italic; margin-bottom: 1.5rem;">Where should we send your reset summary?</p>
-                
-                <form onsubmit="handleEmailSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
-                    <input type="text" placeholder="Your first name" class="email-form-input" required>
-                    <input type="email" placeholder="Your email address" class="email-form-input" required>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">Send to my inbox</button>
-                    <p style="font-size: 0.75rem; color: var(--sage); margin-top: 0.5rem; text-align: center; margin-bottom: 0;">Plus receive occasional calming support. Unsubscribe anytime.</p>
-                </form>
-            </div>
+  updateProgress(stepNum);
 
-            <!-- FINAL ACTIONS (HIDDEN UNTIL EMAIL SUBMITTED) -->
-            <div class="cta-section" id="finalActionsSection" style="display: none;">
-                <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.4rem; color: var(--sage); margin-bottom: 1rem;">✓ Check your inbox!</p>
-                <p>Your summary is on its way. If you’re tired of living in survival mode, Rachel McBride Coaching offers heart-centered support to help you regulate and feel like yourself again.</p>
-                
-                <div class="cta-buttons">
-                    <a href="mailto:rachel@rachelmcbridecoaching.com" class="btn" style="margin-top: 0;">Book a Call</a>
-                    <a href="index.html" class="btn btn-outline" style="margin-top: 0;">Return to Website</a>
-                </div>
-            </div>
-        </div>
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
-    </main>
+  setTimeout(() => {
+    document.getElementById(nextScreenId).classList.add('active');
+  }, 120);
+}
 
-    <footer>
-        <div class="footer-brand">Rachel McBride Coaching</div>
-        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
-        <p class="disclaimer">This reset is for general wellness support and is not a substitute for medical or mental health care.</p>
-    </footer>
+function selectCheckin(el, text) {
+  document.querySelectorAll('#checkinOptions .option-card').forEach((card) => {
+    card.classList.remove('selected');
+  });
 
-    <script>
-        // State Management
-        const state = {
-            checkIn: '',
-            releaseText: '',
-            affirmation: ''
-        };
+  el.classList.add('selected');
+  state.checkIn = text;
 
-        const totalSteps = 5;
+  document.getElementById('checkinMessage').style.display = 'block';
+  document.getElementById('btnCheckinNext').disabled = false;
+}
 
-        // Navigation
-        function nextScreen(nextScreenId, stepNum) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            
-            const progress = document.getElementById('progressIndicator');
-            if (stepNum) {
-                progress.style.display = 'block';
-                progress.textContent = `Step ${stepNum} of ${totalSteps}`;
-            } else {
-                progress.style.display = 'none';
-            }
+/* BREATHING */
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                document.getElementById(nextScreenId).classList.add('active');
-            }, 100);
-        }
+let breathCycle = 0;
+const maxCycles = 3;
+let isBreathing = false;
 
-        // Check-in Logic
-        function selectCheckin(el, text) {
-            document.querySelectorAll('#checkinOptions .option-card').forEach(card => card.classList.remove('selected'));
-            el.classList.add('selected');
-            state.checkIn = text;
-            
-            document.getElementById('checkinMessage').style.display = 'block';
-            document.getElementById('btnCheckinNext').disabled = false;
-        }
+function startBreathing() {
+  if (isBreathing) return;
 
-        // Breathing Logic (4-2-6)
-        let breathCycle = 0;
-        const maxCycles = 3;
-        let isBreathing = false;
+  isBreathing = true;
+  breathCycle = 0;
 
-        function startBreathing() {
-            if (isBreathing) return;
-            isBreathing = true;
-            breathCycle = 0;
-            
-            document.getElementById('btnStartBreathing').style.display = 'none';
-            document.getElementById('cycleCounter').style.display = 'block';
-            runBreathCycle();
-        }
+  document.getElementById('btnStartBreathing').style.display = 'none';
+  document.getElementById('cycleCounter').style.display = 'block';
 
-        function runBreathCycle() {
-            if (breathCycle >= maxCycles) {
-                document.getElementById('breatheText').textContent = "Rest.";
-                document.getElementById('breatheCircle').className = 'breathe-circle';
-                document.getElementById('cycleCounter').style.display = 'none';
-                document.getElementById('breatheComplete').style.display = 'block';
-                document.getElementById('btnBreatheNext').style.display = 'inline-block';
-                return;
-            }
+  runBreathCycle();
+}
 
-            breathCycle++;
-            document.getElementById('cycleCounter').textContent = `Cycle ${breathCycle} of ${maxCycles}`;
-            
-            const circle = document.getElementById('breatheCircle');
-            const text = document.getElementById('breatheText');
+function runBreathCycle() {
+  const circle = document.getElementById('breatheCircle');
+  const text = document.getElementById('breatheText');
+  const counter = document.getElementById('cycleCounter');
 
-            text.textContent = "Inhale...";
-            circle.className = 'breathe-circle inhale';
-            
-            setTimeout(() => {
-                text.textContent = "Hold...";
-                circle.className = 'breathe-circle hold';
-                
-                setTimeout(() => {
-                    text.textContent = "Exhale slowly...";
-                    circle.className = 'breathe-circle exhale';
-                    
-                    setTimeout(() => {
-                        runBreathCycle();
-                    }, 6000); 
-                }, 2000); 
-            }, 4000); 
-        }
+  if (breathCycle >= maxCycles) {
+    text.textContent = 'Rest.';
+    circle.className = 'breathe-circle';
 
-        // Grounding Logic
-        function checkGrounding() {
-            const checkboxes = document.querySelectorAll('#screen-ground input[type="checkbox"]');
-            let allChecked = true;
-            
-            checkboxes.forEach(cb => {
-                const item = cb.closest('.grounding-item');
-                if (cb.checked) {
-                    item.classList.add('completed');
-                } else {
-                    item.classList.remove('completed');
-                    allChecked = false;
-                }
-            });
+    counter.style.display = 'none';
 
-            document.getElementById('btnGroundNext').disabled = !allChecked;
-        }
+    document.getElementById('breatheComplete').style.display = 'block';
+    document.getElementById('btnBreatheNext').style.display = 'inline-flex';
 
-        // Release Logic
-        function animateRelease() {
-            const input = document.getElementById('releaseText').value.trim();
-            if (!input) return;
-            
-            state.releaseText = input;
-            
-            const container = document.getElementById('releaseInputContainer');
-            const card = document.getElementById('releasedCard');
-            
-            container.classList.add('fade-out');
-            
-            setTimeout(() => {
-                container.style.display = 'none';
-                card.textContent = `" ${input} "`;
-                card.style.display = 'block';
-                
-                setTimeout(() => {
-                    document.getElementById('btnReleaseNext').style.display = 'inline-block';
-                }, 800);
-            }, 800);
-        }
+    return;
+  }
 
-        // Affirmation Logic
-        function selectAffirmation(el, text) {
-            document.querySelectorAll('#affirmationOptions .option-card').forEach(card => card.classList.remove('selected'));
-            el.classList.add('selected');
-            state.affirmation = text;
-            
-            document.getElementById('affirmationOptions').style.display = 'none';
-            const display = document.getElementById('affirmationDisplay');
-            display.textContent = text;
-            display.style.display = 'block';
-            
-            document.getElementById('btnFinishReset').disabled = false;
-        }
+  breathCycle++;
 
-        // Finish Screen
-        function showFinishScreen() {
-            document.getElementById('summaryCheckin').textContent = state.checkIn;
-            document.getElementById('summaryRelease').textContent = state.releaseText ? `"${state.releaseText}"` : "The weight you were holding.";
-            document.getElementById('summaryAffirmation').textContent = state.affirmation;
-            
-            nextScreen('screen-finish', null);
-        }
+  counter.textContent = `Cycle ${breathCycle} of ${maxCycles}`;
 
-        // Email Submission Logic
-        function handleEmailSubmit(e) {
-            e.preventDefault();
-            const captureSection = document.getElementById('emailCaptureSection');
-            const finalSection = document.getElementById('finalActionsSection');
-            
-            captureSection.style.opacity = '0';
-            
-            setTimeout(() => {
-                captureSection.style.display = 'none';
-                finalSection.style.opacity = '0';
-                finalSection.style.display = 'block';
-                
-                setTimeout(() => {
-                    finalSection.style.opacity = '1';
-                }, 50);
-            }, 500);
-        }
-    </script>
+  text.textContent = 'Inhale...';
+  circle.className = 'breathe-circle inhale';
+
+  setTimeout(() => {
+    text.textContent = 'Hold...';
+    circle.className = 'breathe-circle hold';
+
+    setTimeout(() => {
+      text.textContent = 'Exhale slowly...';
+      circle.className = 'breathe-circle exhale';
+
+      setTimeout(() => {
+        runBreathCycle();
+      }, 6000);
+    }, 2000);
+  }, 4000);
+}
+
+/* GROUNDING */
+
+function handleGroundingInput(input) {
+  const checkChoose = document.getElementById('checkChoose');
+  checkChoose.checked = input.value.trim().length > 0;
+  checkGrounding();
+}
+
+function checkGrounding() {
+  const checkboxes = document.querySelectorAll('#screen-ground input[type="checkbox"]');
+  let allChecked = true;
+
+  checkboxes.forEach((checkbox) => {
+    const item = checkbox.closest('.grounding-item');
+
+    if (checkbox.checked) {
+      item.classList.add('completed');
+    } else {
+      item.classList.remove('completed');
+      allChecked = false;
+    }
+  });
+
+  document.getElementById('btnGroundNext').disabled = !allChecked;
+}
+
+/* RELEASE */
+
+function animateRelease() {
+  const input = document.getElementById('releaseText').value.trim();
+
+  if (!input) {
+    document.getElementById('releaseText').focus();
+    return;
+  }
+
+  state.releaseText = input;
+
+  const container = document.getElementById('releaseInputContainer');
+  const card = document.getElementById('releasedCard');
+
+  container.classList.add('fade-out');
+
+  setTimeout(() => {
+    container.style.display = 'none';
+
+    card.innerHTML = `For the next five minutes, I can set down:<br><br>“${input}”`;
+    card.style.display = 'block';
+
+    setTimeout(() => {
+      document.getElementById('btnReleaseNext').style.display = 'inline-flex';
+    }, 650);
+  }, 650);
+}
+
+/* AFFIRMATION */
+
+function selectAffirmation(el, text) {
+  document.querySelectorAll('#affirmationOptions .option-card').forEach((card) => {
+    card.classList.remove('selected');
+  });
+
+  el.classList.add('selected');
+
+  state.affirmation = text;
+
+  document.getElementById('affirmationOptions').style.display = 'none';
+
+  const display = document.getElementById('affirmationDisplay');
+  display.textContent = text;
+  display.style.display = 'block';
+
+  document.getElementById('btnFinishReset').disabled = false;
+}
+
+/* FINISH */
+
+function showFinishScreen() {
+  document.getElementById('summaryCheckin').textContent = state.checkIn || 'You needed a moment.';
+  document.getElementById('summaryRelease').textContent = state.releaseText ? `“${state.releaseText}”` : 'The weight you were holding.';
+  document.getElementById('summaryAffirmation').textContent = state.affirmation || 'I am allowed to breathe.';
+
+  nextScreen('screen-finish', null);
+}
+
+function handleEmailSubmit(event) {
+  event.preventDefault();
+
+  const captureSection = document.getElementById('emailCaptureSection');
+  const finalSection = document.getElementById('finalActionsSection');
+
+  captureSection.style.opacity = '0';
+
+  setTimeout(() => {
+    captureSection.style.display = 'none';
+
+    finalSection.style.opacity = '0';
+    finalSection.style.display = 'block';
+
+    setTimeout(() => {
+      finalSection.style.opacity = '1';
+    }, 50);
+  }, 450);
+}
+</script>
+
 </body>
 </html>
