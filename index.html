@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,131 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/styles.css">
+
+<!-- Custom Styles for the New Sections to match site aesthetic -->
+<style>
+  /* Path Callout Block (Not Sure Where to Start) */
+  .path-callout {
+    background-color: #faf9f6; 
+    border: 1px solid #f0ebe1;
+    border-radius: 16px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 5rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.02);
+  }
+  .path-callout-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--text-dark, #2b2b2b);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .path-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+  .path-step {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-body, #4a4a4a);
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #f0ebe1;
+    position: relative;
+  }
+  .path-step strong {
+    color: var(--terra, #b85e44); /* Fallback to a warm terra tone */
+    font-weight: 600;
+  }
+  .path-footer {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-dark, #2b2b2b);
+  }
+
+  /* Vision Section */
+  .vision-section {
+    padding: 6rem 0 4rem 0;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  .vision-statements {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 4rem auto 0;
+  }
+  @media (min-width: 768px) {
+    .vision-statements {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .vision-card {
+    padding: 3rem 2rem;
+    background: #faf9f6;
+    border-radius: 12px;
+    border: 1px solid #f0ebe1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .vision-card:hover {
+    transform: translateY(-5px);
+  }
+  .vision-card p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-body, #4a4a4a);
+    margin: 0;
+  }
+  .vision-card strong {
+    color: var(--text-dark, #2b2b2b);
+  }
+
+  /* Bio Section */
+  .bio-section {
+    padding: 4rem 0 6rem 0;
+    background-color: #ffffff;
+  }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .bio-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .bio-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-body, #4a4a4a);
+    margin-bottom: 1.5rem;
+  }
+  .bio-image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .bio-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+</style>
 </head>
 
 <body>
@@ -331,59 +457,73 @@
 
     </div>
 
-    <!-- Not Sure Where To Start Block -->
-    <div class="fade-up delay-4" style="margin-top: 5rem; padding: 3rem 2rem; background: rgba(0,0,0,0.03); border-radius: 12px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">NOT SURE WHERE TO START?</h3>
-      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: #4a4a4a;">
-        Most women begin with a Release Circle.<br>
-        From there, they move into the Membership for ongoing support.<br>
-        And when they’re ready for deeper work, they step into private coaching.
-      </p>
-      <p style="font-size: 1.1rem; line-height: 1.8; color: #4a4a4a;">
-        You don’t have to figure it all out right now.<br>
-        <strong>You just have to take the first step.</strong>
-      </p>
+    <!-- REDESIGNED: Not Sure Where To Start Block -->
+    <div class="path-callout fade-up delay-4">
+      <h3 class="path-callout-title">Not Sure Where To Start?</h3>
+      
+      <div class="path-steps">
+        <div class="path-step">
+          Most women begin with a <strong>Release Circle</strong>.
+        </div>
+        <div class="path-step">
+          From there, they move into the <strong>Membership</strong> for ongoing support.
+        </div>
+        <div class="path-step">
+          And when they’re ready for deeper work, they step into <strong>Private Coaching</strong>.
+        </div>
+      </div>
+
+      <div class="path-footer">
+        <p>You don’t have to figure it all out right now.<br><strong>You just have to take the first step.</strong></p>
+      </div>
     </div>
 
   </div>
 </section>
 
-<section id="vision-bio" style="padding: 6rem 0; background-color: var(--bg-primary, #ffffff);">
+<!-- REDESIGNED: Vision Section -->
+<section class="vision-section" id="vision">
   <div class="container">
+    <span class="section-label fade-up">A New Baseline</span>
     
-    <!-- Vision Section -->
-    <div class="fade-up" style="text-align: center; max-width: 800px; margin: 0 auto 5rem auto;">
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin-bottom: 2.5rem; color: var(--text-dark, #2b2b2b);">
-        Imagine moving through your day without that constant internal pressure.
-      </h2>
+    <h2 class="section-headline fade-up delay-1" style="max-width: 800px; margin: 0 auto;">
+      Imagine moving through your day without that constant internal pressure.
+    </h2>
+    
+    <div class="vision-statements fade-up delay-2">
+      <div class="vision-card">
+        <p>You feel calmer in your body.<br>More patient. More present.<br>You respond instead of react.</p>
+      </div>
       
-      <p style="font-size: 1.25rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 2rem;">
-        You feel calmer in your body.<br>
-        More patient. More present.<br>
-        You respond instead of react.
-      </p>
+      <div class="vision-card">
+        <p>You have tools that actually work—<br>in the middle of real life.</p>
+      </div>
       
-      <p style="font-size: 1.25rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 2rem;">
-        You have tools that actually work—<br>
-        in the middle of real life.
-      </p>
-      
-      <p style="font-size: 1.25rem; line-height: 1.8; color: #4a4a4a;">
-        Not because everything changed around you—<br>
-        but because <strong>you did.</strong>
-      </p>
+      <div class="vision-card">
+        <p>Not because everything changed around you—<br>but because <strong>you did.</strong></p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Bio Section -->
-    <div class="fade-up delay-1" style="max-width: 800px; margin: 0 auto; padding-top: 4rem; border-top: 1px solid rgba(0,0,0,0.1);">
-      <p style="font-size: 1.1rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 1.5rem;">
-        Rachel is a mom of three specializing in supporting moms who are tired of holding it all together and are ready to release what they’ve been carrying so that they can take back control of their lives. Rachel brings compassion to her holistic coaching approach and has a special way of creating safe spaces for women to feel seen and supported as they navigate parenting, work, relationships, finances and whatever else feels heavy.
-      </p>
-      <p style="font-size: 1.1rem; line-height: 1.8; color: #4a4a4a;">
-        Along with a Master’s degree in Education, Rachel is a certified parent coach and a National Board Certified Health and Wellness coach. Her work is grounded in trauma-informed, somatic practices that support nervous system regulation and sustainable change in everyday life.
-      </p>
+<!-- REDESIGNED: Bio Section -->
+<section class="bio-section" id="about-rachel">
+  <div class="container">
+    <div class="bio-grid">
+      <div class="bio-content fade-up">
+        <span class="section-label">Meet Rachel</span>
+        <h2 class="section-headline" style="margin-bottom: 2rem;">Real support for the woman carrying it all.</h2>
+        
+        <p>Rachel is a mom of three specializing in supporting moms who are tired of holding it all together and are ready to release what they’ve been carrying so that they can take back control of their lives. Rachel brings compassion to her holistic coaching approach and has a special way of creating safe spaces for women to feel seen and supported as they navigate parenting, work, relationships, finances and whatever else feels heavy.</p>
+        
+        <p>Along with a Master’s degree in Education, Rachel is a certified parent coach and a National Board Certified Health and Wellness coach. Her work is grounded in trauma-informed, somatic practices that support nervous system regulation and sustainable change in everyday life.</p>
+      </div>
+      
+      <div class="bio-image-wrapper fade-up delay-1">
+        <!-- Reusing the headshot image here so it matches a standard professional Bio format -->
+        <img src="IMG_4099.jpeg" alt="Rachel McBride, Coach">
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -720,3 +860,6 @@
 
 </body>
 </html>
+
+
+```
