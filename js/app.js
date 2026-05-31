@@ -1,87 +1,113 @@
 // Rachel McBride Coaching landing page interactions
 
-const heroFadeItems = document.querySelectorAll('#hero .fade-up');
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.getElementById('siteNav');
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.querySelector('.hamburger');
 
-heroFadeItems.forEach((el) => {
-  el.classList.add('visible');
-});
+  const heroFadeItems = document.querySelectorAll('#hero .fade-up');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+  heroFadeItems.forEach((el) => {
+    el.classList.add('visible');
   });
-}, {
-  threshold: 0.05,
-  rootMargin: '0px 0px -40px 0px'
-});
 
-document.querySelectorAll('.fade-up:not(#hero .fade-up)').forEach((el) => {
-  observer.observe(el);
-});
+  const fadeItems = Array.from(document.querySelectorAll('.fade-up')).filter((el) => {
+    return !el.closest('#hero');
+  });
 
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const hamburger = document.querySelector('.hamburger');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-  if (!menu || !hamburger) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-  const isOpen = menu.classList.toggle('open');
+    fadeItems.forEach((el) => {
+      observer.observe(el);
+    });
+  } else {
+    fadeItems.forEach((el) => {
+      el.classList.add('visible');
+    });
+  }
 
-  menu.setAttribute('aria-hidden', String(!isOpen));
-  hamburger.setAttribute('aria-expanded', String(isOpen));
-  document.body.classList.toggle('no-scroll', isOpen);
-}
+  function closeMenu() {
+    if (!menu || !hamburger) return;
 
-window.toggleMenu = toggleMenu;
-
-document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Escape') return;
-
-  const menu = document.getElementById('mobileMenu');
-  const hamburger = document.querySelector('.hamburger');
-
-  if (!menu || !hamburger) return;
-
-  if (menu.classList.contains('open')) {
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('no-scroll');
   }
-});
 
-const nav = document.getElementById('siteNav');
+  function toggleMenu() {
+    if (!menu || !hamburger) return;
 
-window.addEventListener('scroll', () => {
-  if (!nav) return;
+    const isOpen = menu.classList.toggle('open');
 
-  if (window.scrollY > 30) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
+    menu.setAttribute('aria-hidden', String(!isOpen));
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('no-scroll', isOpen);
   }
-});
 
-document.querySelectorAll('.faq-question').forEach((button) => {
-  button.addEventListener('click', () => {
-    const item = button.closest('.faq-item');
-    const allItems = document.querySelectorAll('.faq-item');
+  window.toggleMenu = toggleMenu;
 
-    allItems.forEach((faq) => {
-      if (faq !== item) {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  if (nav) {
+    const updateNavState = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    };
+
+    updateNavState();
+
+    window.addEventListener('scroll', updateNavState, {
+      passive: true
+    });
+  }
+
+  document.querySelectorAll('.faq-question').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+
+      if (!item) return;
+
+      const isAlreadyOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach((faq) => {
         faq.classList.remove('open');
+
+        const faqButton = faq.querySelector('.faq-question');
+
+        if (faqButton) {
+          faqButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (!isAlreadyOpen) {
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
       }
     });
-
-    item.classList.toggle('open');
   });
+
+  document.querySelectorAll('.mobile-menu a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      el.classList.add('visible');
+    });
+  }, 1800);
 });
-
-setTimeout(() => {
-  document.querySelectorAll('.fade-up').forEach((el) => {
-    el.classList.add('visible');
-  });
-}, 1800);
