@@ -14,131 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/styles.css">
-
-<!-- Custom Styles for the New Sections to match site aesthetic -->
-<style>
-  /* Path Callout Block (Not Sure Where to Start) */
-  .path-callout {
-    background-color: #faf9f6; 
-    border: 1px solid #f0ebe1;
-    border-radius: 16px;
-    padding: 4rem 2rem;
-    text-align: center;
-    margin-top: 5rem;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.02);
-  }
-  .path-callout-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    color: var(--text-dark, #2b2b2b);
-    margin-bottom: 2.5rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .path-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 3rem auto;
-  }
-  .path-step {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: var(--text-body, #4a4a4a);
-    padding: 1.5rem;
-    background: #ffffff;
-    border-radius: 8px;
-    border: 1px solid #f0ebe1;
-    position: relative;
-  }
-  .path-step strong {
-    color: var(--terra, #b85e44); /* Fallback to a warm terra tone */
-    font-weight: 600;
-  }
-  .path-footer {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--text-dark, #2b2b2b);
-  }
-
-  /* Vision Section */
-  .vision-section {
-    padding: 6rem 0 4rem 0;
-    background-color: #ffffff;
-    text-align: center;
-  }
-  .vision-statements {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 4rem auto 0;
-  }
-  @media (min-width: 768px) {
-    .vision-statements {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .vision-card {
-    padding: 3rem 2rem;
-    background: #faf9f6;
-    border-radius: 12px;
-    border: 1px solid #f0ebe1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  .vision-card:hover {
-    transform: translateY(-5px);
-  }
-  .vision-card p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--text-body, #4a4a4a);
-    margin: 0;
-  }
-  .vision-card strong {
-    color: var(--text-dark, #2b2b2b);
-  }
-
-  /* Bio Section */
-  .bio-section {
-    padding: 4rem 0 6rem 0;
-    background-color: #ffffff;
-  }
-  .bio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  @media (min-width: 900px) {
-    .bio-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  .bio-content p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--text-body, #4a4a4a);
-    margin-bottom: 1.5rem;
-  }
-  .bio-image-wrapper {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .bio-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-</style>
 </head>
 
 <body>
@@ -281,7 +156,7 @@
 
       <div class="yes-list">
         <div class="yes-list-item fade-up delay-1">
-          <span class="check-icon">
+          <span class="check-icon" aria-hidden="true">
             <svg viewBox="0 0 12 12" fill="none">
               <polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -290,7 +165,7 @@
         </div>
 
         <div class="yes-list-item fade-up delay-2">
-          <span class="check-icon">
+          <span class="check-icon" aria-hidden="true">
             <svg viewBox="0 0 12 12" fill="none">
               <polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -299,7 +174,7 @@
         </div>
 
         <div class="yes-list-item fade-up delay-3">
-          <span class="check-icon">
+          <span class="check-icon" aria-hidden="true">
             <svg viewBox="0 0 12 12" fill="none">
               <polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -308,7 +183,7 @@
         </div>
 
         <div class="yes-list-item fade-up delay-4">
-          <span class="check-icon">
+          <span class="check-icon" aria-hidden="true">
             <svg viewBox="0 0 12 12" fill="none">
               <polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -316,7 +191,7 @@
           <span><strong>You are ready to feel like yourself again</strong> without needing to disappear from your life to do it.</span>
         </div>
 
-        <div class="fade-up delay-5" style="margin-top:0.6rem;">
+        <div class="fade-up delay-5 yes-cta-wrap">
           <a href="#booking" class="btn-primary">I’m Ready to Talk</a>
         </div>
       </div>
@@ -336,37 +211,31 @@
 
     <div class="transform-grid">
       <div class="transform-card fade-up delay-1">
-        <div class="transform-icon">🌿</div>
         <div class="transform-label">Grounded</div>
         <p class="transform-desc">You feel anchored in your body and present in your life instead of swept away by everyone else’s needs.</p>
       </div>
 
       <div class="transform-card fade-up delay-2">
-        <div class="transform-icon">☁️</div>
         <div class="transform-label">Calmer</div>
         <p class="transform-desc">Your nervous system begins learning a new baseline — one that is not always bracing for the next thing.</p>
       </div>
 
       <div class="transform-card fade-up delay-3">
-        <div class="transform-icon">✨</div>
         <div class="transform-label">More Energized</div>
         <p class="transform-desc">You stop running on empty and start moving through your days with more capacity, clarity, and steadiness.</p>
       </div>
 
       <div class="transform-card fade-up delay-1">
-        <div class="transform-icon">🕊️</div>
         <div class="transform-label">Released From Pressure</div>
         <p class="transform-desc">The expectations, guilt, people-pleasing, and invisible load begin to loosen their grip.</p>
       </div>
 
       <div class="transform-card fade-up delay-2">
-        <div class="transform-icon">🧭</div>
         <div class="transform-label">More in Control</div>
         <p class="transform-desc">You make decisions from clarity instead of reaction, and your life starts to feel manageable again.</p>
       </div>
 
       <div class="transform-card fade-up delay-3">
-        <div class="transform-icon">💛</div>
         <div class="transform-label">Connected to Yourself</div>
         <p class="transform-desc">You remember who you are underneath all the roles, responsibilities, and pressure.</p>
       </div>
@@ -386,31 +255,26 @@
 
     <div class="method-grid">
       <div class="method-card fade-up delay-1">
-        <div class="method-step">01</div>
         <div class="method-title"><em>Step One</em>Regulate</div>
         <p class="method-desc">Calm your nervous system and learn how to notice what your body has been trying to tell you.</p>
       </div>
 
       <div class="method-card fade-up delay-2">
-        <div class="method-step">02</div>
         <div class="method-title"><em>Step Two</em>Recognize</div>
         <p class="method-desc">Name the patterns, pressure, and expectations that have kept you running on empty.</p>
       </div>
 
       <div class="method-card fade-up delay-3">
-        <div class="method-step">03</div>
         <div class="method-title"><em>Step Three</em>Reconnect</div>
         <p class="method-desc">Come back to your needs, your voice, your body, and the woman underneath all the roles.</p>
       </div>
 
       <div class="method-card fade-up delay-4">
-        <div class="method-step">04</div>
         <div class="method-title"><em>Step Four</em>Release</div>
         <p class="method-desc">Let go of the emotional weight, guilt, and expectations you were never meant to carry alone.</p>
       </div>
 
       <div class="method-card fade-up delay-5">
-        <div class="method-step">05</div>
         <div class="method-title"><em>Step Five</em>Restore</div>
         <p class="method-desc">Build rhythms that help you stay grounded, supported, and connected in your real life.</p>
       </div>
@@ -428,45 +292,45 @@
       </p>
     </div>
 
-    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-      
-      <div class="service-card fade-up delay-1" style="display: flex; flex-direction: column;">
+    <div class="services-grid three-services">
+      <div class="service-card fade-up delay-1">
         <div class="service-label">A guided reset for your body</div>
-        <div class="service-title">The Art of Release, Women’s Circles</div>
-        <p class="service-desc">Virtual and in-person guided experience where you can step out of the noise and into a space where you can finally exhale.</p>
-        <a href="#booking" class="btn-outline-terra" style="align-self:flex-start; margin-top: auto;">Join the next women's circle</a>
+        <div class="service-title">The Art of Release: Women’s Circles</div>
+        <p class="service-desc">Virtual and in-person guided experiences where you can step out of the noise and into a space where you can finally exhale.</p>
+        <a href="#booking" class="btn-outline-terra">Join the next women’s circle</a>
       </div>
 
-      <div class="service-card fade-up delay-2" style="display: flex; flex-direction: column;">
+      <div class="service-card fade-up delay-2">
         <div class="service-label">Ongoing support for real life</div>
         <div class="service-title">The Release Room Membership</div>
         <p class="service-desc">Consistent access to somatic practices, live coaching, and a private space to regulate and reset with a community of women who get it.</p>
-        <a href="#booking" class="btn-outline-terra" style="align-self:flex-start; margin-top: auto;">Join the Interest List</a>
+        <a href="#booking" class="btn-outline-terra">Join the Interest List</a>
       </div>
 
-      <div class="service-card featured fade-up delay-3" style="display: flex; flex-direction: column;">
+      <div class="service-card featured fade-up delay-3">
         <div class="service-label">Deep, personalized transformation</div>
         <div class="service-title">10-Week Private Coaching Experience</div>
         <p class="service-desc">
-          For the woman who is done managing symptoms—and is ready to fundamentally change how she experiences her life.<br><br>
-          This is a high-level, deeply personalized coaching container where we work closely together to support your nervous system, your patterns, and the reality of your day-to-day life so that you can move through stress instead of getting stuck in it.
+          For the woman who is done managing symptoms and ready to change how she experiences stress, pressure, and daily life.
+          <br><br>
+          This personalized coaching experience supports your nervous system, your patterns, and your real-life rhythms so you can move through stress without getting stuck in it.
         </p>
-        <a href="#booking" class="btn-primary" style="align-self:flex-start; margin-top: auto;">Book a Connection Call</a>
+        <a href="#booking" class="btn-primary">Book a Connection Call</a>
       </div>
-
     </div>
 
-    <!-- REDESIGNED: Not Sure Where To Start Block -->
     <div class="path-callout fade-up delay-4">
       <h3 class="path-callout-title">Not Sure Where To Start?</h3>
-      
+
       <div class="path-steps">
         <div class="path-step">
           Most women begin with a <strong>Release Circle</strong>.
         </div>
+
         <div class="path-step">
           From there, they move into the <strong>Membership</strong> for ongoing support.
         </div>
+
         <div class="path-step">
           And when they’re ready for deeper work, they step into <strong>Private Coaching</strong>.
         </div>
@@ -476,51 +340,52 @@
         <p>You don’t have to figure it all out right now.<br><strong>You just have to take the first step.</strong></p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- REDESIGNED: Vision Section -->
 <section class="vision-section" id="vision">
   <div class="container">
     <span class="section-label fade-up">A New Baseline</span>
-    
-    <h2 class="section-headline fade-up delay-1" style="max-width: 800px; margin: 0 auto;">
+
+    <h2 class="section-headline fade-up delay-1">
       Imagine moving through your day without that constant internal pressure.
     </h2>
-    
+
     <div class="vision-statements fade-up delay-2">
       <div class="vision-card">
         <p>You feel calmer in your body.<br>More patient. More present.<br>You respond instead of react.</p>
       </div>
-      
+
       <div class="vision-card">
-        <p>You have tools that actually work—<br>in the middle of real life.</p>
+        <p>You have tools that actually work<br>in the middle of real life.</p>
       </div>
-      
+
       <div class="vision-card">
-        <p>Not because everything changed around you—<br>but because <strong>you did.</strong></p>
+        <p>Not because everything changed around you,<br>but because <strong>you did.</strong></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REDESIGNED: Bio Section -->
 <section class="bio-section" id="about-rachel">
   <div class="container">
     <div class="bio-grid">
       <div class="bio-content fade-up">
         <span class="section-label">Meet Rachel</span>
-        <h2 class="section-headline" style="margin-bottom: 2rem;">Real support for the woman carrying it all.</h2>
-        
-        <p>Rachel is a mom of three specializing in supporting moms who are tired of holding it all together and are ready to release what they’ve been carrying so that they can take back control of their lives. Rachel brings compassion to her holistic coaching approach and has a special way of creating safe spaces for women to feel seen and supported as they navigate parenting, work, relationships, finances and whatever else feels heavy.</p>
-        
-        <p>Along with a Master’s degree in Education, Rachel is a certified parent coach and a National Board Certified Health and Wellness coach. Her work is grounded in trauma-informed, somatic practices that support nervous system regulation and sustainable change in everyday life.</p>
+
+        <h2 class="section-headline">Real support for the woman carrying it all.</h2>
+
+        <p>
+          Rachel McBride is a mom of three and a coach for women who are tired of holding everything together on the outside while feeling overwhelmed on the inside. Her work helps moms release pressure, regulate stress, reconnect with themselves, and build practical support for the realities of parenting, work, relationships, finances, and everyday life.
+        </p>
+
+        <p>
+          Along with a Master’s degree in Education, Rachel is a certified parent coach and a National Board Certified Health and Wellness Coach. Her work is grounded in trauma-informed, somatic practices that support nervous system regulation and sustainable change in everyday life.
+        </p>
       </div>
-      
+
       <div class="bio-image-wrapper fade-up delay-1">
-        <!-- Reusing the headshot image here so it matches a standard professional Bio format -->
-        <img src="IMG_4099.jpeg" alt="Rachel McBride, Coach">
+        <img src="IMG_4099.jpeg" alt="Rachel McBride, coach">
       </div>
     </div>
   </div>
@@ -550,7 +415,7 @@
 
         <ul class="ideal-checklist">
           <li class="fade-up delay-1">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -559,7 +424,7 @@
           </li>
 
           <li class="fade-up delay-2">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -568,7 +433,7 @@
           </li>
 
           <li class="fade-up delay-3">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -577,7 +442,7 @@
           </li>
 
           <li class="fade-up delay-4">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -586,7 +451,7 @@
           </li>
 
           <li class="fade-up delay-5">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -595,7 +460,7 @@
           </li>
 
           <li class="fade-up delay-6">
-            <span class="check-icon">
+            <span class="check-icon" aria-hidden="true">
               <svg viewBox="0 0 12 12" fill="none">
                 <polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -630,7 +495,7 @@
         <span class="lead-mini">Start right now</span>
       </div>
 
-      <a href="reset.html" class="btn-primary" style="padding:1.08rem 2.55rem; font-size:1.04rem;">
+      <a href="reset.html" class="btn-primary lead-button">
         Begin the Reset Now
       </a>
     </div>
@@ -641,7 +506,7 @@
   <div class="container">
     <div class="section-header fade-up">
       <span class="section-label">Women’s Words</span>
-      <p class="section-intro" style="margin-top: 1rem;">
+      <p class="section-intro testimonial-intro">
         The right support can help you stop carrying everything alone.
       </p>
     </div>
@@ -659,7 +524,7 @@
         <span class="testimonial-quote-mark">“</span>
 
         <p class="testimonial-text">
-          I really enjoyed the wellness circle. Your voice was calming and it only took me a little to feel like I was out of my thoughts and in my body. Of course I know you so maybe if I didn’t it might have taken me a little longer to relax but I didn’t know anyone around me and still relaxed.
+          I really enjoyed the wellness circle. Your voice was calming, and it only took me a little while to feel like I was out of my thoughts and in my body. I did not know anyone around me and still relaxed.
         </p>
 
         <div class="testimonial-divider"></div>
@@ -678,7 +543,7 @@
         <span class="testimonial-quote-mark">“</span>
 
         <p class="testimonial-text">
-          Who knew I could focus on what I was doing in the moment-and not worry or think about the next thing on my to-do list! It was a much needed time to focus on myself!
+          Who knew I could focus on what I was doing in the moment and not worry or think about the next thing on my to-do list? It was a much-needed time to focus on myself.
         </p>
 
         <div class="testimonial-divider"></div>
@@ -697,7 +562,7 @@
         <span class="testimonial-quote-mark">“</span>
 
         <p class="testimonial-text">
-          Thanks again for the invite. I enjoyed the wellness circle very much. It was nice to take some time out of my busy day just for me! The 1 hour timeslot felt appropriate- not too long or too short. I felt more, calm, relaxed and lighter after and would recommend it to everyone to try. I feel like with a regular practice, I could get a lot out of it.
+          I enjoyed the wellness circle very much. It was nice to take some time out of my busy day just for me. I felt calmer, more relaxed, and lighter afterward. I would recommend everyone try it.
         </p>
 
         <div class="testimonial-divider"></div>
@@ -719,9 +584,9 @@
 
     <div class="faq-wrap fade-up delay-1">
       <div class="faq-item open">
-        <button class="faq-question" type="button">
+        <button class="faq-question" type="button" aria-expanded="true">
           <span>What if I do not know exactly what I need?</span>
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
         </button>
 
         <div class="faq-answer">
@@ -732,9 +597,9 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" type="button">
+        <button class="faq-question" type="button" aria-expanded="false">
           <span>Is coaching the same as therapy?</span>
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
         </button>
 
         <div class="faq-answer">
@@ -745,9 +610,9 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" type="button">
+        <button class="faq-question" type="button" aria-expanded="false">
           <span>Can I do this virtually?</span>
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
         </button>
 
         <div class="faq-answer">
@@ -758,9 +623,9 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" type="button">
+        <button class="faq-question" type="button" aria-expanded="false">
           <span>What happens after I book a call?</span>
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
         </button>
 
         <div class="faq-answer">
