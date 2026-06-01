@@ -1,165 +1,147 @@
-// Rachel McBride Coaching landing page interactions
-
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('siteNav');
-  const menu = document.getElementById('mobileMenu');
   const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.querySelector('.mobile-close');
 
-  /* ---------- Scroll reveal ---------- */
-
-  // Hero content is above the fold — reveal immediately.
-  document.querySelectorAll('#hero .fade-up').forEach((el) => {
-    el.classList.add('visible');
-  });
-
-  const fadeItems = Array.from(document.querySelectorAll('.fade-up'))
-    .filter((el) => !el.closest('#hero'));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      });
-    }, {
-      threshold: 0.05,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    fadeItems.forEach((el) => observer.observe(el));
-  } else {
-    // No IntersectionObserver support — show everything up front.
-    fadeItems.forEach((el) => el.classList.add('visible'));
-  }
-  // NOTE: the old 1.8s setTimeout fallback was removed. It forced every
-  // element visible regardless of scroll position, defeating the reveal.
-
-  /* ---------- Mobile menu (with focus trap) ---------- */
-
-  const FOCUSABLE = 'a[href], button:not([disabled])';
-  let lastFocused = null;
-
-  function getMenuFocusables() {
-    return menu ? Array.from(menu.querySelectorAll(FOCUSABLE)) : [];
+  function updateNav() {
+    if (!nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > 24);
   }
 
-  function trapFocus(event) {
-    if (event.key !== 'Tab') return;
-    const items = getMenuFocusables();
-    if (!items.length) return;
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
 
-    const first = items[0];
-    const last = items[items.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
+  function openMenu() {
+    if (!mobileMenu || !hamburger) return;
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('no-scroll');
   }
 
   function closeMenu() {
-    if (!menu || !hamburger) return;
-
-    menu.classList.remove('open');
-    menu.setAttribute('aria-hidden', 'true');
+    if (!mobileMenu || !hamburger) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('no-scroll');
-    menu.removeEventListener('keydown', trapFocus);
-
-    if (lastFocused) {
-      lastFocused.focus();
-      lastFocused = null;
-    }
   }
 
   function toggleMenu() {
-    if (!menu || !hamburger) return;
-
-    const isOpen = menu.classList.toggle('open');
-
-    menu.setAttribute('aria-hidden', String(!isOpen));
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-    document.body.classList.toggle('no-scroll', isOpen);
-
-    if (isOpen) {
-      lastFocused = document.activeElement;
-      menu.addEventListener('keydown', trapFocus);
-      const items = getMenuFocusables();
-      if (items.length) items[0].focus();
+    if (!mobileMenu) return;
+    if (mobileMenu.classList.contains('open')) {
+      closeMenu();
     } else {
-      menu.removeEventListener('keydown', trapFocus);
-      if (lastFocused) {
-        lastFocused.focus();
-        lastFocused = null;
-      }
+      openMenu();
     }
   }
 
-  window.toggleMenu = toggleMenu;
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+
+  if (mobileClose) {
+    mobileClose.addEventListener('click', closeMenu);
+  }
+
+  document.querySelectorAll('.mobile-menu a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
 
-  document.querySelectorAll('.mobile-menu a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+  const revealItems = document.querySelectorAll('.fade-up');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -8% 0px'
   });
 
-  /* ---------- Nav scroll state ---------- */
+  revealItems.forEach((item) => {
+    revealObserver.observe(item);
+  });
 
-  if (nav) {
-    const updateNavState = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 30);
-    };
-    updateNavState();
-    window.addEventListener('scroll', updateNavState, { passive: true });
-  }
+  document.querySelectorAll('.hero .fade-up, .reset-landing .fade-up, .permission-hero .fade-up').forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add('visible');
+    }, 120 + index * 90);
+  });
 
-  /* ---------- FAQ accordion (scrollHeight-based, no clipping) ---------- */
-
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  function setFaqHeight(item, open) {
-    const answer = item.querySelector('.faq-answer');
-    if (!answer) return;
-    answer.style.maxHeight = open ? answer.scrollHeight + 'px' : '0px';
-  }
-
-  faqItems.forEach((item) => {
-    const button = item.querySelector('.faq-question');
-    if (!button) return;
-
-    // Initialize any item marked open in the markup.
-    if (item.classList.contains('open')) {
-      setFaqHeight(item, true);
-      button.setAttribute('aria-expanded', 'true');
-    }
-
+  document.querySelectorAll('.faq-question').forEach((button) => {
     button.addEventListener('click', () => {
-      const isAlreadyOpen = item.classList.contains('open');
+      const currentItem = button.closest('.faq-item');
+      const alreadyOpen = currentItem.classList.contains('open');
 
-      faqItems.forEach((faq) => {
-        faq.classList.remove('open');
-        const faqButton = faq.querySelector('.faq-question');
-        if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
-        setFaqHeight(faq, false);
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        item.classList.remove('open');
+        const question = item.querySelector('.faq-question');
+        if (question) question.setAttribute('aria-expanded', 'false');
       });
 
-      if (!isAlreadyOpen) {
-        item.classList.add('open');
+      if (!alreadyOpen) {
+        currentItem.classList.add('open');
         button.setAttribute('aria-expanded', 'true');
-        setFaqHeight(item, true);
       }
     });
   });
 
-  // Keep an open FAQ correctly sized if the viewport width changes.
-  window.addEventListener('resize', () => {
-    const openItem = document.querySelector('.faq-item.open');
-    if (openItem) setFaqHeight(openItem, true);
-  }, { passive: true });
+  const resetForm = document.getElementById('resetForm');
+
+  if (resetForm) {
+    resetForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const firstNameInput = document.getElementById('firstName');
+      const emailInput = document.getElementById('email');
+      const error = document.getElementById('formError');
+
+      const firstName = firstNameInput.value.trim();
+      const email = emailInput.value.trim();
+
+      if (!firstName || !email) {
+        if (error) error.textContent = 'Please enter your first name and email address.';
+        return;
+      }
+
+      const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!emailLooksValid) {
+        if (error) error.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      localStorage.setItem('rmc_first_name', firstName);
+      localStorage.setItem('rmc_email', email);
+
+      /*
+        Future email-platform integration:
+        Replace the localStorage-only behavior above with your provider form action or API.
+        Good options: Flodesk, ConvertKit, Mailchimp, MailerLite, or Kit.
+        After successful provider submission, redirect to permission.html.
+      */
+
+      window.location.href = 'permission.html';
+    });
+  }
+
+  const personalGreeting = document.getElementById('personalGreeting');
+
+  if (personalGreeting) {
+    const firstName = localStorage.getItem('rmc_first_name');
+
+    if (firstName) {
+      personalGreeting.textContent = `${firstName}, your reset is ready.`;
+    } else {
+      personalGreeting.textContent = 'Your reset is ready.';
+    }
+  }
 });
