@@ -238,16 +238,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizResultButton = document.getElementById('quizResultButton');
 
   const quizResults = {
-    reset: {
-      title: 'Start with the 5-Minute Calm Reset.',
-      text: 'Your body may need a pause before it needs a plan. Begin with a simple guided reset to breathe, notice, release, and choose one gentle next step.',
-      button: 'Start the Free Reset',
+    pause: {
+      title: 'Start with Permission to Pause.',
+      text: 'Your body may need a pause before it needs a plan. Begin with a simple 5-minute practice to notice what you feel, check in with your body, release the stress signal, and choose one supportive step.',
+      button: 'Start Permission to Pause',
       href: 'reset.html',
-      sticky: 'Start the Free Reset'
+      sticky: 'Start Permission to Pause'
     },
     permission: {
       title: 'Create a Permission Slip.',
-      text: 'When you feel emotionally drained, sometimes your heart needs words it can hold onto. Create a beautiful reminder of what you are allowed to release today.',
+      text: 'When you feel emotionally drained, sometimes your heart needs words it can hold onto. Create a beautiful reminder of what you are allowed to release, protect, or choose today.',
       button: 'Create a Permission Slip',
       href: 'permission.html',
       sticky: 'Create a Permission Slip'
@@ -356,11 +356,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isElementNearViewport(servicesSection)) {
       setSmartSticky('Find the Right Support', '#quiz');
     } else if (isElementNearViewport(freeToolsSection)) {
-      setSmartSticky('Start the Free Reset', 'reset.html');
+      setSmartSticky('Start Permission to Pause', 'reset.html');
     } else if (isElementNearViewport(quizSection)) {
       setSmartSticky('Choose My First Step', '#quiz');
     } else {
-      setSmartSticky('Start the Free Reset', 'reset.html');
+      setSmartSticky('Start Permission to Pause', 'reset.html');
     }
   }
 
@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================
-     RESET FORM CAPTURE
+     RESET / PERMISSION TO PAUSE FORM CAPTURE
      For simple reset.html lead capture page.
      ========================================= */
 
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('rmc_first_name', firstName);
       localStorage.setItem('rmc_email', email);
 
-      trackEvent('Reset Lead Captured', {
+      trackEvent('Permission to Pause Lead Captured', {
         firstNameProvided: Boolean(firstName),
         emailProvided: Boolean(email)
       });
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Future email-platform integration:
         Replace the localStorage-only behavior above with your provider form action or API.
         Good options: Flodesk, ConvertKit, Mailchimp, MailerLite, or Kit.
-        After successful provider submission, redirect to permission.html.
+        After successful provider submission, redirect to permission.html or show the practice.
       */
 
       showCalmRedirect(() => {
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
     redirect.innerHTML = `
       <div class="calm-redirect-card">
         <p class="eyebrow centered">Take one breath</p>
-        <h2>Your reset is ready.</h2>
+        <h2>Your pause is ready.</h2>
         <p>Redirecting you to a calm place to begin...</p>
         <div class="calm-redirect-line"><span></span></div>
       </div>
@@ -648,9 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (personalGreeting) {
     if (storedFirstName) {
-      personalGreeting.textContent = `${storedFirstName}, your reset is ready.`;
+      personalGreeting.textContent = `${storedFirstName}, your pause is ready.`;
     } else {
-      personalGreeting.textContent = 'Your reset is ready.';
+      personalGreeting.textContent = 'Your pause is ready.';
     }
   }
 
@@ -702,8 +702,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <button class="soft-prompt-close" type="button" aria-label="Close prompt">×</button>
       <p class="soft-prompt-kicker">Before you go</p>
       <h3>A calm place to begin is still here.</h3>
-      <p>If your body feels overloaded, start with the free 5-Minute Calm Reset.</p>
-      <a href="reset.html" class="btn btn-primary" data-track="exit_prompt_reset">Start the Free Reset</a>
+      <p>If your body feels overloaded, start with Permission to Pause.</p>
+      <a href="reset.html" class="btn btn-primary" data-track="exit_prompt_pause">Start Permission to Pause</a>
     `;
 
     document.body.appendChild(prompt);
