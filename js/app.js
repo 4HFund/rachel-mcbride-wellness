@@ -6,21 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollProgress = document.getElementById('scrollProgress');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* =========================================
-     ANALYTICS PLACEHOLDER
-     ========================================= */
+  /* ANALYTICS PLACEHOLDER */
 
   function trackEvent(eventName, data = {}) {
     console.log('Track:', eventName, data);
-
-    /*
-      Future analytics integrations:
-      - Google Analytics 4
-      - Meta Pixel
-      - Plausible
-      - Fathom
-      - Hotjar
-    */
   }
 
   document.querySelectorAll('[data-track]').forEach((element) => {
@@ -32,9 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* =========================================
-     NAVBAR + SCROLL PROGRESS
-     ========================================= */
+  /* NAVBAR + SCROLL PROGRESS */
 
   function updateNav() {
     if (!nav) return;
@@ -62,9 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateScrollProgress();
   window.addEventListener('scroll', handleScroll, { passive: true });
 
-  /* =========================================
-     MOBILE MENU
-     ========================================= */
+  /* MOBILE MENU */
 
   function openMenu() {
     if (!mobileMenu || !hamburger) return;
@@ -111,9 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* =========================================
-     REVEAL ANIMATIONS
-     ========================================= */
+  /* REVEAL ANIMATIONS */
 
   const revealItems = document.querySelectorAll('.fade-up');
 
@@ -143,9 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 120 + index * 90);
   });
 
-  /* =========================================
-     SMOOTH ANCHOR OFFSET
-     ========================================= */
+  /* SMOOTH ANCHOR OFFSET */
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
@@ -167,9 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* =========================================
-     ACTIVE NAV LINK HIGHLIGHTING
-     ========================================= */
+  /* ACTIVE NAV LINK HIGHLIGHTING */
 
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const navSections = Array.from(navLinks)
@@ -198,9 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navSections.forEach(({ section }) => sectionObserver.observe(section));
   }
 
-  /* =========================================
-     FAQ ACCORDION
-     ========================================= */
+  /* FAQ ACCORDION */
 
   document.querySelectorAll('.faq-question').forEach((button) => {
     button.addEventListener('click', () => {
@@ -227,9 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* =========================================
-     STARTING POINT QUIZ
-     ========================================= */
+  /* STARTING POINT QUIZ */
 
   const quiz = document.getElementById('startingPointQuiz');
   const quizResult = document.getElementById('quizResult');
@@ -301,9 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     SMART STICKY CTA
-     ========================================= */
+  /* SMART STICKY CTA */
 
   const mobileStickyCTA = document.getElementById('smartStickyCTA') || document.querySelector('.mobile-sticky-cta');
   const smartStickyLink = document.getElementById('smartStickyLink');
@@ -366,9 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateStickyCTA();
 
-  /* =========================================
-     BREATH TOOL
-     ========================================= */
+  /* BREATH TOOL */
 
   const breathTrigger = document.getElementById('breathToolTrigger');
   const breathOverlay = document.getElementById('breathOverlay');
@@ -478,9 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     HERO FLOATING NOTE PARALLAX
-     ========================================= */
+  /* HERO FLOATING NOTE PARALLAX */
 
   const noteOne = document.querySelector('.note-one');
   const noteTwo = document.querySelector('.note-two');
@@ -498,9 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateParallaxNotes();
 
-  /* =========================================
-     MAGNETIC BUTTONS
-     ========================================= */
+  /* MAGNETIC BUTTONS */
 
   if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
     document.querySelectorAll('.btn').forEach((button) => {
@@ -518,9 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     PREMIUM CARD TILT
-     ========================================= */
+  /* PREMIUM CARD TILT */
 
   if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
     document.querySelectorAll('.premium-card, .service-card, .testimonial-card, .next-step-card, .quiz-option').forEach((card) => {
@@ -541,9 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     RESTORE NAME + EMAIL IF USER ALREADY ENTERED
-     ========================================= */
+  /* RESTORE NAME + EMAIL IF USER ALREADY ENTERED */
 
   const storedFirstName = localStorage.getItem('rmc_first_name');
   const storedEmail = localStorage.getItem('rmc_email');
@@ -563,10 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     RESET / PERMISSION TO PAUSE FORM CAPTURE
-     For simple reset.html lead capture page.
-     ========================================= */
+  /* RESET / PERMISSION TO PAUSE FORM CAPTURE */
 
   const resetForm = document.getElementById('resetForm');
 
@@ -604,13 +564,6 @@ document.addEventListener('DOMContentLoaded', () => {
         emailProvided: Boolean(email)
       });
 
-      /*
-        Future email-platform integration:
-        Replace the localStorage-only behavior above with your provider form action or API.
-        Good options: Flodesk, ConvertKit, Mailchimp, MailerLite, or Kit.
-        After successful provider submission, redirect to permission.html or show the practice.
-      */
-
       showCalmRedirect(() => {
         window.location.href = 'permission.html';
       });
@@ -640,9 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1400);
   }
 
-  /* =========================================
-     PERSONALIZED PERMISSION / THANK-YOU COPY
-     ========================================= */
+  /* PERSONALIZED PERMISSION / THANK-YOU COPY */
 
   const personalGreeting = document.getElementById('personalGreeting');
 
@@ -654,9 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* =========================================
-     LAST SECTION MEMORY
-     ========================================= */
+  /* LAST SECTION MEMORY */
 
   const memorySections = document.querySelectorAll('main section[id]');
 
@@ -674,10 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
     memorySections.forEach((section) => memoryObserver.observe(section));
   }
 
-  /* =========================================
-     SOFT EXIT PROMPT
-     Desktop only, once per session.
-     ========================================= */
+  /* SOFT EXIT PROMPT */
 
   const exitPromptAlreadyShown = sessionStorage.getItem('rmc_exit_prompt_shown');
 
@@ -741,10 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   }
 
-  /* =========================================
-     PAGE LOAD MEMORY NUDGE
-     Optional: shows a tiny console reminder only.
-     ========================================= */
+  /* PAGE LOAD MEMORY NUDGE */
 
   const lastSection = localStorage.getItem('rmc_last_section');
 
