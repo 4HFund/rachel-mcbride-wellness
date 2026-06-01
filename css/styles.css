@@ -1,4 +1,4 @@
-:root {
+g:root {
   --warm-white: #FAF7F1;
   --soft-cream: #F1E9DD;
   --natural-beige: #D9CBB8;
@@ -1401,5 +1401,58 @@ em {
 
   * {
     transition: none !important;
+  }
+}
+/* =========================================
+   IMAGE CROPPING FIX
+   Keeps Rachel/family photos from being cut off
+   ========================================= */
+
+.image-stack img,
+.about-photo img {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  border-radius: var(--radius-lg);
+}
+
+/* Keep the image cards premium without forcing a crop */
+.image-stack,
+.about-photo {
+  background: var(--soft-cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-hover);
+}
+
+/* Fix the hero portrait so her face is not awkwardly cropped */
+.portrait-shell {
+  aspect-ratio: auto !important;
+  height: auto !important;
+}
+
+.portrait-shell img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* Mobile spacing cleanup */
+@media (max-width: 900px) {
+  .image-stack img,
+  .about-photo img {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .image-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: -1rem 1rem 1rem;
   }
 }
