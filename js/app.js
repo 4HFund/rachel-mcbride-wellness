@@ -1,69 +1,102 @@
+// Rachel McBride Coaching landing page interactions
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Premium Cascading Intersection Observer
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -10% 0px', 
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Automatic stagger effect for luxurious reveal
-        const delay = entry.target.dataset.delay || 0;
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, delay);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Attach observer and calculate staggered delays automatically
-  document.querySelectorAll('.fade-up').forEach((el, index) => {
-    if (!el.classList.contains('delay-1') && 
-        !el.classList.contains('delay-2') && 
-        !el.classList.contains('delay-3') && 
-        !el.classList.contains('delay-4') && 
-        !el.classList.contains('delay-5')) {
-       el.dataset.delay = (index % 4) * 100; 
-    }
-    observer.observe(el);
-  });
-
-  // Hero section elements should fade in immediately without scroll
-  document.querySelectorAll('#hero .fade-up').forEach((el) => {
-    setTimeout(() => { el.classList.add('visible'); }, 100);
-  });
-
-  // 2. Buttery Smooth Navigation Glassmorphism
   const nav = document.getElementById('siteNav');
-  if (nav) {
-    const updateNavState = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 30);
-    };
-    updateNavState();
-    window.addEventListener('scroll', updateNavState, { passive: true });
-  }
-
-  // 3. Mobile Menu Logic
   const menu = document.getElementById('mobileMenu');
   const hamburger = document.querySelector('.hamburger');
 
+  /* ---------- Scroll reveal ---------- */
+
+  // Hero content is above the fold — reveal immediately.
+  document.querySelectorAll('#hero .fade-up').forEach((el) => {
+    el.classList.add('visible');
+  });
+
+  const fadeItems = Array.from(document.querySelectorAll('.fade-up'))
+    .filter((el) => !el.closest('#hero'));
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeItems.forEach((el) => observer.observe(el));
+  } else {
+    // No IntersectionObserver support — show everything up front.
+    fadeItems.forEach((el) => el.classList.add('visible'));
+  }
+  // NOTE: the old 1.8s setTimeout fallback was removed. It forced every
+  // element visible regardless of scroll position, defeating the reveal.
+
+  /* ---------- Mobile menu (with focus trap) ---------- */
+
+  const FOCUSABLE = 'a[href], button:not([disabled])';
+  let lastFocused = null;
+
+  function getMenuFocusables() {
+    return menu ? Array.from(menu.querySelectorAll(FOCUSABLE)) : [];
+  }
+
+  function trapFocus(event) {
+    if (event.key !== 'Tab') return;
+    const items = getMenuFocusables();
+    if (!items.length) return;
+
+    const first = items[0];
+    const last = items[items.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function closeMenu() {
     if (!menu || !hamburger) return;
+
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('no-scroll');
+    menu.removeEventListener('keydown', trapFocus);
+
+    if (lastFocused) {
+      lastFocused.focus();
+      lastFocused = null;
+    }
   }
 
   function toggleMenu() {
     if (!menu || !hamburger) return;
+
     const isOpen = menu.classList.toggle('open');
+
     menu.setAttribute('aria-hidden', String(!isOpen));
     hamburger.setAttribute('aria-expanded', String(isOpen));
     document.body.classList.toggle('no-scroll', isOpen);
+
+    if (isOpen) {
+      lastFocused = document.activeElement;
+      menu.addEventListener('keydown', trapFocus);
+      const items = getMenuFocusables();
+      if (items.length) items[0].focus();
+    } else {
+      menu.removeEventListener('keydown', trapFocus);
+      if (lastFocused) {
+        lastFocused.focus();
+        lastFocused = null;
+      }
+    }
   }
 
   window.toggleMenu = toggleMenu;
@@ -76,24 +109,57 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMenu);
   });
 
-  // 4. Smooth FAQ Accordion
-  document.querySelectorAll('.faq-question').forEach((button) => {
-    button.addEventListener('click', () => {
-      const item = button.closest('.faq-item');
-      if (!item) return;
+  /* ---------- Nav scroll state ---------- */
 
+  if (nav) {
+    const updateNavState = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    };
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
+  }
+
+  /* ---------- FAQ accordion (scrollHeight-based, no clipping) ---------- */
+
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  function setFaqHeight(item, open) {
+    const answer = item.querySelector('.faq-answer');
+    if (!answer) return;
+    answer.style.maxHeight = open ? answer.scrollHeight + 'px' : '0px';
+  }
+
+  faqItems.forEach((item) => {
+    const button = item.querySelector('.faq-question');
+    if (!button) return;
+
+    // Initialize any item marked open in the markup.
+    if (item.classList.contains('open')) {
+      setFaqHeight(item, true);
+      button.setAttribute('aria-expanded', 'true');
+    }
+
+    button.addEventListener('click', () => {
       const isAlreadyOpen = item.classList.contains('open');
 
-      document.querySelectorAll('.faq-item').forEach((faq) => {
+      faqItems.forEach((faq) => {
         faq.classList.remove('open');
         const faqButton = faq.querySelector('.faq-question');
         if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
+        setFaqHeight(faq, false);
       });
 
       if (!isAlreadyOpen) {
         item.classList.add('open');
         button.setAttribute('aria-expanded', 'true');
+        setFaqHeight(item, true);
       }
     });
   });
+
+  // Keep an open FAQ correctly sized if the viewport width changes.
+  window.addEventListener('resize', () => {
+    const openItem = document.querySelector('.faq-item.open');
+    if (openItem) setFaqHeight(openItem, true);
+  }, { passive: true });
 });
