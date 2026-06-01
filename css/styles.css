@@ -36,9 +36,7 @@
   --transition-slow: .75s var(--ease);
 }
 
-/* =========================================
-   RESET / BASE
-   ========================================= */
+/* RESET / BASE */
 
 *,
 *::before,
@@ -152,9 +150,7 @@ a {
   border-radius: 12px;
 }
 
-/* =========================================
-   PREMIUM EXPERIENCE LAYERS
-   ========================================= */
+/* PREMIUM EXPERIENCE LAYERS */
 
 .scroll-progress {
   position: fixed;
@@ -195,9 +191,7 @@ a {
   }
 }
 
-/* =========================================
-   GLOBAL LAYOUT / TYPOGRAPHY
-   ========================================= */
+/* GLOBAL LAYOUT / TYPOGRAPHY */
 
 .container {
   width: min(1180px, calc(100% - 2.5rem));
@@ -294,9 +288,7 @@ em {
   line-height: 1.85;
 }
 
-/* =========================================
-   NAVIGATION
-   ========================================= */
+/* NAVIGATION */
 
 .site-nav {
   position: fixed;
@@ -491,9 +483,7 @@ em {
   color: var(--espresso);
 }
 
-/* =========================================
-   BUTTONS
-   ========================================= */
+/* BUTTONS */
 
 .btn {
   position: relative;
@@ -590,9 +580,7 @@ em {
   transform: scaleX(1);
 }
 
-/* =========================================
-   ANIMATIONS
-   ========================================= */
+/* ANIMATIONS */
 
 .fade-up {
   opacity: 0;
@@ -612,9 +600,7 @@ em {
 .delay-5 { transition-delay: .5s; }
 .delay-6 { transition-delay: .6s; }
 
-/* =========================================
-   HERO
-   ========================================= */
+/* HERO */
 
 .hero {
   min-height: 100vh;
@@ -782,9 +768,7 @@ em {
   right: 8%;
 }
 
-/* =========================================
-   TRUST STRIP
-   ========================================= */
+/* TRUST STRIP */
 
 .trust-strip {
   position: relative;
@@ -839,9 +823,7 @@ em {
   transform: translateY(-50%);
 }
 
-/* =========================================
-   SECTIONS
-   ========================================= */
+/* SECTIONS */
 
 .problem-section,
 .pathway-section,
@@ -961,9 +943,7 @@ em {
   color: var(--espresso);
 }
 
-/* =========================================
-   STARTING POINT QUIZ
-   ========================================= */
+/* STARTING POINT QUIZ */
 
 .quiz-section {
   background:
@@ -1120,9 +1100,7 @@ em {
   font-weight: 300;
 }
 
-/* =========================================
-   CARDS / GRIDS
-   ========================================= */
+/* CARDS / GRIDS */
 
 .premium-grid {
   display: grid;
@@ -1199,9 +1177,7 @@ em {
   font-weight: 300;
 }
 
-/* =========================================
-   PATHWAY
-   ========================================= */
+/* PATHWAY */
 
 .pathway-panel {
   position: relative;
@@ -1269,9 +1245,7 @@ em {
   color: var(--warm-brown);
 }
 
-/* =========================================
-   SERVICES / TESTIMONIALS
-   ========================================= */
+/* SERVICES / TESTIMONIALS */
 
 .service-grid,
 .testimonial-grid {
@@ -1367,9 +1341,7 @@ em {
   text-transform: uppercase;
 }
 
-/* =========================================
-   NEXT STEP SECTION
-   ========================================= */
+/* NEXT STEP SECTION */
 
 .next-step-panel {
   position: relative;
@@ -1439,9 +1411,7 @@ em {
   line-height: 1.55;
 }
 
-/* =========================================
-   IMAGES
-   ========================================= */
+/* IMAGES */
 
 .private-feature {
   background: var(--warm-white);
@@ -1504,9 +1474,7 @@ em {
   background: var(--soft-cream);
 }
 
-/* =========================================
-   PRIVATE FEATURE
-   ========================================= */
+/* PRIVATE FEATURE */
 
 .lux-list {
   list-style: none;
@@ -1528,9 +1496,7 @@ em {
   color: var(--terracotta);
 }
 
-/* =========================================
-   PERMISSION TO PAUSE / FREE PRACTICE
-   ========================================= */
+/* PERMISSION TO PAUSE / FREE PRACTICE */
 
 .reset-feature {
   background:
@@ -1571,41 +1537,7 @@ em {
   color: var(--terracotta);
 }
 
-/* =========================================
-   RESET PANEL LEGACY SUPPORT
-   ========================================= */
-
-.reset-panel {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  align-items: center;
-  border-radius: 38px;
-  padding: clamp(2rem, 5vw, 4rem);
-  background:
-    radial-gradient(circle at 8% 20%, rgba(199, 116, 79, .13), transparent 32%),
-    var(--soft-cream);
-  border: 1px solid rgba(217, 203, 184, .8);
-  box-shadow: var(--shadow-soft);
-}
-
-.reset-panel h2 {
-  font-size: clamp(2rem, 4vw, 4rem);
-}
-
-.reset-panel p {
-  max-width: 680px;
-  color: var(--warm-brown);
-  font-weight: 300;
-  margin-top: .8rem;
-}
-
-/* =========================================
-   FAQ
-   ========================================= */
+/* FAQ */
 
 .faq-wrap {
   margin-top: 2.5rem;
@@ -1674,9 +1606,7 @@ em {
   color: white;
 }
 
-/* =========================================
-   BOOKING
-   ========================================= */
+/* BOOKING */
 
 .booking-section {
   background:
@@ -1727,9 +1657,7 @@ em {
   display: block;
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
+/* FOOTER */
 
 .site-footer {
   background: var(--espresso);
@@ -1781,9 +1709,7 @@ em {
   font-size: .78rem;
 }
 
-/* =========================================
-   SMART STICKY CTA
-   ========================================= */
+/* SMART STICKY CTA */
 
 .mobile-sticky-cta {
   display: none;
@@ -1822,9 +1748,7 @@ em {
   pointer-events: none;
 }
 
-/* =========================================
-   BREATH TOOL
-   ========================================= */
+/* BREATH TOOL */
 
 .breath-tool-trigger {
   position: fixed;
@@ -1965,9 +1889,7 @@ em {
   color: var(--espresso);
 }
 
-/* =========================================
-   SOFT EXIT PROMPT
-   ========================================= */
+/* SOFT EXIT PROMPT */
 
 .soft-prompt {
   position: fixed;
@@ -2029,9 +1951,7 @@ em {
   width: 100%;
 }
 
-/* =========================================
-   PERMISSION TO PAUSE / PERMISSION SUPPORTING PAGES
-   ========================================= */
+/* PERMISSION TO PAUSE / PERMISSION SUPPORTING PAGES */
 
 .simple-nav {
   justify-content: space-between;
@@ -2263,9 +2183,7 @@ em {
   color: var(--warm-brown);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
+/* RESPONSIVE */
 
 @media (max-width: 1180px) {
   .quiz-options {
@@ -2324,6 +2242,19 @@ em {
 
   .split-grid {
     grid-template-columns: 1fr;
+  }
+
+  .seen-section .split-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .seen-section .check-list {
+    order: 1;
+  }
+
+  .seen-section .editorial-card {
+    order: 2;
   }
 
   .reverse-mobile .about-photo {
@@ -2548,9 +2479,7 @@ em {
   }
 }
 
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   html {
