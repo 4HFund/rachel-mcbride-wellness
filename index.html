@@ -17,9 +17,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Rachel McBride Coaching",
+    "description": "Coaching support for overwhelmed moms and women carrying stress, emotional responsibility, and the invisible mental load.",
+    "url": "https://rachelmcbridecoaching.com",
+    "image": "IMG_4099.jpeg",
+    "areaServed": "Virtual",
+    "founder": {
+      "@type": "Person",
+      "name": "Rachel McBride"
+    },
+    "slogan": "Release the pressure. Restore your calm."
+  }
+  </script>
 </head>
 
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <nav class="site-nav" id="siteNav">
@@ -29,10 +49,10 @@
 
     <ul class="nav-links" aria-label="Main navigation">
       <li><a href="#about">About</a></li>
-      <li><a href="#pathway">Start Here</a></li>
+      <li><a href="#quiz">Start Here</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#free-tools">Free Tools</a></li>
-      <li><a href="#booking" class="nav-cta">Book a Call</a></li>
+      <li><a href="#booking" class="nav-cta" data-track="nav_book_call">Book a Call</a></li>
     </ul>
 
     <button class="hamburger" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
@@ -45,10 +65,10 @@
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <button class="mobile-close" type="button" aria-label="Close menu">×</button>
     <a href="#about">About</a>
-    <a href="#pathway">Start Here</a>
+    <a href="#quiz">Start Here</a>
     <a href="#services">Services</a>
     <a href="#free-tools">Free Tools</a>
-    <a href="#booking" class="mobile-primary-link">Book a Call</a>
+    <a href="#booking" class="mobile-primary-link" data-track="mobile_book_call">Book a Call</a>
   </div>
 
   <main id="main">
@@ -69,8 +89,8 @@
         </p>
 
         <div class="hero-actions fade-up delay-3">
-          <a href="#booking" class="btn btn-primary">Book a Free Connection Call</a>
-          <a href="reset.html" class="btn btn-secondary">Start the 5-Minute Calm Reset</a>
+          <a href="#booking" class="btn btn-primary" data-track="hero_book_call">Book a Free Connection Call</a>
+          <a href="#quiz" class="btn btn-secondary" data-track="hero_start_quiz">Find My Starting Point</a>
         </div>
 
         <div class="hero-notes fade-up delay-4">
@@ -78,6 +98,10 @@
           <span>Women’s circles</span>
           <span>Somatic support</span>
         </div>
+
+        <p class="hero-signature fade-up delay-5">
+          A calm, emotionally safe coaching space for women who are tired of surviving the day and ready to feel like themselves again.
+        </p>
       </div>
 
       <div class="hero-visual fade-up delay-2">
@@ -168,6 +192,63 @@
       </div>
     </section>
 
+    <section class="section quiz-section" id="quiz">
+      <div class="container">
+        <div class="quiz-shell fade-up">
+          <div class="quiz-intro">
+            <p class="eyebrow centered">Choose your starting point</p>
+
+            <h2>
+              What feels heaviest <em>right now?</em>
+            </h2>
+
+            <p>
+              You do not have to figure out the whole path today. Choose the option that feels closest,
+              and the site will guide you toward the gentlest next step.
+            </p>
+          </div>
+
+          <div class="quiz-options" id="startingPointQuiz" aria-label="Choose your starting point">
+            <button class="quiz-option" type="button" data-result="reset" data-track="quiz_body_tense">
+              <span>My body feels tense.</span>
+              <small>Start with a nervous-system reset.</small>
+            </button>
+
+            <button class="quiz-option" type="button" data-result="reset" data-track="quiz_mind_racing">
+              <span>My mind will not stop racing.</span>
+              <small>Start with a guided pause.</small>
+            </button>
+
+            <button class="quiz-option" type="button" data-result="permission" data-track="quiz_emotionally_drained">
+              <span>I feel emotionally drained.</span>
+              <small>Create words your heart can hold onto.</small>
+            </button>
+
+            <button class="quiz-option" type="button" data-result="circle" data-track="quiz_carrying_everyone">
+              <span>I feel like I am carrying everyone.</span>
+              <small>Explore support that helps you exhale.</small>
+            </button>
+
+            <button class="quiz-option" type="button" data-result="coaching" data-track="quiz_deeper_support">
+              <span>I am ready for deeper support.</span>
+              <small>Begin with a free connection call.</small>
+            </button>
+          </div>
+
+          <div class="quiz-result" id="quizResult" aria-live="polite">
+            <p class="quiz-result-label">Your recommended next step</p>
+            <h3 id="quizResultTitle">A calm place to begin.</h3>
+            <p id="quizResultText">
+              Choose what feels heaviest above, and Rachel’s site will guide you toward the next gentle step.
+            </p>
+            <a href="reset.html" class="btn btn-primary" id="quizResultButton" data-track="quiz_result_click">
+              Start the Free Reset
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section transformation-section">
       <div class="container">
         <div class="section-header">
@@ -210,7 +291,7 @@
     <section class="section pathway-section" id="pathway">
       <div class="container">
         <div class="pathway-panel fade-up">
-          <p class="eyebrow centered">Start here</p>
+          <p class="eyebrow centered">A supportive path</p>
 
           <h2>A premium path that meets you where you are.</h2>
 
@@ -227,15 +308,15 @@
             </div>
 
             <div>
-              <span>Gather</span>
-              <h3>Women’s Circle</h3>
-              <p>A guided experience to exhale, release, and reconnect.</p>
+              <span>Create</span>
+              <h3>Permission Slip Studio</h3>
+              <p>A beautiful reminder of what you are allowed to release today.</p>
             </div>
 
             <div>
-              <span>Continue</span>
-              <h3>Release Room</h3>
-              <p>Ongoing practices and support for real life.</p>
+              <span>Gather</span>
+              <h3>Women’s Circle</h3>
+              <p>A guided experience to exhale, release, and reconnect.</p>
             </div>
 
             <div>
@@ -245,7 +326,7 @@
             </div>
           </div>
 
-          <a href="reset.html" class="btn btn-primary">Start with the Free Reset</a>
+          <a href="#quiz" class="btn btn-primary" data-track="pathway_start_quiz">Find My Best First Step</a>
         </div>
       </div>
     </section>
@@ -276,7 +357,7 @@
               and into a space where your body can finally exhale.
             </p>
 
-            <a href="#booking" class="text-link">Join the next circle</a>
+            <a href="#booking" class="text-link" data-track="service_circle_interest">Join the next circle</a>
           </article>
 
           <article class="service-card fade-up delay-1">
@@ -289,7 +370,7 @@
               with women who understand the invisible load.
             </p>
 
-            <a href="#booking" class="text-link">Join the interest list</a>
+            <a href="#booking" class="text-link" data-track="service_membership_interest">Join the interest list</a>
           </article>
 
           <article class="service-card featured fade-up delay-2">
@@ -302,7 +383,7 @@
               stress, pressure, and daily life.
             </p>
 
-            <a href="#booking" class="btn btn-light">Book a Connection Call</a>
+            <a href="#booking" class="btn btn-light" data-track="service_private_coaching">Book a Connection Call</a>
           </article>
         </div>
       </div>
@@ -338,7 +419,7 @@
             <li>A calm, private space to be heard without performing</li>
           </ul>
 
-          <a href="#booking" class="btn btn-primary">Explore Private Coaching</a>
+          <a href="#booking" class="btn btn-primary" data-track="private_feature_cta">Explore Private Coaching</a>
         </div>
       </div>
     </section>
@@ -393,10 +474,10 @@
 
             <p>
               A simple interactive reset to help you pause, notice what your body is carrying,
-              breathe, release, and choose the next gentle step.
+              breathe, release, and receive a calm note you can return to.
             </p>
 
-            <a href="reset.html" class="btn btn-primary">Start the Free Reset</a>
+            <a href="reset.html" class="btn btn-primary" data-track="free_tool_reset">Start the Free Reset</a>
           </article>
 
           <article class="service-card fade-up delay-1">
@@ -409,21 +490,53 @@
               to release, protect, or choose today.
             </p>
 
-            <a href="permission.html" class="btn btn-secondary">Create a Permission Slip</a>
+            <a href="permission.html" class="btn btn-secondary" data-track="free_tool_permission">Create a Permission Slip</a>
           </article>
 
           <article class="service-card featured fade-up delay-2">
-            <p class="service-kicker">Not sure where to begin?</p>
+            <p class="service-kicker">Need help choosing?</p>
 
-            <h3>Start with what feels heaviest.</h3>
+            <h3>Find the next gentle step.</h3>
 
             <p>
-              If your body feels overwhelmed, start with the Calm Reset.
-              If your heart needs words to hold onto, start with the Permission Slip Studio.
+              Let the site guide you toward the reset, permission slip, women’s circle,
+              or private coaching path that fits what feels heaviest.
             </p>
 
-            <a href="#booking" class="btn btn-light">Talk with Rachel</a>
+            <a href="#quiz" class="btn btn-light" data-track="free_tool_quiz">Take the Starting Point Quiz</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section next-step-section">
+      <div class="container">
+        <div class="next-step-panel fade-up">
+          <p class="eyebrow centered">Not sure what to do next?</p>
+
+          <h2>
+            Start with what your body needs <em>today.</em>
+          </h2>
+
+          <div class="next-step-grid">
+            <a href="reset.html" class="next-step-card" data-track="next_step_reset">
+              <span>If you need relief today</span>
+              <strong>Start the 5-Minute Calm Reset</strong>
+              <small>A guided pause for the body and mind.</small>
+            </a>
+
+            <a href="permission.html" class="next-step-card" data-track="next_step_permission">
+              <span>If you need words to hold onto</span>
+              <strong>Create a Permission Slip</strong>
+              <small>A beautiful reminder of what you can release.</small>
+            </a>
+
+            <a href="#booking" class="next-step-card" data-track="next_step_booking">
+              <span>If you are tired of carrying this alone</span>
+              <strong>Book a Free Connection Call</strong>
+              <small>A calm conversation about support.</small>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -440,6 +553,10 @@
 
         <div class="testimonial-grid">
           <article class="testimonial-card fade-up">
+            <div class="emotion-tags">
+              <span>Felt calmer</span>
+              <span>Felt grounded</span>
+            </div>
             <p>
               “Rachel’s voice was calming, and it only took me a little while to feel like I was out of my thoughts and in my body.”
             </p>
@@ -447,6 +564,10 @@
           </article>
 
           <article class="testimonial-card fade-up delay-1">
+            <div class="emotion-tags">
+              <span>More present</span>
+              <span>Less rushed</span>
+            </div>
             <p>
               “Who knew I could focus on what I was doing in the moment and not worry about the next thing on my to-do list?”
             </p>
@@ -454,6 +575,10 @@
           </article>
 
           <article class="testimonial-card fade-up delay-2">
+            <div class="emotion-tags">
+              <span>Lighter</span>
+              <span>More relaxed</span>
+            </div>
             <p>
               “It was nice to take time out of my busy day just for me. I felt calmer, more relaxed, and lighter afterward.”
             </p>
@@ -473,7 +598,7 @@
 
         <div class="faq-wrap fade-up delay-2">
           <div class="faq-item open">
-            <button class="faq-question" type="button" aria-expanded="true">
+            <button class="faq-question" type="button" aria-expanded="true" data-track="faq_need">
               <span>What if I do not know exactly what I need?</span>
               <strong>+</strong>
             </button>
@@ -486,7 +611,7 @@
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
+            <button class="faq-question" type="button" aria-expanded="false" data-track="faq_therapy">
               <span>Is coaching the same as therapy?</span>
               <strong>+</strong>
             </button>
@@ -499,7 +624,7 @@
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
+            <button class="faq-question" type="button" aria-expanded="false" data-track="faq_virtual">
               <span>Can I do this virtually?</span>
               <strong>+</strong>
             </button>
@@ -512,7 +637,7 @@
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
+            <button class="faq-question" type="button" aria-expanded="false" data-track="faq_after_call">
               <span>What happens after I book a call?</span>
               <strong>+</strong>
             </button>
@@ -556,13 +681,13 @@
       <div>
         <h2>Rachel McBride Coaching</h2>
         <p>Release the pressure. Restore your calm.</p>
-        <a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a>
+        <a href="mailto:rachel@rachelmcbridecoaching.com" data-track="footer_email">rachel@rachelmcbridecoaching.com</a>
       </div>
 
       <div>
         <h3>Navigate</h3>
         <a href="#about">About</a>
-        <a href="#pathway">Start Here</a>
+        <a href="#quiz">Start Here</a>
         <a href="#services">Services</a>
         <a href="#free-tools">Free Tools</a>
         <a href="#booking">Booking</a>
@@ -570,9 +695,9 @@
 
       <div>
         <h3>Begin</h3>
-        <a href="reset.html">5-Minute Calm Reset</a>
-        <a href="permission.html">Permission Slip Studio</a>
-        <a href="#booking">Book a Free Call</a>
+        <a href="reset.html" data-track="footer_reset">5-Minute Calm Reset</a>
+        <a href="permission.html" data-track="footer_permission">Permission Slip Studio</a>
+        <a href="#booking" data-track="footer_booking">Book a Free Call</a>
       </div>
     </div>
 
@@ -582,8 +707,33 @@
     </div>
   </footer>
 
-  <div class="mobile-sticky-cta">
-    <a href="reset.html" class="btn btn-primary">Start the Free Reset</a>
+  <button class="breath-tool-trigger" type="button" id="breathToolTrigger" aria-label="Open a 30 second breathing tool" data-track="open_breath_tool">
+    Need a breath?
+  </button>
+
+  <div class="breath-overlay" id="breathOverlay" aria-hidden="true">
+    <div class="breath-panel" role="dialog" aria-modal="true" aria-labelledby="breathTitle">
+      <button class="breath-close" type="button" id="breathClose" aria-label="Close breathing tool">×</button>
+
+      <p class="eyebrow centered">Thirty-second pause</p>
+      <h2 id="breathTitle">Let your body arrive here.</h2>
+      <p>
+        Follow the circle for three slow breaths. You do not have to fix everything right now.
+      </p>
+
+      <div class="breath-circle-wrap">
+        <div class="breath-circle" id="breathCircle"></div>
+        <span id="breathInstruction">Ready</span>
+      </div>
+
+      <button class="btn btn-primary" type="button" id="breathStart" data-track="start_breath_tool">Start Breathing</button>
+    </div>
+  </div>
+
+  <div class="mobile-sticky-cta" id="smartStickyCTA">
+    <a href="reset.html" class="btn btn-primary" id="smartStickyLink" data-track="smart_sticky_cta">
+      Start the Free Reset
+    </a>
   </div>
 
   <script src="js/app.js"></script>
