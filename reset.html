@@ -8,6 +8,11 @@
 
 <meta name="description" content="A gentle 5-minute guided reset from Rachel McBride Coaching to help overwhelmed moms breathe, ground, release, reconnect, and receive their personal calm note." />
 
+<meta property="og:title" content="The 5-Minute Calm Reset | Rachel McBride Coaching" />
+<meta property="og:description" content="A premium guided calm reset for overwhelmed moms and women carrying too much." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="IMG_4099.jpeg" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -25,23 +30,29 @@
   --soft-cream: #F1E9DD;
   --natural-beige: #D9CBB8;
   --sage: #8E9B82;
-  --sage-dark: #6f7c66;
+  --sage-dark: #66735d;
   --warm-brown: #6B4F3F;
   --espresso: #352822;
   --terracotta: #C7744F;
+  --terracotta-dark: #a95738;
   --terracotta-light: #D8896A;
   --terracotta-bg: #F5E6DC;
+  --white: #ffffff;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', sans-serif;
 
-  --radius: 22px;
-  --radius-lg: 34px;
+  --radius-sm: 16px;
+  --radius: 24px;
+  --radius-lg: 38px;
+  --radius-xl: 52px;
 
-  --shadow: 0 14px 44px rgba(53,40,34,0.09);
-  --shadow-strong: 0 22px 70px rgba(53,40,34,0.15);
+  --shadow-soft: 0 16px 50px rgba(53, 40, 34, 0.08);
+  --shadow-medium: 0 24px 70px rgba(53, 40, 34, 0.13);
+  --shadow-strong: 0 34px 90px rgba(53, 40, 34, 0.18);
 
-  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -55,9 +66,23 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(199,116,79,0.10), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(142,155,130,0.14), transparent 32%),
+    radial-gradient(circle at 8% 12%, rgba(199, 116, 79, 0.14), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(142, 155, 130, 0.16), transparent 30rem),
+    radial-gradient(circle at 50% 100%, rgba(217, 203, 184, 0.45), transparent 34rem),
     linear-gradient(145deg, #FAF7F1, #F1E9DD);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(53, 40, 34, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 40, 34, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
 button,
@@ -72,7 +97,13 @@ a {
 }
 
 ::selection {
-  background: rgba(199,116,79,0.25);
+  background: rgba(199, 116, 79, 0.25);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(199, 116, 79, 0.35);
+  outline-offset: 4px;
+  border-radius: 10px;
 }
 
 .page-shell {
@@ -88,21 +119,18 @@ a {
   top: 0;
   left: 0;
   right: 0;
-
   z-index: 100;
-
-  background: rgba(250,247,241,0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-
-  border-bottom: 1px solid rgba(217,203,184,0.5);
+  background: rgba(250, 247, 241, 0.82);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 10px 34px rgba(53, 40, 34, 0.045);
 }
 
 .top-bar-inner {
-  max-width: 980px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 1rem 1.25rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,9 +139,9 @@ a {
 
 .brand-link {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   color: var(--espresso);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
@@ -123,24 +151,35 @@ a {
 }
 
 .exit-link {
-  font-size: 0.78rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.73rem;
+  font-weight: 700;
   color: var(--warm-brown);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  opacity: 0.82;
+  opacity: 0.86;
   transition: var(--transition);
+}
+
+.exit-link::before {
+  content: "←";
+  font-size: 0.9rem;
+  letter-spacing: 0;
 }
 
 .exit-link:hover {
   color: var(--terracotta);
+  transform: translateX(-2px);
 }
 
 /* PROGRESS */
 
 .progress-area {
   display: none;
-  max-width: 980px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 1.25rem 1rem;
 }
@@ -154,21 +193,20 @@ a {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.7rem;
-
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-
   color: var(--sage-dark);
 }
 
 .progress-track {
   width: 100%;
-  height: 6px;
+  height: 7px;
   border-radius: 999px;
-  background: rgba(217,203,184,0.75);
+  background: rgba(217, 203, 184, 0.78);
   overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(53, 40, 34, 0.05);
 }
 
 .progress-fill {
@@ -184,53 +222,141 @@ a {
 .app-container {
   flex: 1;
   width: 100%;
-
+  padding: 9.5rem 1.25rem 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 8.75rem 1.25rem 4rem;
 }
+
+.experience-layout {
+  width: min(1180px, 100%);
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 1.4rem;
+  align-items: stretch;
+}
+
+.experience-sidebar {
+  position: relative;
+  min-height: 640px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  padding: 2.1rem;
+  background:
+    linear-gradient(to bottom, rgba(53, 40, 34, 0.1), rgba(53, 40, 34, 0.52)),
+    url("IMG_4099.jpeg") center top / cover;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.experience-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(250, 247, 241, 0.26), transparent 28%),
+    linear-gradient(to bottom, rgba(53, 40, 34, 0.18), rgba(53, 40, 34, 0.72));
+  pointer-events: none;
+}
+
+.sidebar-content,
+.sidebar-note {
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(250, 247, 241, 0.16);
+  border: 1px solid rgba(250, 247, 241, 0.24);
+  color: rgba(250, 247, 241, 0.92);
+  backdrop-filter: blur(14px);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sidebar-title {
+  max-width: 330px;
+  margin-top: 1.2rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  color: var(--warm-white);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.sidebar-note {
+  background: rgba(250, 247, 241, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 26px;
+  padding: 1.25rem;
+  box-shadow: 0 18px 44px rgba(20, 14, 10, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.sidebar-note small {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--terracotta);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sidebar-note p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.38;
+  color: var(--espresso);
+}
+
+/* RESET CARD */
 
 .reset-card {
   width: 100%;
-  max-width: 760px;
-
+  min-height: 640px;
   position: relative;
-
-  background: rgba(250,247,241,0.84);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(217,203,184,0.72);
-  border-radius: var(--radius-lg);
-
+  background: rgba(250, 247, 241, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-strong);
-
   overflow: hidden;
 }
 
 .reset-card::before {
   content: '';
   position: absolute;
-  top: -160px;
-  right: -160px;
-  width: 320px;
-  height: 320px;
+  top: -190px;
+  right: -190px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: rgba(199,116,79,0.10);
+  background: rgba(199, 116, 79, 0.11);
   pointer-events: none;
 }
 
 .reset-card::after {
   content: '';
   position: absolute;
-  bottom: -170px;
-  left: -170px;
-  width: 340px;
-  height: 340px;
+  bottom: -210px;
+  left: -210px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-  background: rgba(142,155,130,0.12);
+  background: rgba(142, 155, 130, 0.13);
   pointer-events: none;
 }
 
@@ -238,10 +364,8 @@ a {
   display: none;
   position: relative;
   z-index: 2;
-
-  padding: clamp(2.3rem, 6vw, 4.2rem);
+  padding: clamp(2.25rem, 6vw, 4.8rem);
   text-align: center;
-
   opacity: 0;
   transform: translateY(18px);
 }
@@ -267,15 +391,12 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-
   color: var(--sage-dark);
-
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.15rem;
 }
 
 .kicker::before,
@@ -292,17 +413,17 @@ a {
   font-family: var(--font-serif);
   font-weight: 400;
   color: var(--espresso);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
 }
 
 .title-main {
-  font-size: clamp(2.65rem, 8vw, 4.35rem);
-  margin-bottom: 1.1rem;
+  font-size: clamp(2.85rem, 7vw, 5.2rem);
+  margin-bottom: 1.15rem;
 }
 
 .title-step {
-  font-size: clamp(2.15rem, 6vw, 3.35rem);
+  font-size: clamp(2.3rem, 5.4vw, 3.75rem);
   margin-bottom: 1rem;
 }
 
@@ -313,35 +434,32 @@ a {
 }
 
 .subtitle {
-  max-width: 590px;
+  max-width: 620px;
   margin: 0 auto 1.5rem;
-
-  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-size: clamp(1rem, 1.5vw, 1.13rem);
   font-weight: 300;
   color: var(--warm-brown);
   line-height: 1.82;
 }
 
 .soft-intro {
-  max-width: 570px;
+  max-width: 590px;
   margin: 1.5rem auto 2rem;
-
   font-family: var(--font-serif);
-  font-size: 1.28rem;
+  font-size: 1.34rem;
   font-style: italic;
   color: var(--sage-dark);
-  line-height: 1.52;
+  line-height: 1.5;
 }
 
 .prompt-text {
-  max-width: 620px;
+  max-width: 650px;
   margin: 0 auto 2rem;
-
   font-family: var(--font-serif);
-  font-size: clamp(1.28rem, 3vw, 1.6rem);
+  font-size: clamp(1.32rem, 3vw, 1.7rem);
   font-style: italic;
   color: var(--terracotta);
-  line-height: 1.42;
+  line-height: 1.38;
 }
 
 /* BUTTONS */
@@ -350,42 +468,36 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   background: var(--terracotta);
   color: white;
-
   border: none;
   border-radius: 999px;
-
-  padding: 1rem 2rem;
-
-  font-size: 0.96rem;
-  font-weight: 700;
+  padding: 1.05rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 800;
   letter-spacing: 0.02em;
-
   cursor: pointer;
   transition: var(--transition);
-
-  box-shadow: 0 12px 28px rgba(199,116,79,0.24);
+  box-shadow: 0 14px 30px rgba(199, 116, 79, 0.25);
 }
 
 .btn:hover:not(:disabled) {
   background: var(--warm-brown);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 38px rgba(199,116,79,0.28);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px rgba(199, 116, 79, 0.3);
 }
 
 .btn:disabled {
   background: var(--natural-beige);
   cursor: not-allowed;
-  opacity: 0.75;
+  opacity: 0.78;
   box-shadow: none;
 }
 
 .btn-outline {
-  background: rgba(250,247,241,0.55);
+  background: rgba(250, 247, 241, 0.62);
   color: var(--warm-brown);
-  border: 1.5px solid rgba(217,203,184,0.9);
+  border: 1.5px solid rgba(217, 203, 184, 0.95);
   box-shadow: none;
 }
 
@@ -399,30 +511,25 @@ a {
 .options-grid {
   display: grid;
   gap: 0.9rem;
-
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto 1.5rem;
-
   text-align: left;
 }
 
 .option-card {
+  width: 100%;
   position: relative;
-
-  background: rgba(255,255,255,0.78);
-  border: 1.5px solid rgba(255,255,255,0.8);
-  border-radius: 18px;
-
-  padding: 1.1rem 1.2rem 1.1rem 3.1rem;
-
+  background: rgba(255, 255, 255, 0.74);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 1.1rem 1.2rem 1.1rem 3.2rem;
   color: var(--warm-brown);
   font-size: 0.98rem;
   line-height: 1.5;
-
+  text-align: left;
   cursor: pointer;
   transition: var(--transition);
-
-  box-shadow: 0 8px 24px rgba(53,40,34,0.045);
+  box-shadow: 0 9px 28px rgba(53, 40, 34, 0.045);
 }
 
 .option-card::before {
@@ -430,28 +537,25 @@ a {
   position: absolute;
   left: 1.15rem;
   top: 50%;
-
   width: 17px;
   height: 17px;
-
   border-radius: 50%;
-  border: 1.5px solid rgba(199,116,79,0.38);
-
+  border: 1.5px solid rgba(199, 116, 79, 0.38);
   transform: translateY(-50%);
   transition: var(--transition);
 }
 
 .option-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(217,203,184,0.9);
-  box-shadow: 0 12px 30px rgba(53,40,34,0.075);
+  border-color: rgba(217, 203, 184, 0.95);
+  box-shadow: 0 14px 34px rgba(53, 40, 34, 0.075);
 }
 
 .option-card.selected {
   background: var(--terracotta-bg);
-  border-color: rgba(199,116,79,0.45);
+  border-color: rgba(199, 116, 79, 0.48);
   color: var(--espresso);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .option-card.selected::before {
@@ -461,17 +565,13 @@ a {
 
 .soft-message {
   display: none;
-
-  max-width: 560px;
+  max-width: 590px;
   margin: 1.7rem auto 0;
-
   font-family: var(--font-serif);
-  font-size: 1.32rem;
+  font-size: 1.36rem;
   font-style: italic;
-
   color: var(--sage-dark);
   line-height: 1.45;
-
   animation: smallFade 0.4s ease forwards;
 }
 
@@ -491,11 +591,9 @@ a {
 
 .breathe-container {
   position: relative;
-  width: 280px;
-  height: 280px;
-
+  width: 300px;
+  height: 300px;
   margin: 2.6rem auto 1.7rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -503,38 +601,37 @@ a {
 
 .breathe-halo {
   position: absolute;
-  inset: 20px;
+  inset: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(142,155,130,0.18);
+  border: 1px solid rgba(142, 155, 130, 0.2);
+  box-shadow:
+    inset 0 0 32px rgba(142, 155, 130, 0.08),
+    0 0 0 26px rgba(142, 155, 130, 0.035),
+    0 0 0 54px rgba(199, 116, 79, 0.025);
 }
 
 .breathe-circle {
   position: absolute;
-
-  width: 105px;
-  height: 105px;
-
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
-
   background:
-    radial-gradient(circle, rgba(250,247,241,0.78), rgba(142,155,130,0.18));
-
-  border: 1.5px solid rgba(142,155,130,0.42);
-  box-shadow: 0 20px 50px rgba(142,155,130,0.13);
-
+    radial-gradient(circle, rgba(250, 247, 241, 0.92), rgba(142, 155, 130, 0.18));
+  border: 1.5px solid rgba(142, 155, 130, 0.42);
+  box-shadow: 0 20px 58px rgba(142, 155, 130, 0.16);
   transform: scale(1);
   transition: transform ease-in-out, background ease-in-out;
 }
 
 .breathe-circle.inhale {
-  transform: scale(2.35);
+  transform: scale(2.4);
   transition-duration: 4s;
   background:
-    radial-gradient(circle, rgba(250,247,241,0.92), rgba(142,155,130,0.28));
+    radial-gradient(circle, rgba(250, 247, 241, 0.96), rgba(142, 155, 130, 0.3));
 }
 
 .breathe-circle.hold {
-  transform: scale(2.35);
+  transform: scale(2.4);
   transition-duration: 2s;
 }
 
@@ -542,23 +639,22 @@ a {
   transform: scale(1);
   transition-duration: 6s;
   background:
-    radial-gradient(circle, rgba(250,247,241,0.78), rgba(142,155,130,0.16));
+    radial-gradient(circle, rgba(250, 247, 241, 0.88), rgba(142, 155, 130, 0.16));
 }
 
 .breathe-text {
   position: relative;
   z-index: 2;
-
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.6rem;
   font-style: italic;
   color: var(--espresso);
 }
 
 .cycle-counter {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--sage-dark);
 }
@@ -568,10 +664,8 @@ a {
 .grounding-list {
   display: grid;
   gap: 0.95rem;
-
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto 1.4rem;
-
   text-align: left;
 }
 
@@ -579,46 +673,39 @@ a {
   display: flex;
   align-items: flex-start;
   gap: 0.9rem;
-
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(217,203,184,0.7);
-  border-radius: 18px;
-
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(217, 203, 184, 0.72);
+  border-radius: 20px;
   padding: 1rem 1.05rem;
-
   color: var(--warm-brown);
   font-size: 0.98rem;
   line-height: 1.55;
-
   cursor: pointer;
   transition: var(--transition);
+  box-shadow: 0 8px 24px rgba(53, 40, 34, 0.035);
 }
 
 .grounding-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(53,40,34,0.06);
+  box-shadow: 0 12px 30px rgba(53, 40, 34, 0.06);
 }
 
 .grounding-item.completed {
   color: var(--sage-dark);
-  background: rgba(142,155,130,0.10);
+  background: rgba(142, 155, 130, 0.11);
+  border-color: rgba(142, 155, 130, 0.25);
 }
 
 .grounding-item input[type="checkbox"] {
   appearance: none;
-
   width: 24px;
   height: 24px;
-
   flex-shrink: 0;
   margin-top: 2px;
-
   border: 1.5px solid var(--natural-beige);
   border-radius: 8px;
-
   background: white;
   cursor: pointer;
-
   position: relative;
   transition: var(--transition);
 }
@@ -633,27 +720,21 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
-
   transform: translate(-50%, -50%);
-
   color: white;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .grounding-input {
   width: 100%;
   margin-top: 0.45rem;
-
   padding: 0.4rem 0;
-
   border: none;
   border-bottom: 1px dashed var(--natural-beige);
   background: transparent;
-
   font-size: 0.98rem;
   color: var(--espresso);
-
   outline: none;
 }
 
@@ -665,43 +746,36 @@ a {
 
 .release-box {
   width: 100%;
-
-  max-width: 580px;
-  min-height: 140px;
-
-  padding: 1.5rem;
-
-  border-radius: 20px;
-  border: 1.5px solid rgba(217,203,184,0.9);
-
-  background: rgba(255,255,255,0.8);
-
+  max-width: 610px;
+  min-height: 145px;
+  padding: 1.45rem;
+  border-radius: 22px;
+  border: 1.5px solid rgba(217, 203, 184, 0.92);
+  background: rgba(255, 255, 255, 0.8);
   font-family: var(--font-serif);
   font-size: 1.35rem;
   color: var(--espresso);
   line-height: 1.45;
-
   resize: vertical;
   outline: none;
-
-  box-shadow: 0 12px 32px rgba(53,40,34,0.06);
+  box-shadow: 0 14px 34px rgba(53, 40, 34, 0.06);
   transition: var(--transition);
 }
 
 .release-box:focus {
-  border-color: rgba(199,116,79,0.7);
+  border-color: rgba(199, 116, 79, 0.72);
   background: var(--warm-white);
+  box-shadow: 0 0 0 5px rgba(199, 116, 79, 0.08);
 }
 
 .release-box::placeholder {
-  color: rgba(107,79,63,0.38);
+  color: rgba(107, 79, 63, 0.38);
   font-style: italic;
 }
 
 .micro-note {
-  max-width: 520px;
-  margin: 1.2rem auto 0;
-
+  max-width: 540px;
+  margin: 1.2rem auto 1.1rem;
   font-size: 0.9rem;
   color: var(--sage-dark);
   line-height: 1.6;
@@ -709,23 +783,19 @@ a {
 
 .released-card {
   display: none;
-
-  max-width: 590px;
+  max-width: 620px;
   margin: 2rem auto;
-
-  background: rgba(241,233,221,0.85);
-  border: 1px solid rgba(142,155,130,0.28);
-  border-radius: 24px;
-
+  background: rgba(241, 233, 221, 0.88);
+  border: 1px solid rgba(142, 155, 130, 0.3);
+  border-radius: 26px;
   padding: 2rem;
-
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.38rem;
   font-style: italic;
   color: var(--sage-dark);
   line-height: 1.45;
-
   animation: floatUp 0.75s ease forwards;
+  box-shadow: 0 12px 32px rgba(53, 40, 34, 0.055);
 }
 
 @keyframes floatUp {
@@ -749,23 +819,20 @@ a {
 /* SUMMARY */
 
 .summary-card {
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(217,203,184,0.72);
-  border-radius: 26px;
-
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(217, 203, 184, 0.74);
+  border-radius: 30px;
+  padding: 2.45rem;
   margin: 2rem auto;
-
-  max-width: 640px;
-
+  max-width: 660px;
   text-align: left;
-  box-shadow: 0 14px 38px rgba(53,40,34,0.07);
+  box-shadow: 0 16px 42px rgba(53, 40, 34, 0.07);
 }
 
 .summary-item {
   padding-bottom: 1.4rem;
   margin-bottom: 1.4rem;
-  border-bottom: 1px solid rgba(217,203,184,0.65);
+  border-bottom: 1px solid rgba(217, 203, 184, 0.7);
 }
 
 .summary-item:last-child {
@@ -775,17 +842,17 @@ a {
 }
 
 .summary-label {
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.14em;
   color: var(--sage-dark);
   margin-bottom: 0.45rem;
 }
 
 .summary-value {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.36rem;
   color: var(--espresso);
   font-style: italic;
   line-height: 1.4;
@@ -794,21 +861,21 @@ a {
 /* EMAIL / CTA */
 
 .cta-section {
-  max-width: 640px;
+  max-width: 660px;
   margin: 2rem auto 0;
-
-  background: var(--terracotta-bg);
-  border: 1px solid rgba(199,116,79,0.18);
-  border-radius: 26px;
-
-  padding: 2.3rem;
-
+  background:
+    radial-gradient(circle at top right, rgba(199, 116, 79, 0.12), transparent 34%),
+    var(--terracotta-bg);
+  border: 1px solid rgba(199, 116, 79, 0.2);
+  border-radius: 30px;
+  padding: 2.35rem;
   transition: opacity 0.5s ease;
+  box-shadow: 0 16px 42px rgba(53, 40, 34, 0.07);
 }
 
 .cta-section-title {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   font-style: italic;
   color: var(--espresso);
   line-height: 1.35;
@@ -821,19 +888,19 @@ a {
 }
 
 .calm-note-preview {
-  background: rgba(250,247,241,0.78);
-  border: 1px solid rgba(217,203,184,0.75);
-  border-radius: 18px;
+  background: rgba(250, 247, 241, 0.82);
+  border: 1px solid rgba(217, 203, 184, 0.78);
+  border-radius: 20px;
   padding: 1.3rem 1.35rem;
   margin: 1.5rem auto;
-  max-width: 540px;
+  max-width: 560px;
   text-align: left;
-  box-shadow: 0 8px 24px rgba(53,40,34,0.04);
+  box-shadow: 0 9px 26px rgba(53, 40, 34, 0.045);
 }
 
 .calm-note-label {
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--sage-dark);
@@ -842,7 +909,7 @@ a {
 
 .calm-note-text {
   font-family: var(--font-serif);
-  font-size: 1.12rem;
+  font-size: 1.13rem;
   font-style: italic;
   color: var(--espresso);
   line-height: 1.55;
@@ -856,28 +923,23 @@ a {
 
 .email-form-input {
   width: 100%;
-
   padding: 1.12rem 1.2rem;
-
-  border-radius: 14px;
-  border: 1.5px solid rgba(217,203,184,0.95);
-
+  border-radius: 16px;
+  border: 1.5px solid rgba(217, 203, 184, 0.96);
   background: white;
-
   font-size: 0.98rem;
   color: var(--espresso);
-
   outline: none;
   transition: var(--transition);
 }
 
 .email-form-input:focus {
   border-color: var(--terracotta);
-  box-shadow: 0 0 0 4px rgba(199,116,79,0.08);
+  box-shadow: 0 0 0 4px rgba(199, 116, 79, 0.09);
 }
 
 .email-form-input::placeholder {
-  color: rgba(107,79,63,0.42);
+  color: rgba(107, 79, 63, 0.42);
 }
 
 .form-note {
@@ -890,9 +952,10 @@ a {
 .email-error-message {
   display: none;
   font-size: 0.82rem !important;
-  color: var(--terracotta) !important;
+  color: var(--terracotta-dark) !important;
   text-align: center;
   margin: 0;
+  font-weight: 700;
 }
 
 .cta-buttons {
@@ -907,14 +970,14 @@ a {
 
 footer {
   text-align: center;
-  padding: 2.6rem 1.25rem;
-  background: rgba(241,233,221,0.7);
+  padding: 2.7rem 1.25rem;
+  background: rgba(241, 233, 221, 0.72);
   color: var(--warm-brown);
 }
 
 .footer-brand {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.34rem;
   margin-bottom: 0.25rem;
   color: var(--espresso);
 }
@@ -932,15 +995,28 @@ footer {
 }
 
 .disclaimer {
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
-
   font-size: 0.74rem;
-  color: rgba(107,79,63,0.62);
+  color: rgba(107, 79, 63, 0.62);
   line-height: 1.6;
 }
 
 /* RESPONSIVE */
+
+@media (max-width: 980px) {
+  .experience-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-sidebar {
+    min-height: 420px;
+  }
+
+  .reset-card {
+    min-height: auto;
+  }
+}
 
 @media (max-width: 680px) {
   .top-bar-inner {
@@ -956,24 +1032,28 @@ footer {
   }
 
   .app-container {
-    padding: 8.2rem 1rem 2.4rem;
+    padding: 8.2rem 1rem 2.5rem;
     align-items: flex-start;
   }
 
+  .experience-sidebar {
+    display: none;
+  }
+
   .reset-card {
-    border-radius: 28px;
+    border-radius: 30px;
   }
 
   .screen {
-    padding: 2.25rem 1.15rem;
+    padding: 2.3rem 1.15rem;
   }
 
   .title-main {
-    font-size: 2.62rem;
+    font-size: 2.72rem;
   }
 
   .title-step {
-    font-size: 2.15rem;
+    font-size: 2.18rem;
   }
 
   .subtitle {
@@ -981,11 +1061,11 @@ footer {
   }
 
   .soft-intro {
-    font-size: 1.12rem;
+    font-size: 1.13rem;
   }
 
   .prompt-text {
-    font-size: 1.2rem;
+    font-size: 1.22rem;
   }
 
   .btn {
@@ -1025,7 +1105,7 @@ footer {
   .summary-card,
   .cta-section {
     padding: 1.55rem;
-    border-radius: 22px;
+    border-radius: 24px;
   }
 
   .summary-value {
@@ -1088,275 +1168,290 @@ footer {
 
   <main class="app-container">
 
-    <section class="reset-card">
+    <div class="experience-layout">
 
-      <!-- SCREEN 1: WELCOME -->
-      <div id="screen-welcome" class="screen active">
-        <div class="kicker">A guided pause</div>
-
-        <h1 class="title-main">
-          The 5-Minute<br>
-          <em>Calm Reset</em>
-        </h1>
-
-        <p class="subtitle">
-          A simple guided pause for the mom who is holding everything together but needs a moment to come back to herself.
-        </p>
-
-        <p class="soft-intro">
-          This is not another thing to accomplish. It is a small space to breathe, soften, and reset.
-        </p>
-
-        <button class="btn" onclick="nextScreen('screen-checkin', 1)">Begin the Reset</button>
-      </div>
-
-      <!-- SCREEN 2: CHECK-IN -->
-      <div id="screen-checkin" class="screen">
-        <div class="kicker">Notice</div>
-
-        <h2 class="title-step">
-          First, notice where you are.
-        </h2>
-
-        <div class="prompt-text">
-          What feels heaviest right now?
+      <aside class="experience-sidebar" aria-label="Rachel McBride Coaching calm reset introduction">
+        <div class="sidebar-content">
+          <div class="sidebar-pill">Private guided tool</div>
+          <h2 class="sidebar-title">A calm place to come back to yourself.</h2>
         </div>
 
-        <div class="options-grid" id="checkinOptions">
-          <div class="option-card" onclick="selectCheckin(this, 'My mind will not stop racing')">My mind will not stop racing.</div>
-          <div class="option-card" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense.</div>
-          <div class="option-card" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained.</div>
-          <div class="option-card" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything.</div>
-          <div class="option-card" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap.</div>
-          <div class="option-card" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment.</div>
+        <div class="sidebar-note">
+          <small>Today’s permission</small>
+          <p>You do not have to solve your whole life in this moment. You only have to come back to your breath.</p>
         </div>
+      </aside>
 
-        <div id="checkinMessage" class="soft-message">
-          That makes sense. You do not have to fix everything right now. Just start here.
-        </div>
+      <section class="reset-card" aria-label="The 5-Minute Calm Reset interactive experience">
 
-        <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Continue</button>
-      </div>
+        <!-- SCREEN 1: WELCOME -->
+        <div id="screen-welcome" class="screen active">
+          <div class="kicker">A guided pause</div>
 
-      <!-- SCREEN 3: BREATHE -->
-      <div id="screen-breathe" class="screen">
-        <div class="kicker">Breathe</div>
+          <h1 class="title-main">
+            The 5-Minute<br>
+            <em>Calm Reset</em>
+          </h1>
 
-        <h2 class="title-step">
-          Let your body know<br>
-          you are here.
-        </h2>
-
-        <p class="subtitle">
-          Place one hand on your chest and one hand on your belly. We will breathe together three times.
-        </p>
-
-        <div class="breathe-container">
-          <div class="breathe-halo"></div>
-          <div id="breatheCircle" class="breathe-circle"></div>
-          <div id="breatheText" class="breathe-text">Ready</div>
-        </div>
-
-        <div id="cycleCounter" class="cycle-counter" style="display:none;">Cycle 1 of 3</div>
-
-        <button id="btnStartBreathing" class="btn" onclick="startBreathing()">Start Breathing</button>
-
-        <div id="breatheComplete" class="soft-message">
-          You are allowed to slow down.
-        </div>
-
-        <button id="btnBreatheNext" class="btn" style="display:none;" onclick="nextScreen('screen-ground', 3)">Next Step</button>
-      </div>
-
-      <!-- SCREEN 4: GROUND -->
-      <div id="screen-ground" class="screen">
-        <div class="kicker">Ground</div>
-
-        <h2 class="title-step">
-          Come back to<br>
-          right now.
-        </h2>
-
-        <div class="prompt-text">
-          Look around your physical space. Let your senses remind you that this moment is here.
-        </div>
-
-        <div class="grounding-list">
-          <label class="grounding-item">
-            <input type="checkbox" onchange="checkGrounding()">
-            <span>I have noticed <strong>5</strong> things I can see.</span>
-          </label>
-
-          <label class="grounding-item">
-            <input type="checkbox" onchange="checkGrounding()">
-            <span>I have noticed <strong>4</strong> things I can feel.</span>
-          </label>
-
-          <label class="grounding-item">
-            <input type="checkbox" onchange="checkGrounding()">
-            <span>I have noticed <strong>3</strong> things I can hear.</span>
-          </label>
-
-          <label class="grounding-item">
-            <input type="checkbox" onchange="checkGrounding()">
-            <span>I have noticed <strong>2</strong> things I can smell.</span>
-          </label>
-
-          <div class="grounding-item">
-            <input type="checkbox" id="checkChoose" onchange="checkGrounding()">
-            <span style="flex-grow:1;">
-              I am choosing <strong>1</strong> small thing for right now:
-              <input type="text" id="groundingInput" class="grounding-input" placeholder="A glass of water, a slower breath, a quiet minute..." oninput="handleGroundingInput(this)">
-            </span>
-          </div>
-        </div>
-
-        <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">I’m Grounded</button>
-      </div>
-
-      <!-- SCREEN 5: RELEASE -->
-      <div id="screen-release" class="screen">
-        <div class="kicker">Release</div>
-
-        <h2 class="title-step">
-          Set one thing down.
-        </h2>
-
-        <div class="prompt-text">
-          What is one thing you are carrying right now that you can set down for the next five minutes?
-        </div>
-
-        <div id="releaseInputContainer">
-          <textarea id="releaseText" class="release-box" rows="3" placeholder="I can set down..."></textarea>
-
-          <p class="micro-note">
-            You do not have to release everything. Just one thing. Just for now.
+          <p class="subtitle">
+            A simple guided pause for the mom who is holding everything together but needs a moment to come back to herself.
           </p>
 
-          <button id="btnDoRelease" class="btn" onclick="animateRelease()">Release It</button>
-        </div>
-
-        <div id="releasedCard" class="released-card"></div>
-
-        <button id="btnReleaseNext" class="btn" style="display:none;" onclick="nextScreen('screen-reconnect', 5)">Next Step</button>
-      </div>
-
-      <!-- SCREEN 6: RECONNECT -->
-      <div id="screen-reconnect" class="screen">
-        <div class="kicker">Reconnect</div>
-
-        <h2 class="title-step">
-          Choose what your body<br>
-          needs to hear.
-        </h2>
-
-        <div class="prompt-text">
-          Pick one sentence to carry with you today.
-        </div>
-
-        <div class="options-grid" id="affirmationOptions">
-          <div class="option-card" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</div>
-          <div class="option-card" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</div>
-          <div class="option-card" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</div>
-          <div class="option-card" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</div>
-          <div class="option-card" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</div>
-          <div class="option-card" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</div>
-        </div>
-
-        <div id="affirmationDisplay" class="released-card" style="font-size:1.55rem; color:var(--terracotta); background:var(--terracotta-bg); border-color:transparent;"></div>
-
-        <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
-      </div>
-
-      <!-- SCREEN 7: FINISH / EMAIL CAPTURE -->
-      <div id="screen-finish" class="screen">
-        <div class="kicker">Complete</div>
-
-        <h2 class="title-step">
-          You made space<br>
-          to breathe.
-        </h2>
-
-        <p class="subtitle" style="color:var(--espresso);">
-          That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.
-        </p>
-
-        <div class="summary-card">
-          <div class="summary-item">
-            <div class="summary-label">Today you noticed</div>
-            <div id="summaryCheckin" class="summary-value"></div>
-          </div>
-
-          <div class="summary-item">
-            <div class="summary-label">You released</div>
-            <div id="summaryRelease" class="summary-value"></div>
-          </div>
-
-          <div class="summary-item">
-            <div class="summary-label">You chose to remember</div>
-            <div id="summaryAffirmation" class="summary-value" style="color:var(--terracotta);"></div>
-          </div>
-        </div>
-
-        <div class="cta-section" id="emailCaptureSection">
-          <div class="cta-section-title">
-            Want Rachel to send this calm note back to you?
-          </div>
-
-          <p>
-            Enter your name and email below. Your reset reflection will be sent directly to Rachel so she can follow up with encouragement, next steps, or support if you want it.
+          <p class="soft-intro">
+            This is not another thing to accomplish. It is a small space to breathe, soften, and reset.
           </p>
 
-          <div class="calm-note-preview">
-            <div class="calm-note-label">Your personal reset note</div>
-            <div id="calmNotePreview" class="calm-note-text"></div>
+          <button class="btn" onclick="nextScreen('screen-checkin', 1)">Begin the Reset</button>
+        </div>
+
+        <!-- SCREEN 2: CHECK-IN -->
+        <div id="screen-checkin" class="screen">
+          <div class="kicker">Notice</div>
+
+          <h2 class="title-step">
+            First, notice where you are.
+          </h2>
+
+          <div class="prompt-text">
+            What feels heaviest right now?
           </div>
 
-          <form id="resetEmailForm" class="email-form" onsubmit="handleEmailSubmit(event)">
-            <input type="text" id="firstName" name="First name" placeholder="Your first name" class="email-form-input" required>
-            <input type="email" id="emailAddress" name="Email address" placeholder="Your email address" class="email-form-input" required>
+          <div class="options-grid" id="checkinOptions">
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'My mind will not stop racing')">My mind will not stop racing.</button>
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense.</button>
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained.</button>
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything.</button>
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap.</button>
+            <button type="button" class="option-card" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment.</button>
+          </div>
 
-            <input type="hidden" name="_subject" value="New 5-Minute Calm Reset Submission">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" style="display:none">
+          <div id="checkinMessage" class="soft-message">
+            That makes sense. You do not have to fix everything right now. Just start here.
+          </div>
 
-            <input type="hidden" id="hiddenCheckin" name="What felt heaviest">
-            <input type="hidden" id="hiddenRelease" name="What they released">
-            <input type="hidden" id="hiddenAffirmation" name="Affirmation chosen">
-            <input type="hidden" id="hiddenMessage" name="Full reset summary">
+          <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Continue</button>
+        </div>
 
-            <button id="emailSubmitButton" type="submit" class="btn">
-              Send My Calm Note
-            </button>
+        <!-- SCREEN 3: BREATHE -->
+        <div id="screen-breathe" class="screen">
+          <div class="kicker">Breathe</div>
 
-            <p class="form-note">
-              Your reflection goes directly to Rachel McBride Coaching. No pressure — just a gentle way to stay connected.
+          <h2 class="title-step">
+            Let your body know<br>
+            you are here.
+          </h2>
+
+          <p class="subtitle">
+            Place one hand on your chest and one hand on your belly. We will breathe together three times.
+          </p>
+
+          <div class="breathe-container">
+            <div class="breathe-halo"></div>
+            <div id="breatheCircle" class="breathe-circle"></div>
+            <div id="breatheText" class="breathe-text">Ready</div>
+          </div>
+
+          <div id="cycleCounter" class="cycle-counter" style="display:none;">Cycle 1 of 3</div>
+
+          <button id="btnStartBreathing" class="btn" onclick="startBreathing()">Start Breathing</button>
+
+          <div id="breatheComplete" class="soft-message">
+            You are allowed to slow down.
+          </div>
+
+          <button id="btnBreatheNext" class="btn" style="display:none;" onclick="nextScreen('screen-ground', 3)">Next Step</button>
+        </div>
+
+        <!-- SCREEN 4: GROUND -->
+        <div id="screen-ground" class="screen">
+          <div class="kicker">Ground</div>
+
+          <h2 class="title-step">
+            Come back to<br>
+            right now.
+          </h2>
+
+          <div class="prompt-text">
+            Let your senses remind you that this moment is here.
+          </div>
+
+          <div class="grounding-list">
+            <label class="grounding-item">
+              <input type="checkbox" onchange="checkGrounding()">
+              <span>I have noticed <strong>5</strong> things I can see.</span>
+            </label>
+
+            <label class="grounding-item">
+              <input type="checkbox" onchange="checkGrounding()">
+              <span>I have noticed <strong>4</strong> things I can feel.</span>
+            </label>
+
+            <label class="grounding-item">
+              <input type="checkbox" onchange="checkGrounding()">
+              <span>I have noticed <strong>3</strong> things I can hear.</span>
+            </label>
+
+            <label class="grounding-item">
+              <input type="checkbox" onchange="checkGrounding()">
+              <span>I have noticed <strong>2</strong> things I can smell.</span>
+            </label>
+
+            <div class="grounding-item">
+              <input type="checkbox" id="checkChoose" onchange="checkGrounding()">
+              <span style="flex-grow:1;">
+                I am choosing <strong>1</strong> small thing for right now:
+                <input type="text" id="groundingInput" class="grounding-input" placeholder="A glass of water, a slower breath, a quiet minute..." oninput="handleGroundingInput(this)">
+              </span>
+            </div>
+          </div>
+
+          <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">I’m Grounded</button>
+        </div>
+
+        <!-- SCREEN 5: RELEASE -->
+        <div id="screen-release" class="screen">
+          <div class="kicker">Release</div>
+
+          <h2 class="title-step">
+            Set one thing down.
+          </h2>
+
+          <div class="prompt-text">
+            What is one thing you are carrying right now that you can set down for the next five minutes?
+          </div>
+
+          <div id="releaseInputContainer">
+            <textarea id="releaseText" class="release-box" rows="3" placeholder="I can set down..."></textarea>
+
+            <p class="micro-note">
+              You do not have to release everything. Just one thing. Just for now.
             </p>
 
-            <p id="emailErrorMessage" class="email-error-message">
-              Something did not send correctly. Please try again.
-            </p>
-          </form>
-        </div>
-
-        <div class="cta-section" id="finalActionsSection" style="display:none;">
-          <div class="cta-section-title" style="color:var(--sage-dark);">
-            ✓ Your calm note was sent.
+            <button id="btnDoRelease" class="btn" onclick="animateRelease()">Release It</button>
           </div>
 
-          <p>
-            Rachel will receive your reset reflection at rachel@rachelmcbridecoaching.com. If you are tired of living in survival mode, this may be a gentle next step toward feeling supported again.
+          <div id="releasedCard" class="released-card"></div>
+
+          <button id="btnReleaseNext" class="btn" style="display:none;" onclick="nextScreen('screen-reconnect', 5)">Next Step</button>
+        </div>
+
+        <!-- SCREEN 6: RECONNECT -->
+        <div id="screen-reconnect" class="screen">
+          <div class="kicker">Reconnect</div>
+
+          <h2 class="title-step">
+            Choose what your body<br>
+            needs to hear.
+          </h2>
+
+          <div class="prompt-text">
+            Pick one sentence to carry with you today.
+          </div>
+
+          <div class="options-grid" id="affirmationOptions">
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</button>
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</button>
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</button>
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</button>
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</button>
+            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</button>
+          </div>
+
+          <div id="affirmationDisplay" class="released-card" style="font-size:1.55rem; color:var(--terracotta); background:var(--terracotta-bg); border-color:transparent;"></div>
+
+          <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
+        </div>
+
+        <!-- SCREEN 7: FINISH / EMAIL CAPTURE -->
+        <div id="screen-finish" class="screen">
+          <div class="kicker">Complete</div>
+
+          <h2 class="title-step">
+            You made space<br>
+            to breathe.
+          </h2>
+
+          <p class="subtitle" style="color:var(--espresso);">
+            That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.
           </p>
 
-          <div class="cta-buttons">
-            <a href="index.html#booking" class="btn">Book a Call</a>
-            <a href="index.html" class="btn btn-outline">Return to Website</a>
+          <div class="summary-card">
+            <div class="summary-item">
+              <div class="summary-label">Today you noticed</div>
+              <div id="summaryCheckin" class="summary-value"></div>
+            </div>
+
+            <div class="summary-item">
+              <div class="summary-label">You released</div>
+              <div id="summaryRelease" class="summary-value"></div>
+            </div>
+
+            <div class="summary-item">
+              <div class="summary-label">You chose to remember</div>
+              <div id="summaryAffirmation" class="summary-value" style="color:var(--terracotta);"></div>
+            </div>
+          </div>
+
+          <div class="cta-section" id="emailCaptureSection">
+            <div class="cta-section-title">
+              Want Rachel to send this calm note back to you?
+            </div>
+
+            <p>
+              Enter your name and email below. Your reset reflection will be sent directly to Rachel so she can follow up with encouragement, next steps, or support if you want it.
+            </p>
+
+            <div class="calm-note-preview">
+              <div class="calm-note-label">Your personal reset note</div>
+              <div id="calmNotePreview" class="calm-note-text"></div>
+            </div>
+
+            <form id="resetEmailForm" class="email-form" onsubmit="handleEmailSubmit(event)">
+              <input type="text" id="firstName" name="First name" placeholder="Your first name" class="email-form-input" required>
+              <input type="email" id="emailAddress" name="Email address" placeholder="Your email address" class="email-form-input" required>
+
+              <input type="hidden" name="_subject" value="New 5-Minute Calm Reset Submission">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none">
+
+              <input type="hidden" id="hiddenCheckin" name="What felt heaviest">
+              <input type="hidden" id="hiddenRelease" name="What they released">
+              <input type="hidden" id="hiddenAffirmation" name="Affirmation chosen">
+              <input type="hidden" id="hiddenMessage" name="Full reset summary">
+
+              <button id="emailSubmitButton" type="submit" class="btn">
+                Send My Calm Note
+              </button>
+
+              <p class="form-note">
+                Your reflection goes directly to Rachel McBride Coaching. No pressure, just a gentle way to stay connected.
+              </p>
+
+              <p id="emailErrorMessage" class="email-error-message">
+                Something did not send correctly. Please try again.
+              </p>
+            </form>
+          </div>
+
+          <div class="cta-section" id="finalActionsSection" style="display:none;">
+            <div class="cta-section-title" style="color:var(--sage-dark);">
+              ✓ Your calm note was sent.
+            </div>
+
+            <p>
+              Rachel will receive your reset reflection at rachel@rachelmcbridecoaching.com. If you are tired of living in survival mode, this may be a gentle next step toward feeling supported again.
+            </p>
+
+            <div class="cta-buttons">
+              <a href="index.html#booking" class="btn">Book a Call</a>
+              <a href="index.html" class="btn btn-outline">Return to Website</a>
+            </div>
           </div>
         </div>
-      </div>
 
-    </section>
+      </section>
+    </div>
 
   </main>
 
@@ -1378,6 +1473,15 @@ const state = {
 };
 
 const totalSteps = 5;
+
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
 
 function updateProgress(stepNum) {
   const progressArea = document.getElementById('progressArea');
@@ -1411,7 +1515,8 @@ function nextScreen(nextScreenId, stepNum) {
   });
 
   setTimeout(() => {
-    document.getElementById(nextScreenId).classList.add('active');
+    const next = document.getElementById(nextScreenId);
+    if (next) next.classList.add('active');
   }, 120);
 }
 
@@ -1530,7 +1635,7 @@ function animateRelease() {
   setTimeout(() => {
     container.style.display = 'none';
 
-    card.innerHTML = `For the next five minutes, I can set down:<br><br>“${input}”`;
+    card.innerHTML = `For the next five minutes, I can set down:<br><br>“${escapeHTML(input)}”`;
     card.style.display = 'block';
 
     setTimeout(() => {
@@ -1596,8 +1701,25 @@ async function handleEmailSubmit(event) {
   const form = document.getElementById('resetEmailForm');
   const submitButton = document.getElementById('emailSubmitButton');
   const errorMessage = document.getElementById('emailErrorMessage');
+  const firstNameInput = document.getElementById('firstName');
+  const emailInput = document.getElementById('emailAddress');
 
   if (!form || !submitButton) return;
+
+  const firstName = firstNameInput.value.trim();
+  const email = emailInput.value.trim();
+  const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!firstName || !emailLooksValid) {
+    if (errorMessage) {
+      errorMessage.textContent = 'Please enter your first name and a valid email address.';
+      errorMessage.style.display = 'block';
+    }
+    return;
+  }
+
+  localStorage.setItem('rmc_first_name', firstName);
+  localStorage.setItem('rmc_email', email);
 
   submitButton.disabled = true;
   submitButton.textContent = 'Sending your calm note...';
@@ -1642,6 +1764,7 @@ async function handleEmailSubmit(event) {
     submitButton.textContent = 'Send My Calm Note';
 
     if (errorMessage) {
+      errorMessage.textContent = 'Something did not send correctly. Please try again.';
       errorMessage.style.display = 'block';
     }
   }
