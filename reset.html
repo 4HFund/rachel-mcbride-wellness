@@ -4,19 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>The 5-Minute Calm Reset | Rachel McBride Coaching</title>
+<title>The Calm Quest | Rachel McBride Coaching</title>
 
-<meta name="description" content="A gentle 5-minute guided reset from Rachel McBride Coaching to help overwhelmed moms breathe, ground, release, reconnect, and receive their personal calm note." />
+<meta name="description" content="A premium 5-minute emotional reset game from Rachel McBride Coaching to help overwhelmed moms release pressure, restore calm, and receive a personalized calm card." />
 
-<meta property="og:title" content="The 5-Minute Calm Reset | Rachel McBride Coaching" />
-<meta property="og:description" content="A premium guided calm reset for overwhelmed moms and women carrying too much." />
+<meta property="og:title" content="The Calm Quest | Rachel McBride Coaching" />
+<meta property="og:description" content="A premium guided calm reset game for overwhelmed moms and women carrying too much." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="IMG_4099.jpeg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after {
@@ -30,11 +30,11 @@
   --soft-cream: #F1E9DD;
   --natural-beige: #D9CBB8;
   --sage: #8E9B82;
-  --sage-dark: #66735d;
+  --sage-dark: #65735d;
   --warm-brown: #6B4F3F;
   --espresso: #352822;
   --terracotta: #C7744F;
-  --terracotta-dark: #a95738;
+  --terracotta-dark: #A95738;
   --terracotta-light: #D8896A;
   --terracotta-bg: #F5E6DC;
   --white: #ffffff;
@@ -45,15 +45,15 @@
   --radius-sm: 16px;
   --radius: 24px;
   --radius-lg: 38px;
-  --radius-xl: 52px;
+  --radius-xl: 54px;
 
-  --shadow-soft: 0 16px 50px rgba(53, 40, 34, 0.08);
-  --shadow-medium: 0 24px 70px rgba(53, 40, 34, 0.13);
-  --shadow-strong: 0 34px 90px rgba(53, 40, 34, 0.18);
+  --shadow-soft: 0 16px 48px rgba(53,40,34,.08);
+  --shadow-medium: 0 26px 74px rgba(53,40,34,.14);
+  --shadow-strong: 0 40px 110px rgba(53,40,34,.22);
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --transition: 0.35s var(--ease);
-  --transition-slow: 0.7s var(--ease);
+  --ease: cubic-bezier(.22,1,.36,1);
+  --transition: .35s var(--ease);
+  --transition-slow: .75s var(--ease);
 }
 
 html {
@@ -67,9 +67,9 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 8% 12%, rgba(199, 116, 79, 0.14), transparent 28rem),
-    radial-gradient(circle at 92% 18%, rgba(142, 155, 130, 0.16), transparent 30rem),
-    radial-gradient(circle at 50% 100%, rgba(217, 203, 184, 0.45), transparent 34rem),
+    radial-gradient(circle at 8% 10%, rgba(199,116,79,.18), transparent 28rem),
+    radial-gradient(circle at 92% 16%, rgba(142,155,130,.2), transparent 31rem),
+    radial-gradient(circle at 50% 100%, rgba(217,203,184,.52), transparent 34rem),
     linear-gradient(145deg, #FAF7F1, #F1E9DD);
   -webkit-font-smoothing: antialiased;
 }
@@ -79,12 +79,22 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.28;
+  opacity: .24;
   background-image:
-    linear-gradient(rgba(53, 40, 34, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(53, 40, 34, 0.025) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
+    linear-gradient(rgba(53,40,34,.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53,40,34,.026) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.45'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
 }
 
 button,
@@ -108,13 +118,13 @@ img {
 }
 
 ::selection {
-  background: rgba(199, 116, 79, 0.25);
+  background: rgba(199,116,79,.25);
 }
 
 :focus-visible {
-  outline: 3px solid rgba(199, 116, 79, 0.35);
+  outline: 3px solid rgba(199,116,79,.36);
   outline-offset: 4px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .page-shell {
@@ -127,21 +137,19 @@ img {
 
 .top-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
   z-index: 100;
-  background: rgba(250, 247, 241, 0.84);
+  background: rgba(250,247,241,.84);
+  border-bottom: 1px solid rgba(255,255,255,.62);
+  box-shadow: 0 12px 38px rgba(53,40,34,.045);
   backdrop-filter: blur(24px) saturate(170%);
   -webkit-backdrop-filter: blur(24px) saturate(170%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.58);
-  box-shadow: 0 10px 34px rgba(53, 40, 34, 0.045);
 }
 
 .top-bar-inner {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem .8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -150,9 +158,7 @@ img {
 
 .brand-link {
   font-family: var(--font-serif);
-  font-size: 1.22rem;
-  color: var(--espresso);
-  letter-spacing: 0.01em;
+  font-size: 1.24rem;
   white-space: nowrap;
 }
 
@@ -164,20 +170,18 @@ img {
 .exit-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  font-size: 0.73rem;
+  gap: .42rem;
+  font-size: .72rem;
   font-weight: 800;
-  color: var(--warm-brown);
-  letter-spacing: 0.11em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  opacity: 0.86;
+  color: var(--warm-brown);
   transition: var(--transition);
 }
 
 .exit-link::before {
   content: "←";
-  font-size: 0.9rem;
+  font-size: .95rem;
   letter-spacing: 0;
 }
 
@@ -186,86 +190,105 @@ img {
   transform: translateX(-2px);
 }
 
-/* PROGRESS */
-
-.progress-area {
-  display: none;
-  max-width: 1180px;
+.quest-hud {
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.25rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
 }
 
-.progress-area.visible {
-  display: block;
+.hud-left {
+  min-width: 0;
 }
 
-.progress-label-row {
+.hud-label-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.7rem;
-  font-size: 0.68rem;
+  gap: .8rem;
+  margin-bottom: .55rem;
+  font-size: .68rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--sage-dark);
 }
 
-.progress-track {
-  width: 100%;
-  height: 7px;
+.hud-track {
+  position: relative;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(217, 203, 184, 0.78);
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(53, 40, 34, 0.05);
+  background: rgba(217,203,184,.76);
+  box-shadow: inset 0 1px 3px rgba(53,40,34,.06);
 }
 
-.progress-fill {
-  height: 100%;
+.hud-fill {
   width: 0%;
-  border-radius: 999px;
+  height: 100%;
+  border-radius: inherit;
   background: linear-gradient(90deg, var(--terracotta), var(--sage));
-  transition: width 0.45s ease;
+  transition: width .65s var(--ease);
 }
 
-/* MAIN APP */
+.hud-orbs {
+  display: flex;
+  gap: .45rem;
+}
+
+.hud-orb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(217,203,184,.8);
+  box-shadow: inset 0 1px 2px rgba(53,40,34,.1);
+  transition: var(--transition);
+}
+
+.hud-orb.lit {
+  background: var(--terracotta);
+  box-shadow: 0 0 18px rgba(199,116,79,.38);
+}
+
+/* LAYOUT */
 
 .app-container {
   flex: 1;
   width: 100%;
-  padding: 9.5rem 1.25rem 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10rem 1.25rem 4.5rem;
+  display: grid;
+  place-items: center;
 }
 
-.experience-layout {
-  width: min(1180px, 100%);
+.quest-layout {
+  width: min(1240px, 100%);
   display: grid;
-  grid-template-columns: 0.76fr 1.24fr;
-  gap: 1.4rem;
+  grid-template-columns: .78fr 1.22fr;
+  gap: 1.35rem;
   align-items: stretch;
 }
 
-/* SIDEBAR IMAGE FIX */
+/* SIDEBAR */
 
-.experience-sidebar {
-  position: relative;
-  min-height: 650px;
+.quest-sidebar {
+  min-height: 680px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(199, 116, 79, 0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(199,116,79,.14), transparent 34%),
     var(--soft-cream);
   box-shadow: var(--shadow-medium);
-  border: 1px solid rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,.7);
   display: flex;
   flex-direction: column;
 }
 
 .sidebar-photo-wrap {
   flex: 1;
-  min-height: 420px;
+  min-height: 430px;
   padding: 1.1rem 1.1rem 0;
   display: flex;
   align-items: center;
@@ -275,13 +298,15 @@ img {
 .sidebar-photo-card {
   width: 100%;
   height: 100%;
-  min-height: 420px;
-  max-height: 500px;
-  border-radius: 38px;
+  min-height: 430px;
+  max-height: 515px;
+  border-radius: 40px;
   overflow: hidden;
-  background: rgba(250,247,241,0.68);
-  border: 1px solid rgba(255,255,255,0.72);
-  box-shadow: 0 18px 45px rgba(53, 40, 34, 0.12);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(250,247,241,.88), transparent 35%),
+    var(--soft-cream);
+  border: 1px solid rgba(255,255,255,.76);
+  box-shadow: 0 20px 50px rgba(53,40,34,.13);
 }
 
 .sidebar-photo-card img {
@@ -289,105 +314,97 @@ img {
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(250,247,241,0.76), transparent 35%),
-    var(--soft-cream);
 }
 
 .sidebar-content {
-  padding: 1.4rem 1.6rem 0;
+  padding: 1.45rem 1.6rem 0;
 }
 
 .sidebar-pill {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.85rem;
+  padding: .55rem .88rem;
   border-radius: 999px;
-  background: rgba(250, 247, 241, 0.68);
-  border: 1px solid rgba(217, 203, 184, 0.78);
+  background: rgba(250,247,241,.7);
+  border: 1px solid rgba(217,203,184,.78);
   color: var(--sage-dark);
-  font-size: 0.68rem;
+  font-size: .68rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
 .sidebar-title {
-  max-width: 360px;
+  max-width: 380px;
   margin-top: 1.1rem;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 400;
-  color: var(--espresso);
+  font-size: clamp(2.1rem, 3.4vw, 3.35rem);
   line-height: 1.04;
-  letter-spacing: -0.02em;
+  letter-spacing: -.025em;
 }
 
 .sidebar-note {
   margin: 1.4rem;
-  background: rgba(250, 247, 241, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 26px;
+  background: rgba(250,247,241,.9);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 28px;
   padding: 1.25rem;
-  box-shadow: 0 18px 44px rgba(20, 14, 10, 0.12);
+  box-shadow: 0 18px 44px rgba(20,14,10,.12);
   backdrop-filter: blur(18px);
 }
 
 .sidebar-note small {
   display: block;
-  margin-bottom: 0.45rem;
+  margin-bottom: .45rem;
   color: var(--terracotta);
-  font-size: 0.68rem;
+  font-size: .68rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
 .sidebar-note p {
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 1.18rem;
-  line-height: 1.38;
+  font-style: italic;
   color: var(--espresso);
+  line-height: 1.38;
 }
 
-/* RESET CARD */
+/* GAME CARD */
 
-.reset-card {
-  width: 100%;
-  min-height: 650px;
+.quest-card {
   position: relative;
-  background: rgba(250, 247, 241, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  min-height: 680px;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-strong);
   overflow: hidden;
+  background: rgba(250,247,241,.88);
+  border: 1px solid rgba(255,255,255,.72);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(18px);
 }
 
-.reset-card::before {
-  content: '';
+.quest-card::before {
+  content: "";
   position: absolute;
-  top: -190px;
-  right: -190px;
-  width: 380px;
-  height: 380px;
+  top: -210px;
+  right: -210px;
+  width: 430px;
+  height: 430px;
   border-radius: 50%;
-  background: rgba(199, 116, 79, 0.11);
+  background: rgba(199,116,79,.11);
   pointer-events: none;
 }
 
-.reset-card::after {
-  content: '';
+.quest-card::after {
+  content: "";
   position: absolute;
-  bottom: -210px;
-  left: -210px;
-  width: 420px;
-  height: 420px;
+  bottom: -230px;
+  left: -220px;
+  width: 460px;
+  height: 460px;
   border-radius: 50%;
-  background: rgba(142, 155, 130, 0.13);
+  background: rgba(142,155,130,.13);
   pointer-events: none;
 }
 
@@ -395,48 +412,50 @@ img {
   display: none;
   position: relative;
   z-index: 2;
-  padding: clamp(2.25rem, 6vw, 4.8rem);
+  padding: clamp(2.35rem, 6vw, 5rem);
   text-align: center;
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px) scale(.99);
 }
 
 .screen.active {
   display: block;
-  animation: screenIn 0.55s ease forwards;
+  animation: screenIn .62s var(--ease) forwards;
 }
 
 @keyframes screenIn {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(20px) scale(.99);
+    filter: blur(4px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 .kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  gap: .6rem;
+  margin-bottom: 1.12rem;
   color: var(--sage-dark);
-  margin-bottom: 1.15rem;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
 }
 
 .kicker::before,
 .kicker::after {
-  content: '';
+  content: "";
   width: 24px;
   height: 1.5px;
   background: currentColor;
-  opacity: 0.65;
+  opacity: .65;
 }
 
 .title-main,
@@ -444,86 +463,159 @@ img {
   font-family: var(--font-serif);
   font-weight: 400;
   color: var(--espresso);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
+  line-height: 1.03;
+  letter-spacing: -.028em;
 }
 
 .title-main {
-  font-size: clamp(2.85rem, 7vw, 5.2rem);
-  margin-bottom: 1.15rem;
+  font-size: clamp(3rem, 7vw, 5.65rem);
+  margin-bottom: 1.1rem;
 }
 
 .title-step {
-  font-size: clamp(2.3rem, 5.4vw, 3.75rem);
+  font-size: clamp(2.25rem, 5.5vw, 3.85rem);
   margin-bottom: 1rem;
 }
 
-.title-main em,
-.title-step em {
+em {
   color: var(--terracotta);
   font-style: italic;
 }
 
 .subtitle {
-  max-width: 620px;
+  max-width: 650px;
   margin: 0 auto 1.5rem;
-  font-size: clamp(1rem, 1.5vw, 1.13rem);
+  font-size: clamp(1rem, 1.5vw, 1.14rem);
   font-weight: 300;
-  color: var(--warm-brown);
   line-height: 1.82;
+  color: var(--warm-brown);
 }
 
 .soft-intro {
-  max-width: 590px;
-  margin: 1.5rem auto 2rem;
+  max-width: 600px;
+  margin: 1.4rem auto 2rem;
   font-family: var(--font-serif);
-  font-size: 1.34rem;
+  font-size: 1.36rem;
   font-style: italic;
+  line-height: 1.48;
   color: var(--sage-dark);
-  line-height: 1.5;
 }
 
 .prompt-text {
-  max-width: 650px;
+  max-width: 660px;
   margin: 0 auto 2rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.32rem, 3vw, 1.7rem);
+  font-size: clamp(1.32rem, 3vw, 1.75rem);
   font-style: italic;
-  color: var(--terracotta);
   line-height: 1.38;
+  color: var(--terracotta);
 }
 
-/* WELCOME PATHS */
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: var(--terracotta);
+  color: white;
+  padding: 1.05rem 2rem;
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 14px 30px rgba(199,116,79,.25);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--warm-brown);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px rgba(199,116,79,.31);
+}
+
+.btn:disabled {
+  background: var(--natural-beige);
+  opacity: .78;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-outline {
+  background: rgba(250,247,241,.64);
+  color: var(--warm-brown);
+  border: 1.5px solid rgba(217,203,184,.95);
+  box-shadow: none;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--soft-cream);
+  color: var(--espresso);
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+/* START QUEST CARDS */
 
 .path-choice-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: .85rem;
-  max-width: 760px;
-  margin: 2.2rem auto 1.4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .9rem;
+  max-width: 780px;
+  margin: 2.1rem auto 1.35rem;
   text-align: left;
 }
 
 .path-choice {
   position: relative;
+  min-height: 176px;
   border: 1px solid rgba(217,203,184,.82);
-  background: rgba(255,255,255,.66);
-  border-radius: 24px;
-  padding: 1.2rem;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top right, rgba(199,116,79,.1), transparent 42%),
+    rgba(255,255,255,.68);
+  padding: 1.25rem;
   cursor: pointer;
-  min-height: 180px;
   box-shadow: 0 12px 32px rgba(53,40,34,.055);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.path-choice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(circle at 20% 10%, rgba(142,155,130,.13), transparent 38%);
   transition: var(--transition);
 }
 
 .path-choice:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-medium);
-  border-color: rgba(199,116,79,.45);
+  border-color: rgba(199,116,79,.48);
+}
+
+.path-choice:hover::after {
+  opacity: 1;
+}
+
+.path-choice span,
+.path-choice strong,
+.path-choice small {
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 .path-choice span {
-  display: block;
   color: var(--terracotta);
   font-size: .66rem;
   font-weight: 800;
@@ -533,18 +625,17 @@ img {
 }
 
 .path-choice strong {
-  display: block;
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.48rem;
   line-height: 1.12;
   color: var(--espresso);
   margin-bottom: .65rem;
 }
 
 .path-choice small {
-  display: block;
   color: var(--warm-brown);
   line-height: 1.5;
+  font-size: .9rem;
 }
 
 .mini-trust-row {
@@ -564,105 +655,54 @@ img {
   font-size: .76rem;
 }
 
-/* BUTTONS */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--terracotta);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  padding: 1.05rem 2rem;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: 0 14px 30px rgba(199, 116, 79, 0.25);
-}
-
-.btn:hover:not(:disabled) {
-  background: var(--warm-brown);
-  transform: translateY(-3px);
-  box-shadow: 0 20px 42px rgba(199, 116, 79, 0.3);
-}
-
-.btn:disabled {
-  background: var(--natural-beige);
-  cursor: not-allowed;
-  opacity: 0.78;
-  box-shadow: none;
-}
-
-.btn-outline {
-  background: rgba(250, 247, 241, 0.62);
-  color: var(--warm-brown);
-  border: 1.5px solid rgba(217, 203, 184, 0.95);
-  box-shadow: none;
-}
-
-.btn-outline:hover:not(:disabled) {
-  background: var(--soft-cream);
-  color: var(--espresso);
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-  gap: .75rem;
-  flex-wrap: wrap;
-}
-
 /* OPTIONS */
 
 .options-grid {
   display: grid;
-  gap: 0.9rem;
-  max-width: 600px;
+  gap: .9rem;
+  max-width: 620px;
   margin: 0 auto 1.5rem;
   text-align: left;
 }
 
 .option-card {
-  width: 100%;
   position: relative;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
+  width: 100%;
+  border: 1.5px solid rgba(255,255,255,.9);
+  border-radius: 21px;
+  background: rgba(255,255,255,.74);
   padding: 1.1rem 1.2rem 1.1rem 3.2rem;
   color: var(--warm-brown);
-  font-size: 0.98rem;
+  font-size: .98rem;
   line-height: 1.5;
   text-align: left;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 9px 28px rgba(53, 40, 34, 0.045);
+  box-shadow: 0 9px 28px rgba(53,40,34,.045);
 }
 
 .option-card::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 1.15rem;
   top: 50%;
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  border: 1.5px solid rgba(199, 116, 79, 0.38);
+  border: 1.5px solid rgba(199,116,79,.38);
   transform: translateY(-50%);
   transition: var(--transition);
 }
 
 .option-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(217, 203, 184, 0.95);
-  box-shadow: 0 14px 34px rgba(53, 40, 34, 0.075);
+  border-color: rgba(217,203,184,.95);
+  box-shadow: 0 14px 34px rgba(53,40,34,.075);
 }
 
 .option-card.selected {
   background: var(--terracotta-bg);
-  border-color: rgba(199, 116, 79, 0.48);
+  border-color: rgba(199,116,79,.48);
   color: var(--espresso);
   font-weight: 700;
 }
@@ -674,14 +714,14 @@ img {
 
 .soft-message {
   display: none;
-  max-width: 590px;
+  max-width: 600px;
   margin: 1.7rem auto 0;
   font-family: var(--font-serif);
   font-size: 1.36rem;
   font-style: italic;
   color: var(--sage-dark);
   line-height: 1.45;
-  animation: smallFade 0.4s ease forwards;
+  animation: smallFade .4s ease forwards;
 }
 
 @keyframes smallFade {
@@ -702,7 +742,7 @@ img {
   position: relative;
   width: 300px;
   height: 300px;
-  margin: 2.4rem auto 1.6rem;
+  margin: 2.35rem auto 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -712,11 +752,11 @@ img {
   position: absolute;
   inset: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(142, 155, 130, 0.2);
+  border: 1px solid rgba(142,155,130,.2);
   box-shadow:
-    inset 0 0 32px rgba(142, 155, 130, 0.08),
-    0 0 0 26px rgba(142, 155, 130, 0.035),
-    0 0 0 54px rgba(199, 116, 79, 0.025);
+    inset 0 0 32px rgba(142,155,130,.08),
+    0 0 0 26px rgba(142,155,130,.035),
+    0 0 0 54px rgba(199,116,79,.025);
 }
 
 .breathe-circle {
@@ -725,9 +765,9 @@ img {
   height: 108px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(250, 247, 241, 0.92), rgba(142, 155, 130, 0.18));
-  border: 1.5px solid rgba(142, 155, 130, 0.42);
-  box-shadow: 0 20px 58px rgba(142, 155, 130, 0.16);
+    radial-gradient(circle, rgba(250,247,241,.92), rgba(142,155,130,.18));
+  border: 1.5px solid rgba(142,155,130,.42);
+  box-shadow: 0 20px 58px rgba(142,155,130,.16);
   transform: scale(1);
   transition: transform ease-in-out, background ease-in-out;
 }
@@ -736,7 +776,7 @@ img {
   transform: scale(2.4);
   transition-duration: 4s;
   background:
-    radial-gradient(circle, rgba(250, 247, 241, 0.96), rgba(142, 155, 130, 0.3));
+    radial-gradient(circle, rgba(250,247,241,.96), rgba(142,155,130,.3));
 }
 
 .breathe-circle.hold {
@@ -747,8 +787,6 @@ img {
 .breathe-circle.exhale {
   transform: scale(1);
   transition-duration: 6s;
-  background:
-    radial-gradient(circle, rgba(250, 247, 241, 0.88), rgba(142, 155, 130, 0.16));
 }
 
 .breathe-text {
@@ -757,24 +795,23 @@ img {
   font-family: var(--font-serif);
   font-size: 1.6rem;
   font-style: italic;
-  color: var(--espresso);
 }
 
 .cycle-counter {
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--sage-dark);
   margin-bottom: 1rem;
+  color: var(--sage-dark);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
 /* GROUNDING */
 
 .grounding-list {
   display: grid;
-  gap: 0.95rem;
-  max-width: 600px;
+  gap: .95rem;
+  max-width: 620px;
   margin: 0 auto 1.4rem;
   text-align: left;
 }
@@ -782,35 +819,35 @@ img {
 .grounding-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.9rem;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(217, 203, 184, 0.72);
-  border-radius: 20px;
+  gap: .9rem;
+  border: 1px solid rgba(217,203,184,.72);
+  border-radius: 21px;
+  background: rgba(255,255,255,.72);
   padding: 1rem 1.05rem;
   color: var(--warm-brown);
-  font-size: 0.98rem;
+  font-size: .98rem;
   line-height: 1.55;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 8px 24px rgba(53, 40, 34, 0.035);
+  box-shadow: 0 8px 24px rgba(53,40,34,.035);
 }
 
 .grounding-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(53, 40, 34, 0.06);
+  box-shadow: 0 12px 30px rgba(53,40,34,.06);
 }
 
 .grounding-item.completed {
   color: var(--sage-dark);
-  background: rgba(142, 155, 130, 0.11);
-  border-color: rgba(142, 155, 130, 0.25);
+  background: rgba(142,155,130,.11);
+  border-color: rgba(142,155,130,.25);
 }
 
 .grounding-item input[type="checkbox"] {
   appearance: none;
   width: 24px;
   height: 24px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   margin-top: 2px;
   border: 1.5px solid var(--natural-beige);
   border-radius: 8px;
@@ -826,25 +863,25 @@ img {
 }
 
 .grounding-item input[type="checkbox"]:checked::after {
-  content: '✓';
+  content: "✓";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: grid;
+  place-items: center;
   color: white;
-  font-size: 14px;
   font-weight: 800;
+  font-size: 14px;
 }
 
 .grounding-input {
   width: 100%;
-  margin-top: 0.45rem;
-  padding: 0.4rem 0;
+  margin-top: .45rem;
+  padding: .4rem 0;
   border: none;
   border-bottom: 1px dashed var(--natural-beige);
   background: transparent;
-  font-size: 0.98rem;
   color: var(--espresso);
+  font-size: .98rem;
   outline: none;
 }
 
@@ -856,62 +893,62 @@ img {
 
 .release-box {
   width: 100%;
-  max-width: 610px;
-  min-height: 145px;
+  max-width: 630px;
+  min-height: 150px;
   padding: 1.45rem;
-  border-radius: 22px;
-  border: 1.5px solid rgba(217, 203, 184, 0.92);
-  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(217,203,184,.92);
+  border-radius: 24px;
+  background: rgba(255,255,255,.8);
   font-family: var(--font-serif);
   font-size: 1.35rem;
   color: var(--espresso);
   line-height: 1.45;
   resize: vertical;
   outline: none;
-  box-shadow: 0 14px 34px rgba(53, 40, 34, 0.06);
+  box-shadow: 0 14px 34px rgba(53,40,34,.06);
   transition: var(--transition);
 }
 
 .release-box:focus {
-  border-color: rgba(199, 116, 79, 0.72);
+  border-color: rgba(199,116,79,.72);
   background: var(--warm-white);
-  box-shadow: 0 0 0 5px rgba(199, 116, 79, 0.08);
+  box-shadow: 0 0 0 5px rgba(199,116,79,.08);
 }
 
 .release-box::placeholder {
-  color: rgba(107, 79, 63, 0.38);
+  color: rgba(107,79,63,.38);
   font-style: italic;
 }
 
 .micro-note {
-  max-width: 540px;
-  margin: 1.2rem auto 1.1rem;
-  font-size: 0.9rem;
+  max-width: 560px;
+  margin: 1.15rem auto 1.1rem;
   color: var(--sage-dark);
+  font-size: .9rem;
   line-height: 1.6;
 }
 
 .released-card {
   display: none;
-  max-width: 620px;
+  max-width: 650px;
   margin: 2rem auto;
-  background: rgba(241, 233, 221, 0.88);
-  border: 1px solid rgba(142, 155, 130, 0.3);
-  border-radius: 26px;
+  border: 1px solid rgba(142,155,130,.3);
+  border-radius: 28px;
+  background: rgba(241,233,221,.88);
   padding: 2rem;
+  color: var(--sage-dark);
   font-family: var(--font-serif);
   font-size: 1.38rem;
   font-style: italic;
-  color: var(--sage-dark);
   line-height: 1.45;
-  animation: floatUp 0.75s ease forwards;
-  box-shadow: 0 12px 32px rgba(53, 40, 34, 0.055);
+  box-shadow: 0 12px 32px rgba(53,40,34,.055);
+  animation: floatUp .75s ease forwards;
 }
 
 @keyframes floatUp {
   from {
     opacity: 0;
-    transform: translateY(16px) scale(0.97);
+    transform: translateY(16px) scale(.97);
   }
 
   to {
@@ -923,26 +960,66 @@ img {
 .fade-out {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.65s ease;
+  transition: opacity .65s ease;
 }
 
-/* SUMMARY */
+/* RESULT */
+
+.result-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: left;
+  border-radius: 34px;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top right, rgba(199,116,79,.13), transparent 34%),
+    rgba(255,255,255,.78);
+  border: 1px solid rgba(217,203,184,.74);
+  box-shadow: 0 16px 46px rgba(53,40,34,.08);
+}
+
+.result-badge {
+  display: inline-flex;
+  padding: .48rem .78rem;
+  border-radius: 999px;
+  background: var(--terracotta-bg);
+  color: var(--terracotta-dark);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.result-card h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  margin-bottom: .85rem;
+}
+
+.result-card p {
+  color: var(--warm-brown);
+  font-weight: 300;
+  line-height: 1.78;
+}
 
 .summary-card {
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(217, 203, 184, 0.74);
-  border-radius: 30px;
-  padding: 2.45rem;
-  margin: 2rem auto;
-  max-width: 660px;
+  max-width: 700px;
+  margin: 1.5rem auto;
   text-align: left;
-  box-shadow: 0 16px 42px rgba(53, 40, 34, 0.07);
+  border-radius: 30px;
+  padding: 2.15rem;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(217,203,184,.74);
+  box-shadow: 0 16px 42px rgba(53,40,34,.07);
 }
 
 .summary-item {
-  padding-bottom: 1.4rem;
-  margin-bottom: 1.4rem;
-  border-bottom: 1px solid rgba(217, 203, 184, 0.7);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(217,203,184,.7);
 }
 
 .summary-item:last-child {
@@ -952,69 +1029,69 @@ img {
 }
 
 .summary-label {
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  margin-bottom: .45rem;
   color: var(--sage-dark);
-  margin-bottom: 0.45rem;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
 .summary-value {
   font-family: var(--font-serif);
   font-size: 1.36rem;
-  color: var(--espresso);
   font-style: italic;
+  color: var(--espresso);
   line-height: 1.4;
 }
 
-/* EMAIL / CTA */
+/* EMAIL CAPTURE */
 
 .cta-section {
-  max-width: 660px;
+  max-width: 700px;
   margin: 2rem auto 0;
-  background:
-    radial-gradient(circle at top right, rgba(199, 116, 79, 0.12), transparent 34%),
-    var(--terracotta-bg);
-  border: 1px solid rgba(199, 116, 79, 0.2);
-  border-radius: 30px;
+  border-radius: 32px;
   padding: 2.35rem;
-  transition: opacity 0.5s ease;
-  box-shadow: 0 16px 42px rgba(53, 40, 34, 0.07);
+  background:
+    radial-gradient(circle at top right, rgba(199,116,79,.12), transparent 34%),
+    var(--terracotta-bg);
+  border: 1px solid rgba(199,116,79,.2);
+  box-shadow: 0 16px 42px rgba(53,40,34,.07);
+  transition: opacity .5s ease;
 }
 
 .cta-section-title {
+  margin-bottom: .75rem;
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: 1.72rem;
   font-style: italic;
   color: var(--espresso);
   line-height: 1.35;
-  margin-bottom: 0.75rem;
 }
 
 .cta-section p {
   color: var(--warm-brown);
-  font-size: 0.96rem;
+  font-size: .96rem;
 }
 
 .calm-note-preview {
-  background: rgba(250, 247, 241, 0.82);
-  border: 1px solid rgba(217, 203, 184, 0.78);
-  border-radius: 20px;
-  padding: 1.3rem 1.35rem;
+  max-width: 580px;
   margin: 1.5rem auto;
-  max-width: 560px;
   text-align: left;
-  box-shadow: 0 9px 26px rgba(53, 40, 34, 0.045);
+  border-radius: 22px;
+  padding: 1.3rem 1.35rem;
+  background: rgba(250,247,241,.84);
+  border: 1px solid rgba(217,203,184,.78);
+  box-shadow: 0 9px 26px rgba(53,40,34,.045);
 }
 
 .calm-note-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  margin-bottom: .65rem;
   color: var(--sage-dark);
-  margin-bottom: 0.65rem;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
 .calm-note-text {
@@ -1027,52 +1104,47 @@ img {
 
 .email-form {
   display: grid;
-  gap: 0.95rem;
+  gap: .95rem;
   margin-top: 1.3rem;
 }
 
 .email-form-input {
   width: 100%;
-  padding: 1.12rem 1.2rem;
+  border: 1.5px solid rgba(217,203,184,.96);
   border-radius: 16px;
-  border: 1.5px solid rgba(217, 203, 184, 0.96);
   background: white;
-  font-size: 0.98rem;
+  padding: 1.12rem 1.2rem;
   color: var(--espresso);
+  font-size: .98rem;
   outline: none;
   transition: var(--transition);
 }
 
 .email-form-input:focus {
   border-color: var(--terracotta);
-  box-shadow: 0 0 0 4px rgba(199, 116, 79, 0.09);
-}
-
-.email-form-input::placeholder {
-  color: rgba(107, 79, 63, 0.42);
+  box-shadow: 0 0 0 4px rgba(199,116,79,.09);
 }
 
 .form-note {
-  font-size: 0.74rem !important;
   color: var(--sage-dark) !important;
   text-align: center;
+  font-size: .74rem !important;
   line-height: 1.55;
 }
 
 .email-error-message {
   display: none;
-  font-size: 0.82rem !important;
   color: var(--terracotta-dark) !important;
   text-align: center;
-  margin: 0;
-  font-weight: 700;
+  font-size: .82rem !important;
+  font-weight: 800;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 0.9rem;
   justify-content: center;
   flex-wrap: wrap;
+  gap: .9rem;
   margin-top: 1.4rem;
 }
 
@@ -1081,14 +1153,14 @@ img {
 footer {
   text-align: center;
   padding: 2.7rem 1.25rem;
-  background: rgba(241, 233, 221, 0.72);
+  background: rgba(241,233,221,.72);
   color: var(--warm-brown);
 }
 
 .footer-brand {
+  margin-bottom: .25rem;
   font-family: var(--font-serif);
   font-size: 1.34rem;
-  margin-bottom: 0.25rem;
   color: var(--espresso);
 }
 
@@ -1098,28 +1170,28 @@ footer {
 }
 
 .footer-tagline {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--terracotta);
   margin-bottom: 1.2rem;
+  color: var(--terracotta);
+  font-size: .9rem;
+  font-style: italic;
 }
 
 .disclaimer {
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto;
-  font-size: 0.74rem;
-  color: rgba(107, 79, 63, 0.62);
+  color: rgba(107,79,63,.62);
+  font-size: .74rem;
   line-height: 1.6;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 980px) {
-  .experience-layout {
+@media (max-width: 1040px) {
+  .quest-layout {
     grid-template-columns: 1fr;
   }
 
-  .experience-sidebar {
+  .quest-sidebar {
     min-height: auto;
   }
 
@@ -1132,8 +1204,18 @@ footer {
     max-height: 430px;
   }
 
-  .reset-card {
+  .quest-card {
     min-height: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .quest-hud {
+    grid-template-columns: 1fr;
+  }
+
+  .hud-orbs {
+    justify-content: center;
   }
 
   .path-choice-grid {
@@ -1147,7 +1229,7 @@ footer {
 
 @media (max-width: 680px) {
   .top-bar-inner {
-    padding: 0.9rem 1rem;
+    padding: .9rem 1rem .75rem;
   }
 
   .brand-link {
@@ -1155,16 +1237,12 @@ footer {
   }
 
   .exit-link {
-    font-size: 0.68rem;
+    font-size: .68rem;
   }
 
   .app-container {
-    padding: 8.2rem 1rem 2.5rem;
+    padding: 9.4rem 1rem 2.5rem;
     align-items: flex-start;
-  }
-
-  .experience-sidebar {
-    display: block;
   }
 
   .sidebar-photo-card {
@@ -1177,7 +1255,7 @@ footer {
     font-size: 2.15rem;
   }
 
-  .reset-card {
+  .quest-card {
     border-radius: 30px;
   }
 
@@ -1194,7 +1272,7 @@ footer {
   }
 
   .subtitle {
-    font-size: 0.98rem;
+    font-size: .98rem;
   }
 
   .soft-intro {
@@ -1210,13 +1288,14 @@ footer {
     padding: 1rem 1.25rem;
   }
 
-  .button-row {
+  .button-row,
+  .cta-buttons {
     flex-direction: column;
   }
 
   .option-card {
     padding: 1rem 1rem 1rem 2.85rem;
-    font-size: 0.94rem;
+    font-size: .94rem;
   }
 
   .breathe-container {
@@ -1235,8 +1314,8 @@ footer {
   }
 
   .grounding-item {
-    padding: 0.92rem;
-    font-size: 0.93rem;
+    padding: .92rem;
+    font-size: .93rem;
   }
 
   .release-box {
@@ -1244,25 +1323,14 @@ footer {
   }
 
   .summary-card,
-  .cta-section {
+  .cta-section,
+  .result-card {
     padding: 1.55rem;
     border-radius: 24px;
   }
 
   .summary-value {
     font-size: 1.18rem;
-  }
-
-  .calm-note-preview {
-    padding: 1.05rem;
-  }
-
-  .calm-note-text {
-    font-size: 1rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
   }
 }
 
@@ -1281,6 +1349,7 @@ footer {
   .screen.active {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }
 </style>
@@ -1296,22 +1365,32 @@ footer {
       <a href="index.html" class="exit-link">Return to Site</a>
     </div>
 
-    <div id="progressArea" class="progress-area">
-      <div class="progress-label-row">
-        <span id="progressIndicator">Step 1 of 5</span>
-        <span id="progressPercent">20%</span>
+    <div class="quest-hud">
+      <div class="hud-left">
+        <div class="hud-label-row">
+          <span id="questLevel">Quest not started</span>
+          <span id="calmPercent">0% calm collected</span>
+        </div>
+        <div class="hud-track">
+          <div id="calmFill" class="hud-fill"></div>
+        </div>
       </div>
-      <div class="progress-track">
-        <div id="progressFill" class="progress-fill"></div>
+
+      <div class="hud-orbs" aria-label="Calm orbs collected">
+        <span class="hud-orb" id="orb1"></span>
+        <span class="hud-orb" id="orb2"></span>
+        <span class="hud-orb" id="orb3"></span>
+        <span class="hud-orb" id="orb4"></span>
+        <span class="hud-orb" id="orb5"></span>
       </div>
     </div>
   </header>
 
   <main class="app-container">
 
-    <div class="experience-layout">
+    <div class="quest-layout">
 
-      <aside class="experience-sidebar" aria-label="Rachel McBride Coaching calm reset introduction">
+      <aside class="quest-sidebar" aria-label="Rachel McBride Coaching Calm Quest introduction">
         <div class="sidebar-photo-wrap">
           <div class="sidebar-photo-card">
             <img src="IMG_4099.jpeg" alt="Rachel McBride, coach and founder of Rachel McBride Coaching">
@@ -1319,93 +1398,103 @@ footer {
         </div>
 
         <div class="sidebar-content">
-          <div class="sidebar-pill">Private guided tool</div>
+          <div class="sidebar-pill">Premium guided reset game</div>
           <h2 class="sidebar-title">A calm place to come back to yourself.</h2>
         </div>
 
         <div class="sidebar-note">
           <small>Today’s permission</small>
-          <p>You do not have to solve your whole life in this moment. You only have to come back to one gentle next step.</p>
+          <p>You do not have to win the whole day. You only have to collect one small piece of calm.</p>
         </div>
       </aside>
 
-      <section class="reset-card" aria-label="The 5-Minute Calm Reset interactive experience">
+      <section class="quest-card" aria-label="The Calm Quest interactive experience">
 
         <!-- SCREEN 1: WELCOME -->
         <div id="screen-welcome" class="screen active">
-          <div class="kicker">A guided pause</div>
+          <div class="kicker">Begin the quest</div>
 
           <h1 class="title-main">
-            The 5-Minute<br>
-            <em>Calm Reset</em>
+            The Calm<br>
+            <em>Quest</em>
           </h1>
 
           <p class="subtitle">
-            A simple guided pause for the woman who is holding everything together but needs a moment to come back to herself.
+            A 5-minute emotional reset game for the woman who is carrying too much.
+            Move through a few gentle rooms, collect calm, and receive your personalized Calm Card.
           </p>
 
           <p class="soft-intro">
-            Choose how you want to begin. You can take the full reset, take a quicker path, or skip the breathing and move straight into grounding.
+            No perfect answers. No pressure. Choose the path your body has capacity for today.
           </p>
 
           <div class="path-choice-grid">
-            <button type="button" class="path-choice" onclick="startFullReset()">
+            <button type="button" class="path-choice" onclick="startFullQuest()">
               <span>Best experience</span>
-              <strong>Take the full 5-minute reset</strong>
-              <small>Notice, breathe, ground, release, and receive your calm note.</small>
+              <strong>Full Calm Quest</strong>
+              <small>Notice, breathe, ground, release, and collect your Calm Card.</small>
             </button>
 
-            <button type="button" class="path-choice" onclick="startQuickReset()">
+            <button type="button" class="path-choice" onclick="startQuickQuest()">
               <span>Short on time</span>
-              <strong>I only have 60 seconds</strong>
-              <small>Skip ahead to grounding and choose one gentle next step.</small>
+              <strong>60-Second Quest</strong>
+              <small>Skip ahead, collect a quick calm point, and receive a simple reset.</small>
             </button>
 
-            <button type="button" class="path-choice" onclick="startWithoutBreathing()">
+            <button type="button" class="path-choice" onclick="startNoBreathQuest()">
               <span>No breathing today</span>
-              <strong>Skip breathing</strong>
-              <small>Go straight into grounding, release, and reconnection.</small>
+              <strong>Skip the Breath Gate</strong>
+              <small>Go straight to grounding, release, and reconnection.</small>
+            </button>
+
+            <button type="button" class="path-choice" onclick="surpriseQuest()">
+              <span>Build it for me</span>
+              <strong>Surprise Me</strong>
+              <small>Let the reset choose a gentle path and calming words for you.</small>
             </button>
           </div>
 
           <div class="mini-trust-row">
-            <span>No pressure</span>
-            <span>No perfect answers</span>
-            <span>Private unless you submit</span>
+            <span>Private unless submitted</span>
+            <span>Skip anything</span>
+            <span>Made for real life</span>
           </div>
         </div>
 
         <!-- SCREEN 2: CHECK-IN -->
         <div id="screen-checkin" class="screen">
-          <div class="kicker">Notice</div>
+          <div class="kicker">Level 1 · The Check-In Room</div>
 
           <h2 class="title-step">
-            First, notice where you are.
+            What are you carrying?
           </h2>
 
           <div class="prompt-text">
-            What feels heaviest right now?
+            Choose the weight that feels closest right now.
           </div>
 
           <div class="options-grid" id="checkinOptions">
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'My mind will not stop racing')">My mind will not stop racing.</button>
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense.</button>
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained.</button>
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything.</button>
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap.</button>
-            <button type="button" class="option-card" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment.</button>
+            <button type="button" class="option-card" data-type="racing" onclick="selectCheckin(this, 'My mind will not stop racing')">My mind will not stop racing.</button>
+            <button type="button" class="option-card" data-type="tense" onclick="selectCheckin(this, 'My body feels tense')">My body feels tense.</button>
+            <button type="button" class="option-card" data-type="drained" onclick="selectCheckin(this, 'I feel emotionally drained')">I feel emotionally drained.</button>
+            <button type="button" class="option-card" data-type="behind" onclick="selectCheckin(this, 'I feel behind on everything')">I feel behind on everything.</button>
+            <button type="button" class="option-card" data-type="snap" onclick="selectCheckin(this, 'I feel like I might snap')">I feel like I might snap.</button>
+            <button type="button" class="option-card" data-type="moment" onclick="selectCheckin(this, 'I just need a moment')">I just need a moment.</button>
           </div>
 
           <div id="checkinMessage" class="soft-message">
-            That makes sense. You do not have to fix everything right now. Just start here.
+            Calm orb collected. You named what was heavy. That matters.
           </div>
 
-          <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Continue</button>
+          <div class="button-row">
+            <button id="btnCheckinNext" class="btn" disabled onclick="nextScreen('screen-breathe', 2)">Enter the Breath Gate</button>
+            <button class="btn btn-outline" onclick="chooseForMeCheckin()">Choose for me</button>
+          </div>
         </div>
 
         <!-- SCREEN 3: BREATHE -->
         <div id="screen-breathe" class="screen">
-          <div class="kicker">Breathe</div>
+          <div class="kicker">Level 2 · The Breath Gate</div>
 
           <h2 class="title-step">
             Let your body know<br>
@@ -1413,7 +1502,7 @@ footer {
           </h2>
 
           <p class="subtitle">
-            Place one hand on your chest and one hand on your belly. We will breathe together three times.
+            Follow the circle for three slow breaths. Or skip this room and keep moving. Both count.
           </p>
 
           <div class="breathe-container">
@@ -1430,44 +1519,43 @@ footer {
           </div>
 
           <div id="breatheComplete" class="soft-message">
-            You are allowed to slow down.
+            Breath orb collected. You are allowed to slow down.
           </div>
 
-          <button id="btnBreatheNext" class="btn" style="display:none;" onclick="nextScreen('screen-ground', 3)">Next Step</button>
+          <button id="btnBreatheNext" class="btn" style="display:none;" onclick="nextScreen('screen-ground', 3)">Enter the Grounding Garden</button>
         </div>
 
         <!-- SCREEN 4: GROUND -->
         <div id="screen-ground" class="screen">
-          <div class="kicker">Ground</div>
+          <div class="kicker">Level 3 · The Grounding Garden</div>
 
           <h2 class="title-step">
-            Come back to<br>
-            right now.
+            Collect five anchors.
           </h2>
 
           <div class="prompt-text">
-            Let your senses remind you that this moment is here.
+            Tap each anchor as you notice it in your physical space.
           </div>
 
           <div class="grounding-list">
             <label class="grounding-item">
               <input type="checkbox" onchange="checkGrounding()">
-              <span>I have noticed <strong>5</strong> things I can see.</span>
+              <span>I noticed <strong>5</strong> things I can see.</span>
             </label>
 
             <label class="grounding-item">
               <input type="checkbox" onchange="checkGrounding()">
-              <span>I have noticed <strong>4</strong> things I can feel.</span>
+              <span>I noticed <strong>4</strong> things I can feel.</span>
             </label>
 
             <label class="grounding-item">
               <input type="checkbox" onchange="checkGrounding()">
-              <span>I have noticed <strong>3</strong> things I can hear.</span>
+              <span>I noticed <strong>3</strong> things I can hear.</span>
             </label>
 
             <label class="grounding-item">
               <input type="checkbox" onchange="checkGrounding()">
-              <span>I have noticed <strong>2</strong> things I can smell.</span>
+              <span>I noticed <strong>2</strong> things I can smell.</span>
             </label>
 
             <div class="grounding-item">
@@ -1479,46 +1567,48 @@ footer {
             </div>
           </div>
 
-          <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">I’m Grounded</button>
+          <div class="button-row">
+            <button id="btnGroundNext" class="btn" disabled onclick="nextScreen('screen-release', 4)">Enter the Release Well</button>
+            <button class="btn btn-outline" onclick="autoGround()">Collect anchors for me</button>
+          </div>
         </div>
 
         <!-- SCREEN 5: RELEASE -->
         <div id="screen-release" class="screen">
-          <div class="kicker">Release</div>
+          <div class="kicker">Level 4 · The Release Well</div>
 
           <h2 class="title-step">
             Set one thing down.
           </h2>
 
           <div class="prompt-text">
-            What is one thing you are carrying right now that you can set down for the next five minutes?
+            What is one thing you can stop carrying for the next five minutes?
           </div>
 
           <div id="releaseInputContainer">
             <textarea id="releaseText" class="release-box" rows="3" placeholder="I can set down..."></textarea>
 
             <p class="micro-note">
-              You do not have to release everything. Just one thing. Just for now.
+              You do not have to release everything. One small piece of pressure is enough.
             </p>
 
             <div class="button-row">
-              <button id="btnDoRelease" class="btn" onclick="animateRelease()">Release It</button>
-              <button type="button" class="btn btn-outline" onclick="skipRelease()">Skip Writing</button>
+              <button id="btnDoRelease" class="btn" onclick="animateRelease()">Drop It Into the Well</button>
+              <button type="button" class="btn btn-outline" onclick="skipRelease()">I do not want to write</button>
             </div>
           </div>
 
           <div id="releasedCard" class="released-card"></div>
 
-          <button id="btnReleaseNext" class="btn" style="display:none;" onclick="nextScreen('screen-reconnect', 5)">Next Step</button>
+          <button id="btnReleaseNext" class="btn" style="display:none;" onclick="nextScreen('screen-reconnect', 5)">Enter the Permission Room</button>
         </div>
 
         <!-- SCREEN 6: RECONNECT -->
         <div id="screen-reconnect" class="screen">
-          <div class="kicker">Reconnect</div>
+          <div class="kicker">Level 5 · The Permission Room</div>
 
           <h2 class="title-step">
-            Choose what your body<br>
-            needs to hear.
+            Choose your reminder.
           </h2>
 
           <div class="prompt-text">
@@ -1526,31 +1616,42 @@ footer {
           </div>
 
           <div class="options-grid" id="affirmationOptions">
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</button>
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</button>
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</button>
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</button>
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</button>
-            <button type="button" class="option-card" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</button>
+            <button type="button" class="option-card" data-result="quiet" onclick="selectAffirmation(this, 'I am safe in this moment.')">I am safe in this moment.</button>
+            <button type="button" class="option-card" data-result="giver" onclick="selectAffirmation(this, 'I do not have to carry everything alone.')">I do not have to carry everything alone.</button>
+            <button type="button" class="option-card" data-result="steady" onclick="selectAffirmation(this, 'I can slow down without falling behind.')">I can slow down without falling behind.</button>
+            <button type="button" class="option-card" data-result="needs" onclick="selectAffirmation(this, 'My needs matter too.')">My needs matter too.</button>
+            <button type="button" class="option-card" data-result="breath" onclick="selectAffirmation(this, 'I am allowed to breathe.')">I am allowed to breathe.</button>
+            <button type="button" class="option-card" data-result="next" onclick="selectAffirmation(this, 'I can take the next step, not every step.')">I can take the next step, not every step.</button>
           </div>
 
           <div id="affirmationDisplay" class="released-card" style="font-size:1.55rem; color:var(--terracotta); background:var(--terracotta-bg); border-color:transparent;"></div>
 
-          <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Finish Reset</button>
+          <div class="button-row">
+            <button id="btnFinishReset" class="btn" disabled onclick="showFinishScreen()">Reveal My Calm Card</button>
+            <button class="btn btn-outline" onclick="chooseForMeAffirmation()">Choose for me</button>
+          </div>
         </div>
 
-        <!-- SCREEN 7: FINISH / EMAIL CAPTURE -->
+        <!-- SCREEN 7: FINISH -->
         <div id="screen-finish" class="screen">
-          <div class="kicker">Complete</div>
+          <div class="kicker">Quest complete</div>
 
           <h2 class="title-step">
-            You made space<br>
-            to breathe.
+            Your Calm Card<br>
+            is ready.
           </h2>
 
           <p class="subtitle" style="color:var(--espresso);">
-            That moment mattered. You paused. You noticed. You released a little pressure. You came back to yourself.
+            You paused. You noticed. You collected calm. That moment mattered.
           </p>
+
+          <div class="result-card">
+            <span class="result-badge">Your calm type</span>
+            <h3 id="resultTitle">The Quiet Rebuilder</h3>
+            <p id="resultDescription">
+              You are not broken. You are overloaded. Your system is asking for softness, space, and one gentle next step.
+            </p>
+          </div>
 
           <div class="summary-card">
             <div class="summary-item">
@@ -1571,15 +1672,15 @@ footer {
 
           <div class="cta-section" id="emailCaptureSection">
             <div class="cta-section-title">
-              Want Rachel to send this calm note back to you?
+              Want Rachel to send this Calm Card back to you?
             </div>
 
             <p>
-              Enter your name and email below. Your reset reflection will be sent directly to Rachel so she can follow up with encouragement, next steps, or support if you want it.
+              Enter your name and email below. Your personal Calm Card will be sent directly to Rachel so she can follow up with encouragement, support, or next steps if you want them.
             </p>
 
             <div class="calm-note-preview">
-              <div class="calm-note-label">Your personal reset note</div>
+              <div class="calm-note-label">Your personal Calm Card</div>
               <div id="calmNotePreview" class="calm-note-text"></div>
             </div>
 
@@ -1587,7 +1688,7 @@ footer {
               <input type="text" id="firstName" name="First name" placeholder="Your first name" class="email-form-input" required>
               <input type="email" id="emailAddress" name="Email address" placeholder="Your email address" class="email-form-input" required>
 
-              <input type="hidden" name="_subject" value="New 5-Minute Calm Reset Submission">
+              <input type="hidden" name="_subject" value="New Calm Quest Submission">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
               <input type="text" name="_honey" style="display:none">
@@ -1595,10 +1696,11 @@ footer {
               <input type="hidden" id="hiddenCheckin" name="What felt heaviest">
               <input type="hidden" id="hiddenRelease" name="What they released">
               <input type="hidden" id="hiddenAffirmation" name="Affirmation chosen">
-              <input type="hidden" id="hiddenMessage" name="Full reset summary">
+              <input type="hidden" id="hiddenResult" name="Calm type">
+              <input type="hidden" id="hiddenMessage" name="Full calm card">
 
               <button id="emailSubmitButton" type="submit" class="btn">
-                Send My Calm Note
+                Send My Calm Card
               </button>
 
               <p class="form-note">
@@ -1613,11 +1715,11 @@ footer {
 
           <div class="cta-section" id="finalActionsSection" style="display:none;">
             <div class="cta-section-title" style="color:var(--sage-dark);">
-              ✓ Your calm note was sent.
+              ✓ Your Calm Card was sent.
             </div>
 
             <p>
-              Rachel will receive your reset reflection at rachel@rachelmcbridecoaching.com. If you are tired of living in survival mode, this may be a gentle next step toward feeling supported again.
+              Rachel will receive your Calm Quest reflection at rachel@rachelmcbridecoaching.com. If you are tired of living in survival mode, this may be a gentle next step toward feeling supported again.
             </p>
 
             <div class="cta-buttons">
@@ -1645,15 +1747,46 @@ footer {
 <script>
 const state = {
   checkIn: '',
+  checkType: '',
   releaseText: '',
-  affirmation: ''
+  affirmation: '',
+  resultType: '',
+  calmType: '',
+  calmDescription: ''
 };
 
-const totalSteps = 5;
 let breathCycle = 0;
 const maxCycles = 3;
 let isBreathing = false;
 let breathTimers = [];
+let calmScore = 0;
+
+const calmTypes = {
+  quiet: {
+    title: 'The Quiet Rebuilder',
+    description: 'You are not broken. You are rebuilding your inner steadiness one soft pause at a time. Today, your body asked for quiet, safety, and room to return to yourself.'
+  },
+  giver: {
+    title: 'The Overloaded Giver',
+    description: 'You care deeply, but care was never meant to mean carrying everything alone. Today, your reset is about support, boundaries, and letting someone else help hold the weight.'
+  },
+  steady: {
+    title: 'The Steady Returner',
+    description: 'You do not need to rush yourself back into control. Your calm comes from slowing down, choosing what matters, and taking one next step instead of every step.'
+  },
+  needs: {
+    title: 'The Hidden-Needs Keeper',
+    description: 'You have spent so much energy tending to everyone else. Today, your body reminded you that your needs matter too, even when no one else notices them first.'
+  },
+  breath: {
+    title: 'The Soft Reset Seeker',
+    description: 'Your system is asking for gentleness. Not a perfect plan. Not a full life overhaul. Just breath, space, and permission to stop bracing for a moment.'
+  },
+  next: {
+    title: 'The One-Step Woman',
+    description: 'You do not have to solve the whole story today. Your calm begins with the next gentle step, not every step at once.'
+  }
+};
 
 function escapeHTML(value) {
   return String(value)
@@ -1664,23 +1797,22 @@ function escapeHTML(value) {
     .replaceAll("'", '&#039;');
 }
 
-function updateProgress(stepNum) {
-  const progressArea = document.getElementById('progressArea');
-  const progressIndicator = document.getElementById('progressIndicator');
-  const progressPercent = document.getElementById('progressPercent');
-  const progressFill = document.getElementById('progressFill');
+function setCalm(score, levelText) {
+  calmScore = Math.max(0, Math.min(100, score));
 
-  if (!stepNum) {
-    progressArea.classList.remove('visible');
-    return;
+  const fill = document.getElementById('calmFill');
+  const percent = document.getElementById('calmPercent');
+  const level = document.getElementById('questLevel');
+
+  if (fill) fill.style.width = `${calmScore}%`;
+  if (percent) percent.textContent = `${calmScore}% calm collected`;
+  if (level) level.textContent = levelText;
+
+  const litCount = Math.round(calmScore / 20);
+  for (let i = 1; i <= 5; i++) {
+    const orb = document.getElementById(`orb${i}`);
+    if (orb) orb.classList.toggle('lit', i <= litCount);
   }
-
-  const percentage = Math.round((stepNum / totalSteps) * 100);
-
-  progressArea.classList.add('visible');
-  progressIndicator.textContent = `Step ${stepNum} of ${totalSteps}`;
-  progressPercent.textContent = `${percentage}%`;
-  progressFill.style.width = `${percentage}%`;
 }
 
 function clearBreathTimers() {
@@ -1708,12 +1840,14 @@ function resetBreathState() {
   if (completeMessage) completeMessage.style.display = 'none';
 }
 
-function nextScreen(nextScreenId, stepNum) {
+function nextScreen(nextScreenId, score, levelText) {
   document.querySelectorAll('.screen').forEach((screen) => {
     screen.classList.remove('active');
   });
 
-  updateProgress(stepNum);
+  if (typeof score === 'number') {
+    setCalm(score, levelText || 'Quest in progress');
+  }
 
   window.scrollTo({
     top: 0,
@@ -1728,28 +1862,115 @@ function nextScreen(nextScreenId, stepNum) {
 
 /* START OPTIONS */
 
-function startFullReset() {
-  state.checkIn = '';
-  resetBreathState();
-  nextScreen('screen-checkin', 1);
+function startFullQuest() {
+  resetQuestState();
+  nextScreen('screen-checkin', 20, 'Level 1 · Check-In Room');
 }
 
-function startQuickReset() {
+function startQuickQuest() {
+  resetQuestState();
   state.checkIn = 'I just needed a moment.';
-  resetBreathState();
-  nextScreen('screen-ground', 3);
+  state.checkType = 'moment';
+  nextScreen('screen-ground', 60, 'Quick Quest · Grounding Garden');
 }
 
-function startWithoutBreathing() {
+function startNoBreathQuest() {
+  resetQuestState();
+  nextScreen('screen-checkin', 20, 'Level 1 · Check-In Room');
+}
+
+function surpriseQuest() {
+  resetQuestState();
+
+  const checkOptions = [
+    ['I just needed a moment.', 'moment'],
+    ['My body feels tense.', 'tense'],
+    ['I feel emotionally drained.', 'drained']
+  ];
+
+  const releaseOptions = [
+    'Trying to do everything perfectly.',
+    'The pressure to be available to everyone.',
+    'One piece of the invisible load.'
+  ];
+
+  const affirmations = [
+    ['I can take the next step, not every step.', 'next'],
+    ['I do not have to carry everything alone.', 'giver'],
+    ['I am allowed to breathe.', 'breath']
+  ];
+
+  const pickedCheck = checkOptions[Math.floor(Math.random() * checkOptions.length)];
+  const pickedRelease = releaseOptions[Math.floor(Math.random() * releaseOptions.length)];
+  const pickedAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
+
+  state.checkIn = pickedCheck[0];
+  state.checkType = pickedCheck[1];
+  state.releaseText = pickedRelease;
+  state.affirmation = pickedAffirmation[0];
+  state.resultType = pickedAffirmation[1];
+
+  showFinishScreen();
+}
+
+function resetQuestState() {
   state.checkIn = '';
+  state.checkType = '';
+  state.releaseText = '';
+  state.affirmation = '';
+  state.resultType = '';
+  state.calmType = '';
+  state.calmDescription = '';
+
   resetBreathState();
-  nextScreen('screen-checkin', 1);
+
+  document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+  document.querySelectorAll('.grounding-item').forEach(item => item.classList.remove('completed'));
+  document.querySelectorAll('#screen-ground input[type="checkbox"]').forEach(box => box.checked = false);
+
+  const groundingInput = document.getElementById('groundingInput');
+  if (groundingInput) groundingInput.value = '';
+
+  const releaseText = document.getElementById('releaseText');
+  if (releaseText) releaseText.value = '';
+
+  const releaseInputContainer = document.getElementById('releaseInputContainer');
+  const releasedCard = document.getElementById('releasedCard');
+  const btnReleaseNext = document.getElementById('btnReleaseNext');
+
+  if (releaseInputContainer) {
+    releaseInputContainer.style.display = 'block';
+    releaseInputContainer.classList.remove('fade-out');
+  }
+
+  if (releasedCard) {
+    releasedCard.style.display = 'none';
+    releasedCard.innerHTML = '';
+  }
+
+  if (btnReleaseNext) btnReleaseNext.style.display = 'none';
+
+  const affirmationOptions = document.getElementById('affirmationOptions');
+  const affirmationDisplay = document.getElementById('affirmationDisplay');
+  const btnFinishReset = document.getElementById('btnFinishReset');
+
+  if (affirmationOptions) affirmationOptions.style.display = 'grid';
+  if (affirmationDisplay) affirmationDisplay.style.display = 'none';
+  if (btnFinishReset) btnFinishReset.disabled = true;
+
+  const btnCheckinNext = document.getElementById('btnCheckinNext');
+  const checkinMessage = document.getElementById('checkinMessage');
+
+  if (btnCheckinNext) btnCheckinNext.disabled = true;
+  if (checkinMessage) checkinMessage.style.display = 'none';
+
+  const btnGroundNext = document.getElementById('btnGroundNext');
+  if (btnGroundNext) btnGroundNext.disabled = true;
+
+  setCalm(0, 'Quest not started');
 }
 
-function skipBreathing() {
-  resetBreathState();
-  nextScreen('screen-ground', 3);
-}
+/* CHECK-IN */
 
 function selectCheckin(el, text) {
   document.querySelectorAll('#checkinOptions .option-card').forEach((card) => {
@@ -1758,9 +1979,18 @@ function selectCheckin(el, text) {
 
   el.classList.add('selected');
   state.checkIn = text;
+  state.checkType = el.dataset.type || '';
 
   document.getElementById('checkinMessage').style.display = 'block';
   document.getElementById('btnCheckinNext').disabled = false;
+
+  setCalm(20, 'Level 1 complete · Check-In Room');
+}
+
+function chooseForMeCheckin() {
+  const options = Array.from(document.querySelectorAll('#checkinOptions .option-card'));
+  const random = options[Math.floor(Math.random() * options.length)];
+  if (random) random.click();
 }
 
 /* BREATHING */
@@ -1789,6 +2019,7 @@ function runBreathCycle() {
     document.getElementById('breatheComplete').style.display = 'block';
     document.getElementById('btnBreatheNext').style.display = 'inline-flex';
     isBreathing = false;
+    setCalm(40, 'Level 2 complete · Breath Gate');
     return;
   }
 
@@ -1814,6 +2045,12 @@ function runBreathCycle() {
   }, 12000));
 }
 
+function skipBreathing() {
+  resetBreathState();
+  setCalm(40, 'Level 2 skipped · Breath Gate');
+  nextScreen('screen-ground', 60, 'Level 3 · Grounding Garden');
+}
+
 /* GROUNDING */
 
 function handleGroundingInput(input) {
@@ -1825,19 +2062,42 @@ function handleGroundingInput(input) {
 function checkGrounding() {
   const checkboxes = document.querySelectorAll('#screen-ground input[type="checkbox"]');
   let allChecked = true;
+  let checkedCount = 0;
 
   checkboxes.forEach((checkbox) => {
     const item = checkbox.closest('.grounding-item');
 
     if (checkbox.checked) {
       item.classList.add('completed');
+      checkedCount++;
     } else {
       item.classList.remove('completed');
       allChecked = false;
     }
   });
 
+  const partialScore = 40 + Math.round((checkedCount / checkboxes.length) * 20);
+  setCalm(partialScore, 'Level 3 · Grounding Garden');
+
   document.getElementById('btnGroundNext').disabled = !allChecked;
+
+  if (allChecked) {
+    setCalm(60, 'Level 3 complete · Grounding Garden');
+  }
+}
+
+function autoGround() {
+  document.querySelectorAll('#screen-ground input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.checked = true;
+    const item = checkbox.closest('.grounding-item');
+    if (item) item.classList.add('completed');
+  });
+
+  const input = document.getElementById('groundingInput');
+  if (input && !input.value.trim()) input.value = 'One slower breath.';
+
+  document.getElementById('btnGroundNext').disabled = false;
+  setCalm(60, 'Level 3 complete · Grounding Garden');
 }
 
 /* RELEASE */
@@ -1860,8 +2120,10 @@ function animateRelease() {
   setTimeout(() => {
     container.style.display = 'none';
 
-    card.innerHTML = `For the next five minutes, I can set down:<br><br>“${escapeHTML(input)}”`;
+    card.innerHTML = `Released into the well:<br><br>“${escapeHTML(input)}”`;
     card.style.display = 'block';
+
+    setCalm(80, 'Level 4 complete · Release Well');
 
     setTimeout(() => {
       document.getElementById('btnReleaseNext').style.display = 'inline-flex';
@@ -1871,7 +2133,8 @@ function animateRelease() {
 
 function skipRelease() {
   state.releaseText = 'One small piece of pressure.';
-  nextScreen('screen-reconnect', 5);
+  setCalm(80, 'Level 4 skipped · Release Well');
+  nextScreen('screen-reconnect', 80, 'Level 5 · Permission Room');
 }
 
 /* AFFIRMATION */
@@ -1884,6 +2147,7 @@ function selectAffirmation(el, text) {
   el.classList.add('selected');
 
   state.affirmation = text;
+  state.resultType = el.dataset.result || 'next';
 
   document.getElementById('affirmationOptions').style.display = 'none';
 
@@ -1892,37 +2156,66 @@ function selectAffirmation(el, text) {
   display.style.display = 'block';
 
   document.getElementById('btnFinishReset').disabled = false;
+
+  setCalm(100, 'Level 5 complete · Permission Room');
+}
+
+function chooseForMeAffirmation() {
+  const options = Array.from(document.querySelectorAll('#affirmationOptions .option-card'));
+  const random = options[Math.floor(Math.random() * options.length)];
+  if (random) random.click();
 }
 
 /* FINISH */
 
+function determineCalmType() {
+  let key = state.resultType || 'next';
+
+  if (!state.resultType) {
+    if (state.checkType === 'drained') key = 'giver';
+    if (state.checkType === 'racing') key = 'breath';
+    if (state.checkType === 'tense') key = 'quiet';
+    if (state.checkType === 'behind') key = 'steady';
+    if (state.checkType === 'snap') key = 'needs';
+  }
+
+  return calmTypes[key] || calmTypes.next;
+}
+
 function showFinishScreen() {
-  const checkin = state.checkIn || "I just needed a moment.";
-  const release = state.releaseText || "One small piece of pressure.";
-  const affirmation = state.affirmation || "I am allowed to breathe.";
+  const checkin = state.checkIn || 'I just needed a moment.';
+  const release = state.releaseText || 'One small piece of pressure.';
+  const affirmation = state.affirmation || 'I can take the next step, not every step.';
+  const calmType = determineCalmType();
+
+  state.calmType = calmType.title;
+  state.calmDescription = calmType.description;
+
+  document.getElementById('resultTitle').textContent = calmType.title;
+  document.getElementById('resultDescription').textContent = calmType.description;
 
   document.getElementById('summaryCheckin').textContent = checkin;
   document.getElementById('summaryRelease').textContent = `“${release}”`;
   document.getElementById('summaryAffirmation').textContent = affirmation;
 
-  const preview = `Today, I noticed: ${checkin}. For the next five minutes, I am setting down: “${release}.” I am choosing to remember: ${affirmation}`;
+  const preview = `${calmType.title}: ${calmType.description} Today, I noticed: ${checkin}. I am setting down: “${release}.” I am choosing to remember: ${affirmation}`;
 
   const previewEl = document.getElementById('calmNotePreview');
-  if (previewEl) {
-    previewEl.textContent = preview;
-  }
+  if (previewEl) previewEl.textContent = preview;
 
   const hiddenCheckin = document.getElementById('hiddenCheckin');
   const hiddenRelease = document.getElementById('hiddenRelease');
   const hiddenAffirmation = document.getElementById('hiddenAffirmation');
+  const hiddenResult = document.getElementById('hiddenResult');
   const hiddenMessage = document.getElementById('hiddenMessage');
 
   if (hiddenCheckin) hiddenCheckin.value = checkin;
   if (hiddenRelease) hiddenRelease.value = release;
   if (hiddenAffirmation) hiddenAffirmation.value = affirmation;
+  if (hiddenResult) hiddenResult.value = calmType.title;
   if (hiddenMessage) hiddenMessage.value = preview;
 
-  nextScreen('screen-finish', null);
+  nextScreen('screen-finish', 100, 'Quest complete · Calm Card ready');
 }
 
 async function handleEmailSubmit(event) {
@@ -1950,9 +2243,10 @@ async function handleEmailSubmit(event) {
 
   localStorage.setItem('rmc_first_name', firstName);
   localStorage.setItem('rmc_email', email);
+  localStorage.setItem('rmc_calm_type', state.calmType || '');
 
   submitButton.disabled = true;
-  submitButton.textContent = 'Sending your calm note...';
+  submitButton.textContent = 'Sending your Calm Card...';
 
   if (errorMessage) {
     errorMessage.style.display = 'none';
@@ -1991,7 +2285,7 @@ async function handleEmailSubmit(event) {
 
   } catch (error) {
     submitButton.disabled = false;
-    submitButton.textContent = 'Send My Calm Note';
+    submitButton.textContent = 'Send My Calm Card';
 
     if (errorMessage) {
       errorMessage.textContent = 'Something did not send correctly. Please try again.';
@@ -1999,6 +2293,8 @@ async function handleEmailSubmit(event) {
     }
   }
 }
+
+setCalm(0, 'Quest not started');
 </script>
 
 </body>
