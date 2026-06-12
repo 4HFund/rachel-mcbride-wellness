@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    .nav-logo{display:flex;align-items:center;gap:.65rem;line-height:1.05}.logo-mark{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 8px 20px rgba(43,50,64,.1);flex:0 0 auto}.nav-toggle{display:none;background:var(--white);border:1px solid var(--natural-beige);border-radius:14px;padding:.55rem .85rem;font-family:var(--font-sans);font-size:.9rem;color:var(--espresso);cursor:pointer}@media(max-width:880px){.nav-toggle{display:block}.nav-logo{font-size:1.02rem;gap:.5rem;max-width:68vw;overflow:hidden;text-overflow:ellipsis}.logo-mark{width:38px;height:38px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,241,.98);flex-direction:column;align-items:center;padding:1.25rem 6%;gap:.85rem;border-bottom:1px solid var(--natural-beige);box-shadow:var(--shadow-soft)}.nav-links.open{display:flex}.nav-links a{font-size:1rem;width:min(100%,380px);text-align:center;padding:.4rem 0}.nav-links .nav-cta{padding:.8rem 1.2rem}}
     .sales-hero { padding: 10rem 0 5rem; }
     .sales-panel { background: rgba(250,247,241,.9); border: 1px solid rgba(255,255,255,.76); border-radius: var(--radius-xl); box-shadow: var(--shadow-hover); padding: clamp(2rem, 5vw, 4.5rem); }
     .sales-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
@@ -32,106 +33,27 @@
   <div class="ambient-glow" aria-hidden="true"></div>
 
   <nav class="site-nav" id="siteNav">
-    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
-    <ul class="nav-links" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><img class="logo-mark" src="A3BF5FC3-DDC8-4594-97FE-3AE35F98C378.png" alt="Rachel McBride Coaching logo"><span>Rachel McBride</span> Coaching</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks" aria-label="Main navigation">
       <li><a href="index.html">Home</a></li>
       <li><a href="release-circles.html">Release Circle</a></li>
       <li><a href="release-room.html">Release Room</a></li>
       <li><a href="private-coaching.html">1 on 1 Coaching</a></li>
-      <li><a href="workplace-wellness.html" class="nav-cta">Workplace Wellness</a></li>
+      <li><a href="workplace-wellness.html">Workplace Wellness</a></li>
+      <li><a href="index.html#signup" class="nav-cta">Stay Connected</a></li>
     </ul>
   </nav>
 
   <main>
-    <section class="sales-hero">
-      <div class="container sales-panel">
-        <div class="sales-grid">
-          <div>
-            <p class="eyebrow">The Release Room Membership</p>
-            <h1>When everyone needs you, there is a way to come back to yourself.</h1>
-            <p class="hero-text">
-              A somatic, nervous-system-informed membership for women who are holding too much, running on empty, and quietly wondering when they get to exhale.
-            </p>
-            <div class="hero-actions">
-              <a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-primary" data-track="release_room_join">Join the Membership</a>
-              <a href="reset.html" class="btn btn-secondary" data-track="release_room_free_practice">Start with the Free Practice</a>
-            </div>
-            <p class="hero-signature">Start reconnecting to your body in 5 minutes or less.</p>
-          </div>
-
-          <div class="offer-card">
-            <p class="eyebrow">Inside the membership</p>
-            <h2>A monthly space to settle your nervous system.</h2>
-            <p>Not another thing to manage. Something that supports you while you live.</p>
-            <a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-light" data-track="release_room_offer_join">Join Through Acuity</a>
-            <p class="mini-note">Payment/checkout link can be swapped to Stripe, PayPal, or Rachel’s preferred payment page once provided.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section problem-section">
-      <div class="container narrow">
-        <p class="eyebrow centered">This is for you if</p>
-        <h2 class="section-title centered">You function well on the outside, but feel stretched thin inside.</h2>
-        <ul class="sales-list">
-          <li>You are the one everyone relies on.</li>
-          <li>You are tired of holding everything together emotionally, mentally, and practically.</li>
-          <li>You feel disconnected from your body until it is screaming at you.</li>
-          <li>You want to feel more present in your life, not just survive it.</li>
-          <li>You do not need a total life overhaul to begin. You just need a place to come back to yourself.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section services-section">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow centered">What happens inside</p>
-          <h2 class="section-title centered">Support that meets you in real life.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card featured">
-            <p class="service-kicker">Live support</p>
-            <h3>Live Coaching Sessions</h3>
-            <p>Real-time support for what is actually happening in your life: patterns, stress cycles, emotional load, and daily overwhelm.</p>
-          </article>
-          <article class="service-card">
-            <p class="service-kicker">Somatic practice</p>
-            <h3>Release Circles</h3>
-            <p>Guided group experiences to help your body unwind stress, release tension patterns, and complete stress cycles stuck on repeat.</p>
-          </article>
-          <article class="service-card">
-            <p class="service-kicker">Tools for real life</p>
-            <h3>Audio Library + Nervous System Tools</h3>
-            <p>Short practices you can use in the car, in the kitchen, before you react, before you shut down, or in the middle of real life.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section next-step-section">
-      <div class="container">
-        <div class="next-step-panel">
-          <p class="eyebrow centered">Soft invitation</p>
-          <h2>You do not need to wait for things to calm down to take care of yourself.</h2>
-          <p>You just need a place that helps you come back to yourself while life is still happening. This is that place.</p>
-          <div class="hero-actions" style="justify-content:center;">
-            <a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-primary" data-track="release_room_final_join">Join the Membership</a>
-            <a href="release-circles.html" class="btn btn-secondary" data-track="release_room_view_circles">View Release Circles</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="sales-hero"><div class="container sales-panel"><div class="sales-grid"><div><p class="eyebrow">The Release Room Membership</p><h1>When everyone needs you, there is a way to come back to yourself.</h1><p class="hero-text">A somatic, nervous-system-informed membership for women who are holding too much, running on empty, and quietly wondering when they get to exhale.</p><div class="hero-actions"><a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-primary" data-track="release_room_join">Join the Membership</a><a href="reset.html" class="btn btn-secondary" data-track="release_room_free_practice">Start with the Free Practice</a></div><p class="hero-signature">Start reconnecting to your body in 5 minutes or less.</p></div><div class="offer-card"><p class="eyebrow">Inside the membership</p><h2>A monthly space to settle your nervous system.</h2><p>Not another thing to manage. Something that supports you while you live.</p><a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-light" data-track="release_room_offer_join">Join Through Acuity</a><p class="mini-note">Payment/checkout link can be swapped to Stripe, PayPal, or Rachel’s preferred payment page once provided.</p></div></div></div></section>
+    <section class="section problem-section"><div class="container narrow"><p class="eyebrow centered">This is for you if</p><h2 class="section-title centered">You function well on the outside, but feel stretched thin inside.</h2><ul class="sales-list"><li>You are the one everyone relies on.</li><li>You are tired of holding everything together emotionally, mentally, and practically.</li><li>You feel disconnected from your body until it is screaming at you.</li><li>You want to feel more present in your life, not just survive it.</li><li>You do not need a total life overhaul to begin. You just need a place to come back to yourself.</li></ul></div></section>
+    <section class="section services-section"><div class="container"><div class="section-header"><p class="eyebrow centered">What happens inside</p><h2 class="section-title centered">Support that meets you in real life.</h2></div><div class="service-grid"><article class="service-card featured"><p class="service-kicker">Live support</p><h3>Live Coaching Sessions</h3><p>Real-time support for what is actually happening in your life: patterns, stress cycles, emotional load, and daily overwhelm.</p></article><article class="service-card"><p class="service-kicker">Somatic practice</p><h3>Release Circles</h3><p>Guided group experiences to help your body unwind stress, release tension patterns, and complete stress cycles stuck on repeat.</p></article><article class="service-card"><p class="service-kicker">Tools for real life</p><h3>Audio Library + Nervous System Tools</h3><p>Short practices you can use in the car, in the kitchen, before you react, before you shut down, or in the middle of real life.</p></article></div></div></section>
+    <section class="section next-step-section"><div class="container"><div class="next-step-panel"><p class="eyebrow centered">Soft invitation</p><h2>You do not need to wait for things to calm down to take care of yourself.</h2><p>You just need a place that helps you come back to yourself while life is still happening. This is that place.</p><div class="hero-actions" style="justify-content:center;"><a href="https://app.acuityscheduling.com/schedule.php?owner=22802056" class="btn btn-primary" data-track="release_room_final_join">Join the Membership</a><a href="release-circles.html" class="btn btn-secondary" data-track="release_room_view_circles">View Release Circles</a></div></div></div></section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div><h2>Rachel McBride Coaching</h2><p>Release the pressure. Restore your calm.</p></div>
-      <div><h3>Navigate</h3><a href="index.html">Home</a><a href="release-circles.html">Release Circle</a><a href="release-room.html">Release Room</a><a href="private-coaching.html">1 on 1 Coaching</a><a href="workplace-wellness.html">Workplace Wellness</a></div>
-      <div><h3>Begin</h3><a href="reset.html">Permission to Pause</a><a href="permission.html">Permission Slip Studio</a><a href="mailto:rachel@rachelmcbridecoaching.com">Email Rachel</a></div>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container footer-grid"><div><h2>Rachel McBride Coaching</h2><p>Release the pressure. Restore your calm.</p></div><div><h3>Navigate</h3><a href="index.html">Home</a><a href="release-circles.html">Release Circle</a><a href="release-room.html">Release Room</a><a href="private-coaching.html">1 on 1 Coaching</a><a href="workplace-wellness.html">Workplace Wellness</a></div><div><h3>Begin</h3><a href="reset.html">Permission to Pause</a><a href="permission.html">Permission Slip Studio</a><a href="mailto:rachel@rachelmcbridecoaching.com">Email Rachel</a></div></div></footer>
   <script src="js/app.js"></script>
+  <script>const toggle=document.getElementById('navToggle');const links=document.getElementById('navLinks');if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',open);});links.addEventListener('click',e=>{if(e.target.tagName==='A'){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});}</script>
 </body>
 </html>
