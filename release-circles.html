@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    .nav-logo{display:flex;align-items:center;gap:.65rem;line-height:1.05}.logo-mark{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 8px 20px rgba(43,50,64,.1);flex:0 0 auto}.nav-toggle{display:none;background:var(--white);border:1px solid var(--natural-beige);border-radius:14px;padding:.55rem .85rem;font-family:var(--font-sans);font-size:.9rem;color:var(--espresso);cursor:pointer}@media(max-width:880px){.nav-toggle{display:block}.nav-logo{font-size:1.02rem;gap:.5rem;max-width:68vw;overflow:hidden;text-overflow:ellipsis}.logo-mark{width:38px;height:38px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,241,.98);flex-direction:column;align-items:center;padding:1.25rem 6%;gap:.85rem;border-bottom:1px solid var(--natural-beige);box-shadow:var(--shadow-soft)}.nav-links.open{display:flex}.nav-links a{font-size:1rem;width:min(100%,380px);text-align:center;padding:.4rem 0}.nav-links .nav-cta{padding:.8rem 1.2rem}}
     .sales-hero { padding: 10rem 0 5rem; }
     .sales-panel { background: rgba(250,247,241,.9); border: 1px solid rgba(255,255,255,.76); border-radius: var(--radius-xl); box-shadow: var(--shadow-hover); padding: clamp(2rem, 5vw, 4.5rem); }
     .sales-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
@@ -28,13 +29,15 @@
   <div class="ambient-glow" aria-hidden="true"></div>
 
   <nav class="site-nav" id="siteNav">
-    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
-    <ul class="nav-links" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><img class="logo-mark" src="A3BF5FC3-DDC8-4594-97FE-3AE35F98C378.png" alt="Rachel McBride Coaching logo"><span>Rachel McBride</span> Coaching</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks" aria-label="Main navigation">
       <li><a href="index.html">Home</a></li>
       <li><a href="release-circles.html">Release Circle</a></li>
       <li><a href="release-room.html">Release Room</a></li>
       <li><a href="private-coaching.html">1 on 1 Coaching</a></li>
-      <li><a href="workplace-wellness.html" class="nav-cta">Workplace Wellness</a></li>
+      <li><a href="workplace-wellness.html">Workplace Wellness</a></li>
+      <li><a href="index.html#signup" class="nav-cta">Stay Connected</a></li>
     </ul>
   </nav>
 
@@ -107,5 +110,6 @@
     </div>
   </footer>
   <script src="js/app.js"></script>
+  <script>const toggle=document.getElementById('navToggle');const links=document.getElementById('navLinks');if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',open);});links.addEventListener('click',e=>{if(e.target.tagName==='A'){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});}</script>
 </body>
 </html>
